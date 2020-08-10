@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**getAllCatalogs**](EcommerceApi.md#getAllCatalogs) | **GET** /catalogs | Get all catalogs
 [**getAllProducts**](EcommerceApi.md#getAllProducts) | **GET** /catalogs/{catalog_id}/products | Get all products
 [**getProduct**](EcommerceApi.md#getProduct) | **GET** /catalogs/{catalog_id}/products/{product_identifier} | Get product
+[**importOrdersBulk**](EcommerceApi.md#importOrdersBulk) | **POST** /lists/{list_id}/orders | Orders import bulk request
 [**importProducts**](EcommerceApi.md#importProducts) | **POST** /catalogs/{catalog_id}/products/actions/import | Import products
 [**updateProduct**](EcommerceApi.md#updateProduct) | **PATCH** /catalogs/{catalog_id}/products/{product_identifier} | Update product
 
@@ -368,13 +369,64 @@ Name | Type | Description  | Notes
  - **Content-Type**: Not defined
  - **Accept**: application/json
 
+<a name="importOrdersBulk"></a>
+# **importOrdersBulk**
+> AcceptedResponse importOrdersBulk(listId, importOrdersBulkBulkRequest)
+
+Orders import bulk request
+
+Creates new bulk orders syncronization
+
+### Example
+```javascript
+var egoiSdk = require('egoiSdk');
+var defaultClient = egoiSdk.ApiClient.instance;
+// Configure API key authorization: Apikey
+var Apikey = defaultClient.authentications['Apikey'];
+Apikey.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//Apikey.apiKeyPrefix = 'Token';
+
+var apiInstance = new egoiSdk.EcommerceApi();
+var listId = 56; // Number | ID of the List
+var importOrdersBulkBulkRequest = [new egoiSdk.ImportOrdersBulkBulkRequest()]; // [ImportOrdersBulkBulkRequest] | Parameters for the Orders
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.importOrdersBulk(listId, importOrdersBulkBulkRequest, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **listId** | **Number**| ID of the List | 
+ **importOrdersBulkBulkRequest** | [**[ImportOrdersBulkBulkRequest]**](Array.md)| Parameters for the Orders | 
+
+### Return type
+
+[**AcceptedResponse**](AcceptedResponse.md)
+
+### Authorization
+
+[Apikey](../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
 <a name="importProducts"></a>
 # **importProducts**
 > AcceptedResponse importProducts(catalogId, productBulkRequest)
 
 Import products
 
-Imports a collection of products
+Imports a collection of products&lt;/br&gt;      **DISCLAIMER:** stream limits applied. [view here](#section/Stream-Limits &#39;Stream Limits&#39;)
 
 ### Example
 ```javascript

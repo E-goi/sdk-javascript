@@ -8,7 +8,7 @@ The API describes each available method. Learn about parameters, errors, and how
 If you find a bug or something worth fixing, create an issue.
 
 ### Changelog
-#### 1.0.0RC1
+#### 1.1.0RC2
 ## Installation
 
 ### For [Node.js](https://nodejs.org/)
@@ -138,6 +138,7 @@ Class | Method | HTTP request | Description
 *egoiSdk.AdvancedReportsApi* | [**getAllAdvancedReports**](docs/AdvancedReportsApi.md#getAllAdvancedReports) | **GET** /reports/advanced | Get all advanced reports
 *egoiSdk.AutomationsApi* | [**deleteAutomation**](docs/AutomationsApi.md#deleteAutomation) | **DELETE** /automations/{automation_id} | Remove automation
 *egoiSdk.AutomationsApi* | [**getAllAutomations**](docs/AutomationsApi.md#getAllAutomations) | **GET** /automations | Get all automations
+*egoiSdk.CNamesApi* | [**createCName**](docs/CNamesApi.md#createCName) | **POST** /cnames | Create cname
 *egoiSdk.CNamesApi* | [**getAllCNames**](docs/CNamesApi.md#getAllCNames) | **GET** /cnames | Get All CNames
 *egoiSdk.CampaignGroupsApi* | [**createCampaignGroup**](docs/CampaignGroupsApi.md#createCampaignGroup) | **POST** /campaign-groups | Create new campaign group
 *egoiSdk.CampaignGroupsApi* | [**deleteCampaignGroup**](docs/CampaignGroupsApi.md#deleteCampaignGroup) | **DELETE** /campaign-groups/{group_id} | Remove Campaign Group
@@ -145,9 +146,12 @@ Class | Method | HTTP request | Description
 *egoiSdk.CampaignGroupsApi* | [**updateCampaignGroup**](docs/CampaignGroupsApi.md#updateCampaignGroup) | **PUT** /campaign-groups/{group_id} | Update a specific campaign group
 *egoiSdk.CampaignsApi* | [**deleteCampaigns**](docs/CampaignsApi.md#deleteCampaigns) | **DELETE** /campaigns/{campaign_hash} | Remove Campaign
 *egoiSdk.CampaignsApi* | [**getAllCampaigns**](docs/CampaignsApi.md#getAllCampaigns) | **GET** /campaigns | Get all Campaigns
+*egoiSdk.ContactsApi* | [**actionActivateContacts**](docs/ContactsApi.md#actionActivateContacts) | **POST** /lists/{list_id}/contacts/actions/activate | Activate contacts
 *egoiSdk.ContactsApi* | [**actionAttachTag**](docs/ContactsApi.md#actionAttachTag) | **POST** /lists/{list_id}/contacts/actions/attach-tag | Attach tag to contact
+*egoiSdk.ContactsApi* | [**actionDeactivateContacts**](docs/ContactsApi.md#actionDeactivateContacts) | **POST** /lists/{list_id}/contacts/actions/deactivate | Deactivate contacts
 *egoiSdk.ContactsApi* | [**actionDetachTag**](docs/ContactsApi.md#actionDetachTag) | **POST** /lists/{list_id}/contacts/actions/detach-tag | Detach tag to contact
 *egoiSdk.ContactsApi* | [**actionExportContacts**](docs/ContactsApi.md#actionExportContacts) | **POST** /lists/{list_id}/contacts/actions/export | Exports a list of contacts
+*egoiSdk.ContactsApi* | [**actionForgetContacts**](docs/ContactsApi.md#actionForgetContacts) | **POST** /lists/{list_id}/contacts/actions/forget | Forget contacts
 *egoiSdk.ContactsApi* | [**actionImportBulk**](docs/ContactsApi.md#actionImportBulk) | **POST** /lists/{list_id}/contacts/actions/import-bulk | Import collection of contacts
 *egoiSdk.ContactsApi* | [**actionStartAutomation**](docs/ContactsApi.md#actionStartAutomation) | **POST** /lists/{list_id}/contacts/actions/start-automation | Start automation
 *egoiSdk.ContactsApi* | [**actionUnsubscribeContact**](docs/ContactsApi.md#actionUnsubscribeContact) | **POST** /lists/{list_id}/contacts/actions/unsubscribe | Unsubscribes contacts
@@ -156,6 +160,7 @@ Class | Method | HTTP request | Description
 *egoiSdk.ContactsApi* | [**getAllContacts**](docs/ContactsApi.md#getAllContacts) | **GET** /lists/{list_id}/contacts | Get all contacts
 *egoiSdk.ContactsApi* | [**getContact**](docs/ContactsApi.md#getContact) | **GET** /lists/{list_id}/contacts/{contact_id} | Get contact
 *egoiSdk.ContactsApi* | [**patchContact**](docs/ContactsApi.md#patchContact) | **PATCH** /lists/{list_id}/contacts/{contact_id} | Update a specific contact
+*egoiSdk.ContactsApi* | [**searchContacts**](docs/ContactsApi.md#searchContacts) | **GET** /contacts/search | Search contact
 *egoiSdk.EcommerceApi* | [**createCatalog**](docs/EcommerceApi.md#createCatalog) | **POST** /catalogs | Create new catalog
 *egoiSdk.EcommerceApi* | [**createProduct**](docs/EcommerceApi.md#createProduct) | **POST** /catalogs/{catalog_id}/products | Create new product
 *egoiSdk.EcommerceApi* | [**deleteCatalog**](docs/EcommerceApi.md#deleteCatalog) | **DELETE** /catalogs/{catalog_id} | Remove catalog
@@ -163,6 +168,7 @@ Class | Method | HTTP request | Description
 *egoiSdk.EcommerceApi* | [**getAllCatalogs**](docs/EcommerceApi.md#getAllCatalogs) | **GET** /catalogs | Get all catalogs
 *egoiSdk.EcommerceApi* | [**getAllProducts**](docs/EcommerceApi.md#getAllProducts) | **GET** /catalogs/{catalog_id}/products | Get all products
 *egoiSdk.EcommerceApi* | [**getProduct**](docs/EcommerceApi.md#getProduct) | **GET** /catalogs/{catalog_id}/products/{product_identifier} | Get product
+*egoiSdk.EcommerceApi* | [**importOrdersBulk**](docs/EcommerceApi.md#importOrdersBulk) | **POST** /lists/{list_id}/orders | Orders import bulk request
 *egoiSdk.EcommerceApi* | [**importProducts**](docs/EcommerceApi.md#importProducts) | **POST** /catalogs/{catalog_id}/products/actions/import | Import products
 *egoiSdk.EcommerceApi* | [**updateProduct**](docs/EcommerceApi.md#updateProduct) | **PATCH** /catalogs/{catalog_id}/products/{product_identifier} | Update product
 *egoiSdk.EmailApi* | [**actionEnableEmailRss**](docs/EmailApi.md#actionEnableEmailRss) | **POST** /campaigns/email/rss/{campaign_hash}/actions/enable | Enables a rss email campaign
@@ -226,11 +232,15 @@ Class | Method | HTTP request | Description
 *egoiSdk.VoiceApi* | [**actionSendVoice**](docs/VoiceApi.md#actionSendVoice) | **POST** /campaigns/voice/{campaign_hash}/actions/send | Send voice message
 *egoiSdk.VoiceApi* | [**createVoiceCampaign**](docs/VoiceApi.md#createVoiceCampaign) | **POST** /campaigns/voice | Create new voice campaign
 *egoiSdk.VoiceApi* | [**patchVoiceCampaign**](docs/VoiceApi.md#patchVoiceCampaign) | **PATCH** /campaigns/voice/{campaign_hash} | Update a specific voice campaign
+*egoiSdk.WebHooksApi* | [**createWebhook**](docs/WebHooksApi.md#createWebhook) | **POST** /webhooks | Create new webhook
+*egoiSdk.WebHooksApi* | [**deleteWebhook**](docs/WebHooksApi.md#deleteWebhook) | **DELETE** /webhooks/{webhook_id} | Remove webhook
+*egoiSdk.WebHooksApi* | [**getAllWebhooks**](docs/WebHooksApi.md#getAllWebhooks) | **GET** /webhooks | Get all webhooks
 *egoiSdk.WebpushApi* | [**actionEnableWebPushRss**](docs/WebpushApi.md#actionEnableWebPushRss) | **POST** /campaigns/webpush/rss/{campaign_hash}/actions/enable | Enable a rss webpush campaign
 *egoiSdk.WebpushApi* | [**actionSendWebPush**](docs/WebpushApi.md#actionSendWebPush) | **POST** /campaigns/web-push/{campaign_hash}/actions/send | Send webpush message
 *egoiSdk.WebpushApi* | [**createWebPushCampaign**](docs/WebpushApi.md#createWebPushCampaign) | **POST** /campaigns/web-push | Create new webpush campaign
 *egoiSdk.WebpushApi* | [**createWebPushRssCampaign**](docs/WebpushApi.md#createWebPushRssCampaign) | **POST** /campaigns/webpush/rss | Create new webpush rss campaign
-*egoiSdk.WebpushApi* | [**getAllWebPushSites**](docs/WebpushApi.md#getAllWebPushSites) | **GET** /webpush/site | Get all webpush sites
+*egoiSdk.WebpushApi* | [**createWebpushSite**](docs/WebpushApi.md#createWebpushSite) | **POST** /webpush/sites | Creates a webpush site
+*egoiSdk.WebpushApi* | [**getAllWebPushSites**](docs/WebpushApi.md#getAllWebPushSites) | **GET** /webpush/sites | Get all webpush sites
 *egoiSdk.WebpushApi* | [**patchWebPushCampaign**](docs/WebpushApi.md#patchWebPushCampaign) | **PATCH** /campaigns/web-push/{campaign_hash} | Update a specific webpush campaign
 
 
@@ -244,6 +254,9 @@ Class | Method | HTTP request | Description
  - [egoiSdk.AbstractSendEmail](docs/AbstractSendEmail.md)
  - [egoiSdk.AbstractSendVoice](docs/AbstractSendVoice.md)
  - [egoiSdk.AcceptedResponse](docs/AcceptedResponse.md)
+ - [egoiSdk.ActivateContactsAll](docs/ActivateContactsAll.md)
+ - [egoiSdk.ActivateContactsMany](docs/ActivateContactsMany.md)
+ - [egoiSdk.ActivateContactsRequest](docs/ActivateContactsRequest.md)
  - [egoiSdk.ActivityCollection](docs/ActivityCollection.md)
  - [egoiSdk.AdvancedReport](docs/AdvancedReport.md)
  - [egoiSdk.AdvancedReportCampaignsObject](docs/AdvancedReportCampaignsObject.md)
@@ -332,6 +345,8 @@ Class | Method | HTTP request | Description
  - [egoiSdk.CatalogPostRequest](docs/CatalogPostRequest.md)
  - [egoiSdk.CellphoneSender](docs/CellphoneSender.md)
  - [egoiSdk.CellphoneSenderCollection](docs/CellphoneSenderCollection.md)
+ - [egoiSdk.CnameExists](docs/CnameExists.md)
+ - [egoiSdk.CnameExistsErrors](docs/CnameExistsErrors.md)
  - [egoiSdk.ComplexContact](docs/ComplexContact.md)
  - [egoiSdk.ComplexField](docs/ComplexField.md)
  - [egoiSdk.ComplexList](docs/ComplexList.md)
@@ -369,9 +384,11 @@ Class | Method | HTTP request | Description
  - [egoiSdk.ContactExtraFieldsBulk](docs/ContactExtraFieldsBulk.md)
  - [egoiSdk.ContactExtraFieldsBulkSchema](docs/ContactExtraFieldsBulkSchema.md)
  - [egoiSdk.ContactExtraFieldsSchema](docs/ContactExtraFieldsSchema.md)
+ - [egoiSdk.ContactForgetRequest](docs/ContactForgetRequest.md)
  - [egoiSdk.ContactInsideBase](docs/ContactInsideBase.md)
  - [egoiSdk.ContactInsideBaseBulk](docs/ContactInsideBaseBulk.md)
  - [egoiSdk.ContactOtherActivity](docs/ContactOtherActivity.md)
+ - [egoiSdk.ContactSearchResponse](docs/ContactSearchResponse.md)
  - [egoiSdk.ContactStatusFieldsBulkSchema](docs/ContactStatusFieldsBulkSchema.md)
  - [egoiSdk.ContactStatusFieldsSchema](docs/ContactStatusFieldsSchema.md)
  - [egoiSdk.ContactTags](docs/ContactTags.md)
@@ -383,6 +400,9 @@ Class | Method | HTTP request | Description
  - [egoiSdk.Country](docs/Country.md)
  - [egoiSdk.CountryCollection](docs/CountryCollection.md)
  - [egoiSdk.CreateContactResponse](docs/CreateContactResponse.md)
+ - [egoiSdk.DeactivateContactsAll](docs/DeactivateContactsAll.md)
+ - [egoiSdk.DeactivateContactsMany](docs/DeactivateContactsMany.md)
+ - [egoiSdk.DeactivateContactsRequest](docs/DeactivateContactsRequest.md)
  - [egoiSdk.DeleteCampaignsConflict](docs/DeleteCampaignsConflict.md)
  - [egoiSdk.DeleteFieldsConflict](docs/DeleteFieldsConflict.md)
  - [egoiSdk.DeleteListsConflict](docs/DeleteListsConflict.md)
@@ -451,7 +471,10 @@ Class | Method | HTTP request | Description
  - [egoiSdk.HeaderFooterHeaderLinks](docs/HeaderFooterHeaderLinks.md)
  - [egoiSdk.HeaderFooterTemplate](docs/HeaderFooterTemplate.md)
  - [egoiSdk.ImportBulkRequest](docs/ImportBulkRequest.md)
+ - [egoiSdk.ImportOrdersBulkBulkRequest](docs/ImportOrdersBulkBulkRequest.md)
+ - [egoiSdk.ImportOrdersBulkBulkRequestItems](docs/ImportOrdersBulkBulkRequestItems.md)
  - [egoiSdk.InlineObject](docs/InlineObject.md)
+ - [egoiSdk.InlineResponse200](docs/InlineResponse200.md)
  - [egoiSdk.InternalServerError](docs/InternalServerError.md)
  - [egoiSdk.InvalidSegmentType](docs/InvalidSegmentType.md)
  - [egoiSdk.InvalidSegmentTypeErrors](docs/InvalidSegmentTypeErrors.md)
@@ -464,6 +487,7 @@ Class | Method | HTTP request | Description
  - [egoiSdk.LimitSpeedActionSend](docs/LimitSpeedActionSend.md)
  - [egoiSdk.List](docs/List.md)
  - [egoiSdk.ListCollection](docs/ListCollection.md)
+ - [egoiSdk.ListCollection1](docs/ListCollection1.md)
  - [egoiSdk.ListLimitReached](docs/ListLimitReached.md)
  - [egoiSdk.ListLimitReachedErrors](docs/ListLimitReachedErrors.md)
  - [egoiSdk.MessageWebPush](docs/MessageWebPush.md)
@@ -473,6 +497,8 @@ Class | Method | HTTP request | Description
  - [egoiSdk.ModuleInfoModuleInfo](docs/ModuleInfoModuleInfo.md)
  - [egoiSdk.ModuleInfoModuleInfoTe](docs/ModuleInfoModuleInfoTe.md)
  - [egoiSdk.MyAccount](docs/MyAccount.md)
+ - [egoiSdk.NameAlreadyExists](docs/NameAlreadyExists.md)
+ - [egoiSdk.NameAlreadyExistsErrors](docs/NameAlreadyExistsErrors.md)
  - [egoiSdk.NotFound](docs/NotFound.md)
  - [egoiSdk.NotifyUserIdArrayActionSend](docs/NotifyUserIdArrayActionSend.md)
  - [egoiSdk.Now](docs/Now.md)
@@ -498,10 +524,12 @@ Class | Method | HTTP request | Description
  - [egoiSdk.Ping](docs/Ping.md)
  - [egoiSdk.PlanInfo](docs/PlanInfo.md)
  - [egoiSdk.PlanInfoPlanInfo](docs/PlanInfoPlanInfo.md)
+ - [egoiSdk.PostCNameConflict](docs/PostCNameConflict.md)
  - [egoiSdk.PostContactsConflict](docs/PostContactsConflict.md)
  - [egoiSdk.PostListsConflict](docs/PostListsConflict.md)
  - [egoiSdk.PostProductsConflict](docs/PostProductsConflict.md)
  - [egoiSdk.PostRequestList](docs/PostRequestList.md)
+ - [egoiSdk.PostWebpushSiteConflict](docs/PostWebpushSiteConflict.md)
  - [egoiSdk.Product](docs/Product.md)
  - [egoiSdk.ProductAlreadyExists](docs/ProductAlreadyExists.md)
  - [egoiSdk.ProductAlreadyExistsErrors](docs/ProductAlreadyExistsErrors.md)
@@ -596,6 +624,8 @@ Class | Method | HTTP request | Description
  - [egoiSdk.WebPushRssCampaign](docs/WebPushRssCampaign.md)
  - [egoiSdk.WebPushSite](docs/WebPushSite.md)
  - [egoiSdk.WebPushStats](docs/WebPushStats.md)
+ - [egoiSdk.Webhook](docs/Webhook.md)
+ - [egoiSdk.WebhookActionSchema](docs/WebhookActionSchema.md)
 
 
 ## Documentation for Authorization

@@ -4,7 +4,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **siteId** | **Number** |  | [optional] 
-**listId** | **String** | Name of the tag | [optional] 
+**site** | **String** | Webpush site | [optional] 
+**listId** | **Number** |  | [optional] 
 **appCode** | **String** | App code | [optional] 
+**name** | **String** | Webpush name | [optional] 
 
 

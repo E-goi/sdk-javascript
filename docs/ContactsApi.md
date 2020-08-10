@@ -4,9 +4,12 @@ All URIs are relative to *https://api.egoiapp.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**actionActivateContacts**](ContactsApi.md#actionActivateContacts) | **POST** /lists/{list_id}/contacts/actions/activate | Activate contacts
 [**actionAttachTag**](ContactsApi.md#actionAttachTag) | **POST** /lists/{list_id}/contacts/actions/attach-tag | Attach tag to contact
+[**actionDeactivateContacts**](ContactsApi.md#actionDeactivateContacts) | **POST** /lists/{list_id}/contacts/actions/deactivate | Deactivate contacts
 [**actionDetachTag**](ContactsApi.md#actionDetachTag) | **POST** /lists/{list_id}/contacts/actions/detach-tag | Detach tag to contact
 [**actionExportContacts**](ContactsApi.md#actionExportContacts) | **POST** /lists/{list_id}/contacts/actions/export | Exports a list of contacts
+[**actionForgetContacts**](ContactsApi.md#actionForgetContacts) | **POST** /lists/{list_id}/contacts/actions/forget | Forget contacts
 [**actionImportBulk**](ContactsApi.md#actionImportBulk) | **POST** /lists/{list_id}/contacts/actions/import-bulk | Import collection of contacts
 [**actionStartAutomation**](ContactsApi.md#actionStartAutomation) | **POST** /lists/{list_id}/contacts/actions/start-automation | Start automation
 [**actionUnsubscribeContact**](ContactsApi.md#actionUnsubscribeContact) | **POST** /lists/{list_id}/contacts/actions/unsubscribe | Unsubscribes contacts
@@ -15,7 +18,59 @@ Method | HTTP request | Description
 [**getAllContacts**](ContactsApi.md#getAllContacts) | **GET** /lists/{list_id}/contacts | Get all contacts
 [**getContact**](ContactsApi.md#getContact) | **GET** /lists/{list_id}/contacts/{contact_id} | Get contact
 [**patchContact**](ContactsApi.md#patchContact) | **PATCH** /lists/{list_id}/contacts/{contact_id} | Update a specific contact
+[**searchContacts**](ContactsApi.md#searchContacts) | **GET** /contacts/search | Search contact
 
+
+<a name="actionActivateContacts"></a>
+# **actionActivateContacts**
+> AcceptedResponse actionActivateContacts(listId, activateContactsRequest)
+
+Activate contacts
+
+Activates a collection of contacts (does not apply to removed contacts)
+
+### Example
+```javascript
+var egoiSdk = require('egoiSdk');
+var defaultClient = egoiSdk.ApiClient.instance;
+// Configure API key authorization: Apikey
+var Apikey = defaultClient.authentications['Apikey'];
+Apikey.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//Apikey.apiKeyPrefix = 'Token';
+
+var apiInstance = new egoiSdk.ContactsApi();
+var listId = 56; // Number | ID of the List
+var activateContactsRequest = new egoiSdk.ActivateContactsRequest(); // ActivateContactsRequest | Parameters for the request
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.actionActivateContacts(listId, activateContactsRequest, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **listId** | **Number**| ID of the List | 
+ **activateContactsRequest** | [**ActivateContactsRequest**](ActivateContactsRequest.md)| Parameters for the request | 
+
+### Return type
+
+[**AcceptedResponse**](AcceptedResponse.md)
+
+### Authorization
+
+[Apikey](../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 <a name="actionAttachTag"></a>
 # **actionAttachTag**
@@ -58,6 +113,57 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AttachTagResponse**](AttachTagResponse.md)
+
+### Authorization
+
+[Apikey](../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="actionDeactivateContacts"></a>
+# **actionDeactivateContacts**
+> AcceptedResponse actionDeactivateContacts(listId, deactivateContactsRequest)
+
+Deactivate contacts
+
+Deactivates a collection of contacts (does not apply to removed contacts)
+
+### Example
+```javascript
+var egoiSdk = require('egoiSdk');
+var defaultClient = egoiSdk.ApiClient.instance;
+// Configure API key authorization: Apikey
+var Apikey = defaultClient.authentications['Apikey'];
+Apikey.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//Apikey.apiKeyPrefix = 'Token';
+
+var apiInstance = new egoiSdk.ContactsApi();
+var listId = 56; // Number | ID of the List
+var deactivateContactsRequest = new egoiSdk.DeactivateContactsRequest(); // DeactivateContactsRequest | Parameters for the request
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.actionDeactivateContacts(listId, deactivateContactsRequest, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **listId** | **Number**| ID of the List | 
+ **deactivateContactsRequest** | [**DeactivateContactsRequest**](DeactivateContactsRequest.md)| Parameters for the request | 
+
+### Return type
+
+[**AcceptedResponse**](AcceptedResponse.md)
 
 ### Authorization
 
@@ -170,13 +276,64 @@ Name | Type | Description  | Notes
  - **Content-Type**: application/json
  - **Accept**: application/json
 
+<a name="actionForgetContacts"></a>
+# **actionForgetContacts**
+> AcceptedResponse actionForgetContacts(listId, contactForgetRequest)
+
+Forget contacts
+
+Forgets a list of contacts to the desired callback url
+
+### Example
+```javascript
+var egoiSdk = require('egoiSdk');
+var defaultClient = egoiSdk.ApiClient.instance;
+// Configure API key authorization: Apikey
+var Apikey = defaultClient.authentications['Apikey'];
+Apikey.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//Apikey.apiKeyPrefix = 'Token';
+
+var apiInstance = new egoiSdk.ContactsApi();
+var listId = 56; // Number | ID of the List
+var contactForgetRequest = new egoiSdk.ContactForgetRequest(); // ContactForgetRequest | Parameters for the action
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.actionForgetContacts(listId, contactForgetRequest, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **listId** | **Number**| ID of the List | 
+ **contactForgetRequest** | [**ContactForgetRequest**](ContactForgetRequest.md)| Parameters for the action | 
+
+### Return type
+
+[**AcceptedResponse**](AcceptedResponse.md)
+
+### Authorization
+
+[Apikey](../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
 <a name="actionImportBulk"></a>
 # **actionImportBulk**
 > AcceptedResponse actionImportBulk(listId, importBulkRequest)
 
 Import collection of contacts
 
-Imports a collection of contacts
+Imports a collection of contacts &lt;/br&gt;      **DISCLAIMER:** stream limits applied. [view here](#section/Stream-Limits &#39;Stream Limits&#39;)
 
 ### Example
 ```javascript
@@ -457,7 +614,8 @@ var apiInstance = new egoiSdk.ContactsApi();
 var listId = 56; // Number | ID of the List
 var opts = {
   'offset': 56, // Number | Element offset (starting at zero for the first element)
-  'limit': 10 // Number | Number of items to return
+  'limit': 10, // Number | Number of items to return
+  'email': "email_example" // String | Email of the contacts to return
 };
 var callback = function(error, data, response) {
   if (error) {
@@ -476,6 +634,7 @@ Name | Type | Description  | Notes
  **listId** | **Number**| ID of the List | 
  **offset** | **Number**| Element offset (starting at zero for the first element) | [optional] 
  **limit** | **Number**| Number of items to return | [optional] [default to 10]
+ **email** | **String**| Email of the contacts to return | [optional] 
 
 ### Return type
 
@@ -592,5 +751,58 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="searchContacts"></a>
+# **searchContacts**
+> InlineResponse200 searchContacts(contact, opts)
+
+Search contact
+
+Searches a contact across all lists and returns a collection of contacts found
+
+### Example
+```javascript
+var egoiSdk = require('egoiSdk');
+var defaultClient = egoiSdk.ApiClient.instance;
+// Configure API key authorization: Apikey
+var Apikey = defaultClient.authentications['Apikey'];
+Apikey.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//Apikey.apiKeyPrefix = 'Token';
+
+var apiInstance = new egoiSdk.ContactsApi();
+var contact = "contact_example"; // String | Contact to search
+var opts = {
+  'type': "'email'" // String | Type of contact to search (defaults to 'email')
+};
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.searchContacts(contact, opts, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **contact** | **String**| Contact to search | 
+ **type** | **String**| Type of contact to search (defaults to &#39;email&#39;) | [optional] [default to &#39;email&#39;]
+
+### Return type
+
+[**InlineResponse200**](InlineResponse200.md)
+
+### Authorization
+
+[Apikey](../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
  - **Accept**: application/json
 

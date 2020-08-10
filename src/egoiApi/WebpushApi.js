@@ -1,6 +1,6 @@
 /**
  * APIv3 (Beta)
- *  # Introduction Just a quick peek!!! This is our new version of API. Remember, it is not stable yet!!! But we invite you play with it and give us your feedback ;) # Getting Started  E-goi can be integrated with many environments and programming languages via our REST API. We've created a developer focused portal to give your organization a clear and quick overview of how to integrate with E-goi. The developer portal focuses on scenarios for integration and flow of events. We recommend familiarizing yourself with all of the content in the developer portal, before start using our rest API.   The E-goi  APIv3 is served over HTTPS. To ensure data privacy, unencrypted HTTP is not supported.  Request data is passed to the API by POSTing JSON objects to the API endpoints with the appropriate parameters.   BaseURL = api.egoiapp.com  # RESTful Services This API supports 5 HTTP methods:  * <b>GET</b>: The HTTP GET method is used to **read** (or retrieve) a representation of a resource. * <b>POST</b>: The POST verb is most-often utilized to **create** new resources. * <b>PATCH</b>: PATCH is used for **modify** capabilities. The PATCH request only needs to contain the changes to the resource, not the complete resource * <b>PUT</b>: PUT is most-often utilized for **update** capabilities, PUT-ing to a known resource URI with the request body containing the newly-updated representation of the original resource. * <b>DELETE</b>: DELETE is pretty easy to understand. It is used to **delete** a resource identified by a URI.  # Authentication   We use a custom authentication method, you will need a apikey that you can find in your account settings. Below you will see a curl example to get your account information:  #!/bin/bash  curl -X GET 'https://api.egoiapp.com/my-account' \\  -H 'accept: application/json' \\  -H 'Apikey: <YOUR_APY_KEY>'  Here you can see a curl Post example with authentication:  #!/bin/bash  curl -X POST 'http://api.egoiapp.com/tags' \\  -H 'accept: application/json' \\  -H 'Apikey: <YOUR_APY_KEY>' \\  -H 'Content-Type: application/json' \\  -d '{`name`:`Your custom tag`,`color`:`#FFFFFF`}'  # SDK Get started quickly with E-goi with our integration tools. Our SDK is a modern open source library that makes it easy to integrate your application with E-goi services. * <b><a href='https://github.com/E-goi/sdk-java'>Java</a></b> * <b><a href='https://github.com/E-goi/sdk-php'>PHP</a></b> * <b><a href='https://github.com/E-goi/sdk-python'>Python</a></b>  <security-definitions/>
+ *  # Introduction Just a quick peek!!! This is our new version of API. Remember, it is not stable yet!!! But we invite you play with it and give us your feedback ;) # Getting Started  E-goi can be integrated with many environments and programming languages via our REST API. We've created a developer focused portal to give your organization a clear and quick overview of how to integrate with E-goi. The developer portal focuses on scenarios for integration and flow of events. We recommend familiarizing yourself with all of the content in the developer portal, before start using our rest API.   The E-goi  APIv3 is served over HTTPS. To ensure data privacy, unencrypted HTTP is not supported.  Request data is passed to the API by POSTing JSON objects to the API endpoints with the appropriate parameters.   BaseURL = api.egoiapp.com  # RESTful Services This API supports 5 HTTP methods:  * <b>GET</b>: The HTTP GET method is used to **read** (or retrieve) a representation of a resource. * <b>POST</b>: The POST verb is most-often utilized to **create** new resources. * <b>PATCH</b>: PATCH is used for **modify** capabilities. The PATCH request only needs to contain the changes to the resource, not the complete resource * <b>PUT</b>: PUT is most-often utilized for **update** capabilities, PUT-ing to a known resource URI with the request body containing the newly-updated representation of the original resource. * <b>DELETE</b>: DELETE is pretty easy to understand. It is used to **delete** a resource identified by a URI.  # Authentication   We use a custom authentication method, you will need a apikey that you can find in your account settings. Below you will see a curl example to get your account information:  #!/bin/bash  curl -X GET 'https://api.egoiapp.com/my-account' \\  -H 'accept: application/json' \\  -H 'Apikey: <YOUR_APY_KEY>'  Here you can see a curl Post example with authentication:  #!/bin/bash  curl -X POST 'http://api.egoiapp.com/tags' \\  -H 'accept: application/json' \\  -H 'Apikey: <YOUR_APY_KEY>' \\  -H 'Content-Type: application/json' \\  -d '{`name`:`Your custom tag`,`color`:`#FFFFFF`}'  # SDK Get started quickly with E-goi with our integration tools. Our SDK is a modern open source library that makes it easy to integrate your application with E-goi services.  * <a href='https://github.com/E-goi/sdk-java'>Java</a>  * <a href='https://github.com/E-goi/sdk-php'>PHP</a>  * <a href='https://github.com/E-goi/sdk-python'>Python</a>  * <a href='https://github.com/E-goi/sdk-ruby'>Ruby</a>  * <a href='https://github.com/E-goi/sdk-javascript'>Javascript</a>  * <a href='https://github.com/E-goi/sdk-csharp'>C#</a>  # Stream Limits Stream limits are security mesures we have to make sure our API have a fair use policy, for this reason, any request that creates or modifies data (**POST**, **PATCH** and **PUT**) is limited to a maximum of **20MB** of content length. If you arrive to this limit in one of your request, you'll receive a HTTP code **413 (Request Entity Too Large)** and the request will be ignored. To avoid this error in importation's requests, it's advised the request's division in batches that have each one less than 20MB. <security-definitions/>
  *
  * OpenAPI spec version: 3.0.0-beta
  *
@@ -16,24 +16,24 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'egoiSdk/AcceptedResponse', 'egoiSdk/BadRequest', 'egoiSdk/CampaignHash', 'egoiSdk/CampaignWebPushSendRequest', 'egoiSdk/Conflict', 'egoiSdk/Forbidden', 'egoiSdk/HashcodeCampaign', 'egoiSdk/InternalServerError', 'egoiSdk/NotFound', 'egoiSdk/TagCollection1', 'egoiSdk/Unauthorized', 'egoiSdk/UnprocessableEntity', 'egoiSdk/WebPushCampaign', 'egoiSdk/WebPushPatchCampaign', 'egoiSdk/WebPushRssCampaign'], factory);
+    define(['ApiClient', 'egoiSdk/AcceptedResponse', 'egoiSdk/BadRequest', 'egoiSdk/CampaignHash', 'egoiSdk/CampaignWebPushSendRequest', 'egoiSdk/Conflict', 'egoiSdk/Forbidden', 'egoiSdk/HashcodeCampaign', 'egoiSdk/InternalServerError', 'egoiSdk/NotFound', 'egoiSdk/PostWebpushSiteConflict', 'egoiSdk/TagCollection1', 'egoiSdk/Unauthorized', 'egoiSdk/UnprocessableEntity', 'egoiSdk/WebPushCampaign', 'egoiSdk/WebPushPatchCampaign', 'egoiSdk/WebPushRssCampaign', 'egoiSdk/WebPushSite'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../egoiSdk/AcceptedResponse'), require('../egoiSdk/BadRequest'), require('../egoiSdk/CampaignHash'), require('../egoiSdk/CampaignWebPushSendRequest'), require('../egoiSdk/Conflict'), require('../egoiSdk/Forbidden'), require('../egoiSdk/HashcodeCampaign'), require('../egoiSdk/InternalServerError'), require('../egoiSdk/NotFound'), require('../egoiSdk/TagCollection1'), require('../egoiSdk/Unauthorized'), require('../egoiSdk/UnprocessableEntity'), require('../egoiSdk/WebPushCampaign'), require('../egoiSdk/WebPushPatchCampaign'), require('../egoiSdk/WebPushRssCampaign'));
+    module.exports = factory(require('../ApiClient'), require('../egoiSdk/AcceptedResponse'), require('../egoiSdk/BadRequest'), require('../egoiSdk/CampaignHash'), require('../egoiSdk/CampaignWebPushSendRequest'), require('../egoiSdk/Conflict'), require('../egoiSdk/Forbidden'), require('../egoiSdk/HashcodeCampaign'), require('../egoiSdk/InternalServerError'), require('../egoiSdk/NotFound'), require('../egoiSdk/PostWebpushSiteConflict'), require('../egoiSdk/TagCollection1'), require('../egoiSdk/Unauthorized'), require('../egoiSdk/UnprocessableEntity'), require('../egoiSdk/WebPushCampaign'), require('../egoiSdk/WebPushPatchCampaign'), require('../egoiSdk/WebPushRssCampaign'), require('../egoiSdk/WebPushSite'));
   } else {
     // Browser globals (root is window)
     if (!root.egoiSdk) {
       root.egoiSdk = {};
     }
-    root.egoiSdk.WebpushApi = factory(root.egoiSdk.ApiClient, root.egoiSdk.AcceptedResponse, root.egoiSdk.BadRequest, root.egoiSdk.CampaignHash, root.egoiSdk.CampaignWebPushSendRequest, root.egoiSdk.Conflict, root.egoiSdk.Forbidden, root.egoiSdk.HashcodeCampaign, root.egoiSdk.InternalServerError, root.egoiSdk.NotFound, root.egoiSdk.TagCollection1, root.egoiSdk.Unauthorized, root.egoiSdk.UnprocessableEntity, root.egoiSdk.WebPushCampaign, root.egoiSdk.WebPushPatchCampaign, root.egoiSdk.WebPushRssCampaign);
+    root.egoiSdk.WebpushApi = factory(root.egoiSdk.ApiClient, root.egoiSdk.AcceptedResponse, root.egoiSdk.BadRequest, root.egoiSdk.CampaignHash, root.egoiSdk.CampaignWebPushSendRequest, root.egoiSdk.Conflict, root.egoiSdk.Forbidden, root.egoiSdk.HashcodeCampaign, root.egoiSdk.InternalServerError, root.egoiSdk.NotFound, root.egoiSdk.PostWebpushSiteConflict, root.egoiSdk.TagCollection1, root.egoiSdk.Unauthorized, root.egoiSdk.UnprocessableEntity, root.egoiSdk.WebPushCampaign, root.egoiSdk.WebPushPatchCampaign, root.egoiSdk.WebPushRssCampaign, root.egoiSdk.WebPushSite);
   }
-}(this, function(ApiClient, AcceptedResponse, BadRequest, CampaignHash, CampaignWebPushSendRequest, Conflict, Forbidden, HashcodeCampaign, InternalServerError, NotFound, TagCollection1, Unauthorized, UnprocessableEntity, WebPushCampaign, WebPushPatchCampaign, WebPushRssCampaign) {
+}(this, function(ApiClient, AcceptedResponse, BadRequest, CampaignHash, CampaignWebPushSendRequest, Conflict, Forbidden, HashcodeCampaign, InternalServerError, NotFound, PostWebpushSiteConflict, TagCollection1, Unauthorized, UnprocessableEntity, WebPushCampaign, WebPushPatchCampaign, WebPushRssCampaign, WebPushSite) {
   'use strict';
 
   /**
    * Webpush service.
    * @module egoiApi/WebpushApi
-   * @version 1.0.0RC1
+   * @version 1.1.0RC2
    */
 
   /**
@@ -244,6 +244,53 @@
     }
 
     /**
+     * Callback function to receive the result of the createWebpushSite operation.
+     * @callback module:egoiApi/WebpushApi~createWebpushSiteCallback
+     * @param {String} error Error message, if any.
+     * @param {module:egoiSdk/WebPushSite} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Creates a webpush site
+     * Create a new webpush site
+     * @param {module:egoiSdk/WebPushSite} webPushSite Parameters for the webpush site
+     * @param {module:egoiApi/WebpushApi~createWebpushSiteCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:egoiSdk/WebPushSite}
+     */
+    this.createWebpushSite = function(webPushSite, callback) {
+      var postBody = webPushSite;
+
+      // verify the required parameter 'webPushSite' is set
+      if (webPushSite === undefined || webPushSite === null) {
+        throw new Error("Missing the required parameter 'webPushSite' when calling createWebpushSite");
+      }
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['Apikey'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = WebPushSite;
+
+      return this.apiClient.callApi(
+        '/webpush/sites', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the getAllWebPushSites operation.
      * @callback module:egoiApi/WebpushApi~getAllWebPushSitesCallback
      * @param {String} error Error message, if any.
@@ -290,7 +337,7 @@
       var returnType = TagCollection1;
 
       return this.apiClient.callApi(
-        '/webpush/site', 'GET',
+        '/webpush/sites', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

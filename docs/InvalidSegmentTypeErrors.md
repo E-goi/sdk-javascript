@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Enum: InvalidSegmentTypeEnum
 
 
-* `You can only delete segments of type &#39;saved&#39;` (value: `"You can only delete segments of type 'saved'"`)
+* `You can only delete segments of  type saved` (value: `"You can only delete segments of  type saved"`)
 
 
 

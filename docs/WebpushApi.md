@@ -8,7 +8,8 @@ Method | HTTP request | Description
 [**actionSendWebPush**](WebpushApi.md#actionSendWebPush) | **POST** /campaigns/web-push/{campaign_hash}/actions/send | Send webpush message
 [**createWebPushCampaign**](WebpushApi.md#createWebPushCampaign) | **POST** /campaigns/web-push | Create new webpush campaign
 [**createWebPushRssCampaign**](WebpushApi.md#createWebPushRssCampaign) | **POST** /campaigns/webpush/rss | Create new webpush rss campaign
-[**getAllWebPushSites**](WebpushApi.md#getAllWebPushSites) | **GET** /webpush/site | Get all webpush sites
+[**createWebpushSite**](WebpushApi.md#createWebpushSite) | **POST** /webpush/sites | Creates a webpush site
+[**getAllWebPushSites**](WebpushApi.md#getAllWebPushSites) | **GET** /webpush/sites | Get all webpush sites
 [**patchWebPushCampaign**](WebpushApi.md#patchWebPushCampaign) | **PATCH** /campaigns/web-push/{campaign_hash} | Update a specific webpush campaign
 
 
@@ -200,6 +201,55 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**HashcodeCampaign**](HashcodeCampaign.md)
+
+### Authorization
+
+[Apikey](../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="createWebpushSite"></a>
+# **createWebpushSite**
+> WebPushSite createWebpushSite(webPushSite)
+
+Creates a webpush site
+
+Create a new webpush site
+
+### Example
+```javascript
+var egoiSdk = require('egoiSdk');
+var defaultClient = egoiSdk.ApiClient.instance;
+// Configure API key authorization: Apikey
+var Apikey = defaultClient.authentications['Apikey'];
+Apikey.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//Apikey.apiKeyPrefix = 'Token';
+
+var apiInstance = new egoiSdk.WebpushApi();
+var webPushSite = new egoiSdk.WebPushSite(); // WebPushSite | Parameters for the webpush site
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.createWebpushSite(webPushSite, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **webPushSite** | [**WebPushSite**](WebPushSite.md)| Parameters for the webpush site | 
+
+### Return type
+
+[**WebPushSite**](WebPushSite.md)
 
 ### Authorization
 

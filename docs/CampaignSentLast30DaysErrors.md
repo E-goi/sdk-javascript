@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 ## Enum: CampaignSentLast30DaysEnum
 
 
-* `This campaign can&#39;t be deleted since it was sent in the last 30 days` (value: `"This campaign can't be deleted since it was sent in the last 30 days"`)
+* `This campaign cant be deleted since it was sent in the last 30 days` (value: `"This campaign cant be deleted since it was sent in the last 30 days"`)
 
 
 
