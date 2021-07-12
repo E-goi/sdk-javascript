@@ -12,10 +12,11 @@ Name | Type | Description | Notes
 **mpn** | **String** | Manufacturer Part Number | [optional] 
 **link** | **String** | Link for the product | [optional] 
 **imageLink** | **String** | Link for the product image | [optional] 
-**price** | **Number** | Price of the product | [optional] 
-**salePrice** | **Number** | Sale price of the product | [optional] 
+**price** | **Number** | Price of the product | [optional] [default to 0]
+**salePrice** | **Number** | Sale price of the product | [optional] [default to 0]
 **brand** | **String** | Brand of the product | [optional] 
 **categories** | **[String]** | Array of product categories, using the character &#39;&gt;&#39; as delimiter for the breadcrumb                         syntax | [optional] 
 **relatedProducts** | [**ProductPatchRequestRelatedProducts**](ProductPatchRequestRelatedProducts.md) |  | [optional] 
+**customAttributes** | [**[ProductCustomAttributes]**](ProductCustomAttributes.md) | Custom attributes | [optional] 
 
 

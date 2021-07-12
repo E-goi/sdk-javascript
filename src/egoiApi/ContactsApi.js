@@ -1,8 +1,8 @@
 /**
- * APIv3 (Beta)
- *  # Introduction Just a quick peek!!! This is our new version of API. Remember, it is not stable yet!!! But we invite you play with it and give us your feedback ;) # Getting Started  E-goi can be integrated with many environments and programming languages via our REST API. We've created a developer focused portal to give your organization a clear and quick overview of how to integrate with E-goi. The developer portal focuses on scenarios for integration and flow of events. We recommend familiarizing yourself with all of the content in the developer portal, before start using our rest API.   The E-goi  APIv3 is served over HTTPS. To ensure data privacy, unencrypted HTTP is not supported.  Request data is passed to the API by POSTing JSON objects to the API endpoints with the appropriate parameters.   BaseURL = api.egoiapp.com  # RESTful Services This API supports 5 HTTP methods:  * <b>GET</b>: The HTTP GET method is used to **read** (or retrieve) a representation of a resource. * <b>POST</b>: The POST verb is most-often utilized to **create** new resources. * <b>PATCH</b>: PATCH is used for **modify** capabilities. The PATCH request only needs to contain the changes to the resource, not the complete resource * <b>PUT</b>: PUT is most-often utilized for **update** capabilities, PUT-ing to a known resource URI with the request body containing the newly-updated representation of the original resource. * <b>DELETE</b>: DELETE is pretty easy to understand. It is used to **delete** a resource identified by a URI.  # Authentication   We use a custom authentication method, you will need a apikey that you can find in your account settings. Below you will see a curl example to get your account information:  #!/bin/bash  curl -X GET 'https://api.egoiapp.com/my-account' \\  -H 'accept: application/json' \\  -H 'Apikey: <YOUR_APY_KEY>'  Here you can see a curl Post example with authentication:  #!/bin/bash  curl -X POST 'http://api.egoiapp.com/tags' \\  -H 'accept: application/json' \\  -H 'Apikey: <YOUR_APY_KEY>' \\  -H 'Content-Type: application/json' \\  -d '{`name`:`Your custom tag`,`color`:`#FFFFFF`}'  # SDK Get started quickly with E-goi with our integration tools. Our SDK is a modern open source library that makes it easy to integrate your application with E-goi services.  * <a href='https://github.com/E-goi/sdk-java'>Java</a>  * <a href='https://github.com/E-goi/sdk-php'>PHP</a>  * <a href='https://github.com/E-goi/sdk-python'>Python</a>  * <a href='https://github.com/E-goi/sdk-ruby'>Ruby</a>  * <a href='https://github.com/E-goi/sdk-javascript'>Javascript</a>  * <a href='https://github.com/E-goi/sdk-csharp'>C#</a>  # Stream Limits Stream limits are security mesures we have to make sure our API have a fair use policy, for this reason, any request that creates or modifies data (**POST**, **PATCH** and **PUT**) is limited to a maximum of **20MB** of content length. If you arrive to this limit in one of your request, you'll receive a HTTP code **413 (Request Entity Too Large)** and the request will be ignored. To avoid this error in importation's requests, it's advised the request's division in batches that have each one less than 20MB. <security-definitions/>
+ * APIv3 (New)
+ *  # Introduction This is our new version of API. We invite you to start using it and give us your feedback # Getting Started  E-goi can be integrated with many environments and programming languages via our REST API. We've created a developer focused portal to give your organization a clear and quick overview of how to integrate with E-goi. The developer portal focuses on scenarios for integration and flow of events. We recommend familiarizing yourself with all of the content in the developer portal, before start using our rest API.   The E-goi  APIv3 is served over HTTPS. To ensure data privacy, unencrypted HTTP is not supported.  Request data is passed to the API by POSTing JSON objects to the API endpoints with the appropriate parameters.   BaseURL = api.egoiapp.com  # RESTful Services This API supports 5 HTTP methods:  * <b>GET</b>: The HTTP GET method is used to **read** (or retrieve) a representation of a resource. * <b>POST</b>: The POST verb is most-often utilized to **create** new resources. * <b>PATCH</b>: PATCH is used for **modify** capabilities. The PATCH request only needs to contain the changes to the resource, not the complete resource * <b>PUT</b>: PUT is most-often utilized for **update** capabilities, PUT-ing to a known resource URI with the request body containing the newly-updated representation of the original resource. * <b>DELETE</b>: DELETE is pretty easy to understand. It is used to **delete** a resource identified by a URI.  # Authentication   We use a custom authentication method, you will need a apikey that you can find in your account settings. Below you will see a curl example to get your account information:  #!/bin/bash  curl -X GET 'https://api.egoiapp.com/my-account' \\  -H 'accept: application/json' \\  -H 'Apikey: <YOUR_APY_KEY>'  Here you can see a curl Post example with authentication:  #!/bin/bash  curl -X POST 'http://api.egoiapp.com/tags' \\  -H 'accept: application/json' \\  -H 'Apikey: <YOUR_APY_KEY>' \\  -H 'Content-Type: application/json' \\  -d '{`name`:`Your custom tag`,`color`:`#FFFFFF`}'  # SDK Get started quickly with E-goi with our integration tools. Our SDK is a modern open source library that makes it easy to integrate your application with E-goi services.  * <a href='https://github.com/E-goi/sdk-java'>Java</a>  * <a href='https://github.com/E-goi/sdk-php'>PHP</a>  * <a href='https://github.com/E-goi/sdk-python'>Python</a>  * <a href='https://github.com/E-goi/sdk-ruby'>Ruby</a>  * <a href='https://github.com/E-goi/sdk-javascript'>Javascript</a>  * <a href='https://github.com/E-goi/sdk-csharp'>C#</a>  # Stream Limits Stream limits are security mesures we have to make sure our API have a fair use policy, for this reason, any request that creates or modifies data (**POST**, **PATCH** and **PUT**) is limited to a maximum of **20MB** of content length. If you arrive to this limit in one of your request, you'll receive a HTTP code **413 (Request Entity Too Large)** and the request will be ignored. To avoid this error in importation's requests, it's advised the request's division in batches that have each one less than 20MB.  # Timeouts Timeouts set a maximum waiting time on a request's response. Our API, sets a default timeout for each request and when breached, you'll receive an HTTP **408 (Request Timeout)** error code. You should take into consideration that response times can vary widely based on the complexity of the request, amount of data being analyzed, and the load on the system and workspace at the time of the query. When dealing with such errors, you should first attempt to reduce the complexity and amount of data under analysis, and only then, if problems are still occurring ask for support.  For all these reasons, the default timeout for each request is **10 Seconds** and any request that creates or modifies data (**POST**, **PATCH** and **PUT**) will have a timeout of **60 Seconds**. Specific timeouts may exist for specific requests, these can be found in the request's documentation.  <security-definitions/>
  *
- * OpenAPI spec version: 3.0.0-beta
+ * OpenAPI spec version: 3.0.0
  *
  * NOTE: This class is auto generated by OpenAPI Generator (https://openapi-generator.tech).
  * https://openapi-generator.tech
@@ -16,24 +16,24 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'egoiSdk/AcceptedResponse', 'egoiSdk/ActivateContactsRequest', 'egoiSdk/ActivityCollection', 'egoiSdk/AttachTagRequest', 'egoiSdk/AttachTagResponse', 'egoiSdk/BadRequest', 'egoiSdk/ComplexContact', 'egoiSdk/ContactBaseExtra', 'egoiSdk/ContactBaseStatusExtra', 'egoiSdk/ContactCollection', 'egoiSdk/ContactExportRequest', 'egoiSdk/ContactForgetRequest', 'egoiSdk/CreateContactResponse', 'egoiSdk/DeactivateContactsRequest', 'egoiSdk/Forbidden', 'egoiSdk/ImportBulkRequest', 'egoiSdk/InlineResponse200', 'egoiSdk/InternalServerError', 'egoiSdk/NotFound', 'egoiSdk/PostContactsConflict', 'egoiSdk/RemoveRequest', 'egoiSdk/RemoveResponse', 'egoiSdk/StartAutomationRequest', 'egoiSdk/StartAutomationResponse', 'egoiSdk/Unauthorized', 'egoiSdk/UnprocessableEntity'], factory);
+    define(['ApiClient', 'egoiSdk/AcceptedResponse', 'egoiSdk/ActivateContactsRequest', 'egoiSdk/ActivityCollection', 'egoiSdk/AttachTagRequest', 'egoiSdk/AttachTagResponse', 'egoiSdk/BadRequest', 'egoiSdk/ComplexContact', 'egoiSdk/ContactBaseExtra', 'egoiSdk/ContactBaseStatusExtra', 'egoiSdk/ContactCollection', 'egoiSdk/ContactExportRequest', 'egoiSdk/ContactForgetRequest', 'egoiSdk/CreateContactResponse', 'egoiSdk/DeactivateContactsRequest', 'egoiSdk/Forbidden', 'egoiSdk/ImportBulkRequest', 'egoiSdk/InlineResponse200', 'egoiSdk/InternalServerError', 'egoiSdk/NotFound', 'egoiSdk/PostContactsConflict', 'egoiSdk/RemoveRequest', 'egoiSdk/RemoveResponse', 'egoiSdk/RequestTimeout', 'egoiSdk/ServiceUnavailable', 'egoiSdk/StartAutomationRequest', 'egoiSdk/StartAutomationResponse', 'egoiSdk/TooManyRequests', 'egoiSdk/Unauthorized', 'egoiSdk/UnprocessableEntity'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../egoiSdk/AcceptedResponse'), require('../egoiSdk/ActivateContactsRequest'), require('../egoiSdk/ActivityCollection'), require('../egoiSdk/AttachTagRequest'), require('../egoiSdk/AttachTagResponse'), require('../egoiSdk/BadRequest'), require('../egoiSdk/ComplexContact'), require('../egoiSdk/ContactBaseExtra'), require('../egoiSdk/ContactBaseStatusExtra'), require('../egoiSdk/ContactCollection'), require('../egoiSdk/ContactExportRequest'), require('../egoiSdk/ContactForgetRequest'), require('../egoiSdk/CreateContactResponse'), require('../egoiSdk/DeactivateContactsRequest'), require('../egoiSdk/Forbidden'), require('../egoiSdk/ImportBulkRequest'), require('../egoiSdk/InlineResponse200'), require('../egoiSdk/InternalServerError'), require('../egoiSdk/NotFound'), require('../egoiSdk/PostContactsConflict'), require('../egoiSdk/RemoveRequest'), require('../egoiSdk/RemoveResponse'), require('../egoiSdk/StartAutomationRequest'), require('../egoiSdk/StartAutomationResponse'), require('../egoiSdk/Unauthorized'), require('../egoiSdk/UnprocessableEntity'));
+    module.exports = factory(require('../ApiClient'), require('../egoiSdk/AcceptedResponse'), require('../egoiSdk/ActivateContactsRequest'), require('../egoiSdk/ActivityCollection'), require('../egoiSdk/AttachTagRequest'), require('../egoiSdk/AttachTagResponse'), require('../egoiSdk/BadRequest'), require('../egoiSdk/ComplexContact'), require('../egoiSdk/ContactBaseExtra'), require('../egoiSdk/ContactBaseStatusExtra'), require('../egoiSdk/ContactCollection'), require('../egoiSdk/ContactExportRequest'), require('../egoiSdk/ContactForgetRequest'), require('../egoiSdk/CreateContactResponse'), require('../egoiSdk/DeactivateContactsRequest'), require('../egoiSdk/Forbidden'), require('../egoiSdk/ImportBulkRequest'), require('../egoiSdk/InlineResponse200'), require('../egoiSdk/InternalServerError'), require('../egoiSdk/NotFound'), require('../egoiSdk/PostContactsConflict'), require('../egoiSdk/RemoveRequest'), require('../egoiSdk/RemoveResponse'), require('../egoiSdk/RequestTimeout'), require('../egoiSdk/ServiceUnavailable'), require('../egoiSdk/StartAutomationRequest'), require('../egoiSdk/StartAutomationResponse'), require('../egoiSdk/TooManyRequests'), require('../egoiSdk/Unauthorized'), require('../egoiSdk/UnprocessableEntity'));
   } else {
     // Browser globals (root is window)
     if (!root.egoiSdk) {
       root.egoiSdk = {};
     }
-    root.egoiSdk.ContactsApi = factory(root.egoiSdk.ApiClient, root.egoiSdk.AcceptedResponse, root.egoiSdk.ActivateContactsRequest, root.egoiSdk.ActivityCollection, root.egoiSdk.AttachTagRequest, root.egoiSdk.AttachTagResponse, root.egoiSdk.BadRequest, root.egoiSdk.ComplexContact, root.egoiSdk.ContactBaseExtra, root.egoiSdk.ContactBaseStatusExtra, root.egoiSdk.ContactCollection, root.egoiSdk.ContactExportRequest, root.egoiSdk.ContactForgetRequest, root.egoiSdk.CreateContactResponse, root.egoiSdk.DeactivateContactsRequest, root.egoiSdk.Forbidden, root.egoiSdk.ImportBulkRequest, root.egoiSdk.InlineResponse200, root.egoiSdk.InternalServerError, root.egoiSdk.NotFound, root.egoiSdk.PostContactsConflict, root.egoiSdk.RemoveRequest, root.egoiSdk.RemoveResponse, root.egoiSdk.StartAutomationRequest, root.egoiSdk.StartAutomationResponse, root.egoiSdk.Unauthorized, root.egoiSdk.UnprocessableEntity);
+    root.egoiSdk.ContactsApi = factory(root.egoiSdk.ApiClient, root.egoiSdk.AcceptedResponse, root.egoiSdk.ActivateContactsRequest, root.egoiSdk.ActivityCollection, root.egoiSdk.AttachTagRequest, root.egoiSdk.AttachTagResponse, root.egoiSdk.BadRequest, root.egoiSdk.ComplexContact, root.egoiSdk.ContactBaseExtra, root.egoiSdk.ContactBaseStatusExtra, root.egoiSdk.ContactCollection, root.egoiSdk.ContactExportRequest, root.egoiSdk.ContactForgetRequest, root.egoiSdk.CreateContactResponse, root.egoiSdk.DeactivateContactsRequest, root.egoiSdk.Forbidden, root.egoiSdk.ImportBulkRequest, root.egoiSdk.InlineResponse200, root.egoiSdk.InternalServerError, root.egoiSdk.NotFound, root.egoiSdk.PostContactsConflict, root.egoiSdk.RemoveRequest, root.egoiSdk.RemoveResponse, root.egoiSdk.RequestTimeout, root.egoiSdk.ServiceUnavailable, root.egoiSdk.StartAutomationRequest, root.egoiSdk.StartAutomationResponse, root.egoiSdk.TooManyRequests, root.egoiSdk.Unauthorized, root.egoiSdk.UnprocessableEntity);
   }
-}(this, function(ApiClient, AcceptedResponse, ActivateContactsRequest, ActivityCollection, AttachTagRequest, AttachTagResponse, BadRequest, ComplexContact, ContactBaseExtra, ContactBaseStatusExtra, ContactCollection, ContactExportRequest, ContactForgetRequest, CreateContactResponse, DeactivateContactsRequest, Forbidden, ImportBulkRequest, InlineResponse200, InternalServerError, NotFound, PostContactsConflict, RemoveRequest, RemoveResponse, StartAutomationRequest, StartAutomationResponse, Unauthorized, UnprocessableEntity) {
+}(this, function(ApiClient, AcceptedResponse, ActivateContactsRequest, ActivityCollection, AttachTagRequest, AttachTagResponse, BadRequest, ComplexContact, ContactBaseExtra, ContactBaseStatusExtra, ContactCollection, ContactExportRequest, ContactForgetRequest, CreateContactResponse, DeactivateContactsRequest, Forbidden, ImportBulkRequest, InlineResponse200, InternalServerError, NotFound, PostContactsConflict, RemoveRequest, RemoveResponse, RequestTimeout, ServiceUnavailable, StartAutomationRequest, StartAutomationResponse, TooManyRequests, Unauthorized, UnprocessableEntity) {
   'use strict';
 
   /**
    * Contacts service.
    * @module egoiApi/ContactsApi
-   * @version 1.1.0RC2
+   * @version 1.1.1RC1
    */
 
   /**
@@ -111,7 +111,7 @@
 
     /**
      * Attach tag to contact
-     * Attaches a tag to the provided contacts
+     * Attaches a tag to the provided contacts. &lt;br&gt;***Note:***&lt;br&gt; If you provide the array of **contacts** there will be a maximum limit of 1000 contacts in the payload, but if you provide a **segment_id** instead of     the array of contacts you will get an asynchronous response with the status code 202
      * @param {Number} listId ID of the List
      * @param {module:egoiSdk/AttachTagRequest} attachTagRequest Parameters for the Tag
      * @param {module:egoiApi/ContactsApi~actionAttachTagCallback} callback The callback function, accepting three arguments: error, data, response
@@ -381,7 +381,7 @@
 
     /**
      * Import collection of contacts
-     * Imports a collection of contacts &lt;/br&gt;      **DISCLAIMER:** stream limits applied. [view here](#section/Stream-Limits &#39;Stream Limits&#39;)
+     * Imports a collection of contacts &lt;/br&gt;      **DISCLAIMER:** stream limits applied. [view here](#section/Stream-Limits &#39;Stream Limits&#39;)&lt;br&gt; ***Note:*** minimum of 2 contacts to use this method. [use Create new contact method instead](#operation/createContact &#39;Create new contact&#39;)
      * @param {Number} listId ID of the List
      * @param {module:egoiSdk/ImportBulkRequest} importBulkRequest Parameters for the bulk import
      * @param {module:egoiApi/ContactsApi~actionImportBulkCallback} callback The callback function, accepting three arguments: error, data, response
@@ -667,7 +667,17 @@
      * @param {Object} opts Optional parameters
      * @param {Number} opts.offset Element offset (starting at zero for the first element)
      * @param {Number} opts.limit Number of items to return (default to 10)
+     * @param {String} opts.firstName First name of the contacts to return
+     * @param {String} opts.lastName Last name of the contacts to return
      * @param {String} opts.email Email of the contacts to return
+     * @param {Boolean} opts.emailStatus EmailStatus of the contacts to return
+     * @param {String} opts.cellphone Cellphone of the contacts to return
+     * @param {Boolean} opts.cellphoneStatus CellphoneStatus of the contacts to return
+     * @param {String} opts.phone Phone of the contacts to return
+     * @param {Boolean} opts.phoneStatus PhoneStatus of the contacts to return
+     * @param {Date} opts.birthDate Birth date of the contacts to return
+     * @param {module:egoiSdk/String} opts.language Language date of the contacts to return
+     * @param {Array.<String>} opts.extraFieldId Extra field of contacts, extra_field_id[field_id]&#x3D;value
      * @param {module:egoiApi/ContactsApi~getAllContactsCallback} callback The callback function, accepting three arguments: error, data, response
      * data is of type: {@link module:egoiSdk/ContactCollection}
      */
@@ -687,7 +697,83 @@
       var queryParams = {
         'offset': opts['offset'],
         'limit': opts['limit'],
+        'first_name': opts['firstName'],
+        'last_name': opts['lastName'],
         'email': opts['email'],
+        'email_status': opts['emailStatus'],
+        'cellphone': opts['cellphone'],
+        'cellphone_status': opts['cellphoneStatus'],
+        'phone': opts['phone'],
+        'phone_status': opts['phoneStatus'],
+        'birth_date': opts['birthDate'],
+        'language': opts['language'],
+      };
+      var collectionQueryParams = {
+        'extra_field_id': {
+          value: opts['extraFieldId'],
+          collectionFormat: 'multi'
+        },
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['Apikey'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = ContactCollection;
+
+      return this.apiClient.callApi(
+        '/lists/{list_id}/contacts', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getAllContactsBySegment operation.
+     * @callback module:egoiApi/ContactsApi~getAllContactsBySegmentCallback
+     * @param {String} error Error message, if any.
+     * @param {module:egoiSdk/ContactCollection} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get all contacts by Segment Id
+     * Returns all contacts filtered by Segment Id
+     * @param {Number} listId ID of the List
+     * @param {String} segmentId ID of the Segment
+     * @param {Object} opts Optional parameters
+     * @param {Number} opts.offset Element offset (starting at zero for the first element)
+     * @param {Number} opts.limit Number of items to return (default to 10)
+     * @param {Boolean} opts.showRemoved Show removed contacts
+     * @param {module:egoiApi/ContactsApi~getAllContactsBySegmentCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:egoiSdk/ContactCollection}
+     */
+    this.getAllContactsBySegment = function(listId, segmentId, opts, callback) {
+      opts = opts || {};
+      var postBody = null;
+
+      // verify the required parameter 'listId' is set
+      if (listId === undefined || listId === null) {
+        throw new Error("Missing the required parameter 'listId' when calling getAllContactsBySegment");
+      }
+
+      // verify the required parameter 'segmentId' is set
+      if (segmentId === undefined || segmentId === null) {
+        throw new Error("Missing the required parameter 'segmentId' when calling getAllContactsBySegment");
+      }
+
+
+      var pathParams = {
+        'list_id': listId,
+        'segment_id': segmentId
+      };
+      var queryParams = {
+        'offset': opts['offset'],
+        'limit': opts['limit'],
+        'show_removed': opts['showRemoved'],
       };
       var collectionQueryParams = {
       };
@@ -702,7 +788,7 @@
       var returnType = ContactCollection;
 
       return this.apiClient.callApi(
-        '/lists/{list_id}/contacts', 'GET',
+        '/lists/{list_id}/contacts/segment/{segment_id}', 'GET',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

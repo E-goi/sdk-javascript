@@ -1,8 +1,8 @@
 /**
- * APIv3 (Beta)
- *  # Introduction Just a quick peek!!! This is our new version of API. Remember, it is not stable yet!!! But we invite you play with it and give us your feedback ;) # Getting Started  E-goi can be integrated with many environments and programming languages via our REST API. We've created a developer focused portal to give your organization a clear and quick overview of how to integrate with E-goi. The developer portal focuses on scenarios for integration and flow of events. We recommend familiarizing yourself with all of the content in the developer portal, before start using our rest API.   The E-goi  APIv3 is served over HTTPS. To ensure data privacy, unencrypted HTTP is not supported.  Request data is passed to the API by POSTing JSON objects to the API endpoints with the appropriate parameters.   BaseURL = api.egoiapp.com  # RESTful Services This API supports 5 HTTP methods:  * <b>GET</b>: The HTTP GET method is used to **read** (or retrieve) a representation of a resource. * <b>POST</b>: The POST verb is most-often utilized to **create** new resources. * <b>PATCH</b>: PATCH is used for **modify** capabilities. The PATCH request only needs to contain the changes to the resource, not the complete resource * <b>PUT</b>: PUT is most-often utilized for **update** capabilities, PUT-ing to a known resource URI with the request body containing the newly-updated representation of the original resource. * <b>DELETE</b>: DELETE is pretty easy to understand. It is used to **delete** a resource identified by a URI.  # Authentication   We use a custom authentication method, you will need a apikey that you can find in your account settings. Below you will see a curl example to get your account information:  #!/bin/bash  curl -X GET 'https://api.egoiapp.com/my-account' \\  -H 'accept: application/json' \\  -H 'Apikey: <YOUR_APY_KEY>'  Here you can see a curl Post example with authentication:  #!/bin/bash  curl -X POST 'http://api.egoiapp.com/tags' \\  -H 'accept: application/json' \\  -H 'Apikey: <YOUR_APY_KEY>' \\  -H 'Content-Type: application/json' \\  -d '{`name`:`Your custom tag`,`color`:`#FFFFFF`}'  # SDK Get started quickly with E-goi with our integration tools. Our SDK is a modern open source library that makes it easy to integrate your application with E-goi services.  * <a href='https://github.com/E-goi/sdk-java'>Java</a>  * <a href='https://github.com/E-goi/sdk-php'>PHP</a>  * <a href='https://github.com/E-goi/sdk-python'>Python</a>  * <a href='https://github.com/E-goi/sdk-ruby'>Ruby</a>  * <a href='https://github.com/E-goi/sdk-javascript'>Javascript</a>  * <a href='https://github.com/E-goi/sdk-csharp'>C#</a>  # Stream Limits Stream limits are security mesures we have to make sure our API have a fair use policy, for this reason, any request that creates or modifies data (**POST**, **PATCH** and **PUT**) is limited to a maximum of **20MB** of content length. If you arrive to this limit in one of your request, you'll receive a HTTP code **413 (Request Entity Too Large)** and the request will be ignored. To avoid this error in importation's requests, it's advised the request's division in batches that have each one less than 20MB. <security-definitions/>
+ * APIv3 (New)
+ *  # Introduction This is our new version of API. We invite you to start using it and give us your feedback # Getting Started  E-goi can be integrated with many environments and programming languages via our REST API. We've created a developer focused portal to give your organization a clear and quick overview of how to integrate with E-goi. The developer portal focuses on scenarios for integration and flow of events. We recommend familiarizing yourself with all of the content in the developer portal, before start using our rest API.   The E-goi  APIv3 is served over HTTPS. To ensure data privacy, unencrypted HTTP is not supported.  Request data is passed to the API by POSTing JSON objects to the API endpoints with the appropriate parameters.   BaseURL = api.egoiapp.com  # RESTful Services This API supports 5 HTTP methods:  * <b>GET</b>: The HTTP GET method is used to **read** (or retrieve) a representation of a resource. * <b>POST</b>: The POST verb is most-often utilized to **create** new resources. * <b>PATCH</b>: PATCH is used for **modify** capabilities. The PATCH request only needs to contain the changes to the resource, not the complete resource * <b>PUT</b>: PUT is most-often utilized for **update** capabilities, PUT-ing to a known resource URI with the request body containing the newly-updated representation of the original resource. * <b>DELETE</b>: DELETE is pretty easy to understand. It is used to **delete** a resource identified by a URI.  # Authentication   We use a custom authentication method, you will need a apikey that you can find in your account settings. Below you will see a curl example to get your account information:  #!/bin/bash  curl -X GET 'https://api.egoiapp.com/my-account' \\  -H 'accept: application/json' \\  -H 'Apikey: <YOUR_APY_KEY>'  Here you can see a curl Post example with authentication:  #!/bin/bash  curl -X POST 'http://api.egoiapp.com/tags' \\  -H 'accept: application/json' \\  -H 'Apikey: <YOUR_APY_KEY>' \\  -H 'Content-Type: application/json' \\  -d '{`name`:`Your custom tag`,`color`:`#FFFFFF`}'  # SDK Get started quickly with E-goi with our integration tools. Our SDK is a modern open source library that makes it easy to integrate your application with E-goi services.  * <a href='https://github.com/E-goi/sdk-java'>Java</a>  * <a href='https://github.com/E-goi/sdk-php'>PHP</a>  * <a href='https://github.com/E-goi/sdk-python'>Python</a>  * <a href='https://github.com/E-goi/sdk-ruby'>Ruby</a>  * <a href='https://github.com/E-goi/sdk-javascript'>Javascript</a>  * <a href='https://github.com/E-goi/sdk-csharp'>C#</a>  # Stream Limits Stream limits are security mesures we have to make sure our API have a fair use policy, for this reason, any request that creates or modifies data (**POST**, **PATCH** and **PUT**) is limited to a maximum of **20MB** of content length. If you arrive to this limit in one of your request, you'll receive a HTTP code **413 (Request Entity Too Large)** and the request will be ignored. To avoid this error in importation's requests, it's advised the request's division in batches that have each one less than 20MB.  # Timeouts Timeouts set a maximum waiting time on a request's response. Our API, sets a default timeout for each request and when breached, you'll receive an HTTP **408 (Request Timeout)** error code. You should take into consideration that response times can vary widely based on the complexity of the request, amount of data being analyzed, and the load on the system and workspace at the time of the query. When dealing with such errors, you should first attempt to reduce the complexity and amount of data under analysis, and only then, if problems are still occurring ask for support.  For all these reasons, the default timeout for each request is **10 Seconds** and any request that creates or modifies data (**POST**, **PATCH** and **PUT**) will have a timeout of **60 Seconds**. Specific timeouts may exist for specific requests, these can be found in the request's documentation.  <security-definitions/>
  *
- * OpenAPI spec version: 3.0.0-beta
+ * OpenAPI spec version: 3.0.0
  *
  * NOTE: This class is auto generated by OpenAPI Generator (https://openapi-generator.tech).
  * https://openapi-generator.tech
@@ -16,24 +16,24 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'egoiSdk/AcceptedResponse', 'egoiSdk/BadRequest', 'egoiSdk/Catalog', 'egoiSdk/CatalogCollection', 'egoiSdk/CatalogPostRequest', 'egoiSdk/Forbidden', 'egoiSdk/ImportOrdersBulkBulkRequest', 'egoiSdk/InternalServerError', 'egoiSdk/NotFound', 'egoiSdk/PostProductsConflict', 'egoiSdk/Product', 'egoiSdk/ProductBulkRequest', 'egoiSdk/ProductCollection', 'egoiSdk/ProductPatchRequest', 'egoiSdk/ProductPostRequest', 'egoiSdk/Unauthorized', 'egoiSdk/UnprocessableEntity'], factory);
+    define(['ApiClient', 'egoiSdk/AcceptedResponse', 'egoiSdk/BadRequest', 'egoiSdk/Cart', 'egoiSdk/Catalog', 'egoiSdk/CatalogCollection', 'egoiSdk/CatalogPostRequest', 'egoiSdk/CreateOrder', 'egoiSdk/Forbidden', 'egoiSdk/InternalServerError', 'egoiSdk/NotFound', 'egoiSdk/PostProductsConflict', 'egoiSdk/Product', 'egoiSdk/ProductBulkRequest', 'egoiSdk/ProductCollection', 'egoiSdk/ProductPatchRequest', 'egoiSdk/ProductPostRequest', 'egoiSdk/RequestTimeout', 'egoiSdk/ServiceUnavailable', 'egoiSdk/TooManyRequests', 'egoiSdk/Unauthorized', 'egoiSdk/UnprocessableEntity'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../egoiSdk/AcceptedResponse'), require('../egoiSdk/BadRequest'), require('../egoiSdk/Catalog'), require('../egoiSdk/CatalogCollection'), require('../egoiSdk/CatalogPostRequest'), require('../egoiSdk/Forbidden'), require('../egoiSdk/ImportOrdersBulkBulkRequest'), require('../egoiSdk/InternalServerError'), require('../egoiSdk/NotFound'), require('../egoiSdk/PostProductsConflict'), require('../egoiSdk/Product'), require('../egoiSdk/ProductBulkRequest'), require('../egoiSdk/ProductCollection'), require('../egoiSdk/ProductPatchRequest'), require('../egoiSdk/ProductPostRequest'), require('../egoiSdk/Unauthorized'), require('../egoiSdk/UnprocessableEntity'));
+    module.exports = factory(require('../ApiClient'), require('../egoiSdk/AcceptedResponse'), require('../egoiSdk/BadRequest'), require('../egoiSdk/Cart'), require('../egoiSdk/Catalog'), require('../egoiSdk/CatalogCollection'), require('../egoiSdk/CatalogPostRequest'), require('../egoiSdk/CreateOrder'), require('../egoiSdk/Forbidden'), require('../egoiSdk/InternalServerError'), require('../egoiSdk/NotFound'), require('../egoiSdk/PostProductsConflict'), require('../egoiSdk/Product'), require('../egoiSdk/ProductBulkRequest'), require('../egoiSdk/ProductCollection'), require('../egoiSdk/ProductPatchRequest'), require('../egoiSdk/ProductPostRequest'), require('../egoiSdk/RequestTimeout'), require('../egoiSdk/ServiceUnavailable'), require('../egoiSdk/TooManyRequests'), require('../egoiSdk/Unauthorized'), require('../egoiSdk/UnprocessableEntity'));
   } else {
     // Browser globals (root is window)
     if (!root.egoiSdk) {
       root.egoiSdk = {};
     }
-    root.egoiSdk.EcommerceApi = factory(root.egoiSdk.ApiClient, root.egoiSdk.AcceptedResponse, root.egoiSdk.BadRequest, root.egoiSdk.Catalog, root.egoiSdk.CatalogCollection, root.egoiSdk.CatalogPostRequest, root.egoiSdk.Forbidden, root.egoiSdk.ImportOrdersBulkBulkRequest, root.egoiSdk.InternalServerError, root.egoiSdk.NotFound, root.egoiSdk.PostProductsConflict, root.egoiSdk.Product, root.egoiSdk.ProductBulkRequest, root.egoiSdk.ProductCollection, root.egoiSdk.ProductPatchRequest, root.egoiSdk.ProductPostRequest, root.egoiSdk.Unauthorized, root.egoiSdk.UnprocessableEntity);
+    root.egoiSdk.EcommerceApi = factory(root.egoiSdk.ApiClient, root.egoiSdk.AcceptedResponse, root.egoiSdk.BadRequest, root.egoiSdk.Cart, root.egoiSdk.Catalog, root.egoiSdk.CatalogCollection, root.egoiSdk.CatalogPostRequest, root.egoiSdk.CreateOrder, root.egoiSdk.Forbidden, root.egoiSdk.InternalServerError, root.egoiSdk.NotFound, root.egoiSdk.PostProductsConflict, root.egoiSdk.Product, root.egoiSdk.ProductBulkRequest, root.egoiSdk.ProductCollection, root.egoiSdk.ProductPatchRequest, root.egoiSdk.ProductPostRequest, root.egoiSdk.RequestTimeout, root.egoiSdk.ServiceUnavailable, root.egoiSdk.TooManyRequests, root.egoiSdk.Unauthorized, root.egoiSdk.UnprocessableEntity);
   }
-}(this, function(ApiClient, AcceptedResponse, BadRequest, Catalog, CatalogCollection, CatalogPostRequest, Forbidden, ImportOrdersBulkBulkRequest, InternalServerError, NotFound, PostProductsConflict, Product, ProductBulkRequest, ProductCollection, ProductPatchRequest, ProductPostRequest, Unauthorized, UnprocessableEntity) {
+}(this, function(ApiClient, AcceptedResponse, BadRequest, Cart, Catalog, CatalogCollection, CatalogPostRequest, CreateOrder, Forbidden, InternalServerError, NotFound, PostProductsConflict, Product, ProductBulkRequest, ProductCollection, ProductPatchRequest, ProductPostRequest, RequestTimeout, ServiceUnavailable, TooManyRequests, Unauthorized, UnprocessableEntity) {
   'use strict';
 
   /**
    * Ecommerce service.
    * @module egoiApi/EcommerceApi
-   * @version 1.1.0RC2
+   * @version 1.1.1RC1
    */
 
   /**
@@ -46,6 +46,60 @@
   var exports = function(apiClient) {
     this.apiClient = apiClient || ApiClient.instance;
 
+
+    /**
+     * Callback function to receive the result of the createCart operation.
+     * @callback module:egoiApi/EcommerceApi~createCartCallback
+     * @param {String} error Error message, if any.
+     * @param {module:egoiSdk/AcceptedResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Create cart
+     * Creates a new cart. If ***contact_id*** is specified, order will be atached to the contact, if the contact propreties are specified, we&#39;ll create the user, if its already in your list it will get the correct contact (**make sure you are sending atleast all configured list&#39;s unique fields**). This same logic is also applied to the **product_identifier**.
+     * @param {String} domain Domain
+     * @param {module:egoiSdk/Cart} cart Parameters for the Carts
+     * @param {module:egoiApi/EcommerceApi~createCartCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:egoiSdk/AcceptedResponse}
+     */
+    this.createCart = function(domain, cart, callback) {
+      var postBody = cart;
+
+      // verify the required parameter 'domain' is set
+      if (domain === undefined || domain === null) {
+        throw new Error("Missing the required parameter 'domain' when calling createCart");
+      }
+
+      // verify the required parameter 'cart' is set
+      if (cart === undefined || cart === null) {
+        throw new Error("Missing the required parameter 'cart' when calling createCart");
+      }
+
+
+      var pathParams = {
+        'domain': domain
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['Apikey'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = AcceptedResponse;
+
+      return this.apiClient.callApi(
+        '/{domain}/carts', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
 
     /**
      * Callback function to receive the result of the createCatalog operation.
@@ -89,6 +143,60 @@
 
       return this.apiClient.callApi(
         '/catalogs', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the createOrder operation.
+     * @callback module:egoiApi/EcommerceApi~createOrderCallback
+     * @param {String} error Error message, if any.
+     * @param {module:egoiSdk/AcceptedResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Create order
+     * Creates a new order. If **contact_id** is specified, order will be atached to the contact, if the contact propreties are specified, we&#39;ll create the user, if its already in your list it will get the correct contact (***make sure you are sending atleast all configured list&#39;s unique fields***). This same logic is also applied to the **product_identifier**.
+     * @param {String} domain Domain
+     * @param {module:egoiSdk/CreateOrder} createOrder Parameters for the Orders
+     * @param {module:egoiApi/EcommerceApi~createOrderCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:egoiSdk/AcceptedResponse}
+     */
+    this.createOrder = function(domain, createOrder, callback) {
+      var postBody = createOrder;
+
+      // verify the required parameter 'domain' is set
+      if (domain === undefined || domain === null) {
+        throw new Error("Missing the required parameter 'domain' when calling createOrder");
+      }
+
+      // verify the required parameter 'createOrder' is set
+      if (createOrder === undefined || createOrder === null) {
+        throw new Error("Missing the required parameter 'createOrder' when calling createOrder");
+      }
+
+
+      var pathParams = {
+        'domain': domain
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['Apikey'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = AcceptedResponse;
+
+      return this.apiClient.callApi(
+        '/{domain}/orders', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );
@@ -396,60 +504,6 @@
 
       return this.apiClient.callApi(
         '/catalogs/{catalog_id}/products/{product_identifier}', 'GET',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
-      );
-    }
-
-    /**
-     * Callback function to receive the result of the importOrdersBulk operation.
-     * @callback module:egoiApi/EcommerceApi~importOrdersBulkCallback
-     * @param {String} error Error message, if any.
-     * @param {module:egoiSdk/AcceptedResponse} data The data returned by the service call.
-     * @param {String} response The complete HTTP response.
-     */
-
-    /**
-     * Orders import bulk request
-     * Creates new bulk orders syncronization
-     * @param {Number} listId ID of the List
-     * @param {Array.<ImportOrdersBulkBulkRequest>} importOrdersBulkBulkRequest Parameters for the Orders
-     * @param {module:egoiApi/EcommerceApi~importOrdersBulkCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:egoiSdk/AcceptedResponse}
-     */
-    this.importOrdersBulk = function(listId, importOrdersBulkBulkRequest, callback) {
-      var postBody = importOrdersBulkBulkRequest;
-
-      // verify the required parameter 'listId' is set
-      if (listId === undefined || listId === null) {
-        throw new Error("Missing the required parameter 'listId' when calling importOrdersBulk");
-      }
-
-      // verify the required parameter 'importOrdersBulkBulkRequest' is set
-      if (importOrdersBulkBulkRequest === undefined || importOrdersBulkBulkRequest === null) {
-        throw new Error("Missing the required parameter 'importOrdersBulkBulkRequest' when calling importOrdersBulk");
-      }
-
-
-      var pathParams = {
-        'list_id': listId
-      };
-      var queryParams = {
-      };
-      var collectionQueryParams = {
-      };
-      var headerParams = {
-      };
-      var formParams = {
-      };
-
-      var authNames = ['Apikey'];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = AcceptedResponse;
-
-      return this.apiClient.callApi(
-        '/lists/{list_id}/orders', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

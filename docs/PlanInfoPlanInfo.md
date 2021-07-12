@@ -20,6 +20,8 @@ Name | Type | Description | Notes
 
 * `trial` (value: `"trial"`)
 
+* `base` (value: `"base"`)
+
 
 
 

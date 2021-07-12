@@ -1,8 +1,8 @@
 /**
- * APIv3 (Beta)
- *  # Introduction Just a quick peek!!! This is our new version of API. Remember, it is not stable yet!!! But we invite you play with it and give us your feedback ;) # Getting Started  E-goi can be integrated with many environments and programming languages via our REST API. We've created a developer focused portal to give your organization a clear and quick overview of how to integrate with E-goi. The developer portal focuses on scenarios for integration and flow of events. We recommend familiarizing yourself with all of the content in the developer portal, before start using our rest API.   The E-goi  APIv3 is served over HTTPS. To ensure data privacy, unencrypted HTTP is not supported.  Request data is passed to the API by POSTing JSON objects to the API endpoints with the appropriate parameters.   BaseURL = api.egoiapp.com  # RESTful Services This API supports 5 HTTP methods:  * <b>GET</b>: The HTTP GET method is used to **read** (or retrieve) a representation of a resource. * <b>POST</b>: The POST verb is most-often utilized to **create** new resources. * <b>PATCH</b>: PATCH is used for **modify** capabilities. The PATCH request only needs to contain the changes to the resource, not the complete resource * <b>PUT</b>: PUT is most-often utilized for **update** capabilities, PUT-ing to a known resource URI with the request body containing the newly-updated representation of the original resource. * <b>DELETE</b>: DELETE is pretty easy to understand. It is used to **delete** a resource identified by a URI.  # Authentication   We use a custom authentication method, you will need a apikey that you can find in your account settings. Below you will see a curl example to get your account information:  #!/bin/bash  curl -X GET 'https://api.egoiapp.com/my-account' \\  -H 'accept: application/json' \\  -H 'Apikey: <YOUR_APY_KEY>'  Here you can see a curl Post example with authentication:  #!/bin/bash  curl -X POST 'http://api.egoiapp.com/tags' \\  -H 'accept: application/json' \\  -H 'Apikey: <YOUR_APY_KEY>' \\  -H 'Content-Type: application/json' \\  -d '{`name`:`Your custom tag`,`color`:`#FFFFFF`}'  # SDK Get started quickly with E-goi with our integration tools. Our SDK is a modern open source library that makes it easy to integrate your application with E-goi services.  * <a href='https://github.com/E-goi/sdk-java'>Java</a>  * <a href='https://github.com/E-goi/sdk-php'>PHP</a>  * <a href='https://github.com/E-goi/sdk-python'>Python</a>  * <a href='https://github.com/E-goi/sdk-ruby'>Ruby</a>  * <a href='https://github.com/E-goi/sdk-javascript'>Javascript</a>  * <a href='https://github.com/E-goi/sdk-csharp'>C#</a>  # Stream Limits Stream limits are security mesures we have to make sure our API have a fair use policy, for this reason, any request that creates or modifies data (**POST**, **PATCH** and **PUT**) is limited to a maximum of **20MB** of content length. If you arrive to this limit in one of your request, you'll receive a HTTP code **413 (Request Entity Too Large)** and the request will be ignored. To avoid this error in importation's requests, it's advised the request's division in batches that have each one less than 20MB. <security-definitions/>
+ * APIv3 (New)
+ *  # Introduction This is our new version of API. We invite you to start using it and give us your feedback # Getting Started  E-goi can be integrated with many environments and programming languages via our REST API. We've created a developer focused portal to give your organization a clear and quick overview of how to integrate with E-goi. The developer portal focuses on scenarios for integration and flow of events. We recommend familiarizing yourself with all of the content in the developer portal, before start using our rest API.   The E-goi  APIv3 is served over HTTPS. To ensure data privacy, unencrypted HTTP is not supported.  Request data is passed to the API by POSTing JSON objects to the API endpoints with the appropriate parameters.   BaseURL = api.egoiapp.com  # RESTful Services This API supports 5 HTTP methods:  * <b>GET</b>: The HTTP GET method is used to **read** (or retrieve) a representation of a resource. * <b>POST</b>: The POST verb is most-often utilized to **create** new resources. * <b>PATCH</b>: PATCH is used for **modify** capabilities. The PATCH request only needs to contain the changes to the resource, not the complete resource * <b>PUT</b>: PUT is most-often utilized for **update** capabilities, PUT-ing to a known resource URI with the request body containing the newly-updated representation of the original resource. * <b>DELETE</b>: DELETE is pretty easy to understand. It is used to **delete** a resource identified by a URI.  # Authentication   We use a custom authentication method, you will need a apikey that you can find in your account settings. Below you will see a curl example to get your account information:  #!/bin/bash  curl -X GET 'https://api.egoiapp.com/my-account' \\  -H 'accept: application/json' \\  -H 'Apikey: <YOUR_APY_KEY>'  Here you can see a curl Post example with authentication:  #!/bin/bash  curl -X POST 'http://api.egoiapp.com/tags' \\  -H 'accept: application/json' \\  -H 'Apikey: <YOUR_APY_KEY>' \\  -H 'Content-Type: application/json' \\  -d '{`name`:`Your custom tag`,`color`:`#FFFFFF`}'  # SDK Get started quickly with E-goi with our integration tools. Our SDK is a modern open source library that makes it easy to integrate your application with E-goi services.  * <a href='https://github.com/E-goi/sdk-java'>Java</a>  * <a href='https://github.com/E-goi/sdk-php'>PHP</a>  * <a href='https://github.com/E-goi/sdk-python'>Python</a>  * <a href='https://github.com/E-goi/sdk-ruby'>Ruby</a>  * <a href='https://github.com/E-goi/sdk-javascript'>Javascript</a>  * <a href='https://github.com/E-goi/sdk-csharp'>C#</a>  # Stream Limits Stream limits are security mesures we have to make sure our API have a fair use policy, for this reason, any request that creates or modifies data (**POST**, **PATCH** and **PUT**) is limited to a maximum of **20MB** of content length. If you arrive to this limit in one of your request, you'll receive a HTTP code **413 (Request Entity Too Large)** and the request will be ignored. To avoid this error in importation's requests, it's advised the request's division in batches that have each one less than 20MB.  # Timeouts Timeouts set a maximum waiting time on a request's response. Our API, sets a default timeout for each request and when breached, you'll receive an HTTP **408 (Request Timeout)** error code. You should take into consideration that response times can vary widely based on the complexity of the request, amount of data being analyzed, and the load on the system and workspace at the time of the query. When dealing with such errors, you should first attempt to reduce the complexity and amount of data under analysis, and only then, if problems are still occurring ask for support.  For all these reasons, the default timeout for each request is **10 Seconds** and any request that creates or modifies data (**POST**, **PATCH** and **PUT**) will have a timeout of **60 Seconds**. Specific timeouts may exist for specific requests, these can be found in the request's documentation.  <security-definitions/>
  *
- * OpenAPI spec version: 3.0.0-beta
+ * OpenAPI spec version: 3.0.0
  *
  * NOTE: This class is auto generated by OpenAPI Generator (https://openapi-generator.tech).
  * https://openapi-generator.tech
@@ -16,24 +16,24 @@
 (function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     // AMD. Register as an anonymous module.
-    define(['ApiClient', 'egoiSdk/AcceptedResponse', 'egoiSdk/BadRequest', 'egoiSdk/CampaignPushSendRequest', 'egoiSdk/Conflict', 'egoiSdk/Forbidden', 'egoiSdk/HashcodeCampaign', 'egoiSdk/InternalServerError', 'egoiSdk/NotFound', 'egoiSdk/PushCampaignPatchRequest', 'egoiSdk/PushCampaignPostRequest', 'egoiSdk/Unauthorized', 'egoiSdk/UnprocessableEntity'], factory);
+    define(['ApiClient', 'egoiSdk/AcceptedResponse', 'egoiSdk/AppStructure', 'egoiSdk/BadRequest', 'egoiSdk/CampaignPushSendRequest', 'egoiSdk/Conflict', 'egoiSdk/Forbidden', 'egoiSdk/HashcodeCampaign', 'egoiSdk/InternalServerError', 'egoiSdk/NotFound', 'egoiSdk/PushCampaignPatchRequest', 'egoiSdk/PushCampaignPostRequest', 'egoiSdk/PushEvent', 'egoiSdk/PushResponse', 'egoiSdk/PushToken', 'egoiSdk/RequestTimeout', 'egoiSdk/ServiceUnavailable', 'egoiSdk/TooManyRequests', 'egoiSdk/Unauthorized', 'egoiSdk/UnprocessableEntity'], factory);
   } else if (typeof module === 'object' && module.exports) {
     // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../egoiSdk/AcceptedResponse'), require('../egoiSdk/BadRequest'), require('../egoiSdk/CampaignPushSendRequest'), require('../egoiSdk/Conflict'), require('../egoiSdk/Forbidden'), require('../egoiSdk/HashcodeCampaign'), require('../egoiSdk/InternalServerError'), require('../egoiSdk/NotFound'), require('../egoiSdk/PushCampaignPatchRequest'), require('../egoiSdk/PushCampaignPostRequest'), require('../egoiSdk/Unauthorized'), require('../egoiSdk/UnprocessableEntity'));
+    module.exports = factory(require('../ApiClient'), require('../egoiSdk/AcceptedResponse'), require('../egoiSdk/AppStructure'), require('../egoiSdk/BadRequest'), require('../egoiSdk/CampaignPushSendRequest'), require('../egoiSdk/Conflict'), require('../egoiSdk/Forbidden'), require('../egoiSdk/HashcodeCampaign'), require('../egoiSdk/InternalServerError'), require('../egoiSdk/NotFound'), require('../egoiSdk/PushCampaignPatchRequest'), require('../egoiSdk/PushCampaignPostRequest'), require('../egoiSdk/PushEvent'), require('../egoiSdk/PushResponse'), require('../egoiSdk/PushToken'), require('../egoiSdk/RequestTimeout'), require('../egoiSdk/ServiceUnavailable'), require('../egoiSdk/TooManyRequests'), require('../egoiSdk/Unauthorized'), require('../egoiSdk/UnprocessableEntity'));
   } else {
     // Browser globals (root is window)
     if (!root.egoiSdk) {
       root.egoiSdk = {};
     }
-    root.egoiSdk.PushApi = factory(root.egoiSdk.ApiClient, root.egoiSdk.AcceptedResponse, root.egoiSdk.BadRequest, root.egoiSdk.CampaignPushSendRequest, root.egoiSdk.Conflict, root.egoiSdk.Forbidden, root.egoiSdk.HashcodeCampaign, root.egoiSdk.InternalServerError, root.egoiSdk.NotFound, root.egoiSdk.PushCampaignPatchRequest, root.egoiSdk.PushCampaignPostRequest, root.egoiSdk.Unauthorized, root.egoiSdk.UnprocessableEntity);
+    root.egoiSdk.PushApi = factory(root.egoiSdk.ApiClient, root.egoiSdk.AcceptedResponse, root.egoiSdk.AppStructure, root.egoiSdk.BadRequest, root.egoiSdk.CampaignPushSendRequest, root.egoiSdk.Conflict, root.egoiSdk.Forbidden, root.egoiSdk.HashcodeCampaign, root.egoiSdk.InternalServerError, root.egoiSdk.NotFound, root.egoiSdk.PushCampaignPatchRequest, root.egoiSdk.PushCampaignPostRequest, root.egoiSdk.PushEvent, root.egoiSdk.PushResponse, root.egoiSdk.PushToken, root.egoiSdk.RequestTimeout, root.egoiSdk.ServiceUnavailable, root.egoiSdk.TooManyRequests, root.egoiSdk.Unauthorized, root.egoiSdk.UnprocessableEntity);
   }
-}(this, function(ApiClient, AcceptedResponse, BadRequest, CampaignPushSendRequest, Conflict, Forbidden, HashcodeCampaign, InternalServerError, NotFound, PushCampaignPatchRequest, PushCampaignPostRequest, Unauthorized, UnprocessableEntity) {
+}(this, function(ApiClient, AcceptedResponse, AppStructure, BadRequest, CampaignPushSendRequest, Conflict, Forbidden, HashcodeCampaign, InternalServerError, NotFound, PushCampaignPatchRequest, PushCampaignPostRequest, PushEvent, PushResponse, PushToken, RequestTimeout, ServiceUnavailable, TooManyRequests, Unauthorized, UnprocessableEntity) {
   'use strict';
 
   /**
    * Push service.
    * @module egoiApi/PushApi
-   * @version 1.1.0RC2
+   * @version 1.1.1RC1
    */
 
   /**
@@ -149,6 +149,99 @@
     }
 
     /**
+     * Callback function to receive the result of the getPushApp operation.
+     * @callback module:egoiApi/PushApi~getPushAppCallback
+     * @param {String} error Error message, if any.
+     * @param {module:egoiSdk/AppStructure} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get a Push application from E-goi
+     * Get a Push application from E-goi
+     * @param {String} appId ID of the E-goi push app.
+     * @param {module:egoiApi/PushApi~getPushAppCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:egoiSdk/AppStructure}
+     */
+    this.getPushApp = function(appId, callback) {
+      var postBody = null;
+
+      // verify the required parameter 'appId' is set
+      if (appId === undefined || appId === null) {
+        throw new Error("Missing the required parameter 'appId' when calling getPushApp");
+      }
+
+
+      var pathParams = {
+        'app_id': appId
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['Apikey'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = AppStructure;
+
+      return this.apiClient.callApi(
+        '/push/apps/{app_id}', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the getPushApps operation.
+     * @callback module:egoiApi/PushApi~getPushAppsCallback
+     * @param {String} error Error message, if any.
+     * @param {Array.<module:egoiSdk/AppStructure>} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Get all Push applications from E-goi
+     * Get all Push applications from E-goi
+     * @param {Object} opts Optional parameters
+     * @param {Number} opts.listId ID of the list to search for.
+     * @param {module:egoiApi/PushApi~getPushAppsCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link Array.<module:egoiSdk/AppStructure>}
+     */
+    this.getPushApps = function(opts, callback) {
+      opts = opts || {};
+      var postBody = null;
+
+
+      var pathParams = {
+      };
+      var queryParams = {
+        'list_id': opts['listId'],
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['Apikey'];
+      var contentTypes = [];
+      var accepts = ['application/json'];
+      var returnType = [AppStructure];
+
+      return this.apiClient.callApi(
+        '/push/apps', 'GET',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
      * Callback function to receive the result of the patchPushCampaign operation.
      * @callback module:egoiApi/PushApi~patchPushCampaignCallback
      * @param {String} error Error message, if any.
@@ -197,6 +290,114 @@
 
       return this.apiClient.callApi(
         '/campaigns/push/{campaign_hash}', 'PATCH',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the registerPushEvent operation.
+     * @callback module:egoiApi/PushApi~registerPushEventCallback
+     * @param {String} error Error message, if any.
+     * @param {module:egoiSdk/PushResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Registers an event from the push notification.
+     * Registers an event from the push notification.
+     * @param {String} appId ID of the E-goi push app.
+     * @param {module:egoiSdk/PushEvent} pushEvent Parameters for the event
+     * @param {module:egoiApi/PushApi~registerPushEventCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:egoiSdk/PushResponse}
+     */
+    this.registerPushEvent = function(appId, pushEvent, callback) {
+      var postBody = pushEvent;
+
+      // verify the required parameter 'appId' is set
+      if (appId === undefined || appId === null) {
+        throw new Error("Missing the required parameter 'appId' when calling registerPushEvent");
+      }
+
+      // verify the required parameter 'pushEvent' is set
+      if (pushEvent === undefined || pushEvent === null) {
+        throw new Error("Missing the required parameter 'pushEvent' when calling registerPushEvent");
+      }
+
+
+      var pathParams = {
+        'app_id': appId
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['Apikey'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = PushResponse;
+
+      return this.apiClient.callApi(
+        '/push/apps/{app_id}/event', 'POST',
+        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, callback
+      );
+    }
+
+    /**
+     * Callback function to receive the result of the registerPushToken operation.
+     * @callback module:egoiApi/PushApi~registerPushTokenCallback
+     * @param {String} error Error message, if any.
+     * @param {module:egoiSdk/PushResponse} data The data returned by the service call.
+     * @param {String} response The complete HTTP response.
+     */
+
+    /**
+     * Registers a Firebase token
+     * Registers a Firebase token
+     * @param {String} appId ID of the E-goi push app.
+     * @param {module:egoiSdk/PushToken} pushToken Parameters for the token
+     * @param {module:egoiApi/PushApi~registerPushTokenCallback} callback The callback function, accepting three arguments: error, data, response
+     * data is of type: {@link module:egoiSdk/PushResponse}
+     */
+    this.registerPushToken = function(appId, pushToken, callback) {
+      var postBody = pushToken;
+
+      // verify the required parameter 'appId' is set
+      if (appId === undefined || appId === null) {
+        throw new Error("Missing the required parameter 'appId' when calling registerPushToken");
+      }
+
+      // verify the required parameter 'pushToken' is set
+      if (pushToken === undefined || pushToken === null) {
+        throw new Error("Missing the required parameter 'pushToken' when calling registerPushToken");
+      }
+
+
+      var pathParams = {
+        'app_id': appId
+      };
+      var queryParams = {
+      };
+      var collectionQueryParams = {
+      };
+      var headerParams = {
+      };
+      var formParams = {
+      };
+
+      var authNames = ['Apikey'];
+      var contentTypes = ['application/json'];
+      var accepts = ['application/json'];
+      var returnType = PushResponse;
+
+      return this.apiClient.callApi(
+        '/push/apps/{app_id}/token', 'POST',
         pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
         authNames, contentTypes, accepts, returnType, callback
       );

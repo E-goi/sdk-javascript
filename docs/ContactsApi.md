@@ -16,6 +16,7 @@ Method | HTTP request | Description
 [**createContact**](ContactsApi.md#createContact) | **POST** /lists/{list_id}/contacts | Create new contact
 [**getAllContactActivities**](ContactsApi.md#getAllContactActivities) | **GET** /lists/{list_id}/contacts/{contact_id}/activities | Get all contact activities
 [**getAllContacts**](ContactsApi.md#getAllContacts) | **GET** /lists/{list_id}/contacts | Get all contacts
+[**getAllContactsBySegment**](ContactsApi.md#getAllContactsBySegment) | **GET** /lists/{list_id}/contacts/segment/{segment_id} | Get all contacts by Segment Id
 [**getContact**](ContactsApi.md#getContact) | **GET** /lists/{list_id}/contacts/{contact_id} | Get contact
 [**patchContact**](ContactsApi.md#patchContact) | **PATCH** /lists/{list_id}/contacts/{contact_id} | Update a specific contact
 [**searchContacts**](ContactsApi.md#searchContacts) | **GET** /contacts/search | Search contact
@@ -78,7 +79,7 @@ Name | Type | Description  | Notes
 
 Attach tag to contact
 
-Attaches a tag to the provided contacts
+Attaches a tag to the provided contacts. &lt;br&gt;***Note:***&lt;br&gt; If you provide the array of **contacts** there will be a maximum limit of 1000 contacts in the payload, but if you provide a **segment_id** instead of     the array of contacts you will get an asynchronous response with the status code 202
 
 ### Example
 ```javascript
@@ -333,7 +334,7 @@ Name | Type | Description  | Notes
 
 Import collection of contacts
 
-Imports a collection of contacts &lt;/br&gt;      **DISCLAIMER:** stream limits applied. [view here](#section/Stream-Limits &#39;Stream Limits&#39;)
+Imports a collection of contacts &lt;/br&gt;      **DISCLAIMER:** stream limits applied. [view here](#section/Stream-Limits &#39;Stream Limits&#39;)&lt;br&gt; ***Note:*** minimum of 2 contacts to use this method. [use Create new contact method instead](#operation/createContact &#39;Create new contact&#39;)
 
 ### Example
 ```javascript
@@ -615,7 +616,17 @@ var listId = 56; // Number | ID of the List
 var opts = {
   'offset': 56, // Number | Element offset (starting at zero for the first element)
   'limit': 10, // Number | Number of items to return
-  'email': "email_example" // String | Email of the contacts to return
+  'firstName': "firstName_example", // String | First name of the contacts to return
+  'lastName': "lastName_example", // String | Last name of the contacts to return
+  'email': "email_example", // String | Email of the contacts to return
+  'emailStatus': true, // Boolean | EmailStatus of the contacts to return
+  'cellphone': "cellphone_example", // String | Cellphone of the contacts to return
+  'cellphoneStatus': true, // Boolean | CellphoneStatus of the contacts to return
+  'phone': "phone_example", // String | Phone of the contacts to return
+  'phoneStatus': true, // Boolean | PhoneStatus of the contacts to return
+  'birthDate': null, // Date | Birth date of the contacts to return
+  'language': "language_example", // String | Language date of the contacts to return
+  'extraFieldId': ["null"] // [String] | Extra field of contacts, extra_field_id[field_id]=value
 };
 var callback = function(error, data, response) {
   if (error) {
@@ -634,7 +645,76 @@ Name | Type | Description  | Notes
  **listId** | **Number**| ID of the List | 
  **offset** | **Number**| Element offset (starting at zero for the first element) | [optional] 
  **limit** | **Number**| Number of items to return | [optional] [default to 10]
+ **firstName** | **String**| First name of the contacts to return | [optional] 
+ **lastName** | **String**| Last name of the contacts to return | [optional] 
  **email** | **String**| Email of the contacts to return | [optional] 
+ **emailStatus** | **Boolean**| EmailStatus of the contacts to return | [optional] 
+ **cellphone** | **String**| Cellphone of the contacts to return | [optional] 
+ **cellphoneStatus** | **Boolean**| CellphoneStatus of the contacts to return | [optional] 
+ **phone** | **String**| Phone of the contacts to return | [optional] 
+ **phoneStatus** | **Boolean**| PhoneStatus of the contacts to return | [optional] 
+ **birthDate** | [**Date**](.md)| Birth date of the contacts to return | [optional] 
+ **language** | **String**| Language date of the contacts to return | [optional] 
+ **extraFieldId** | [**[String]**](String.md)| Extra field of contacts, extra_field_id[field_id]&#x3D;value | [optional] 
+
+### Return type
+
+[**ContactCollection**](ContactCollection.md)
+
+### Authorization
+
+[Apikey](../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: Not defined
+ - **Accept**: application/json
+
+<a name="getAllContactsBySegment"></a>
+# **getAllContactsBySegment**
+> ContactCollection getAllContactsBySegment(listId, segmentId, opts)
+
+Get all contacts by Segment Id
+
+Returns all contacts filtered by Segment Id
+
+### Example
+```javascript
+var egoiSdk = require('egoiSdk');
+var defaultClient = egoiSdk.ApiClient.instance;
+// Configure API key authorization: Apikey
+var Apikey = defaultClient.authentications['Apikey'];
+Apikey.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//Apikey.apiKeyPrefix = 'Token';
+
+var apiInstance = new egoiSdk.ContactsApi();
+var listId = 56; // Number | ID of the List
+var segmentId = "segmentId_example"; // String | ID of the Segment
+var opts = {
+  'offset': 56, // Number | Element offset (starting at zero for the first element)
+  'limit': 10, // Number | Number of items to return
+  'showRemoved': true // Boolean | Show removed contacts
+};
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.getAllContactsBySegment(listId, segmentId, opts, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **listId** | **Number**| ID of the List | 
+ **segmentId** | **String**| ID of the Segment | 
+ **offset** | **Number**| Element offset (starting at zero for the first element) | [optional] 
+ **limit** | **Number**| Number of items to return | [optional] [default to 10]
+ **showRemoved** | **Boolean**| Show removed contacts | [optional] 
 
 ### Return type
 

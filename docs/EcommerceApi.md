@@ -4,17 +4,69 @@ All URIs are relative to *https://api.egoiapp.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**createCart**](EcommerceApi.md#createCart) | **POST** /{domain}/carts | Create cart
 [**createCatalog**](EcommerceApi.md#createCatalog) | **POST** /catalogs | Create new catalog
+[**createOrder**](EcommerceApi.md#createOrder) | **POST** /{domain}/orders | Create order
 [**createProduct**](EcommerceApi.md#createProduct) | **POST** /catalogs/{catalog_id}/products | Create new product
 [**deleteCatalog**](EcommerceApi.md#deleteCatalog) | **DELETE** /catalogs/{catalog_id} | Remove catalog
 [**deleteProduct**](EcommerceApi.md#deleteProduct) | **DELETE** /catalogs/{catalog_id}/products/{product_identifier} | Remove product
 [**getAllCatalogs**](EcommerceApi.md#getAllCatalogs) | **GET** /catalogs | Get all catalogs
 [**getAllProducts**](EcommerceApi.md#getAllProducts) | **GET** /catalogs/{catalog_id}/products | Get all products
 [**getProduct**](EcommerceApi.md#getProduct) | **GET** /catalogs/{catalog_id}/products/{product_identifier} | Get product
-[**importOrdersBulk**](EcommerceApi.md#importOrdersBulk) | **POST** /lists/{list_id}/orders | Orders import bulk request
 [**importProducts**](EcommerceApi.md#importProducts) | **POST** /catalogs/{catalog_id}/products/actions/import | Import products
 [**updateProduct**](EcommerceApi.md#updateProduct) | **PATCH** /catalogs/{catalog_id}/products/{product_identifier} | Update product
 
+
+<a name="createCart"></a>
+# **createCart**
+> AcceptedResponse createCart(domain, cart)
+
+Create cart
+
+Creates a new cart. If ***contact_id*** is specified, order will be atached to the contact, if the contact propreties are specified, we&#39;ll create the user, if its already in your list it will get the correct contact (**make sure you are sending atleast all configured list&#39;s unique fields**). This same logic is also applied to the **product_identifier**.
+
+### Example
+```javascript
+var egoiSdk = require('egoiSdk');
+var defaultClient = egoiSdk.ApiClient.instance;
+// Configure API key authorization: Apikey
+var Apikey = defaultClient.authentications['Apikey'];
+Apikey.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//Apikey.apiKeyPrefix = 'Token';
+
+var apiInstance = new egoiSdk.EcommerceApi();
+var domain = "domain_example"; // String | Domain
+var cart = new egoiSdk.Cart(); // Cart | Parameters for the Carts
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.createCart(domain, cart, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **domain** | **String**| Domain | 
+ **cart** | [**Cart**](Cart.md)| Parameters for the Carts | 
+
+### Return type
+
+[**AcceptedResponse**](AcceptedResponse.md)
+
+### Authorization
+
+[Apikey](../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
 
 <a name="createCatalog"></a>
 # **createCatalog**
@@ -55,6 +107,57 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**Catalog**](Catalog.md)
+
+### Authorization
+
+[Apikey](../README.md#Apikey)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+<a name="createOrder"></a>
+# **createOrder**
+> AcceptedResponse createOrder(domain, createOrder)
+
+Create order
+
+Creates a new order. If **contact_id** is specified, order will be atached to the contact, if the contact propreties are specified, we&#39;ll create the user, if its already in your list it will get the correct contact (***make sure you are sending atleast all configured list&#39;s unique fields***). This same logic is also applied to the **product_identifier**.
+
+### Example
+```javascript
+var egoiSdk = require('egoiSdk');
+var defaultClient = egoiSdk.ApiClient.instance;
+// Configure API key authorization: Apikey
+var Apikey = defaultClient.authentications['Apikey'];
+Apikey.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//Apikey.apiKeyPrefix = 'Token';
+
+var apiInstance = new egoiSdk.EcommerceApi();
+var domain = "domain_example"; // String | Domain
+var createOrder = new egoiSdk.CreateOrder(); // CreateOrder | Parameters for the Orders
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+apiInstance.createOrder(domain, createOrder, callback);
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **domain** | **String**| Domain | 
+ **createOrder** | [**CreateOrder**](CreateOrder.md)| Parameters for the Orders | 
+
+### Return type
+
+[**AcceptedResponse**](AcceptedResponse.md)
 
 ### Authorization
 
@@ -367,57 +470,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/json
-
-<a name="importOrdersBulk"></a>
-# **importOrdersBulk**
-> AcceptedResponse importOrdersBulk(listId, importOrdersBulkBulkRequest)
-
-Orders import bulk request
-
-Creates new bulk orders syncronization
-
-### Example
-```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
-// Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
-Apikey.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//Apikey.apiKeyPrefix = 'Token';
-
-var apiInstance = new egoiSdk.EcommerceApi();
-var listId = 56; // Number | ID of the List
-var importOrdersBulkBulkRequest = [new egoiSdk.ImportOrdersBulkBulkRequest()]; // [ImportOrdersBulkBulkRequest] | Parameters for the Orders
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-apiInstance.importOrdersBulk(listId, importOrdersBulkBulkRequest, callback);
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **listId** | **Number**| ID of the List | 
- **importOrdersBulkBulkRequest** | [**[ImportOrdersBulkBulkRequest]**](Array.md)| Parameters for the Orders | 
-
-### Return type
-
-[**AcceptedResponse**](AcceptedResponse.md)
-
-### Authorization
-
-[Apikey](../README.md#Apikey)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
  - **Accept**: application/json
 
 <a name="importProducts"></a>
