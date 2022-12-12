@@ -1,6 +1,7 @@
-# egoiSdk.OverallOverall
+# egoisdk.OverallOverall
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **destinations** | **Number** | Total number of destinations | [optional] 

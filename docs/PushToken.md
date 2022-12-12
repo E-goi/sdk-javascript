@@ -1,6 +1,7 @@
-# egoiSdk.PushToken
+# egoisdk.PushToken
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **os** | **String** | The OS of the device. | 

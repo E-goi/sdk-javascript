@@ -1,6 +1,7 @@
-# egoiSdk.MessageWebPush
+# egoisdk.MessageWebPush
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **title** | **String** | Webpush campaign title | [optional] 

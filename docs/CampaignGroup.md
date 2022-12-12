@@ -1,9 +1,10 @@
-# egoiSdk.CampaignGroup
+# egoisdk.CampaignGroup
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**groupId** | **Number** |  | [optional] 
-**name** | **String** | Name of the campaign group | [optional] 
+**groupId** | **Number** |  | [readonly] 
+**name** | **String** | Name of the campaign group | 
 
 

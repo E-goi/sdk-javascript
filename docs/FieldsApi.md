@@ -1,4 +1,4 @@
-# egoiSdk.FieldsApi
+# egoisdk.FieldsApi
 
 All URIs are relative to *https://api.egoiapp.com*
 
@@ -15,8 +15,9 @@ Method | HTTP request | Description
 [**updateFieldOption**](FieldsApi.md#updateFieldOption) | **PATCH** /lists/{list_id}/fields/extra/{field_id}/options/{option_id} | Update field option
 
 
-<a name="createExtraField"></a>
-# **createExtraField**
+
+## createExtraField
+
 > Field createExtraField(listId, field)
 
 Create extra field
@@ -24,29 +25,30 @@ Create extra field
 Creates an extra field
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.FieldsApi();
-var listId = 56; // Number | ID of the List
-var field = new egoiSdk.Field(); // Field | Parameters for the extra field
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.FieldsApi();
+let listId = 56; // Number | ID of the List
+let field = new egoisdk.Field(); // Field | Parameters for the extra field
+apiInstance.createExtraField(listId, field, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.createExtraField(listId, field, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -63,48 +65,50 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="createFieldOption"></a>
-# **createFieldOption**
-> FieldOption createFieldOption(listId, fieldId, fieldOption)
+
+## createFieldOption
+
+> FieldOption createFieldOption(listId, fieldId, fieldOptionPost)
 
 Create new field option
 
 Creates a field option
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.FieldsApi();
-var listId = 56; // Number | ID of the List
-var fieldId = 56; // Number | ID of the Field
-var fieldOption = new egoiSdk.FieldOption(); // FieldOption | Parameters for the field option
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.FieldsApi();
+let listId = 56; // Number | ID of the List
+let fieldId = 56; // Number | ID of the Field
+let fieldOptionPost = new egoisdk.FieldOptionPost(); // FieldOptionPost | Parameters for the field option
+apiInstance.createFieldOption(listId, fieldId, fieldOptionPost, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.createFieldOption(listId, fieldId, fieldOption, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **listId** | **Number**| ID of the List | 
  **fieldId** | **Number**| ID of the Field | 
- **fieldOption** | [**FieldOption**](FieldOption.md)| Parameters for the field option | 
+ **fieldOptionPost** | [**FieldOptionPost**](FieldOptionPost.md)| Parameters for the field option | 
 
 ### Return type
 
@@ -116,11 +120,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="deleteExtraField"></a>
-# **deleteExtraField**
+
+## deleteExtraField
+
 > deleteExtraField(listId, fieldId)
 
 Remove extra field
@@ -128,29 +133,30 @@ Remove extra field
 Removes an extra field given its ID
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.FieldsApi();
-var listId = 56; // Number | ID of the List
-var fieldId = 56; // Number | ID of the Field
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.FieldsApi();
+let listId = 56; // Number | ID of the List
+let fieldId = 56; // Number | ID of the Field
+apiInstance.deleteExtraField(listId, fieldId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully.');
   }
-};
-apiInstance.deleteExtraField(listId, fieldId, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -167,11 +173,12 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="deleteFieldOption"></a>
-# **deleteFieldOption**
+
+## deleteFieldOption
+
 > deleteFieldOption(listId, fieldId, optionId)
 
 Deletes an option
@@ -179,30 +186,31 @@ Deletes an option
 Deletes an option of a list of values field
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.FieldsApi();
-var listId = 56; // Number | ID of the List
-var fieldId = 56; // Number | ID of the Field
-var optionId = 56; // Number | ID of the field option
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.FieldsApi();
+let listId = 56; // Number | ID of the List
+let fieldId = 56; // Number | ID of the Field
+let optionId = 56; // Number | ID of the field option
+apiInstance.deleteFieldOption(listId, fieldId, optionId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully.');
   }
-};
-apiInstance.deleteFieldOption(listId, fieldId, optionId, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -220,11 +228,12 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getAllFieldOptions"></a>
-# **getAllFieldOptions**
+
+## getAllFieldOptions
+
 > FieldOptionsCollection getAllFieldOptions(listId, fieldId)
 
 Get all field options
@@ -232,29 +241,30 @@ Get all field options
 Returns all options of a given field
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.FieldsApi();
-var listId = 56; // Number | ID of the List
-var fieldId = 56; // Number | ID of the Field
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.FieldsApi();
+let listId = 56; // Number | ID of the List
+let fieldId = 56; // Number | ID of the Field
+apiInstance.getAllFieldOptions(listId, fieldId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getAllFieldOptions(listId, fieldId, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -271,11 +281,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getAllFields"></a>
-# **getAllFields**
+
+## getAllFields
+
 > FieldCollection getAllFields(listId, opts)
 
 Get all fields
@@ -283,32 +294,33 @@ Get all fields
 Returns all fields
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.FieldsApi();
-var listId = 56; // Number | ID of the List
-var opts = {
+let apiInstance = new egoisdk.FieldsApi();
+let listId = 56; // Number | ID of the List
+let opts = {
   'offset': 56, // Number | Element offset (starting at zero for the first element)
   'limit': 10 // Number | Number of items to return
 };
-var callback = function(error, data, response) {
+apiInstance.getAllFields(listId, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getAllFields(listId, opts, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -326,11 +338,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="patchBaseField"></a>
-# **patchBaseField**
+
+## patchBaseField
+
 > Field patchBaseField(listId, fieldId, patchRequestBaseField)
 
 Update base field
@@ -338,30 +351,31 @@ Update base field
 Updates a base field
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.FieldsApi();
-var listId = 56; // Number | ID of the List
-var fieldId = "fieldId_example"; // String | ID of the base field
-var patchRequestBaseField = new egoiSdk.PatchRequestBaseField(); // PatchRequestBaseField | Parameters for the extra field
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.FieldsApi();
+let listId = 56; // Number | ID of the List
+let fieldId = "fieldId_example"; // String | ID of the base field
+let patchRequestBaseField = new egoisdk.PatchRequestBaseField(); // PatchRequestBaseField | Parameters for the extra field
+apiInstance.patchBaseField(listId, fieldId, patchRequestBaseField, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.patchBaseField(listId, fieldId, patchRequestBaseField, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -379,11 +393,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="patchExtraField"></a>
-# **patchExtraField**
+
+## patchExtraField
+
 > Field patchExtraField(listId, fieldId, patchRequestField)
 
 Update extra field
@@ -391,30 +406,31 @@ Update extra field
 Updates an extra field
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.FieldsApi();
-var listId = 56; // Number | ID of the List
-var fieldId = 56; // Number | ID of the Field
-var patchRequestField = new egoiSdk.PatchRequestField(); // PatchRequestField | Parameters for the extra field
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.FieldsApi();
+let listId = 56; // Number | ID of the List
+let fieldId = 56; // Number | ID of the Field
+let patchRequestField = new egoisdk.PatchRequestField(); // PatchRequestField | Parameters for the extra field
+apiInstance.patchExtraField(listId, fieldId, patchRequestField, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.patchExtraField(listId, fieldId, patchRequestField, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -432,50 +448,52 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="updateFieldOption"></a>
-# **updateFieldOption**
-> FieldOption updateFieldOption(listId, fieldId, optionId, fieldOption)
+
+## updateFieldOption
+
+> FieldOption updateFieldOption(listId, fieldId, optionId, fieldOptionPost)
 
 Update field option
 
 Updates a field option
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.FieldsApi();
-var listId = 56; // Number | ID of the List
-var fieldId = 56; // Number | ID of the Field
-var optionId = 56; // Number | ID of the field option
-var fieldOption = new egoiSdk.FieldOption(); // FieldOption | Parameters for the field option
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.FieldsApi();
+let listId = 56; // Number | ID of the List
+let fieldId = 56; // Number | ID of the Field
+let optionId = 56; // Number | ID of the field option
+let fieldOptionPost = new egoisdk.FieldOptionPost(); // FieldOptionPost | Parameters for the field option
+apiInstance.updateFieldOption(listId, fieldId, optionId, fieldOptionPost, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.updateFieldOption(listId, fieldId, optionId, fieldOption, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **listId** | **Number**| ID of the List | 
  **fieldId** | **Number**| ID of the Field | 
  **optionId** | **Number**| ID of the field option | 
- **fieldOption** | [**FieldOption**](FieldOption.md)| Parameters for the field option | 
+ **fieldOptionPost** | [**FieldOptionPost**](FieldOptionPost.md)| Parameters for the field option | 
 
 ### Return type
 
@@ -487,6 +505,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 

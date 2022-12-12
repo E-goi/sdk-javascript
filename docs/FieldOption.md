@@ -1,9 +1,10 @@
-# egoiSdk.FieldOption
+# egoisdk.FieldOption
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**optionId** | **Number** |  | [optional] 
+**optionId** | **Number** |  | [optional] [readonly] 
 **en** | **String** | English option value | [optional] 
 **pt** | **String** | Portuguese option value | [optional] 
 **br** | **String** | Brazilian portuguese option value | [optional] 

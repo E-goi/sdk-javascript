@@ -1,6 +1,7 @@
-# egoiSdk.SendsCampaignFields
+# egoisdk.SendsCampaignFields
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **internalName** | **Boolean** | True to include the internal name of the campaign, false otherwise | 

@@ -1,6 +1,7 @@
-# egoiSdk.ListCollection
+# egoisdk.ListCollection
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **totalItems** | **Number** | Returned lists | [optional] 

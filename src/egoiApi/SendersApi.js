@@ -1,96 +1,97 @@
 /**
  * APIv3 (New)
- *  # Introduction This is our new version of API. We invite you to start using it and give us your feedback # Getting Started  E-goi can be integrated with many environments and programming languages via our REST API. We've created a developer focused portal to give your organization a clear and quick overview of how to integrate with E-goi. The developer portal focuses on scenarios for integration and flow of events. We recommend familiarizing yourself with all of the content in the developer portal, before start using our rest API.   The E-goi  APIv3 is served over HTTPS. To ensure data privacy, unencrypted HTTP is not supported.  Request data is passed to the API by POSTing JSON objects to the API endpoints with the appropriate parameters.   BaseURL = api.egoiapp.com  # RESTful Services This API supports 5 HTTP methods:  * <b>GET</b>: The HTTP GET method is used to **read** (or retrieve) a representation of a resource. * <b>POST</b>: The POST verb is most-often utilized to **create** new resources. * <b>PATCH</b>: PATCH is used for **modify** capabilities. The PATCH request only needs to contain the changes to the resource, not the complete resource * <b>PUT</b>: PUT is most-often utilized for **update** capabilities, PUT-ing to a known resource URI with the request body containing the newly-updated representation of the original resource. * <b>DELETE</b>: DELETE is pretty easy to understand. It is used to **delete** a resource identified by a URI.  # Authentication   We use a custom authentication method, you will need a apikey that you can find in your account settings. Below you will see a curl example to get your account information:  #!/bin/bash  curl -X GET 'https://api.egoiapp.com/my-account' \\  -H 'accept: application/json' \\  -H 'Apikey: <YOUR_APY_KEY>'  Here you can see a curl Post example with authentication:  #!/bin/bash  curl -X POST 'http://api.egoiapp.com/tags' \\  -H 'accept: application/json' \\  -H 'Apikey: <YOUR_APY_KEY>' \\  -H 'Content-Type: application/json' \\  -d '{`name`:`Your custom tag`,`color`:`#FFFFFF`}'  # SDK Get started quickly with E-goi with our integration tools. Our SDK is a modern open source library that makes it easy to integrate your application with E-goi services.  * <a href='https://github.com/E-goi/sdk-java'>Java</a>  * <a href='https://github.com/E-goi/sdk-php'>PHP</a>  * <a href='https://github.com/E-goi/sdk-python'>Python</a>  * <a href='https://github.com/E-goi/sdk-ruby'>Ruby</a>  * <a href='https://github.com/E-goi/sdk-javascript'>Javascript</a>  * <a href='https://github.com/E-goi/sdk-csharp'>C#</a>  # Stream Limits Stream limits are security mesures we have to make sure our API have a fair use policy, for this reason, any request that creates or modifies data (**POST**, **PATCH** and **PUT**) is limited to a maximum of **20MB** of content length. If you arrive to this limit in one of your request, you'll receive a HTTP code **413 (Request Entity Too Large)** and the request will be ignored. To avoid this error in importation's requests, it's advised the request's division in batches that have each one less than 20MB.  # Timeouts Timeouts set a maximum waiting time on a request's response. Our API, sets a default timeout for each request and when breached, you'll receive an HTTP **408 (Request Timeout)** error code. You should take into consideration that response times can vary widely based on the complexity of the request, amount of data being analyzed, and the load on the system and workspace at the time of the query. When dealing with such errors, you should first attempt to reduce the complexity and amount of data under analysis, and only then, if problems are still occurring ask for support.  For all these reasons, the default timeout for each request is **10 Seconds** and any request that creates or modifies data (**POST**, **PATCH** and **PUT**) will have a timeout of **60 Seconds**. Specific timeouts may exist for specific requests, these can be found in the request's documentation.  <security-definitions/>
+ *  # Introduction This is our new version of API. We invite you to start using it and give us your feedback # Getting Started  E-goi can be integrated with many environments and programming languages via our REST API. We've created a developer focused portal to give your organization a clear and quick overview of how to integrate with E-goi. The developer portal focuses on scenarios for integration and flow of events. We recommend familiarizing yourself with all of the content in the developer portal, before start using our rest API.  The E-goi  APIv3 is served over HTTPS. To ensure data privacy, unencrypted HTTP is not supported.  Request data is passed to the API by POSTing JSON objects to the API endpoints with the appropriate parameters.      BaseURL = api.egoiapp.com  # RESTful Services This API supports 5 HTTP methods:  * <b>GET</b>: The HTTP GET method is used to **read** (or retrieve) a representation of a resource. * <b>POST</b>: The POST verb is most-often utilized to **create** new resources. * <b>PATCH</b>: PATCH is used for **modify** capabilities. The PATCH request only needs to contain the changes to the resource, not the complete resource * <b>PUT</b>: PUT is most-often utilized for **update** capabilities, PUT-ing to a known resource URI with the request body containing the newly-updated representation of the original resource. * <b>DELETE</b>: DELETE is pretty easy to understand. It is used to **delete** a resource identified by a URI.  # Authentication  We use a custom authentication method, you will need a apikey that you can find in your account settings. Below you will see a curl example to get your account information:     #!/bin/bash     curl -X GET 'https://api.egoiapp.com/my-account' \\     -H 'accept: application/json' \\     -H 'Apikey: <YOUR_APY_KEY>'  Here you can see a curl Post example with authentication:     #!/bin/bash     curl -X POST 'http://api.egoiapp.com/tags' \\     -H 'accept: application/json' \\     -H 'Apikey: <YOUR_APY_KEY>' \\     -H 'Content-Type: application/json' \\     -d '{`name`:`Your custom tag`,`color`:`#FFFFFF`}'  # SDK Get started quickly with E-goi with our integration tools. Our SDK is a modern open source library that makes it easy to integrate your application with E-goi services.  * <a href='https://github.com/E-goi/sdk-java'>Java</a>  * <a href='https://github.com/E-goi/sdk-php'>PHP</a>  * <a href='https://github.com/E-goi/sdk-python'>Python</a>  * <a href='https://github.com/E-goi/sdk-ruby'>Ruby</a>  * <a href='https://github.com/E-goi/sdk-javascript'>Javascript</a>  * <a href='https://github.com/E-goi/sdk-csharp'>C#</a>  # Stream Limits Stream limits are security mesures we have to make sure our API have a fair use policy, for this reason, any request that creates or modifies data (**POST**, **PATCH** and **PUT**) is limited to a maximum of **20MB** of content length. If you arrive to this limit in one of your request, you'll receive a HTTP code **413 (Request Entity Too Large)** and the request will be ignored. To avoid this error in importation's requests, it's advised the request's division in batches that have each one less than 20MB.  # Timeouts Timeouts set a maximum waiting time on a request's response. Our API, sets a default timeout for each request and when breached, you'll receive an HTTP **408 (Request Timeout)** error code. You should take into consideration that response times can vary widely based on the complexity of the request, amount of data being analyzed, and the load on the system and workspace at the time of the query. When dealing with such errors, you should first attempt to reduce the complexity and amount of data under analysis, and only then, if problems are still occurring ask for support.  For all these reasons, the default timeout for each request is **10 Seconds** and any request that creates or modifies data (**POST**, **PATCH** and **PUT**) will have a timeout of **60 Seconds**. Specific timeouts may exist for specific requests, these can be found in the request's documentation.  # Callbacks A callback is an asynchronous API request that originates from the API server and is sent to the client in response to a previous request sent by that client.  The API will make a **POST** request to the address defined in the URL with the information regarding the event of interest and share data related to that event.  ***Note:*** Only http or https protocols are supported in the Url parameter.  <security-definitions/>
  *
- * OpenAPI spec version: 3.0.0
+ * The version of the OpenAPI document: 3.0.0
+ * 
  *
  * NOTE: This class is auto generated by OpenAPI Generator (https://openapi-generator.tech).
  * https://openapi-generator.tech
- *
- * OpenAPI Generator version: 3.3.4
- *
  * Do not edit the class manually.
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient', 'egoiSdk/BadRequest', 'egoiSdk/CellphoneSender', 'egoiSdk/CellphoneSenderCollection', 'egoiSdk/Conflict', 'egoiSdk/EmailSender', 'egoiSdk/EmailSenderCollection', 'egoiSdk/EmailSenderPutRequest', 'egoiSdk/Forbidden', 'egoiSdk/InternalServerError', 'egoiSdk/NotFound', 'egoiSdk/PhoneSender', 'egoiSdk/PhoneSenderCollection', 'egoiSdk/RequestTimeout', 'egoiSdk/ServiceUnavailable', 'egoiSdk/TooManyRequests', 'egoiSdk/Unauthorized', 'egoiSdk/UnprocessableEntity'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../egoiSdk/BadRequest'), require('../egoiSdk/CellphoneSender'), require('../egoiSdk/CellphoneSenderCollection'), require('../egoiSdk/Conflict'), require('../egoiSdk/EmailSender'), require('../egoiSdk/EmailSenderCollection'), require('../egoiSdk/EmailSenderPutRequest'), require('../egoiSdk/Forbidden'), require('../egoiSdk/InternalServerError'), require('../egoiSdk/NotFound'), require('../egoiSdk/PhoneSender'), require('../egoiSdk/PhoneSenderCollection'), require('../egoiSdk/RequestTimeout'), require('../egoiSdk/ServiceUnavailable'), require('../egoiSdk/TooManyRequests'), require('../egoiSdk/Unauthorized'), require('../egoiSdk/UnprocessableEntity'));
-  } else {
-    // Browser globals (root is window)
-    if (!root.egoiSdk) {
-      root.egoiSdk = {};
+
+import ApiClient from "../ApiClient";
+import BadRequest from '../egoisdk/BadRequest';
+import CellphoneSender from '../egoisdk/CellphoneSender';
+import CellphoneSenderCollection from '../egoisdk/CellphoneSenderCollection';
+import CellphoneSenderPost from '../egoisdk/CellphoneSenderPost';
+import Conflict from '../egoisdk/Conflict';
+import EmailSender from '../egoisdk/EmailSender';
+import EmailSenderCollection from '../egoisdk/EmailSenderCollection';
+import EmailSenderPost from '../egoisdk/EmailSenderPost';
+import EmailSenderPutRequest from '../egoisdk/EmailSenderPutRequest';
+import Forbidden from '../egoisdk/Forbidden';
+import InternalServerError from '../egoisdk/InternalServerError';
+import NotFound from '../egoisdk/NotFound';
+import PhoneSender from '../egoisdk/PhoneSender';
+import PhoneSenderCollection from '../egoisdk/PhoneSenderCollection';
+import PhoneSenderPost from '../egoisdk/PhoneSenderPost';
+import RequestTimeout from '../egoisdk/RequestTimeout';
+import ServiceUnavailable from '../egoisdk/ServiceUnavailable';
+import TooManyRequests from '../egoisdk/TooManyRequests';
+import Unauthorized from '../egoisdk/Unauthorized';
+import UnprocessableEntity from '../egoisdk/UnprocessableEntity';
+
+/**
+* Senders service.
+* @module egoiApi/SendersApi
+* @version 1.1.2RC1
+*/
+export default class SendersApi {
+
+    /**
+    * Constructs a new SendersApi. 
+    * @alias module:egoiApi/SendersApi
+    * @class
+    * @param {module:ApiClient} [apiClient] Optional API client implementation to use,
+    * default to {@link module:ApiClient#instance} if unspecified.
+    */
+    constructor(apiClient) {
+        this.apiClient = apiClient || ApiClient.instance;
     }
-    root.egoiSdk.SendersApi = factory(root.egoiSdk.ApiClient, root.egoiSdk.BadRequest, root.egoiSdk.CellphoneSender, root.egoiSdk.CellphoneSenderCollection, root.egoiSdk.Conflict, root.egoiSdk.EmailSender, root.egoiSdk.EmailSenderCollection, root.egoiSdk.EmailSenderPutRequest, root.egoiSdk.Forbidden, root.egoiSdk.InternalServerError, root.egoiSdk.NotFound, root.egoiSdk.PhoneSender, root.egoiSdk.PhoneSenderCollection, root.egoiSdk.RequestTimeout, root.egoiSdk.ServiceUnavailable, root.egoiSdk.TooManyRequests, root.egoiSdk.Unauthorized, root.egoiSdk.UnprocessableEntity);
-  }
-}(this, function(ApiClient, BadRequest, CellphoneSender, CellphoneSenderCollection, Conflict, EmailSender, EmailSenderCollection, EmailSenderPutRequest, Forbidden, InternalServerError, NotFound, PhoneSender, PhoneSenderCollection, RequestTimeout, ServiceUnavailable, TooManyRequests, Unauthorized, UnprocessableEntity) {
-  'use strict';
-
-  /**
-   * Senders service.
-   * @module egoiApi/SendersApi
-   * @version 1.1.1RC1
-   */
-
-  /**
-   * Constructs a new SendersApi. 
-   * @alias module:egoiApi/SendersApi
-   * @class
-   * @param {module:ApiClient} [apiClient] Optional API client implementation to use,
-   * default to {@link module:ApiClient#instance} if unspecified.
-   */
-  var exports = function(apiClient) {
-    this.apiClient = apiClient || ApiClient.instance;
 
 
     /**
      * Callback function to receive the result of the createCellphoneSender operation.
      * @callback module:egoiApi/SendersApi~createCellphoneSenderCallback
      * @param {String} error Error message, if any.
-     * @param {module:egoiSdk/CellphoneSender} data The data returned by the service call.
+     * @param {module:egoisdk/CellphoneSender} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
      * Create cellphone sender
      * Creates a cellphone sender
-     * @param {module:egoiSdk/CellphoneSender} cellphoneSender Parameters for the sender
+     * @param {module:egoisdk/CellphoneSenderPost} cellphoneSenderPost Parameters for the sender
      * @param {module:egoiApi/SendersApi~createCellphoneSenderCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:egoiSdk/CellphoneSender}
+     * data is of type: {@link module:egoisdk/CellphoneSender}
      */
-    this.createCellphoneSender = function(cellphoneSender, callback) {
-      var postBody = cellphoneSender;
-
-      // verify the required parameter 'cellphoneSender' is set
-      if (cellphoneSender === undefined || cellphoneSender === null) {
-        throw new Error("Missing the required parameter 'cellphoneSender' when calling createCellphoneSender");
+    createCellphoneSender(cellphoneSenderPost, callback) {
+      let postBody = cellphoneSenderPost;
+      // verify the required parameter 'cellphoneSenderPost' is set
+      if (cellphoneSenderPost === undefined || cellphoneSenderPost === null) {
+        throw new Error("Missing the required parameter 'cellphoneSenderPost' when calling createCellphoneSender");
       }
 
-
-      var pathParams = {
+      let pathParams = {
       };
-      var queryParams = {
+      let queryParams = {
       };
-      var collectionQueryParams = {
+      let headerParams = {
       };
-      var headerParams = {
-      };
-      var formParams = {
+      let formParams = {
       };
 
-      var authNames = ['Apikey'];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = CellphoneSender;
-
+      let authNames = ['Apikey'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = CellphoneSender;
       return this.apiClient.callApi(
         '/senders/cellphone', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
       );
     }
 
@@ -98,46 +99,41 @@
      * Callback function to receive the result of the createEmailSender operation.
      * @callback module:egoiApi/SendersApi~createEmailSenderCallback
      * @param {String} error Error message, if any.
-     * @param {module:egoiSdk/EmailSender} data The data returned by the service call.
+     * @param {module:egoisdk/EmailSender} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
      * Create email sender
      * Creates an email sender
-     * @param {module:egoiSdk/EmailSender} emailSender Parameters for the sender
+     * @param {module:egoisdk/EmailSenderPost} emailSenderPost Parameters for the sender
      * @param {module:egoiApi/SendersApi~createEmailSenderCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:egoiSdk/EmailSender}
+     * data is of type: {@link module:egoisdk/EmailSender}
      */
-    this.createEmailSender = function(emailSender, callback) {
-      var postBody = emailSender;
-
-      // verify the required parameter 'emailSender' is set
-      if (emailSender === undefined || emailSender === null) {
-        throw new Error("Missing the required parameter 'emailSender' when calling createEmailSender");
+    createEmailSender(emailSenderPost, callback) {
+      let postBody = emailSenderPost;
+      // verify the required parameter 'emailSenderPost' is set
+      if (emailSenderPost === undefined || emailSenderPost === null) {
+        throw new Error("Missing the required parameter 'emailSenderPost' when calling createEmailSender");
       }
 
-
-      var pathParams = {
+      let pathParams = {
       };
-      var queryParams = {
+      let queryParams = {
       };
-      var collectionQueryParams = {
+      let headerParams = {
       };
-      var headerParams = {
-      };
-      var formParams = {
+      let formParams = {
       };
 
-      var authNames = ['Apikey'];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = EmailSender;
-
+      let authNames = ['Apikey'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = EmailSender;
       return this.apiClient.callApi(
         '/senders/email', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
       );
     }
 
@@ -145,46 +141,41 @@
      * Callback function to receive the result of the createPhoneSender operation.
      * @callback module:egoiApi/SendersApi~createPhoneSenderCallback
      * @param {String} error Error message, if any.
-     * @param {module:egoiSdk/PhoneSender} data The data returned by the service call.
+     * @param {module:egoisdk/PhoneSender} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
      * Create phone sender
      * Creates a phone sender
-     * @param {module:egoiSdk/PhoneSender} phoneSender Parameters for the sender
+     * @param {module:egoisdk/PhoneSenderPost} phoneSenderPost Parameters for the sender
      * @param {module:egoiApi/SendersApi~createPhoneSenderCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:egoiSdk/PhoneSender}
+     * data is of type: {@link module:egoisdk/PhoneSender}
      */
-    this.createPhoneSender = function(phoneSender, callback) {
-      var postBody = phoneSender;
-
-      // verify the required parameter 'phoneSender' is set
-      if (phoneSender === undefined || phoneSender === null) {
-        throw new Error("Missing the required parameter 'phoneSender' when calling createPhoneSender");
+    createPhoneSender(phoneSenderPost, callback) {
+      let postBody = phoneSenderPost;
+      // verify the required parameter 'phoneSenderPost' is set
+      if (phoneSenderPost === undefined || phoneSenderPost === null) {
+        throw new Error("Missing the required parameter 'phoneSenderPost' when calling createPhoneSender");
       }
 
-
-      var pathParams = {
+      let pathParams = {
       };
-      var queryParams = {
+      let queryParams = {
       };
-      var collectionQueryParams = {
+      let headerParams = {
       };
-      var headerParams = {
-      };
-      var formParams = {
+      let formParams = {
       };
 
-      var authNames = ['Apikey'];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = PhoneSender;
-
+      let authNames = ['Apikey'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = PhoneSender;
       return this.apiClient.callApi(
         '/senders/phone', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
       );
     }
 
@@ -202,36 +193,31 @@
      * @param {Number} senderId ID of the Sender
      * @param {module:egoiApi/SendersApi~deleteCellphoneSenderCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.deleteCellphoneSender = function(senderId, callback) {
-      var postBody = null;
-
+    deleteCellphoneSender(senderId, callback) {
+      let postBody = null;
       // verify the required parameter 'senderId' is set
       if (senderId === undefined || senderId === null) {
         throw new Error("Missing the required parameter 'senderId' when calling deleteCellphoneSender");
       }
 
-
-      var pathParams = {
+      let pathParams = {
         'sender_id': senderId
       };
-      var queryParams = {
+      let queryParams = {
       };
-      var collectionQueryParams = {
+      let headerParams = {
       };
-      var headerParams = {
-      };
-      var formParams = {
+      let formParams = {
       };
 
-      var authNames = ['Apikey'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = null;
-
+      let authNames = ['Apikey'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
       return this.apiClient.callApi(
         '/senders/cellphone/{sender_id}', 'DELETE',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
       );
     }
 
@@ -249,36 +235,31 @@
      * @param {Number} senderId ID of the Sender
      * @param {module:egoiApi/SendersApi~deleteEmailSenderCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.deleteEmailSender = function(senderId, callback) {
-      var postBody = null;
-
+    deleteEmailSender(senderId, callback) {
+      let postBody = null;
       // verify the required parameter 'senderId' is set
       if (senderId === undefined || senderId === null) {
         throw new Error("Missing the required parameter 'senderId' when calling deleteEmailSender");
       }
 
-
-      var pathParams = {
+      let pathParams = {
         'sender_id': senderId
       };
-      var queryParams = {
+      let queryParams = {
       };
-      var collectionQueryParams = {
+      let headerParams = {
       };
-      var headerParams = {
-      };
-      var formParams = {
+      let formParams = {
       };
 
-      var authNames = ['Apikey'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = null;
-
+      let authNames = ['Apikey'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
       return this.apiClient.callApi(
         '/senders/email/{sender_id}', 'DELETE',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
       );
     }
 
@@ -296,36 +277,31 @@
      * @param {Number} senderId ID of the Sender
      * @param {module:egoiApi/SendersApi~deletePhoneSenderCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.deletePhoneSender = function(senderId, callback) {
-      var postBody = null;
-
+    deletePhoneSender(senderId, callback) {
+      let postBody = null;
       // verify the required parameter 'senderId' is set
       if (senderId === undefined || senderId === null) {
         throw new Error("Missing the required parameter 'senderId' when calling deletePhoneSender");
       }
 
-
-      var pathParams = {
+      let pathParams = {
         'sender_id': senderId
       };
-      var queryParams = {
+      let queryParams = {
       };
-      var collectionQueryParams = {
+      let headerParams = {
       };
-      var headerParams = {
-      };
-      var formParams = {
+      let formParams = {
       };
 
-      var authNames = ['Apikey'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = null;
-
+      let authNames = ['Apikey'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
       return this.apiClient.callApi(
         '/senders/phone/{sender_id}', 'DELETE',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
       );
     }
 
@@ -333,7 +309,7 @@
      * Callback function to receive the result of the getAllCellphoneSenders operation.
      * @callback module:egoiApi/SendersApi~getAllCellphoneSendersCallback
      * @param {String} error Error message, if any.
-     * @param {module:egoiSdk/CellphoneSenderCollection} data The data returned by the service call.
+     * @param {module:egoisdk/CellphoneSenderCollection} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -343,38 +319,34 @@
      * @param {Object} opts Optional parameters
      * @param {Number} opts.offset Element offset (starting at zero for the first element)
      * @param {Number} opts.limit Number of items to return (default to 10)
-     * @param {module:egoiSdk/String} opts.status Status filter
+     * @param {module:egoisdk/String} opts.status Status filter
      * @param {module:egoiApi/SendersApi~getAllCellphoneSendersCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:egoiSdk/CellphoneSenderCollection}
+     * data is of type: {@link module:egoisdk/CellphoneSenderCollection}
      */
-    this.getAllCellphoneSenders = function(opts, callback) {
+    getAllCellphoneSenders(opts, callback) {
       opts = opts || {};
-      var postBody = null;
+      let postBody = null;
 
-
-      var pathParams = {
+      let pathParams = {
       };
-      var queryParams = {
+      let queryParams = {
         'offset': opts['offset'],
         'limit': opts['limit'],
-        'status': opts['status'],
+        'status': opts['status']
       };
-      var collectionQueryParams = {
+      let headerParams = {
       };
-      var headerParams = {
-      };
-      var formParams = {
+      let formParams = {
       };
 
-      var authNames = ['Apikey'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = CellphoneSenderCollection;
-
+      let authNames = ['Apikey'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = CellphoneSenderCollection;
       return this.apiClient.callApi(
         '/senders/cellphone', 'GET',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
       );
     }
 
@@ -382,7 +354,7 @@
      * Callback function to receive the result of the getAllEmailSenders operation.
      * @callback module:egoiApi/SendersApi~getAllEmailSendersCallback
      * @param {String} error Error message, if any.
-     * @param {module:egoiSdk/EmailSenderCollection} data The data returned by the service call.
+     * @param {module:egoisdk/EmailSenderCollection} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -392,38 +364,34 @@
      * @param {Object} opts Optional parameters
      * @param {Number} opts.offset Element offset (starting at zero for the first element)
      * @param {Number} opts.limit Number of items to return (default to 10)
-     * @param {module:egoiSdk/String} opts.status Status filter
+     * @param {module:egoisdk/String} opts.status Status filter
      * @param {module:egoiApi/SendersApi~getAllEmailSendersCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:egoiSdk/EmailSenderCollection}
+     * data is of type: {@link module:egoisdk/EmailSenderCollection}
      */
-    this.getAllEmailSenders = function(opts, callback) {
+    getAllEmailSenders(opts, callback) {
       opts = opts || {};
-      var postBody = null;
+      let postBody = null;
 
-
-      var pathParams = {
+      let pathParams = {
       };
-      var queryParams = {
+      let queryParams = {
         'offset': opts['offset'],
         'limit': opts['limit'],
-        'status': opts['status'],
+        'status': opts['status']
       };
-      var collectionQueryParams = {
+      let headerParams = {
       };
-      var headerParams = {
-      };
-      var formParams = {
+      let formParams = {
       };
 
-      var authNames = ['Apikey'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = EmailSenderCollection;
-
+      let authNames = ['Apikey'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = EmailSenderCollection;
       return this.apiClient.callApi(
         '/senders/email', 'GET',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
       );
     }
 
@@ -431,7 +399,7 @@
      * Callback function to receive the result of the getAllPhoneSenders operation.
      * @callback module:egoiApi/SendersApi~getAllPhoneSendersCallback
      * @param {String} error Error message, if any.
-     * @param {module:egoiSdk/PhoneSenderCollection} data The data returned by the service call.
+     * @param {module:egoisdk/PhoneSenderCollection} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -441,38 +409,34 @@
      * @param {Object} opts Optional parameters
      * @param {Number} opts.offset Element offset (starting at zero for the first element)
      * @param {Number} opts.limit Number of items to return (default to 10)
-     * @param {module:egoiSdk/String} opts.status Status filter
+     * @param {module:egoisdk/String} opts.status Status filter
      * @param {module:egoiApi/SendersApi~getAllPhoneSendersCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:egoiSdk/PhoneSenderCollection}
+     * data is of type: {@link module:egoisdk/PhoneSenderCollection}
      */
-    this.getAllPhoneSenders = function(opts, callback) {
+    getAllPhoneSenders(opts, callback) {
       opts = opts || {};
-      var postBody = null;
+      let postBody = null;
 
-
-      var pathParams = {
+      let pathParams = {
       };
-      var queryParams = {
+      let queryParams = {
         'offset': opts['offset'],
         'limit': opts['limit'],
-        'status': opts['status'],
+        'status': opts['status']
       };
-      var collectionQueryParams = {
+      let headerParams = {
       };
-      var headerParams = {
-      };
-      var formParams = {
+      let formParams = {
       };
 
-      var authNames = ['Apikey'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = PhoneSenderCollection;
-
+      let authNames = ['Apikey'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = PhoneSenderCollection;
       return this.apiClient.callApi(
         '/senders/phone', 'GET',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
       );
     }
 
@@ -480,7 +444,7 @@
      * Callback function to receive the result of the putEmailSender operation.
      * @callback module:egoiApi/SendersApi~putEmailSenderCallback
      * @param {String} error Error message, if any.
-     * @param {module:egoiSdk/EmailSender} data The data returned by the service call.
+     * @param {module:egoisdk/EmailSender} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -488,48 +452,41 @@
      * Update email sender
      * Updates an email sender
      * @param {Number} senderId ID of the Sender
-     * @param {module:egoiSdk/EmailSenderPutRequest} emailSenderPutRequest Parameters for the contact
+     * @param {module:egoisdk/EmailSenderPutRequest} emailSenderPutRequest Parameters for the contact
      * @param {module:egoiApi/SendersApi~putEmailSenderCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:egoiSdk/EmailSender}
+     * data is of type: {@link module:egoisdk/EmailSender}
      */
-    this.putEmailSender = function(senderId, emailSenderPutRequest, callback) {
-      var postBody = emailSenderPutRequest;
-
+    putEmailSender(senderId, emailSenderPutRequest, callback) {
+      let postBody = emailSenderPutRequest;
       // verify the required parameter 'senderId' is set
       if (senderId === undefined || senderId === null) {
         throw new Error("Missing the required parameter 'senderId' when calling putEmailSender");
       }
-
       // verify the required parameter 'emailSenderPutRequest' is set
       if (emailSenderPutRequest === undefined || emailSenderPutRequest === null) {
         throw new Error("Missing the required parameter 'emailSenderPutRequest' when calling putEmailSender");
       }
 
-
-      var pathParams = {
+      let pathParams = {
         'sender_id': senderId
       };
-      var queryParams = {
+      let queryParams = {
       };
-      var collectionQueryParams = {
+      let headerParams = {
       };
-      var headerParams = {
-      };
-      var formParams = {
+      let formParams = {
       };
 
-      var authNames = ['Apikey'];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = EmailSender;
-
+      let authNames = ['Apikey'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = EmailSender;
       return this.apiClient.callApi(
         '/senders/email/{sender_id}', 'PUT',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
       );
     }
-  };
 
-  return exports;
-}));
+
+}

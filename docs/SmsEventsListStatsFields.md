@@ -1,6 +1,7 @@
-# egoiSdk.SmsEventsListStatsFields
+# egoisdk.SmsEventsListStatsFields
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **deliveryAnswer** | **Boolean** | True to include delivery answer, false otherwise | 

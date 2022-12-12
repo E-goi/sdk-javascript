@@ -1,8 +1,19 @@
-# egoiSdk.SendEmailContact
+# egoisdk.SendEmailContact
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**data** | **String** | Email to whom the campaign will be sent | [optional] 
+**type** | **String** | Use this segment type to send to a specific contact | 
+**data** | **String** | Contact to send the campaign | 
+
+
+
+## Enum: TypeEnum
+
+
+* `contact` (value: `"contact"`)
+
+
 
 

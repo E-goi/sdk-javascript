@@ -1,8 +1,9 @@
-# egoiSdk.CreateContactResponse
+# egoisdk.CreateContactResponse
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**contactId** | **String** |  | [optional] 
+**contactId** | **String** |  | [optional] [readonly] 
 
 

@@ -1,15 +1,19 @@
-# egoiSdk.ComplexUser
+# egoisdk.ComplexUser
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **language** | [**Language**](Language.md) |  | [optional] 
-**timezone** | **String** | User timezone | [optional] 
-**showRemovedContacts** | **Boolean** | True if the user can see removed contacts, false otherwise | [optional] [default to true]
 **gender** | **String** | User gender | [optional] 
+**username** | **String** | User login | [optional] [readonly] 
+**firstName** | **String** | First name of the user | [optional] 
+**lastName** | **String** | Last name of the user | [optional] 
+**email** | **String** | Email of the user | [optional] 
+**phone** | **String** | User&#39;s phone (may be cellphone or phone) | [optional] 
 
 
-<a name="GenderEnum"></a>
+
 ## Enum: GenderEnum
 
 

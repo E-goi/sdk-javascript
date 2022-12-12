@@ -1,17 +1,18 @@
-# egoiSdk.Campaign
+# egoisdk.Campaign
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**campaignHash** | **String** |  | [optional] 
+**campaignHash** | **String** |  | [optional] [readonly] 
 **status** | **String** | Status of the campaign | [optional] 
 **thumbnail** | **String** | Thumbnail of the campaign | [optional] 
 **channel** | **String** | Channel of the campaign | [optional] 
 **internalName** | **String** | Internal name of the campaign | [optional] 
-**listId** | **Number** |  | [optional] 
+**listId** | **Number** |  | [optional] [readonly] 
 **title** | **String** | Subject of the campaign | [optional] 
-**createdBy** | **Number** |  | [optional] 
-**groupId** | **Number** |  | [optional] 
+**createdBy** | **Number** |  | [optional] [readonly] 
+**groupId** | **Number** |  | [optional] [readonly] 
 **created** | **Date** |  | [optional] 
 **updated** | **Date** |  | [optional] 
 **startDate** | **Date** |  | [optional] 
@@ -19,7 +20,7 @@ Name | Type | Description | Notes
 **scheduleDate** | [**CampaignScheduleDate**](CampaignScheduleDate.md) |  | [optional] 
 
 
-<a name="StatusEnum"></a>
+
 ## Enum: StatusEnum
 
 
@@ -38,7 +39,7 @@ Name | Type | Description | Notes
 
 
 
-<a name="ChannelEnum"></a>
+
 ## Enum: ChannelEnum
 
 

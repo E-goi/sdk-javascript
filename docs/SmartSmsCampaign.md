@@ -1,6 +1,7 @@
-# egoiSdk.SmartSmsCampaign
+# egoisdk.SmartSmsCampaign
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **listId** | **Number** |  | 

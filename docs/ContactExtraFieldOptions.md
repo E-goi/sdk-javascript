@@ -1,14 +1,15 @@
-# egoiSdk.ContactExtraFieldOptions
+# egoisdk.ContactExtraFieldOptions
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **fieldId** | **Number** |  | [optional] 
-**format** | **String** | Extra field format | [optional] 
+**format** | **String** | Extra field format | [optional] [readonly] 
 **value** | **[Number]** | Extra field value | [optional] 
 
 
-<a name="FormatEnum"></a>
+
 ## Enum: FormatEnum
 
 

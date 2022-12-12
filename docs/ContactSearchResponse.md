@@ -1,9 +1,10 @@
-# egoiSdk.ContactSearchResponse
+# egoisdk.ContactSearchResponse
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**contactId** | **String** |  | [optional] 
-**listId** | **Number** |  | [optional] 
+**contactId** | **String** |  | [optional] [readonly] 
+**listId** | **Number** |  | [optional] [readonly] 
 
 

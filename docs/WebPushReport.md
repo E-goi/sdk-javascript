@@ -1,13 +1,14 @@
-# egoiSdk.WebPushReport
+# egoisdk.WebPushReport
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**campaignHash** | **String** |  | [optional] 
+**campaignHash** | **String** |  | [optional] [readonly] 
 **overall** | [**WebPushStats**](WebPushStats.md) |  | [optional] 
-**devices** | **[Object]** | Stats of the campaign for each device | [optional] 
-**operatingSystems** | [**[WebPushReportOperatingSystems]**](WebPushReportOperatingSystems.md) | Stats of the campaign for each operating system | [optional] 
-**browsers** | [**[WebPushReportBrowsers]**](WebPushReportBrowsers.md) | Stats of the campaign for each browser | [optional] 
-**url** | **[Object]** | Stats of the campaign for each url | [optional] 
+**devices** | [**[WebPushReportDevicesInner]**](WebPushReportDevicesInner.md) | Stats of the campaign for each device | [optional] 
+**operatingSystems** | [**[WebPushReportOperatingSystemsInner]**](WebPushReportOperatingSystemsInner.md) | Stats of the campaign for each operating system | [optional] 
+**browsers** | [**[WebPushReportBrowsersInner]**](WebPushReportBrowsersInner.md) | Stats of the campaign for each browser | [optional] 
+**url** | [**[WebPushReportUrlInner]**](WebPushReportUrlInner.md) | Stats of the campaign for each url | [optional] 
 
 

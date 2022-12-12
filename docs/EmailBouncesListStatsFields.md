@@ -1,6 +1,7 @@
-# egoiSdk.EmailBouncesListStatsFields
+# egoisdk.EmailBouncesListStatsFields
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **bounceDate** | **Boolean** | True to include bounce date, false otherwise | 

@@ -1,22 +1,25 @@
-# egoiSdk.Operation
+# egoisdk.Operation
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**operationId** | **Number** |  | [optional] 
+**operationId** | **Number** |  | [optional] [readonly] 
 **operationData** | [**OperationOperationData**](OperationOperationData.md) |  | [optional] 
 **type** | **String** | Type of operation | [optional] 
 **status** | **String** | State of the operation | [optional] 
-**createdBy** | **Number** |  | [optional] 
+**createdBy** | **Number** |  | [optional] [readonly] 
 **created** | **Date** |  | [optional] 
 **startDate** | **Date** |  | [optional] 
 
 
-<a name="TypeEnum"></a>
+
 ## Enum: TypeEnum
 
 
 * `import_contacts` (value: `"import_contacts"`)
+
+* `update_contacts` (value: `"update_contacts"`)
 
 * `export_contacts` (value: `"export_contacts"`)
 
@@ -38,6 +41,8 @@ Name | Type | Description | Notes
 
 * `ads` (value: `"ads"`)
 
+* `social` (value: `"social"`)
+
 * `segment_generation` (value: `"segment_generation"`)
 
 * `mass_operation` (value: `"mass_operation"`)
@@ -47,7 +52,7 @@ Name | Type | Description | Notes
 
 
 
-<a name="StatusEnum"></a>
+
 ## Enum: StatusEnum
 
 

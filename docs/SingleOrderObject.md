@@ -1,6 +1,7 @@
-# egoiSdk.SingleOrderObject
+# egoisdk.SingleOrderObject
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **orderId** | **String** | Ecommerce order id | 

@@ -1,15 +1,16 @@
-# egoiSdk.ContactExtraFieldEmailBulk
+# egoisdk.ContactExtraFieldEmailBulk
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **fieldId** | **Number** |  | [optional] 
-**format** | **String** | Extra field format | [optional] 
+**format** | **String** | Extra field format | [optional] [readonly] 
 **value** | **String** | Extra field value | [optional] 
 **status** | **String** | Extra field status | [optional] 
 
 
-<a name="FormatEnum"></a>
+
 ## Enum: FormatEnum
 
 
@@ -18,7 +19,7 @@ Name | Type | Description | Notes
 
 
 
-<a name="StatusEnum"></a>
+
 ## Enum: StatusEnum
 
 

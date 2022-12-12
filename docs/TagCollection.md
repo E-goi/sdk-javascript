@@ -1,6 +1,7 @@
-# egoiSdk.TagCollection
+# egoisdk.TagCollection
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **totalItems** | **Number** | Returned tags | [optional] 

@@ -1,6 +1,7 @@
-# egoiSdk.AdvancedReportEmailEventsOptions
+# egoisdk.AdvancedReportEmailEventsOptions
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **includeUnopens** | **Boolean** | True to include info for not opened campaigns, false otherwise | 

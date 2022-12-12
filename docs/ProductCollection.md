@@ -1,6 +1,7 @@
-# egoiSdk.ProductCollection
+# egoisdk.ProductCollection
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **totalItems** | **Number** | Total of returned products | [optional] 

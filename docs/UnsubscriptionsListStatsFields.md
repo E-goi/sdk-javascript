@@ -1,6 +1,7 @@
-# egoiSdk.UnsubscriptionsListStatsFields
+# egoisdk.UnsubscriptionsListStatsFields
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **unsubscriptionMethod** | **Boolean** | True to include unsubscription method, false otherwise | 

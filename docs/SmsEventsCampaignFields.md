@@ -1,6 +1,7 @@
-# egoiSdk.SmsEventsCampaignFields
+# egoisdk.SmsEventsCampaignFields
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **internalName** | **Boolean** | True to include the internal name of the campaign, false otherwise | 

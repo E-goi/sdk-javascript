@@ -1,10 +1,11 @@
-# egoiSdk.BasicProduct
+# egoisdk.BasicProduct
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **productIdentifier** | **String** | The ID of the product in your store | [optional] 
-**catalogId** | **Number** |  | [optional] 
+**catalogId** | **Number** |  | [optional] [readonly] 
 **name** | **String** | Name of the product | [optional] 
 **description** | **String** | Description of the product | [optional] 
 **sku** | **String** | Stock Keeping Unit | [optional] 

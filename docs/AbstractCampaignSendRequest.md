@@ -1,6 +1,7 @@
-# egoiSdk.AbstractCampaignSendRequest
+# egoisdk.AbstractCampaignSendRequest
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **segments** | [**AbstractCampaignSendRequestSegments**](AbstractCampaignSendRequestSegments.md) |  | 

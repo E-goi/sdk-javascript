@@ -1,6 +1,7 @@
-# egoiSdk.LimitHourActionSendLimitHour
+# egoisdk.LimitHourActionSendLimitHour
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **hourStart** | **String** | Hour start limit | [optional] 

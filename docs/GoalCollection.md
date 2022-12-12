@@ -1,6 +1,7 @@
-# egoiSdk.GoalCollection
+# egoisdk.GoalCollection
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **totalItems** | **Number** | Returned goals | [optional] 

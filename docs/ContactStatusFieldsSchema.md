@@ -1,6 +1,7 @@
-# egoiSdk.ContactStatusFieldsSchema
+# egoisdk.ContactStatusFieldsSchema
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **emailStatus** | **String** | Email channel status | [optional] 
@@ -8,7 +9,7 @@ Name | Type | Description | Notes
 **phoneStatus** | **String** | Phone channel status | [optional] 
 
 
-<a name="EmailStatusEnum"></a>
+
 ## Enum: EmailStatusEnum
 
 
@@ -19,7 +20,7 @@ Name | Type | Description | Notes
 
 
 
-<a name="CellphoneStatusEnum"></a>
+
 ## Enum: CellphoneStatusEnum
 
 
@@ -30,7 +31,7 @@ Name | Type | Description | Notes
 
 
 
-<a name="PhoneStatusEnum"></a>
+
 ## Enum: PhoneStatusEnum
 
 

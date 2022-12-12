@@ -1,12 +1,13 @@
-# egoiSdk.UsedInRecurringMessagesErrors
+# egoisdk.UsedInRecurringMessagesErrors
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **usedInRecurringMessages** | **String** | Occurs when the segment is being used in recurring campaigns | [optional] 
 
 
-<a name="UsedInRecurringMessagesEnum"></a>
+
 ## Enum: UsedInRecurringMessagesEnum
 
 

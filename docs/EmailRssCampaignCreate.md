@@ -1,6 +1,7 @@
-# egoiSdk.EmailRssCampaignCreate
+# egoisdk.EmailRssCampaignCreate
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **listId** | **Number** |  | 

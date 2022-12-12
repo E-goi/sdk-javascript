@@ -1,57 +1,60 @@
 /**
  * APIv3 (New)
- *  # Introduction This is our new version of API. We invite you to start using it and give us your feedback # Getting Started  E-goi can be integrated with many environments and programming languages via our REST API. We've created a developer focused portal to give your organization a clear and quick overview of how to integrate with E-goi. The developer portal focuses on scenarios for integration and flow of events. We recommend familiarizing yourself with all of the content in the developer portal, before start using our rest API.   The E-goi  APIv3 is served over HTTPS. To ensure data privacy, unencrypted HTTP is not supported.  Request data is passed to the API by POSTing JSON objects to the API endpoints with the appropriate parameters.   BaseURL = api.egoiapp.com  # RESTful Services This API supports 5 HTTP methods:  * <b>GET</b>: The HTTP GET method is used to **read** (or retrieve) a representation of a resource. * <b>POST</b>: The POST verb is most-often utilized to **create** new resources. * <b>PATCH</b>: PATCH is used for **modify** capabilities. The PATCH request only needs to contain the changes to the resource, not the complete resource * <b>PUT</b>: PUT is most-often utilized for **update** capabilities, PUT-ing to a known resource URI with the request body containing the newly-updated representation of the original resource. * <b>DELETE</b>: DELETE is pretty easy to understand. It is used to **delete** a resource identified by a URI.  # Authentication   We use a custom authentication method, you will need a apikey that you can find in your account settings. Below you will see a curl example to get your account information:  #!/bin/bash  curl -X GET 'https://api.egoiapp.com/my-account' \\  -H 'accept: application/json' \\  -H 'Apikey: <YOUR_APY_KEY>'  Here you can see a curl Post example with authentication:  #!/bin/bash  curl -X POST 'http://api.egoiapp.com/tags' \\  -H 'accept: application/json' \\  -H 'Apikey: <YOUR_APY_KEY>' \\  -H 'Content-Type: application/json' \\  -d '{`name`:`Your custom tag`,`color`:`#FFFFFF`}'  # SDK Get started quickly with E-goi with our integration tools. Our SDK is a modern open source library that makes it easy to integrate your application with E-goi services.  * <a href='https://github.com/E-goi/sdk-java'>Java</a>  * <a href='https://github.com/E-goi/sdk-php'>PHP</a>  * <a href='https://github.com/E-goi/sdk-python'>Python</a>  * <a href='https://github.com/E-goi/sdk-ruby'>Ruby</a>  * <a href='https://github.com/E-goi/sdk-javascript'>Javascript</a>  * <a href='https://github.com/E-goi/sdk-csharp'>C#</a>  # Stream Limits Stream limits are security mesures we have to make sure our API have a fair use policy, for this reason, any request that creates or modifies data (**POST**, **PATCH** and **PUT**) is limited to a maximum of **20MB** of content length. If you arrive to this limit in one of your request, you'll receive a HTTP code **413 (Request Entity Too Large)** and the request will be ignored. To avoid this error in importation's requests, it's advised the request's division in batches that have each one less than 20MB.  # Timeouts Timeouts set a maximum waiting time on a request's response. Our API, sets a default timeout for each request and when breached, you'll receive an HTTP **408 (Request Timeout)** error code. You should take into consideration that response times can vary widely based on the complexity of the request, amount of data being analyzed, and the load on the system and workspace at the time of the query. When dealing with such errors, you should first attempt to reduce the complexity and amount of data under analysis, and only then, if problems are still occurring ask for support.  For all these reasons, the default timeout for each request is **10 Seconds** and any request that creates or modifies data (**POST**, **PATCH** and **PUT**) will have a timeout of **60 Seconds**. Specific timeouts may exist for specific requests, these can be found in the request's documentation.  <security-definitions/>
+ *  # Introduction This is our new version of API. We invite you to start using it and give us your feedback # Getting Started  E-goi can be integrated with many environments and programming languages via our REST API. We've created a developer focused portal to give your organization a clear and quick overview of how to integrate with E-goi. The developer portal focuses on scenarios for integration and flow of events. We recommend familiarizing yourself with all of the content in the developer portal, before start using our rest API.  The E-goi  APIv3 is served over HTTPS. To ensure data privacy, unencrypted HTTP is not supported.  Request data is passed to the API by POSTing JSON objects to the API endpoints with the appropriate parameters.      BaseURL = api.egoiapp.com  # RESTful Services This API supports 5 HTTP methods:  * <b>GET</b>: The HTTP GET method is used to **read** (or retrieve) a representation of a resource. * <b>POST</b>: The POST verb is most-often utilized to **create** new resources. * <b>PATCH</b>: PATCH is used for **modify** capabilities. The PATCH request only needs to contain the changes to the resource, not the complete resource * <b>PUT</b>: PUT is most-often utilized for **update** capabilities, PUT-ing to a known resource URI with the request body containing the newly-updated representation of the original resource. * <b>DELETE</b>: DELETE is pretty easy to understand. It is used to **delete** a resource identified by a URI.  # Authentication  We use a custom authentication method, you will need a apikey that you can find in your account settings. Below you will see a curl example to get your account information:     #!/bin/bash     curl -X GET 'https://api.egoiapp.com/my-account' \\     -H 'accept: application/json' \\     -H 'Apikey: <YOUR_APY_KEY>'  Here you can see a curl Post example with authentication:     #!/bin/bash     curl -X POST 'http://api.egoiapp.com/tags' \\     -H 'accept: application/json' \\     -H 'Apikey: <YOUR_APY_KEY>' \\     -H 'Content-Type: application/json' \\     -d '{`name`:`Your custom tag`,`color`:`#FFFFFF`}'  # SDK Get started quickly with E-goi with our integration tools. Our SDK is a modern open source library that makes it easy to integrate your application with E-goi services.  * <a href='https://github.com/E-goi/sdk-java'>Java</a>  * <a href='https://github.com/E-goi/sdk-php'>PHP</a>  * <a href='https://github.com/E-goi/sdk-python'>Python</a>  * <a href='https://github.com/E-goi/sdk-ruby'>Ruby</a>  * <a href='https://github.com/E-goi/sdk-javascript'>Javascript</a>  * <a href='https://github.com/E-goi/sdk-csharp'>C#</a>  # Stream Limits Stream limits are security mesures we have to make sure our API have a fair use policy, for this reason, any request that creates or modifies data (**POST**, **PATCH** and **PUT**) is limited to a maximum of **20MB** of content length. If you arrive to this limit in one of your request, you'll receive a HTTP code **413 (Request Entity Too Large)** and the request will be ignored. To avoid this error in importation's requests, it's advised the request's division in batches that have each one less than 20MB.  # Timeouts Timeouts set a maximum waiting time on a request's response. Our API, sets a default timeout for each request and when breached, you'll receive an HTTP **408 (Request Timeout)** error code. You should take into consideration that response times can vary widely based on the complexity of the request, amount of data being analyzed, and the load on the system and workspace at the time of the query. When dealing with such errors, you should first attempt to reduce the complexity and amount of data under analysis, and only then, if problems are still occurring ask for support.  For all these reasons, the default timeout for each request is **10 Seconds** and any request that creates or modifies data (**POST**, **PATCH** and **PUT**) will have a timeout of **60 Seconds**. Specific timeouts may exist for specific requests, these can be found in the request's documentation.  # Callbacks A callback is an asynchronous API request that originates from the API server and is sent to the client in response to a previous request sent by that client.  The API will make a **POST** request to the address defined in the URL with the information regarding the event of interest and share data related to that event.  ***Note:*** Only http or https protocols are supported in the Url parameter.  <security-definitions/>
  *
- * OpenAPI spec version: 3.0.0
+ * The version of the OpenAPI document: 3.0.0
+ * 
  *
  * NOTE: This class is auto generated by OpenAPI Generator (https://openapi-generator.tech).
  * https://openapi-generator.tech
- *
- * OpenAPI Generator version: 3.3.4
- *
  * Do not edit the class manually.
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient', 'egoiSdk/BadRequest', 'egoiSdk/DeleteFieldsConflict', 'egoiSdk/Field', 'egoiSdk/FieldCollection', 'egoiSdk/FieldOption', 'egoiSdk/FieldOptionsCollection', 'egoiSdk/Forbidden', 'egoiSdk/InternalServerError', 'egoiSdk/NotFound', 'egoiSdk/PatchRequestBaseField', 'egoiSdk/PatchRequestField', 'egoiSdk/RequestTimeout', 'egoiSdk/ServiceUnavailable', 'egoiSdk/TooManyRequests', 'egoiSdk/Unauthorized', 'egoiSdk/UnprocessableEntity'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../egoiSdk/BadRequest'), require('../egoiSdk/DeleteFieldsConflict'), require('../egoiSdk/Field'), require('../egoiSdk/FieldCollection'), require('../egoiSdk/FieldOption'), require('../egoiSdk/FieldOptionsCollection'), require('../egoiSdk/Forbidden'), require('../egoiSdk/InternalServerError'), require('../egoiSdk/NotFound'), require('../egoiSdk/PatchRequestBaseField'), require('../egoiSdk/PatchRequestField'), require('../egoiSdk/RequestTimeout'), require('../egoiSdk/ServiceUnavailable'), require('../egoiSdk/TooManyRequests'), require('../egoiSdk/Unauthorized'), require('../egoiSdk/UnprocessableEntity'));
-  } else {
-    // Browser globals (root is window)
-    if (!root.egoiSdk) {
-      root.egoiSdk = {};
+
+import ApiClient from "../ApiClient";
+import BadRequest from '../egoisdk/BadRequest';
+import DeleteFieldsConflict from '../egoisdk/DeleteFieldsConflict';
+import Field from '../egoisdk/Field';
+import FieldCollection from '../egoisdk/FieldCollection';
+import FieldOption from '../egoisdk/FieldOption';
+import FieldOptionPost from '../egoisdk/FieldOptionPost';
+import FieldOptionsCollection from '../egoisdk/FieldOptionsCollection';
+import Forbidden from '../egoisdk/Forbidden';
+import InternalServerError from '../egoisdk/InternalServerError';
+import NotFound from '../egoisdk/NotFound';
+import PatchRequestBaseField from '../egoisdk/PatchRequestBaseField';
+import PatchRequestField from '../egoisdk/PatchRequestField';
+import RequestTimeout from '../egoisdk/RequestTimeout';
+import ServiceUnavailable from '../egoisdk/ServiceUnavailable';
+import TooManyRequests from '../egoisdk/TooManyRequests';
+import Unauthorized from '../egoisdk/Unauthorized';
+import UnprocessableEntity from '../egoisdk/UnprocessableEntity';
+
+/**
+* Fields service.
+* @module egoiApi/FieldsApi
+* @version 1.1.2RC1
+*/
+export default class FieldsApi {
+
+    /**
+    * Constructs a new FieldsApi. 
+    * @alias module:egoiApi/FieldsApi
+    * @class
+    * @param {module:ApiClient} [apiClient] Optional API client implementation to use,
+    * default to {@link module:ApiClient#instance} if unspecified.
+    */
+    constructor(apiClient) {
+        this.apiClient = apiClient || ApiClient.instance;
     }
-    root.egoiSdk.FieldsApi = factory(root.egoiSdk.ApiClient, root.egoiSdk.BadRequest, root.egoiSdk.DeleteFieldsConflict, root.egoiSdk.Field, root.egoiSdk.FieldCollection, root.egoiSdk.FieldOption, root.egoiSdk.FieldOptionsCollection, root.egoiSdk.Forbidden, root.egoiSdk.InternalServerError, root.egoiSdk.NotFound, root.egoiSdk.PatchRequestBaseField, root.egoiSdk.PatchRequestField, root.egoiSdk.RequestTimeout, root.egoiSdk.ServiceUnavailable, root.egoiSdk.TooManyRequests, root.egoiSdk.Unauthorized, root.egoiSdk.UnprocessableEntity);
-  }
-}(this, function(ApiClient, BadRequest, DeleteFieldsConflict, Field, FieldCollection, FieldOption, FieldOptionsCollection, Forbidden, InternalServerError, NotFound, PatchRequestBaseField, PatchRequestField, RequestTimeout, ServiceUnavailable, TooManyRequests, Unauthorized, UnprocessableEntity) {
-  'use strict';
-
-  /**
-   * Fields service.
-   * @module egoiApi/FieldsApi
-   * @version 1.1.1RC1
-   */
-
-  /**
-   * Constructs a new FieldsApi. 
-   * @alias module:egoiApi/FieldsApi
-   * @class
-   * @param {module:ApiClient} [apiClient] Optional API client implementation to use,
-   * default to {@link module:ApiClient#instance} if unspecified.
-   */
-  var exports = function(apiClient) {
-    this.apiClient = apiClient || ApiClient.instance;
 
 
     /**
      * Callback function to receive the result of the createExtraField operation.
      * @callback module:egoiApi/FieldsApi~createExtraFieldCallback
      * @param {String} error Error message, if any.
-     * @param {module:egoiSdk/Field} data The data returned by the service call.
+     * @param {module:egoisdk/Field} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -59,45 +62,39 @@
      * Create extra field
      * Creates an extra field
      * @param {Number} listId ID of the List
-     * @param {module:egoiSdk/Field} field Parameters for the extra field
+     * @param {module:egoisdk/Field} field Parameters for the extra field
      * @param {module:egoiApi/FieldsApi~createExtraFieldCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:egoiSdk/Field}
+     * data is of type: {@link module:egoisdk/Field}
      */
-    this.createExtraField = function(listId, field, callback) {
-      var postBody = field;
-
+    createExtraField(listId, field, callback) {
+      let postBody = field;
       // verify the required parameter 'listId' is set
       if (listId === undefined || listId === null) {
         throw new Error("Missing the required parameter 'listId' when calling createExtraField");
       }
-
       // verify the required parameter 'field' is set
       if (field === undefined || field === null) {
         throw new Error("Missing the required parameter 'field' when calling createExtraField");
       }
 
-
-      var pathParams = {
+      let pathParams = {
         'list_id': listId
       };
-      var queryParams = {
+      let queryParams = {
       };
-      var collectionQueryParams = {
+      let headerParams = {
       };
-      var headerParams = {
-      };
-      var formParams = {
+      let formParams = {
       };
 
-      var authNames = ['Apikey'];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = Field;
-
+      let authNames = ['Apikey'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = Field;
       return this.apiClient.callApi(
         '/lists/{list_id}/fields/extra', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
       );
     }
 
@@ -105,7 +102,7 @@
      * Callback function to receive the result of the createFieldOption operation.
      * @callback module:egoiApi/FieldsApi~createFieldOptionCallback
      * @param {String} error Error message, if any.
-     * @param {module:egoiSdk/FieldOption} data The data returned by the service call.
+     * @param {module:egoisdk/FieldOption} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -114,51 +111,44 @@
      * Creates a field option
      * @param {Number} listId ID of the List
      * @param {Number} fieldId ID of the Field
-     * @param {module:egoiSdk/FieldOption} fieldOption Parameters for the field option
+     * @param {module:egoisdk/FieldOptionPost} fieldOptionPost Parameters for the field option
      * @param {module:egoiApi/FieldsApi~createFieldOptionCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:egoiSdk/FieldOption}
+     * data is of type: {@link module:egoisdk/FieldOption}
      */
-    this.createFieldOption = function(listId, fieldId, fieldOption, callback) {
-      var postBody = fieldOption;
-
+    createFieldOption(listId, fieldId, fieldOptionPost, callback) {
+      let postBody = fieldOptionPost;
       // verify the required parameter 'listId' is set
       if (listId === undefined || listId === null) {
         throw new Error("Missing the required parameter 'listId' when calling createFieldOption");
       }
-
       // verify the required parameter 'fieldId' is set
       if (fieldId === undefined || fieldId === null) {
         throw new Error("Missing the required parameter 'fieldId' when calling createFieldOption");
       }
-
-      // verify the required parameter 'fieldOption' is set
-      if (fieldOption === undefined || fieldOption === null) {
-        throw new Error("Missing the required parameter 'fieldOption' when calling createFieldOption");
+      // verify the required parameter 'fieldOptionPost' is set
+      if (fieldOptionPost === undefined || fieldOptionPost === null) {
+        throw new Error("Missing the required parameter 'fieldOptionPost' when calling createFieldOption");
       }
 
-
-      var pathParams = {
+      let pathParams = {
         'list_id': listId,
         'field_id': fieldId
       };
-      var queryParams = {
+      let queryParams = {
       };
-      var collectionQueryParams = {
+      let headerParams = {
       };
-      var headerParams = {
-      };
-      var formParams = {
+      let formParams = {
       };
 
-      var authNames = ['Apikey'];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = FieldOption;
-
+      let authNames = ['Apikey'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = FieldOption;
       return this.apiClient.callApi(
         '/lists/{list_id}/fields/extra/{field_id}/options', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
       );
     }
 
@@ -177,42 +167,36 @@
      * @param {Number} fieldId ID of the Field
      * @param {module:egoiApi/FieldsApi~deleteExtraFieldCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.deleteExtraField = function(listId, fieldId, callback) {
-      var postBody = null;
-
+    deleteExtraField(listId, fieldId, callback) {
+      let postBody = null;
       // verify the required parameter 'listId' is set
       if (listId === undefined || listId === null) {
         throw new Error("Missing the required parameter 'listId' when calling deleteExtraField");
       }
-
       // verify the required parameter 'fieldId' is set
       if (fieldId === undefined || fieldId === null) {
         throw new Error("Missing the required parameter 'fieldId' when calling deleteExtraField");
       }
 
-
-      var pathParams = {
+      let pathParams = {
         'list_id': listId,
         'field_id': fieldId
       };
-      var queryParams = {
+      let queryParams = {
       };
-      var collectionQueryParams = {
+      let headerParams = {
       };
-      var headerParams = {
-      };
-      var formParams = {
+      let formParams = {
       };
 
-      var authNames = ['Apikey'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = null;
-
+      let authNames = ['Apikey'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
       return this.apiClient.callApi(
         '/lists/{list_id}/fields/extra/{field_id}', 'DELETE',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
       );
     }
 
@@ -232,48 +216,41 @@
      * @param {Number} optionId ID of the field option
      * @param {module:egoiApi/FieldsApi~deleteFieldOptionCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.deleteFieldOption = function(listId, fieldId, optionId, callback) {
-      var postBody = null;
-
+    deleteFieldOption(listId, fieldId, optionId, callback) {
+      let postBody = null;
       // verify the required parameter 'listId' is set
       if (listId === undefined || listId === null) {
         throw new Error("Missing the required parameter 'listId' when calling deleteFieldOption");
       }
-
       // verify the required parameter 'fieldId' is set
       if (fieldId === undefined || fieldId === null) {
         throw new Error("Missing the required parameter 'fieldId' when calling deleteFieldOption");
       }
-
       // verify the required parameter 'optionId' is set
       if (optionId === undefined || optionId === null) {
         throw new Error("Missing the required parameter 'optionId' when calling deleteFieldOption");
       }
 
-
-      var pathParams = {
+      let pathParams = {
         'list_id': listId,
         'field_id': fieldId,
         'option_id': optionId
       };
-      var queryParams = {
+      let queryParams = {
       };
-      var collectionQueryParams = {
+      let headerParams = {
       };
-      var headerParams = {
-      };
-      var formParams = {
+      let formParams = {
       };
 
-      var authNames = ['Apikey'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = null;
-
+      let authNames = ['Apikey'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
       return this.apiClient.callApi(
         '/lists/{list_id}/fields/extra/{field_id}/options/{option_id}', 'DELETE',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
       );
     }
 
@@ -281,7 +258,7 @@
      * Callback function to receive the result of the getAllFieldOptions operation.
      * @callback module:egoiApi/FieldsApi~getAllFieldOptionsCallback
      * @param {String} error Error message, if any.
-     * @param {module:egoiSdk/FieldOptionsCollection} data The data returned by the service call.
+     * @param {module:egoisdk/FieldOptionsCollection} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -291,44 +268,38 @@
      * @param {Number} listId ID of the List
      * @param {Number} fieldId ID of the Field
      * @param {module:egoiApi/FieldsApi~getAllFieldOptionsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:egoiSdk/FieldOptionsCollection}
+     * data is of type: {@link module:egoisdk/FieldOptionsCollection}
      */
-    this.getAllFieldOptions = function(listId, fieldId, callback) {
-      var postBody = null;
-
+    getAllFieldOptions(listId, fieldId, callback) {
+      let postBody = null;
       // verify the required parameter 'listId' is set
       if (listId === undefined || listId === null) {
         throw new Error("Missing the required parameter 'listId' when calling getAllFieldOptions");
       }
-
       // verify the required parameter 'fieldId' is set
       if (fieldId === undefined || fieldId === null) {
         throw new Error("Missing the required parameter 'fieldId' when calling getAllFieldOptions");
       }
 
-
-      var pathParams = {
+      let pathParams = {
         'list_id': listId,
         'field_id': fieldId
       };
-      var queryParams = {
+      let queryParams = {
       };
-      var collectionQueryParams = {
+      let headerParams = {
       };
-      var headerParams = {
-      };
-      var formParams = {
+      let formParams = {
       };
 
-      var authNames = ['Apikey'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = FieldOptionsCollection;
-
+      let authNames = ['Apikey'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = FieldOptionsCollection;
       return this.apiClient.callApi(
         '/lists/{list_id}/fields/extra/{field_id}/options', 'GET',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
       );
     }
 
@@ -336,7 +307,7 @@
      * Callback function to receive the result of the getAllFields operation.
      * @callback module:egoiApi/FieldsApi~getAllFieldsCallback
      * @param {String} error Error message, if any.
-     * @param {module:egoiSdk/FieldCollection} data The data returned by the service call.
+     * @param {module:egoisdk/FieldCollection} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -348,41 +319,36 @@
      * @param {Number} opts.offset Element offset (starting at zero for the first element)
      * @param {Number} opts.limit Number of items to return (default to 10)
      * @param {module:egoiApi/FieldsApi~getAllFieldsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:egoiSdk/FieldCollection}
+     * data is of type: {@link module:egoisdk/FieldCollection}
      */
-    this.getAllFields = function(listId, opts, callback) {
+    getAllFields(listId, opts, callback) {
       opts = opts || {};
-      var postBody = null;
-
+      let postBody = null;
       // verify the required parameter 'listId' is set
       if (listId === undefined || listId === null) {
         throw new Error("Missing the required parameter 'listId' when calling getAllFields");
       }
 
-
-      var pathParams = {
+      let pathParams = {
         'list_id': listId
       };
-      var queryParams = {
+      let queryParams = {
         'offset': opts['offset'],
-        'limit': opts['limit'],
+        'limit': opts['limit']
       };
-      var collectionQueryParams = {
+      let headerParams = {
       };
-      var headerParams = {
-      };
-      var formParams = {
+      let formParams = {
       };
 
-      var authNames = ['Apikey'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = FieldCollection;
-
+      let authNames = ['Apikey'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = FieldCollection;
       return this.apiClient.callApi(
         '/lists/{list_id}/fields', 'GET',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
       );
     }
 
@@ -390,7 +356,7 @@
      * Callback function to receive the result of the patchBaseField operation.
      * @callback module:egoiApi/FieldsApi~patchBaseFieldCallback
      * @param {String} error Error message, if any.
-     * @param {module:egoiSdk/Field} data The data returned by the service call.
+     * @param {module:egoisdk/Field} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -399,51 +365,44 @@
      * Updates a base field
      * @param {Number} listId ID of the List
      * @param {String} fieldId ID of the base field
-     * @param {module:egoiSdk/PatchRequestBaseField} patchRequestBaseField Parameters for the extra field
+     * @param {module:egoisdk/PatchRequestBaseField} patchRequestBaseField Parameters for the extra field
      * @param {module:egoiApi/FieldsApi~patchBaseFieldCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:egoiSdk/Field}
+     * data is of type: {@link module:egoisdk/Field}
      */
-    this.patchBaseField = function(listId, fieldId, patchRequestBaseField, callback) {
-      var postBody = patchRequestBaseField;
-
+    patchBaseField(listId, fieldId, patchRequestBaseField, callback) {
+      let postBody = patchRequestBaseField;
       // verify the required parameter 'listId' is set
       if (listId === undefined || listId === null) {
         throw new Error("Missing the required parameter 'listId' when calling patchBaseField");
       }
-
       // verify the required parameter 'fieldId' is set
       if (fieldId === undefined || fieldId === null) {
         throw new Error("Missing the required parameter 'fieldId' when calling patchBaseField");
       }
-
       // verify the required parameter 'patchRequestBaseField' is set
       if (patchRequestBaseField === undefined || patchRequestBaseField === null) {
         throw new Error("Missing the required parameter 'patchRequestBaseField' when calling patchBaseField");
       }
 
-
-      var pathParams = {
+      let pathParams = {
         'list_id': listId,
         'field_id': fieldId
       };
-      var queryParams = {
+      let queryParams = {
       };
-      var collectionQueryParams = {
+      let headerParams = {
       };
-      var headerParams = {
-      };
-      var formParams = {
+      let formParams = {
       };
 
-      var authNames = ['Apikey'];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = Field;
-
+      let authNames = ['Apikey'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = Field;
       return this.apiClient.callApi(
         '/lists/{list_id}/fields/base/{field_id}', 'PATCH',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
       );
     }
 
@@ -451,7 +410,7 @@
      * Callback function to receive the result of the patchExtraField operation.
      * @callback module:egoiApi/FieldsApi~patchExtraFieldCallback
      * @param {String} error Error message, if any.
-     * @param {module:egoiSdk/Field} data The data returned by the service call.
+     * @param {module:egoisdk/Field} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -460,51 +419,44 @@
      * Updates an extra field
      * @param {Number} listId ID of the List
      * @param {Number} fieldId ID of the Field
-     * @param {module:egoiSdk/PatchRequestField} patchRequestField Parameters for the extra field
+     * @param {module:egoisdk/PatchRequestField} patchRequestField Parameters for the extra field
      * @param {module:egoiApi/FieldsApi~patchExtraFieldCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:egoiSdk/Field}
+     * data is of type: {@link module:egoisdk/Field}
      */
-    this.patchExtraField = function(listId, fieldId, patchRequestField, callback) {
-      var postBody = patchRequestField;
-
+    patchExtraField(listId, fieldId, patchRequestField, callback) {
+      let postBody = patchRequestField;
       // verify the required parameter 'listId' is set
       if (listId === undefined || listId === null) {
         throw new Error("Missing the required parameter 'listId' when calling patchExtraField");
       }
-
       // verify the required parameter 'fieldId' is set
       if (fieldId === undefined || fieldId === null) {
         throw new Error("Missing the required parameter 'fieldId' when calling patchExtraField");
       }
-
       // verify the required parameter 'patchRequestField' is set
       if (patchRequestField === undefined || patchRequestField === null) {
         throw new Error("Missing the required parameter 'patchRequestField' when calling patchExtraField");
       }
 
-
-      var pathParams = {
+      let pathParams = {
         'list_id': listId,
         'field_id': fieldId
       };
-      var queryParams = {
+      let queryParams = {
       };
-      var collectionQueryParams = {
+      let headerParams = {
       };
-      var headerParams = {
-      };
-      var formParams = {
+      let formParams = {
       };
 
-      var authNames = ['Apikey'];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = Field;
-
+      let authNames = ['Apikey'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = Field;
       return this.apiClient.callApi(
         '/lists/{list_id}/fields/extra/{field_id}', 'PATCH',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
       );
     }
 
@@ -512,7 +464,7 @@
      * Callback function to receive the result of the updateFieldOption operation.
      * @callback module:egoiApi/FieldsApi~updateFieldOptionCallback
      * @param {String} error Error message, if any.
-     * @param {module:egoiSdk/FieldOption} data The data returned by the service call.
+     * @param {module:egoisdk/FieldOption} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -522,60 +474,51 @@
      * @param {Number} listId ID of the List
      * @param {Number} fieldId ID of the Field
      * @param {Number} optionId ID of the field option
-     * @param {module:egoiSdk/FieldOption} fieldOption Parameters for the field option
+     * @param {module:egoisdk/FieldOptionPost} fieldOptionPost Parameters for the field option
      * @param {module:egoiApi/FieldsApi~updateFieldOptionCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:egoiSdk/FieldOption}
+     * data is of type: {@link module:egoisdk/FieldOption}
      */
-    this.updateFieldOption = function(listId, fieldId, optionId, fieldOption, callback) {
-      var postBody = fieldOption;
-
+    updateFieldOption(listId, fieldId, optionId, fieldOptionPost, callback) {
+      let postBody = fieldOptionPost;
       // verify the required parameter 'listId' is set
       if (listId === undefined || listId === null) {
         throw new Error("Missing the required parameter 'listId' when calling updateFieldOption");
       }
-
       // verify the required parameter 'fieldId' is set
       if (fieldId === undefined || fieldId === null) {
         throw new Error("Missing the required parameter 'fieldId' when calling updateFieldOption");
       }
-
       // verify the required parameter 'optionId' is set
       if (optionId === undefined || optionId === null) {
         throw new Error("Missing the required parameter 'optionId' when calling updateFieldOption");
       }
-
-      // verify the required parameter 'fieldOption' is set
-      if (fieldOption === undefined || fieldOption === null) {
-        throw new Error("Missing the required parameter 'fieldOption' when calling updateFieldOption");
+      // verify the required parameter 'fieldOptionPost' is set
+      if (fieldOptionPost === undefined || fieldOptionPost === null) {
+        throw new Error("Missing the required parameter 'fieldOptionPost' when calling updateFieldOption");
       }
 
-
-      var pathParams = {
+      let pathParams = {
         'list_id': listId,
         'field_id': fieldId,
         'option_id': optionId
       };
-      var queryParams = {
+      let queryParams = {
       };
-      var collectionQueryParams = {
+      let headerParams = {
       };
-      var headerParams = {
-      };
-      var formParams = {
+      let formParams = {
       };
 
-      var authNames = ['Apikey'];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = FieldOption;
-
+      let authNames = ['Apikey'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = FieldOption;
       return this.apiClient.callApi(
         '/lists/{list_id}/fields/extra/{field_id}/options/{option_id}', 'PATCH',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
       );
     }
-  };
 
-  return exports;
-}));
+
+}

@@ -1,6 +1,7 @@
-# egoiSdk.TagCollection1
+# egoisdk.TagCollection1
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **totalItems** | **Number** | Returned sites | [optional] 

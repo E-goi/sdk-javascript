@@ -1,4 +1,4 @@
-# egoiSdk.AutomationsApi
+# egoisdk.AutomationsApi
 
 All URIs are relative to *https://api.egoiapp.com*
 
@@ -8,8 +8,9 @@ Method | HTTP request | Description
 [**getAllAutomations**](AutomationsApi.md#getAllAutomations) | **GET** /automations | Get all automations
 
 
-<a name="deleteAutomation"></a>
-# **deleteAutomation**
+
+## deleteAutomation
+
 > deleteAutomation(automationId)
 
 Remove automation
@@ -17,28 +18,29 @@ Remove automation
 Remove automation information given its ID
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.AutomationsApi();
-var automationId = 56; // Number | ID of the Automation
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.AutomationsApi();
+let automationId = 56; // Number | ID of the Automation
+apiInstance.deleteAutomation(automationId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully.');
   }
-};
-apiInstance.deleteAutomation(automationId, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -54,11 +56,12 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getAllAutomations"></a>
-# **getAllAutomations**
+
+## getAllAutomations
+
 > AutomationCollection getAllAutomations(opts)
 
 Get all automations
@@ -66,17 +69,18 @@ Get all automations
 Returns all automations
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.AutomationsApi();
-var opts = {
+let apiInstance = new egoisdk.AutomationsApi();
+let opts = {
   'automationId': 56, // Number | Reference attribute to automation id
   'title': "title_example", // String | Reference attribute to title
   'createdBy': 56, // Number | Reference attribute to created by
@@ -87,17 +91,17 @@ var opts = {
   'order': "'desc'", // String | Type of order
   'orderBy': "'automation_id'" // String | Reference attribute to order automations
 };
-var callback = function(error, data, response) {
+apiInstance.getAllAutomations(opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getAllAutomations(opts, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -121,6 +125,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 

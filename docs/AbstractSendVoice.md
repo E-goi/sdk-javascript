@@ -1,12 +1,20 @@
-# egoiSdk.AbstractSendVoice
+# egoisdk.AbstractSendVoice
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**destinationField** | **String** | Destination field of this campaign | [optional] 
+**listId** | **Number** |  | 
+**destinationField** | **String** | Destination field of this campaign | 
+**uniqueContactsOnly** | **Boolean** | True to send the campaign only to unique contacts | [optional] [default to false]
+**segments** | [**OSegmentsActionSend**](OSegmentsActionSend.md) |  | 
+**notify** | **[Number]** | Array of IDs of the users to notify | [optional] 
+**limitContacts** | [**OLimitContactsActionSend**](OLimitContactsActionSend.md) |  | [optional] 
+**limitHour** | [**LimitHourActionSendLimitHour**](LimitHourActionSendLimitHour.md) |  | [optional] 
+**limitSpeed** | **Number** | Speed limit to send the campaign | [optional] 
 
 
-<a name="DestinationFieldEnum"></a>
+
 ## Enum: DestinationFieldEnum
 
 

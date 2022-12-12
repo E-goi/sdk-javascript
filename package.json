@@ -1,21 +1,46 @@
 {
-  "name": "egoiSdk",
-  "version": "1.1.1RC1",
-  "description": "__IntroductionThis_is_our_new_version_of_API__We_invite_you_to_start_using_it_and_give_us_your_feedback_Getting_StartedE_goi_can_be_integrated_with_many_environments_and_programming_languages_via_our_REST_API_Weve_created_a_developer_focused_portal_to_give_your_organization_a_clear_and_quick_overview_of_how_to_integrate_with_E_goi_The_developer_portal_focuses_on_scenarios_for_integration_and_flow_of_events__We_recommend_familiarizing_yourself_with_all_of_the_content_in_the_developer_portal_before_start_using_our_rest_API__The_E_goi__APIv3_is_served_over_HTTPS__To_ensure_data_privacy_unencrypted_HTTP_is_not_supported_Request_data_is_passed_to_the_API_by_POSTing_JSON_objects_to_the_API_endpoints_with_the_appropriate_parameters_BaseURL__api_egoiapp_com_RESTful_ServicesThis_API_supports_5_HTTP_methods_bGETbThe_HTTP_GET_method_is_used_to_read__or_retrieve_a_representation_of_a_resource__bPOSTbThe_POST_verb_is_most_often_utilized_to_create_new_resources__bPATCHbPATCH_is_used_for_modify_capabilities__The_PATCH_request_only_needs_to_contain_the_changes_to_the_resource_not_the_complete_resource_bPUTbPUT_is_most_often_utilized_for_update_capabilities_PUT_ing_to_a_known_resource_URI_with_the_request_body_containing_the_newly_updated_representation_of_the_original_resource__bDELETEbDELETE_is_pretty_easy_to_understand__It_is_used_to_delete_a_resource_identified_by_a_URI__Authentication_We_use_a_custom_authentication_method_you_will_need_a_apikey_that_you_can_find_in_your_account_settings__Below_you_will_see_a_curl_example_to_get_your_account_informationbinbashcurl__X_GET_httpsapi_egoiapp_commy_account__H_accept_applicationjson__H_Apikey_YOUR_APY_KEYHere_you_can_see_a_curl_Post_example_with_authenticationbinbashcurl__X_POST_httpapi_egoiapp_comtags__H_accept_applicationjson__H_Apikey_YOUR_APY_KEY__H_Content_Type_applicationjson__d_nameYour_custom_tagcolorFFFFFF_SDKGet_started_quickly_with_E_goi_with_our_integration_tools__Our_SDK_is_a_modern_open_source_library_that_makes_it_easy_to_integrate_your_application_with_E_goi_services___a_hrefhttpsgithub_comE_goisdk_javaJavaa__a_hrefhttpsgithub_comE_goisdk_phpPHPa__a_hrefhttpsgithub_comE_goisdk_pythonPythona__a_hrefhttpsgithub_comE_goisdk_rubyRubya__a_hrefhttpsgithub_comE_goisdk_javascriptJavascripta__a_hrefhttpsgithub_comE_goisdk_csharpCa_Stream_LimitsStream_limits_are_security_mesures_we_have_to_make_sure_our_API_have_a_fair_use_policy_for_this_reason_any_request_that_creates_or_modifies_data__POST_PATCH_and_PUT_is_limited_to_a_maximum_of_20MB_of_content_length__If_you_arrive_to_this_limit_in_one_of_your_request_youll_receive_a_HTTP_code_413__Request_Entity_Too_Large_and_the_request_will_be_ignored__To_avoid_this_error_in_importations_requests_its_advised_the_requests_division_in_batches_that_have_each_one_less_than_20MB__TimeoutsTimeouts_set_a_maximum_waiting_time_on_a_requests_response__Our_API_sets_a_default_timeout_for_each_request_and_when_breached_youll_receive_an_HTTP_408__Request_Timeout_error_code__You_should_take_into_consideration_that_response_times_can_vary_widely_based_on_the_complexity_of_the_request_amount_of_data_being_analyzed_and_the_load_on_the_system_and_workspace_at_the_time_of_the_query__When_dealing_with_such_errors_you_should_first_attempt_to_reduce_the_complexity_and_amount_of_data_under_analysis_and_only_then_if_problems_are_still_occurring_ask_for_support_For_all_these_reasons_the_default_timeout_for_each_request_is_10_Seconds_and_any_request_that_creates_or_modifies_data__POST_PATCH_and_PUT_will_have_a_timeout_of_60_Seconds__Specific_timeouts_may_exist_for_specific_requests_these_can_be_found_in_the_requests_documentation_security_definitions",
+  "name": "egoisdk",
+  "version": "1.1.2RC1",
+  "description": " # Introduction This is our new version of API. We invite you to start using it and give us your feedback # Getting Started  E-goi can be integrated with many environments and programming languages via our REST API. We've created a developer focused portal to give your organization a clear and quick overview of how to integrate with E-goi. The developer portal focuses on scenarios for integration and flow of events. We recommend familiarizing yourself with all of the content in the developer portal, before start using our rest API.  The E-goi  APIv3 is served over HTTPS. To ensure data privacy, unencrypted HTTP is not supported.  Request data is passed to the API by POSTing JSON objects to the API endpoints with the appropriate parameters.      BaseURL = api.egoiapp.com  # RESTful Services This API supports 5 HTTP methods:  * <b>GET</b>: The HTTP GET method is used to **read** (or retrieve) a representation of a resource. * <b>POST</b>: The POST verb is most-often utilized to **create** new resources. * <b>PATCH</b>: PATCH is used for **modify** capabilities. The PATCH request only needs to contain the changes to the resource, not the complete resource * <b>PUT</b>: PUT is most-often utilized for **update** capabilities, PUT-ing to a known resource URI with the request body containing the newly-updated representation of the original resource. * <b>DELETE</b>: DELETE is pretty easy to understand. It is used to **delete** a resource identified by a URI.  # Authentication  We use a custom authentication method, you will need a apikey that you can find in your account settings. Below you will see a curl example to get your account information:     #!/bin/bash     curl -X GET 'https://api.egoiapp.com/my-account' \\     -H 'accept: application/json' \\     -H 'Apikey: <YOUR_APY_KEY>'  Here you can see a curl Post example with authentication:     #!/bin/bash     curl -X POST 'http://api.egoiapp.com/tags' \\     -H 'accept: application/json' \\     -H 'Apikey: <YOUR_APY_KEY>' \\     -H 'Content-Type: application/json' \\     -d '{`name`:`Your custom tag`,`color`:`#FFFFFF`}'  # SDK Get started quickly with E-goi with our integration tools. Our SDK is a modern open source library that makes it easy to integrate your application with E-goi services.  * <a href='https://github.com/E-goi/sdk-java'>Java</a>  * <a href='https://github.com/E-goi/sdk-php'>PHP</a>  * <a href='https://github.com/E-goi/sdk-python'>Python</a>  * <a href='https://github.com/E-goi/sdk-ruby'>Ruby</a>  * <a href='https://github.com/E-goi/sdk-javascript'>Javascript</a>  * <a href='https://github.com/E-goi/sdk-csharp'>C#</a>  # Stream Limits Stream limits are security mesures we have to make sure our API have a fair use policy, for this reason, any request that creates or modifies data (**POST**, **PATCH** and **PUT**) is limited to a maximum of **20MB** of content length. If you arrive to this limit in one of your request, you'll receive a HTTP code **413 (Request Entity Too Large)** and the request will be ignored. To avoid this error in importation's requests, it's advised the request's division in batches that have each one less than 20MB.  # Timeouts Timeouts set a maximum waiting time on a request's response. Our API, sets a default timeout for each request and when breached, you'll receive an HTTP **408 (Request Timeout)** error code. You should take into consideration that response times can vary widely based on the complexity of the request, amount of data being analyzed, and the load on the system and workspace at the time of the query. When dealing with such errors, you should first attempt to reduce the complexity and amount of data under analysis, and only then, if problems are still occurring ask for support.  For all these reasons, the default timeout for each request is **10 Seconds** and any request that creates or modifies data (**POST**, **PATCH** and **PUT**) will have a timeout of **60 Seconds**. Specific timeouts may exist for specific requests, these can be found in the request's documentation.  # Callbacks A callback is an asynchronous API request that originates from the API server and is sent to the client in response to a previous request sent by that client.  The API will make a **POST** request to the address defined in the URL with the information regarding the event of interest and share data related to that event.  ***Note:*** Only http or https protocols are supported in the Url parameter.  <security-definitions/>",
   "license": "MIT",
-  "main": "src/index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha --recursive"
+    "build": "babel src -d dist",
+    "prepare": "npm run build",
+    "test": "mocha --require @babel/register --recursive"
   },
   "browser": {
     "fs": false
   },
   "dependencies": {
-    "superagent": "3.7.0"
+    "@babel/cli": "^7.0.0",
+    "superagent": "^5.3.0"
   },
   "devDependencies": {
-    "expect.js": "~0.3.1",
-    "mocha": "^5.2.0",
-    "sinon": "1.17.3"
-  }
+    "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-class-properties": "^7.0.0",
+    "@babel/plugin-proposal-decorators": "^7.0.0",
+    "@babel/plugin-proposal-do-expressions": "^7.0.0",
+    "@babel/plugin-proposal-export-default-from": "^7.0.0",
+    "@babel/plugin-proposal-export-namespace-from": "^7.0.0",
+    "@babel/plugin-proposal-function-bind": "^7.0.0",
+    "@babel/plugin-proposal-function-sent": "^7.0.0",
+    "@babel/plugin-proposal-json-strings": "^7.0.0",
+    "@babel/plugin-proposal-logical-assignment-operators": "^7.0.0",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.0.0",
+    "@babel/plugin-proposal-numeric-separator": "^7.0.0",
+    "@babel/plugin-proposal-optional-chaining": "^7.0.0",
+    "@babel/plugin-proposal-pipeline-operator": "^7.0.0",
+    "@babel/plugin-proposal-throw-expressions": "^7.0.0",
+    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
+    "@babel/plugin-syntax-import-meta": "^7.0.0",
+    "@babel/preset-env": "^7.0.0",
+    "@babel/register": "^7.0.0",
+    "expect.js": "^0.3.1",
+    "mocha": "^8.0.1",
+    "sinon": "^7.2.0"
+  },
+  "files": [
+    "dist"
+  ]
 }

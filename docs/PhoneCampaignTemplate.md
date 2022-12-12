@@ -1,14 +1,20 @@
-# egoiSdk.PhoneCampaignTemplate
+# egoisdk.PhoneCampaignTemplate
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **message** | **String** | Message | [optional] 
 **sender** | **String** | Sender number | [optional] 
 **messageType** | **String** | Message type | [optional] 
+**templateId** | **Number** |  | [optional] [readonly] 
+**templateHash** | **String** |  | [optional] [readonly] 
+**internalName** | **String** | Campaign internal name | [optional] 
+**created** | **Date** |  | [optional] [readonly] 
+**updated** | **Date** |  | [optional] [readonly] 
 
 
-<a name="MessageTypeEnum"></a>
+
 ## Enum: MessageTypeEnum
 
 

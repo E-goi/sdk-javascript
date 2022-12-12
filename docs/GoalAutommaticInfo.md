@@ -1,17 +1,18 @@
-# egoiSdk.GoalAutommaticInfo
+# egoisdk.GoalAutommaticInfo
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **String** | Goal type | [optional] 
 **rule** | **String** | Goal rule | [optional] 
 **condition** | **String** | Goal condition | [optional] 
 **pattern** | **String** | Goal pattern | [optional] 
-**caseSensitive** | [**Bool**](Bool.md) | Goal pattern case sensitive | [optional] 
-**multipleConversion** | [**Bool**](Bool.md) | Goal is multiple conversion | [optional] 
+**caseSensitive** | **Boolean** | Goal pattern case sensitive | [optional] 
+**multipleConversion** | **Boolean** | Goal is multiple conversion | [optional] 
 
 
-<a name="TypeEnum"></a>
+
 ## Enum: TypeEnum
 
 
@@ -20,7 +21,7 @@ Name | Type | Description | Notes
 
 
 
-<a name="RuleEnum"></a>
+
 ## Enum: RuleEnum
 
 
@@ -35,7 +36,7 @@ Name | Type | Description | Notes
 
 
 
-<a name="ConditionEnum"></a>
+
 ## Enum: ConditionEnum
 
 

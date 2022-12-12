@@ -1,6 +1,7 @@
-# egoiSdk.SuppressionListItems
+# egoisdk.SuppressionListItems
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **totalItems** | **Number** | Total of suppressed items | [optional] 

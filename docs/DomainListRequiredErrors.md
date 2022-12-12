@@ -1,12 +1,13 @@
-# egoiSdk.DomainListRequiredErrors
+# egoisdk.DomainListRequiredErrors
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **domainListRequired** | **String** | Occurs when a domain requires a list | [optional] 
 
 
-<a name="DomainListRequiredEnum"></a>
+
 ## Enum: DomainListRequiredEnum
 
 

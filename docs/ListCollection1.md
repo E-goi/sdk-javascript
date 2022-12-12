@@ -1,6 +1,7 @@
-# egoiSdk.ListCollection1
+# egoisdk.ListCollection1
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **totalItems** | **Number** | Returned webhooks | [optional] 

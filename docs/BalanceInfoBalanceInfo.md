@@ -1,6 +1,7 @@
-# egoiSdk.BalanceInfoBalanceInfo
+# egoisdk.BalanceInfoBalanceInfo
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **balance** | **String** | Account&#39;s credits | [optional] 

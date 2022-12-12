@@ -1,6 +1,7 @@
-# egoiSdk.UniqueFieldInUseErrors
+# egoisdk.UniqueFieldInUseErrors
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **uniqueFieldInUse** | **String** | Occurs when a provided field is already in use | [optional] 
@@ -8,7 +9,7 @@ Name | Type | Description | Notes
 **contacts** | **[String]** |  | [optional] 
 
 
-<a name="UniqueFieldInUseEnum"></a>
+
 ## Enum: UniqueFieldInUseEnum
 
 

@@ -1,6 +1,7 @@
-# egoiSdk.RemoveResponseErrors
+# egoisdk.RemoveResponseErrors
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **invalidUnsubscriptionReason** | **[String]** |  | [optional] 

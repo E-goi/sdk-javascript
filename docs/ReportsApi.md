@@ -1,16 +1,85 @@
-# egoiSdk.ReportsApi
+# egoisdk.ReportsApi
 
 All URIs are relative to *https://api.egoiapp.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**getEmailReport**](ReportsApi.md#getEmailReport) | **GET** /reports/email/{campaign_hash} | Get email report
 [**getSMSReport**](ReportsApi.md#getSMSReport) | **GET** /reports/sms/{campaign_hash} | Get sms report
 [**getVoiceReport**](ReportsApi.md#getVoiceReport) | **GET** /reports/voice/{campaign_hash} | Get voice report
 [**getWebPushReport**](ReportsApi.md#getWebPushReport) | **GET** /reports/web-push/{campaign_hash} | Get webpush report
 
 
-<a name="getSMSReport"></a>
-# **getSMSReport**
+
+## getEmailReport
+
+> EmailReport getEmailReport(campaignHash, opts)
+
+Get email report
+
+Returns email report given the campaign hash
+
+### Example
+
+```javascript
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
+// Configure API key authorization: Apikey
+let Apikey = defaultClient.authentications['Apikey'];
+Apikey.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//Apikey.apiKeyPrefix = 'Token';
+
+let apiInstance = new egoisdk.ReportsApi();
+let campaignHash = "campaignHash_example"; // String | ID of the Campaign
+let opts = {
+  'date': true, // Boolean | True to show date stats
+  'weekday': true, // Boolean | True to show weekday stats
+  'hour': true, // Boolean | True to show hour stats
+  'location': true, // Boolean | True to show location stats
+  'domain': true, // Boolean | True to show Domain stats
+  'url': true, // Boolean | True to show Url stats
+  'reader': true // Boolean | True to show Reader stats
+};
+apiInstance.getEmailReport(campaignHash, opts, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **campaignHash** | **String**| ID of the Campaign | 
+ **date** | **Boolean**| True to show date stats | [optional] [default to true]
+ **weekday** | **Boolean**| True to show weekday stats | [optional] [default to true]
+ **hour** | **Boolean**| True to show hour stats | [optional] [default to true]
+ **location** | **Boolean**| True to show location stats | [optional] [default to true]
+ **domain** | **Boolean**| True to show Domain stats | [optional] [default to true]
+ **url** | **Boolean**| True to show Url stats | [optional] [default to true]
+ **reader** | **Boolean**| True to show Reader stats | [optional] [default to true]
+
+### Return type
+
+[**EmailReport**](EmailReport.md)
+
+### Authorization
+
+[Apikey](../README.md#Apikey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## getSMSReport
+
 > PhoneReport getSMSReport(campaignHash, opts)
 
 Get sms report
@@ -18,31 +87,32 @@ Get sms report
 Returns sms report given the campaign hash
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.ReportsApi();
-var campaignHash = "campaignHash_example"; // String | ID of the Campaign
-var opts = {
+let apiInstance = new egoisdk.ReportsApi();
+let campaignHash = "campaignHash_example"; // String | ID of the Campaign
+let opts = {
   'networks': true // Boolean | True to show network stats
 };
-var callback = function(error, data, response) {
+apiInstance.getSMSReport(campaignHash, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getSMSReport(campaignHash, opts, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -59,11 +129,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getVoiceReport"></a>
-# **getVoiceReport**
+
+## getVoiceReport
+
 > PhoneReport getVoiceReport(campaignHash, opts)
 
 Get voice report
@@ -71,31 +142,32 @@ Get voice report
 Returns voice report given the campaign hash
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.ReportsApi();
-var campaignHash = "campaignHash_example"; // String | ID of the Campaign
-var opts = {
+let apiInstance = new egoisdk.ReportsApi();
+let campaignHash = "campaignHash_example"; // String | ID of the Campaign
+let opts = {
   'networks': true // Boolean | True to show network stats
 };
-var callback = function(error, data, response) {
+apiInstance.getVoiceReport(campaignHash, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getVoiceReport(campaignHash, opts, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -112,11 +184,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getWebPushReport"></a>
-# **getWebPushReport**
+
+## getWebPushReport
+
 > WebPushReport getWebPushReport(campaignHash, opts)
 
 Get webpush report
@@ -124,34 +197,35 @@ Get webpush report
 Returns webpush report given the campaign hash
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.ReportsApi();
-var campaignHash = "campaignHash_example"; // String | ID of the Campaign
-var opts = {
+let apiInstance = new egoisdk.ReportsApi();
+let campaignHash = "campaignHash_example"; // String | ID of the Campaign
+let opts = {
   'devices': true, // Boolean | True to show device stats
   'operatingSystems': true, // Boolean | True to show operating systems stats
   'browsers': true, // Boolean | True to show browser stats
   'url': true // Boolean | True to show url stats
 };
-var callback = function(error, data, response) {
+apiInstance.getWebPushReport(campaignHash, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getWebPushReport(campaignHash, opts, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -171,6 +245,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 

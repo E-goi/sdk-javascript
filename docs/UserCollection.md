@@ -1,6 +1,7 @@
-# egoiSdk.UserCollection
+# egoisdk.UserCollection
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **totalItems** | **Number** | Returned users | [optional] 

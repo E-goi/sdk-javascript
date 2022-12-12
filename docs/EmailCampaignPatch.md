@@ -1,6 +1,7 @@
-# egoiSdk.EmailCampaignPatch
+# egoisdk.EmailCampaignPatch
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **internalName** | **String** | Campaign internal name | [optional] 

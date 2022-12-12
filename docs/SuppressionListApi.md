@@ -1,14 +1,119 @@
-# egoiSdk.SuppressionListApi
+# egoisdk.SuppressionListApi
 
 All URIs are relative to *https://api.egoiapp.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**createSuppressionList**](SuppressionListApi.md#createSuppressionList) | **POST** /suppression-list | Add to suppression list
+[**deleteSuppressionList**](SuppressionListApi.md#deleteSuppressionList) | **DELETE** /suppression-list/{suppression_id} | Delete from suppression list
 [**getAllSuppressionList**](SuppressionListApi.md#getAllSuppressionList) | **GET** /suppression-list | Get the suppression list
 
 
-<a name="getAllSuppressionList"></a>
-# **getAllSuppressionList**
+
+## createSuppressionList
+
+> AcceptedResponse createSuppressionList(createSuppressionListRequest)
+
+Add to suppression list
+
+Adds a collection of values to the suppression list
+
+### Example
+
+```javascript
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
+// Configure API key authorization: Apikey
+let Apikey = defaultClient.authentications['Apikey'];
+Apikey.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//Apikey.apiKeyPrefix = 'Token';
+
+let apiInstance = new egoisdk.SuppressionListApi();
+let createSuppressionListRequest = new egoisdk.CreateSuppressionListRequest(); // CreateSuppressionListRequest | Parameters for the request
+apiInstance.createSuppressionList(createSuppressionListRequest, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **createSuppressionListRequest** | [**CreateSuppressionListRequest**](CreateSuppressionListRequest.md)| Parameters for the request | 
+
+### Return type
+
+[**AcceptedResponse**](AcceptedResponse.md)
+
+### Authorization
+
+[Apikey](../README.md#Apikey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## deleteSuppressionList
+
+> deleteSuppressionList(suppressionId)
+
+Delete from suppression list
+
+Deletes a suppression list value given its ID if it&#39;s creation method was ´manual´
+
+### Example
+
+```javascript
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
+// Configure API key authorization: Apikey
+let Apikey = defaultClient.authentications['Apikey'];
+Apikey.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//Apikey.apiKeyPrefix = 'Token';
+
+let apiInstance = new egoisdk.SuppressionListApi();
+let suppressionId = 56; // Number | ID of Suppression List
+apiInstance.deleteSuppressionList(suppressionId, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully.');
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **suppressionId** | **Number**| ID of Suppression List | 
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[Apikey](../README.md#Apikey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## getAllSuppressionList
+
 > SuppressionListItems getAllSuppressionList(opts)
 
 Get the suppression list
@@ -16,17 +121,18 @@ Get the suppression list
 Returns the suppression list
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.SuppressionListApi();
-var opts = {
+let apiInstance = new egoisdk.SuppressionListApi();
+let opts = {
   'type': "type_example", // String | Suppression type
   'method': "method_example", // String | Suppression method
   'value': "value_example", // String | Reference attribute to value suppression list
@@ -38,17 +144,17 @@ var opts = {
   'order': "'desc'", // String | Type of order
   'orderBy': "'id'" // String | Reference attribute to order the suppression list
 };
-var callback = function(error, data, response) {
+apiInstance.getAllSuppressionList(opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getAllSuppressionList(opts, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -73,6 +179,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 

@@ -1,12 +1,16 @@
-# egoiSdk.ComplexContact
+# egoisdk.ComplexContact
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**emailStats** | **Object** | Email stats of the contact | [optional] 
-**smsStats** | **Object** | SMS stats of the contact | [optional] 
-**pushStats** | **Object** | Push stats of the contact | [optional] 
-**webpushStats** | **Object** | Webpush stats of the contact | [optional] 
-**voiceStats** | **Object** | Voice stats of the contact | [optional] 
+**emailStats** | [**ComplexContactAllOfEmailStats**](ComplexContactAllOfEmailStats.md) |  | [optional] 
+**smsStats** | [**ComplexContactAllOfSmsStats**](ComplexContactAllOfSmsStats.md) |  | [optional] 
+**pushStats** | [**ComplexContactAllOfPushStats**](ComplexContactAllOfPushStats.md) |  | [optional] 
+**webpushStats** | [**ComplexContactAllOfWebpushStats**](ComplexContactAllOfWebpushStats.md) |  | [optional] 
+**voiceStats** | [**ComplexContactAllOfVoiceStats**](ComplexContactAllOfVoiceStats.md) |  | [optional] 
+**base** | [**ContactBaseFieldsSchemaBase**](ContactBaseFieldsSchemaBase.md) |  | [optional] 
+**extra** | [**[ContactExtraFields]**](ContactExtraFields.md) | Array of the contact&#39;s extra fields | [optional] 
+**tags** | **[Number]** | Array of tags for this contact | [optional] [readonly] 
 
 

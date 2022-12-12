@@ -1,14 +1,17 @@
-# egoiSdk.CampaignEmailContentWebPage
+# egoisdk.CampaignEmailContentWebPage
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **String** |  | [optional] 
-**url** | **String** | Campaign url | [optional] 
+**type** | **String** |  | 
+**url** | **String** | Campaign url | 
 **usePageTitle** | **Boolean** | True to use page title as the campaign title | [optional] [default to false]
+**plainText** | **String** | Plain text for the campaign | [optional] 
+**snippet** | **String** | Snippet text for the campaign | [optional] 
 
 
-<a name="TypeEnum"></a>
+
 ## Enum: TypeEnum
 
 

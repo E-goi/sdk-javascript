@@ -1,13 +1,14 @@
-# egoiSdk.ContactOtherActivity
+# egoisdk.ContactOtherActivity
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**_date** | **Date** | The date and time | [optional] 
+**date** | **Date** | The date and time | [optional] 
 **actionName** | **String** | Action name | [optional] 
 
 
-<a name="ActionNameEnum"></a>
+
 ## Enum: ActionNameEnum
 
 

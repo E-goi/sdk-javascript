@@ -1,6 +1,7 @@
-# egoiSdk.CatalogCollection
+# egoisdk.CatalogCollection
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **totalItems** | **Number** | Total of returned catalogs | [optional] 

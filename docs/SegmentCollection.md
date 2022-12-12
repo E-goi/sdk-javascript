@@ -1,6 +1,7 @@
-# egoiSdk.SegmentCollection
+# egoisdk.SegmentCollection
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **totalItems** | **Number** | Total returned segments | [optional] 

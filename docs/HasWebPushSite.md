@@ -1,6 +1,7 @@
-# egoiSdk.HasWebPushSite
+# egoisdk.HasWebPushSite
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **errors** | [**HasWebPushSiteErrors**](HasWebPushSiteErrors.md) |  | [optional] 

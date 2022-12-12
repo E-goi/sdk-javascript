@@ -1,6 +1,7 @@
-# egoiSdk.PatchRequestList
+# egoisdk.PatchRequestList
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **internalName** | **String** | Internal name of the list | [optional] 

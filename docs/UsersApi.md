@@ -1,4 +1,4 @@
-# egoiSdk.UsersApi
+# egoisdk.UsersApi
 
 All URIs are relative to *https://api.egoiapp.com*
 
@@ -8,8 +8,9 @@ Method | HTTP request | Description
 [**getAllUsers**](UsersApi.md#getAllUsers) | **GET** /users | Get all users
 
 
-<a name="deleteUser"></a>
-# **deleteUser**
+
+## deleteUser
+
 > deleteUser(userId)
 
 Remove user
@@ -17,28 +18,29 @@ Remove user
 Remove user information given its ID
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.UsersApi();
-var userId = 56; // Number | ID of the User
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.UsersApi();
+let userId = 56; // Number | ID of the User
+apiInstance.deleteUser(userId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully.');
   }
-};
-apiInstance.deleteUser(userId, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -54,11 +56,12 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getAllUsers"></a>
-# **getAllUsers**
+
+## getAllUsers
+
 > UserCollection getAllUsers(opts)
 
 Get all users
@@ -66,17 +69,18 @@ Get all users
 Returns all users
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.UsersApi();
-var opts = {
+let apiInstance = new egoisdk.UsersApi();
+let opts = {
   'username': "username_example", // String | Reference attribute to username user
   'status': "status_example", // String | Status filter
   'createdMin': new Date("2013-10-20T19:20:30+01:00"), // Date | Created initial date
@@ -88,17 +92,17 @@ var opts = {
   'order': "'desc'", // String | Type of order
   'orderBy': "'user_id'" // String | Reference attribute to order users
 };
-var callback = function(error, data, response) {
+apiInstance.getAllUsers(opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getAllUsers(opts, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -123,6 +127,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 

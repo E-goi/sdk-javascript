@@ -1,6 +1,7 @@
-# egoiSdk.CountryCollection
+# egoisdk.CountryCollection
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **totalItems** | **Number** | Returned countries | [optional] 

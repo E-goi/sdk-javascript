@@ -1,57 +1,63 @@
 /**
  * APIv3 (New)
- *  # Introduction This is our new version of API. We invite you to start using it and give us your feedback # Getting Started  E-goi can be integrated with many environments and programming languages via our REST API. We've created a developer focused portal to give your organization a clear and quick overview of how to integrate with E-goi. The developer portal focuses on scenarios for integration and flow of events. We recommend familiarizing yourself with all of the content in the developer portal, before start using our rest API.   The E-goi  APIv3 is served over HTTPS. To ensure data privacy, unencrypted HTTP is not supported.  Request data is passed to the API by POSTing JSON objects to the API endpoints with the appropriate parameters.   BaseURL = api.egoiapp.com  # RESTful Services This API supports 5 HTTP methods:  * <b>GET</b>: The HTTP GET method is used to **read** (or retrieve) a representation of a resource. * <b>POST</b>: The POST verb is most-often utilized to **create** new resources. * <b>PATCH</b>: PATCH is used for **modify** capabilities. The PATCH request only needs to contain the changes to the resource, not the complete resource * <b>PUT</b>: PUT is most-often utilized for **update** capabilities, PUT-ing to a known resource URI with the request body containing the newly-updated representation of the original resource. * <b>DELETE</b>: DELETE is pretty easy to understand. It is used to **delete** a resource identified by a URI.  # Authentication   We use a custom authentication method, you will need a apikey that you can find in your account settings. Below you will see a curl example to get your account information:  #!/bin/bash  curl -X GET 'https://api.egoiapp.com/my-account' \\  -H 'accept: application/json' \\  -H 'Apikey: <YOUR_APY_KEY>'  Here you can see a curl Post example with authentication:  #!/bin/bash  curl -X POST 'http://api.egoiapp.com/tags' \\  -H 'accept: application/json' \\  -H 'Apikey: <YOUR_APY_KEY>' \\  -H 'Content-Type: application/json' \\  -d '{`name`:`Your custom tag`,`color`:`#FFFFFF`}'  # SDK Get started quickly with E-goi with our integration tools. Our SDK is a modern open source library that makes it easy to integrate your application with E-goi services.  * <a href='https://github.com/E-goi/sdk-java'>Java</a>  * <a href='https://github.com/E-goi/sdk-php'>PHP</a>  * <a href='https://github.com/E-goi/sdk-python'>Python</a>  * <a href='https://github.com/E-goi/sdk-ruby'>Ruby</a>  * <a href='https://github.com/E-goi/sdk-javascript'>Javascript</a>  * <a href='https://github.com/E-goi/sdk-csharp'>C#</a>  # Stream Limits Stream limits are security mesures we have to make sure our API have a fair use policy, for this reason, any request that creates or modifies data (**POST**, **PATCH** and **PUT**) is limited to a maximum of **20MB** of content length. If you arrive to this limit in one of your request, you'll receive a HTTP code **413 (Request Entity Too Large)** and the request will be ignored. To avoid this error in importation's requests, it's advised the request's division in batches that have each one less than 20MB.  # Timeouts Timeouts set a maximum waiting time on a request's response. Our API, sets a default timeout for each request and when breached, you'll receive an HTTP **408 (Request Timeout)** error code. You should take into consideration that response times can vary widely based on the complexity of the request, amount of data being analyzed, and the load on the system and workspace at the time of the query. When dealing with such errors, you should first attempt to reduce the complexity and amount of data under analysis, and only then, if problems are still occurring ask for support.  For all these reasons, the default timeout for each request is **10 Seconds** and any request that creates or modifies data (**POST**, **PATCH** and **PUT**) will have a timeout of **60 Seconds**. Specific timeouts may exist for specific requests, these can be found in the request's documentation.  <security-definitions/>
+ *  # Introduction This is our new version of API. We invite you to start using it and give us your feedback # Getting Started  E-goi can be integrated with many environments and programming languages via our REST API. We've created a developer focused portal to give your organization a clear and quick overview of how to integrate with E-goi. The developer portal focuses on scenarios for integration and flow of events. We recommend familiarizing yourself with all of the content in the developer portal, before start using our rest API.  The E-goi  APIv3 is served over HTTPS. To ensure data privacy, unencrypted HTTP is not supported.  Request data is passed to the API by POSTing JSON objects to the API endpoints with the appropriate parameters.      BaseURL = api.egoiapp.com  # RESTful Services This API supports 5 HTTP methods:  * <b>GET</b>: The HTTP GET method is used to **read** (or retrieve) a representation of a resource. * <b>POST</b>: The POST verb is most-often utilized to **create** new resources. * <b>PATCH</b>: PATCH is used for **modify** capabilities. The PATCH request only needs to contain the changes to the resource, not the complete resource * <b>PUT</b>: PUT is most-often utilized for **update** capabilities, PUT-ing to a known resource URI with the request body containing the newly-updated representation of the original resource. * <b>DELETE</b>: DELETE is pretty easy to understand. It is used to **delete** a resource identified by a URI.  # Authentication  We use a custom authentication method, you will need a apikey that you can find in your account settings. Below you will see a curl example to get your account information:     #!/bin/bash     curl -X GET 'https://api.egoiapp.com/my-account' \\     -H 'accept: application/json' \\     -H 'Apikey: <YOUR_APY_KEY>'  Here you can see a curl Post example with authentication:     #!/bin/bash     curl -X POST 'http://api.egoiapp.com/tags' \\     -H 'accept: application/json' \\     -H 'Apikey: <YOUR_APY_KEY>' \\     -H 'Content-Type: application/json' \\     -d '{`name`:`Your custom tag`,`color`:`#FFFFFF`}'  # SDK Get started quickly with E-goi with our integration tools. Our SDK is a modern open source library that makes it easy to integrate your application with E-goi services.  * <a href='https://github.com/E-goi/sdk-java'>Java</a>  * <a href='https://github.com/E-goi/sdk-php'>PHP</a>  * <a href='https://github.com/E-goi/sdk-python'>Python</a>  * <a href='https://github.com/E-goi/sdk-ruby'>Ruby</a>  * <a href='https://github.com/E-goi/sdk-javascript'>Javascript</a>  * <a href='https://github.com/E-goi/sdk-csharp'>C#</a>  # Stream Limits Stream limits are security mesures we have to make sure our API have a fair use policy, for this reason, any request that creates or modifies data (**POST**, **PATCH** and **PUT**) is limited to a maximum of **20MB** of content length. If you arrive to this limit in one of your request, you'll receive a HTTP code **413 (Request Entity Too Large)** and the request will be ignored. To avoid this error in importation's requests, it's advised the request's division in batches that have each one less than 20MB.  # Timeouts Timeouts set a maximum waiting time on a request's response. Our API, sets a default timeout for each request and when breached, you'll receive an HTTP **408 (Request Timeout)** error code. You should take into consideration that response times can vary widely based on the complexity of the request, amount of data being analyzed, and the load on the system and workspace at the time of the query. When dealing with such errors, you should first attempt to reduce the complexity and amount of data under analysis, and only then, if problems are still occurring ask for support.  For all these reasons, the default timeout for each request is **10 Seconds** and any request that creates or modifies data (**POST**, **PATCH** and **PUT**) will have a timeout of **60 Seconds**. Specific timeouts may exist for specific requests, these can be found in the request's documentation.  # Callbacks A callback is an asynchronous API request that originates from the API server and is sent to the client in response to a previous request sent by that client.  The API will make a **POST** request to the address defined in the URL with the information regarding the event of interest and share data related to that event.  ***Note:*** Only http or https protocols are supported in the Url parameter.  <security-definitions/>
  *
- * OpenAPI spec version: 3.0.0
+ * The version of the OpenAPI document: 3.0.0
+ * 
  *
  * NOTE: This class is auto generated by OpenAPI Generator (https://openapi-generator.tech).
  * https://openapi-generator.tech
- *
- * OpenAPI Generator version: 3.3.4
- *
  * Do not edit the class manually.
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient', 'egoiSdk/AcceptedResponse', 'egoiSdk/BadRequest', 'egoiSdk/CampaignHash', 'egoiSdk/CampaignWebPushSendRequest', 'egoiSdk/Conflict', 'egoiSdk/Forbidden', 'egoiSdk/HashcodeCampaign', 'egoiSdk/InternalServerError', 'egoiSdk/NotFound', 'egoiSdk/PostWebpushSiteConflict', 'egoiSdk/RequestTimeout', 'egoiSdk/ServiceUnavailable', 'egoiSdk/TagCollection1', 'egoiSdk/TooManyRequests', 'egoiSdk/Unauthorized', 'egoiSdk/UnprocessableEntity', 'egoiSdk/WebPushCampaign', 'egoiSdk/WebPushPatchCampaign', 'egoiSdk/WebPushRssCampaign', 'egoiSdk/WebPushSite'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../egoiSdk/AcceptedResponse'), require('../egoiSdk/BadRequest'), require('../egoiSdk/CampaignHash'), require('../egoiSdk/CampaignWebPushSendRequest'), require('../egoiSdk/Conflict'), require('../egoiSdk/Forbidden'), require('../egoiSdk/HashcodeCampaign'), require('../egoiSdk/InternalServerError'), require('../egoiSdk/NotFound'), require('../egoiSdk/PostWebpushSiteConflict'), require('../egoiSdk/RequestTimeout'), require('../egoiSdk/ServiceUnavailable'), require('../egoiSdk/TagCollection1'), require('../egoiSdk/TooManyRequests'), require('../egoiSdk/Unauthorized'), require('../egoiSdk/UnprocessableEntity'), require('../egoiSdk/WebPushCampaign'), require('../egoiSdk/WebPushPatchCampaign'), require('../egoiSdk/WebPushRssCampaign'), require('../egoiSdk/WebPushSite'));
-  } else {
-    // Browser globals (root is window)
-    if (!root.egoiSdk) {
-      root.egoiSdk = {};
+
+import ApiClient from "../ApiClient";
+import AcceptedResponse from '../egoisdk/AcceptedResponse';
+import BadRequest from '../egoisdk/BadRequest';
+import CampaignWebPushSendRequest from '../egoisdk/CampaignWebPushSendRequest';
+import Conflict from '../egoisdk/Conflict';
+import Forbidden from '../egoisdk/Forbidden';
+import HashcodeCampaign from '../egoisdk/HashcodeCampaign';
+import InternalServerError from '../egoisdk/InternalServerError';
+import NotFound from '../egoisdk/NotFound';
+import PatchVoiceCampaign200Response from '../egoisdk/PatchVoiceCampaign200Response';
+import PostWebpushSiteConflict from '../egoisdk/PostWebpushSiteConflict';
+import RequestTimeout from '../egoisdk/RequestTimeout';
+import ServiceUnavailable from '../egoisdk/ServiceUnavailable';
+import TagCollection1 from '../egoisdk/TagCollection1';
+import TooManyRequests from '../egoisdk/TooManyRequests';
+import Unauthorized from '../egoisdk/Unauthorized';
+import UnprocessableEntity from '../egoisdk/UnprocessableEntity';
+import WebPushCampaign from '../egoisdk/WebPushCampaign';
+import WebPushPatchCampaign from '../egoisdk/WebPushPatchCampaign';
+import WebPushRssCampaign from '../egoisdk/WebPushRssCampaign';
+import WebPushSite from '../egoisdk/WebPushSite';
+
+/**
+* Webpush service.
+* @module egoiApi/WebpushApi
+* @version 1.1.2RC1
+*/
+export default class WebpushApi {
+
+    /**
+    * Constructs a new WebpushApi. 
+    * @alias module:egoiApi/WebpushApi
+    * @class
+    * @param {module:ApiClient} [apiClient] Optional API client implementation to use,
+    * default to {@link module:ApiClient#instance} if unspecified.
+    */
+    constructor(apiClient) {
+        this.apiClient = apiClient || ApiClient.instance;
     }
-    root.egoiSdk.WebpushApi = factory(root.egoiSdk.ApiClient, root.egoiSdk.AcceptedResponse, root.egoiSdk.BadRequest, root.egoiSdk.CampaignHash, root.egoiSdk.CampaignWebPushSendRequest, root.egoiSdk.Conflict, root.egoiSdk.Forbidden, root.egoiSdk.HashcodeCampaign, root.egoiSdk.InternalServerError, root.egoiSdk.NotFound, root.egoiSdk.PostWebpushSiteConflict, root.egoiSdk.RequestTimeout, root.egoiSdk.ServiceUnavailable, root.egoiSdk.TagCollection1, root.egoiSdk.TooManyRequests, root.egoiSdk.Unauthorized, root.egoiSdk.UnprocessableEntity, root.egoiSdk.WebPushCampaign, root.egoiSdk.WebPushPatchCampaign, root.egoiSdk.WebPushRssCampaign, root.egoiSdk.WebPushSite);
-  }
-}(this, function(ApiClient, AcceptedResponse, BadRequest, CampaignHash, CampaignWebPushSendRequest, Conflict, Forbidden, HashcodeCampaign, InternalServerError, NotFound, PostWebpushSiteConflict, RequestTimeout, ServiceUnavailable, TagCollection1, TooManyRequests, Unauthorized, UnprocessableEntity, WebPushCampaign, WebPushPatchCampaign, WebPushRssCampaign, WebPushSite) {
-  'use strict';
-
-  /**
-   * Webpush service.
-   * @module egoiApi/WebpushApi
-   * @version 1.1.1RC1
-   */
-
-  /**
-   * Constructs a new WebpushApi. 
-   * @alias module:egoiApi/WebpushApi
-   * @class
-   * @param {module:ApiClient} [apiClient] Optional API client implementation to use,
-   * default to {@link module:ApiClient#instance} if unspecified.
-   */
-  var exports = function(apiClient) {
-    this.apiClient = apiClient || ApiClient.instance;
 
 
     /**
      * Callback function to receive the result of the actionEnableWebPushRss operation.
      * @callback module:egoiApi/WebpushApi~actionEnableWebPushRssCallback
      * @param {String} error Error message, if any.
-     * @param {module:egoiSdk/AcceptedResponse} data The data returned by the service call.
+     * @param {module:egoisdk/AcceptedResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -60,38 +66,33 @@
      * Enable rss webpush message
      * @param {String} campaignHash ID of the Campaign
      * @param {module:egoiApi/WebpushApi~actionEnableWebPushRssCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:egoiSdk/AcceptedResponse}
+     * data is of type: {@link module:egoisdk/AcceptedResponse}
      */
-    this.actionEnableWebPushRss = function(campaignHash, callback) {
-      var postBody = null;
-
+    actionEnableWebPushRss(campaignHash, callback) {
+      let postBody = null;
       // verify the required parameter 'campaignHash' is set
       if (campaignHash === undefined || campaignHash === null) {
         throw new Error("Missing the required parameter 'campaignHash' when calling actionEnableWebPushRss");
       }
 
-
-      var pathParams = {
+      let pathParams = {
         'campaign_hash': campaignHash
       };
-      var queryParams = {
+      let queryParams = {
       };
-      var collectionQueryParams = {
+      let headerParams = {
       };
-      var headerParams = {
-      };
-      var formParams = {
+      let formParams = {
       };
 
-      var authNames = ['Apikey'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = AcceptedResponse;
-
+      let authNames = ['Apikey'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = AcceptedResponse;
       return this.apiClient.callApi(
         '/campaigns/webpush/rss/{campaign_hash}/actions/enable', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
       );
     }
 
@@ -99,7 +100,7 @@
      * Callback function to receive the result of the actionSendWebPush operation.
      * @callback module:egoiApi/WebpushApi~actionSendWebPushCallback
      * @param {String} error Error message, if any.
-     * @param {module:egoiSdk/AcceptedResponse} data The data returned by the service call.
+     * @param {module:egoisdk/AcceptedResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -107,45 +108,39 @@
      * Send webpush message
      * Deploys and sends a webpush message
      * @param {String} campaignHash ID of the Campaign
-     * @param {module:egoiSdk/CampaignWebPushSendRequest} campaignWebPushSendRequest Parameters for the &#39;send web-push&#39; action
+     * @param {module:egoisdk/CampaignWebPushSendRequest} campaignWebPushSendRequest Parameters for the 'send web-push' action
      * @param {module:egoiApi/WebpushApi~actionSendWebPushCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:egoiSdk/AcceptedResponse}
+     * data is of type: {@link module:egoisdk/AcceptedResponse}
      */
-    this.actionSendWebPush = function(campaignHash, campaignWebPushSendRequest, callback) {
-      var postBody = campaignWebPushSendRequest;
-
+    actionSendWebPush(campaignHash, campaignWebPushSendRequest, callback) {
+      let postBody = campaignWebPushSendRequest;
       // verify the required parameter 'campaignHash' is set
       if (campaignHash === undefined || campaignHash === null) {
         throw new Error("Missing the required parameter 'campaignHash' when calling actionSendWebPush");
       }
-
       // verify the required parameter 'campaignWebPushSendRequest' is set
       if (campaignWebPushSendRequest === undefined || campaignWebPushSendRequest === null) {
         throw new Error("Missing the required parameter 'campaignWebPushSendRequest' when calling actionSendWebPush");
       }
 
-
-      var pathParams = {
+      let pathParams = {
         'campaign_hash': campaignHash
       };
-      var queryParams = {
+      let queryParams = {
       };
-      var collectionQueryParams = {
+      let headerParams = {
       };
-      var headerParams = {
-      };
-      var formParams = {
+      let formParams = {
       };
 
-      var authNames = ['Apikey'];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = AcceptedResponse;
-
+      let authNames = ['Apikey'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = AcceptedResponse;
       return this.apiClient.callApi(
         '/campaigns/web-push/{campaign_hash}/actions/send', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
       );
     }
 
@@ -153,46 +148,41 @@
      * Callback function to receive the result of the createWebPushCampaign operation.
      * @callback module:egoiApi/WebpushApi~createWebPushCampaignCallback
      * @param {String} error Error message, if any.
-     * @param {module:egoiSdk/CampaignHash} data The data returned by the service call.
+     * @param {module:egoisdk/PatchVoiceCampaign200Response} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
      * Create new webpush campaign
      * Create a new webpush campaign
-     * @param {module:egoiSdk/WebPushCampaign} webPushCampaign Parameters for the webpush campaign
+     * @param {module:egoisdk/WebPushCampaign} webPushCampaign Parameters for the webpush campaign
      * @param {module:egoiApi/WebpushApi~createWebPushCampaignCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:egoiSdk/CampaignHash}
+     * data is of type: {@link module:egoisdk/PatchVoiceCampaign200Response}
      */
-    this.createWebPushCampaign = function(webPushCampaign, callback) {
-      var postBody = webPushCampaign;
-
+    createWebPushCampaign(webPushCampaign, callback) {
+      let postBody = webPushCampaign;
       // verify the required parameter 'webPushCampaign' is set
       if (webPushCampaign === undefined || webPushCampaign === null) {
         throw new Error("Missing the required parameter 'webPushCampaign' when calling createWebPushCampaign");
       }
 
-
-      var pathParams = {
+      let pathParams = {
       };
-      var queryParams = {
+      let queryParams = {
       };
-      var collectionQueryParams = {
+      let headerParams = {
       };
-      var headerParams = {
-      };
-      var formParams = {
+      let formParams = {
       };
 
-      var authNames = ['Apikey'];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = CampaignHash;
-
+      let authNames = ['Apikey'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = PatchVoiceCampaign200Response;
       return this.apiClient.callApi(
         '/campaigns/web-push', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
       );
     }
 
@@ -200,46 +190,41 @@
      * Callback function to receive the result of the createWebPushRssCampaign operation.
      * @callback module:egoiApi/WebpushApi~createWebPushRssCampaignCallback
      * @param {String} error Error message, if any.
-     * @param {module:egoiSdk/HashcodeCampaign} data The data returned by the service call.
+     * @param {module:egoisdk/HashcodeCampaign} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
      * Create new webpush rss campaign
      * Create a new webpush rss campaign
-     * @param {module:egoiSdk/WebPushRssCampaign} webPushRssCampaign Parameters for the WebPush Campaign
+     * @param {module:egoisdk/WebPushRssCampaign} webPushRssCampaign Parameters for the WebPush Campaign
      * @param {module:egoiApi/WebpushApi~createWebPushRssCampaignCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:egoiSdk/HashcodeCampaign}
+     * data is of type: {@link module:egoisdk/HashcodeCampaign}
      */
-    this.createWebPushRssCampaign = function(webPushRssCampaign, callback) {
-      var postBody = webPushRssCampaign;
-
+    createWebPushRssCampaign(webPushRssCampaign, callback) {
+      let postBody = webPushRssCampaign;
       // verify the required parameter 'webPushRssCampaign' is set
       if (webPushRssCampaign === undefined || webPushRssCampaign === null) {
         throw new Error("Missing the required parameter 'webPushRssCampaign' when calling createWebPushRssCampaign");
       }
 
-
-      var pathParams = {
+      let pathParams = {
       };
-      var queryParams = {
+      let queryParams = {
       };
-      var collectionQueryParams = {
+      let headerParams = {
       };
-      var headerParams = {
-      };
-      var formParams = {
+      let formParams = {
       };
 
-      var authNames = ['Apikey'];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = HashcodeCampaign;
-
+      let authNames = ['Apikey'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = HashcodeCampaign;
       return this.apiClient.callApi(
         '/campaigns/webpush/rss', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
       );
     }
 
@@ -247,46 +232,41 @@
      * Callback function to receive the result of the createWebpushSite operation.
      * @callback module:egoiApi/WebpushApi~createWebpushSiteCallback
      * @param {String} error Error message, if any.
-     * @param {module:egoiSdk/WebPushSite} data The data returned by the service call.
+     * @param {module:egoisdk/WebPushSite} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
      * Creates a webpush site
      * Create a new webpush site
-     * @param {module:egoiSdk/WebPushSite} webPushSite Parameters for the webpush site
+     * @param {module:egoisdk/WebPushSite} webPushSite Parameters for the webpush site
      * @param {module:egoiApi/WebpushApi~createWebpushSiteCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:egoiSdk/WebPushSite}
+     * data is of type: {@link module:egoisdk/WebPushSite}
      */
-    this.createWebpushSite = function(webPushSite, callback) {
-      var postBody = webPushSite;
-
+    createWebpushSite(webPushSite, callback) {
+      let postBody = webPushSite;
       // verify the required parameter 'webPushSite' is set
       if (webPushSite === undefined || webPushSite === null) {
         throw new Error("Missing the required parameter 'webPushSite' when calling createWebpushSite");
       }
 
-
-      var pathParams = {
+      let pathParams = {
       };
-      var queryParams = {
+      let queryParams = {
       };
-      var collectionQueryParams = {
+      let headerParams = {
       };
-      var headerParams = {
-      };
-      var formParams = {
+      let formParams = {
       };
 
-      var authNames = ['Apikey'];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = WebPushSite;
-
+      let authNames = ['Apikey'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = WebPushSite;
       return this.apiClient.callApi(
         '/webpush/sites', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
       );
     }
 
@@ -294,52 +274,48 @@
      * Callback function to receive the result of the getAllWebPushSites operation.
      * @callback module:egoiApi/WebpushApi~getAllWebPushSitesCallback
      * @param {String} error Error message, if any.
-     * @param {module:egoiSdk/TagCollection1} data The data returned by the service call.
+     * @param {module:egoisdk/TagCollection1} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
      * Get all webpush sites
-     * Returns all wepush&#39;s sites
+     * Returns all wepush's sites
      * @param {Object} opts Optional parameters
      * @param {Number} opts.offset Element offset (starting at zero for the first element)
      * @param {Number} opts.limit Number of items to return (default to 10)
-     * @param {module:egoiSdk/String} opts.order Type of order (default to &#39;desc&#39;)
-     * @param {module:egoiSdk/String} opts.orderBy Reference attribute to order sites (default to &#39;list_id&#39;)
+     * @param {module:egoisdk/String} opts.order Type of order (default to 'desc')
+     * @param {module:egoisdk/String} opts.orderBy Reference attribute to order sites (default to 'list_id')
      * @param {Number} opts.listId Select sites referenced to a list
      * @param {module:egoiApi/WebpushApi~getAllWebPushSitesCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:egoiSdk/TagCollection1}
+     * data is of type: {@link module:egoisdk/TagCollection1}
      */
-    this.getAllWebPushSites = function(opts, callback) {
+    getAllWebPushSites(opts, callback) {
       opts = opts || {};
-      var postBody = null;
+      let postBody = null;
 
-
-      var pathParams = {
+      let pathParams = {
       };
-      var queryParams = {
+      let queryParams = {
         'offset': opts['offset'],
         'limit': opts['limit'],
         'order': opts['order'],
         'order_by': opts['orderBy'],
-        'list_id': opts['listId'],
+        'list_id': opts['listId']
       };
-      var collectionQueryParams = {
+      let headerParams = {
       };
-      var headerParams = {
-      };
-      var formParams = {
+      let formParams = {
       };
 
-      var authNames = ['Apikey'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = TagCollection1;
-
+      let authNames = ['Apikey'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = TagCollection1;
       return this.apiClient.callApi(
         '/webpush/sites', 'GET',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
       );
     }
 
@@ -347,7 +323,7 @@
      * Callback function to receive the result of the patchWebPushCampaign operation.
      * @callback module:egoiApi/WebpushApi~patchWebPushCampaignCallback
      * @param {String} error Error message, if any.
-     * @param {module:egoiSdk/CampaignHash} data The data returned by the service call.
+     * @param {module:egoisdk/PatchVoiceCampaign200Response} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -355,48 +331,41 @@
      * Update a specific webpush campaign
      * Update a webpush campaign
      * @param {String} campaignHash ID of the Campaign
-     * @param {module:egoiSdk/WebPushPatchCampaign} webPushPatchCampaign Parameters for the Webpush Campaign
+     * @param {module:egoisdk/WebPushPatchCampaign} webPushPatchCampaign Parameters for the Webpush Campaign
      * @param {module:egoiApi/WebpushApi~patchWebPushCampaignCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:egoiSdk/CampaignHash}
+     * data is of type: {@link module:egoisdk/PatchVoiceCampaign200Response}
      */
-    this.patchWebPushCampaign = function(campaignHash, webPushPatchCampaign, callback) {
-      var postBody = webPushPatchCampaign;
-
+    patchWebPushCampaign(campaignHash, webPushPatchCampaign, callback) {
+      let postBody = webPushPatchCampaign;
       // verify the required parameter 'campaignHash' is set
       if (campaignHash === undefined || campaignHash === null) {
         throw new Error("Missing the required parameter 'campaignHash' when calling patchWebPushCampaign");
       }
-
       // verify the required parameter 'webPushPatchCampaign' is set
       if (webPushPatchCampaign === undefined || webPushPatchCampaign === null) {
         throw new Error("Missing the required parameter 'webPushPatchCampaign' when calling patchWebPushCampaign");
       }
 
-
-      var pathParams = {
+      let pathParams = {
         'campaign_hash': campaignHash
       };
-      var queryParams = {
+      let queryParams = {
       };
-      var collectionQueryParams = {
+      let headerParams = {
       };
-      var headerParams = {
-      };
-      var formParams = {
+      let formParams = {
       };
 
-      var authNames = ['Apikey'];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = CampaignHash;
-
+      let authNames = ['Apikey'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = PatchVoiceCampaign200Response;
       return this.apiClient.callApi(
         '/campaigns/web-push/{campaign_hash}', 'PATCH',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
       );
     }
-  };
 
-  return exports;
-}));
+
+}

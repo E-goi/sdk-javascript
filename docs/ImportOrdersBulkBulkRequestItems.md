@@ -1,6 +1,7 @@
-# egoiSdk.ImportOrdersBulkBulkRequestItems
+# egoisdk.ImportOrdersBulkBulkRequestItems
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** | Ecommerce order item id | 

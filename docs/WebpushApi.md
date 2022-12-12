@@ -1,4 +1,4 @@
-# egoiSdk.WebpushApi
+# egoisdk.WebpushApi
 
 All URIs are relative to *https://api.egoiapp.com*
 
@@ -13,8 +13,9 @@ Method | HTTP request | Description
 [**patchWebPushCampaign**](WebpushApi.md#patchWebPushCampaign) | **PATCH** /campaigns/web-push/{campaign_hash} | Update a specific webpush campaign
 
 
-<a name="actionEnableWebPushRss"></a>
-# **actionEnableWebPushRss**
+
+## actionEnableWebPushRss
+
 > AcceptedResponse actionEnableWebPushRss(campaignHash)
 
 Enable a rss webpush campaign
@@ -22,28 +23,29 @@ Enable a rss webpush campaign
 Enable rss webpush message
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.WebpushApi();
-var campaignHash = "campaignHash_example"; // String | ID of the Campaign
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.WebpushApi();
+let campaignHash = "campaignHash_example"; // String | ID of the Campaign
+apiInstance.actionEnableWebPushRss(campaignHash, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.actionEnableWebPushRss(campaignHash, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -59,11 +61,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="actionSendWebPush"></a>
-# **actionSendWebPush**
+
+## actionSendWebPush
+
 > AcceptedResponse actionSendWebPush(campaignHash, campaignWebPushSendRequest)
 
 Send webpush message
@@ -71,29 +74,30 @@ Send webpush message
 Deploys and sends a webpush message
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.WebpushApi();
-var campaignHash = "campaignHash_example"; // String | ID of the Campaign
-var campaignWebPushSendRequest = new egoiSdk.CampaignWebPushSendRequest(); // CampaignWebPushSendRequest | Parameters for the 'send web-push' action
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.WebpushApi();
+let campaignHash = "campaignHash_example"; // String | ID of the Campaign
+let campaignWebPushSendRequest = new egoisdk.CampaignWebPushSendRequest(); // CampaignWebPushSendRequest | Parameters for the 'send web-push' action
+apiInstance.actionSendWebPush(campaignHash, campaignWebPushSendRequest, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.actionSendWebPush(campaignHash, campaignWebPushSendRequest, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -110,40 +114,42 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="createWebPushCampaign"></a>
-# **createWebPushCampaign**
-> CampaignHash createWebPushCampaign(webPushCampaign)
+
+## createWebPushCampaign
+
+> PatchVoiceCampaign200Response createWebPushCampaign(webPushCampaign)
 
 Create new webpush campaign
 
 Create a new webpush campaign
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.WebpushApi();
-var webPushCampaign = new egoiSdk.WebPushCampaign(); // WebPushCampaign | Parameters for the webpush campaign
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.WebpushApi();
+let webPushCampaign = new egoisdk.WebPushCampaign(); // WebPushCampaign | Parameters for the webpush campaign
+apiInstance.createWebPushCampaign(webPushCampaign, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.createWebPushCampaign(webPushCampaign, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -151,7 +157,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CampaignHash**](CampaignHash.md)
+[**PatchVoiceCampaign200Response**](PatchVoiceCampaign200Response.md)
 
 ### Authorization
 
@@ -159,11 +165,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="createWebPushRssCampaign"></a>
-# **createWebPushRssCampaign**
+
+## createWebPushRssCampaign
+
 > HashcodeCampaign createWebPushRssCampaign(webPushRssCampaign)
 
 Create new webpush rss campaign
@@ -171,28 +178,29 @@ Create new webpush rss campaign
 Create a new webpush rss campaign
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.WebpushApi();
-var webPushRssCampaign = new egoiSdk.WebPushRssCampaign(); // WebPushRssCampaign | Parameters for the WebPush Campaign
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.WebpushApi();
+let webPushRssCampaign = new egoisdk.WebPushRssCampaign(); // WebPushRssCampaign | Parameters for the WebPush Campaign
+apiInstance.createWebPushRssCampaign(webPushRssCampaign, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.createWebPushRssCampaign(webPushRssCampaign, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -208,11 +216,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="createWebpushSite"></a>
-# **createWebpushSite**
+
+## createWebpushSite
+
 > WebPushSite createWebpushSite(webPushSite)
 
 Creates a webpush site
@@ -220,28 +229,29 @@ Creates a webpush site
 Create a new webpush site
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.WebpushApi();
-var webPushSite = new egoiSdk.WebPushSite(); // WebPushSite | Parameters for the webpush site
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.WebpushApi();
+let webPushSite = new egoisdk.WebPushSite(); // WebPushSite | Parameters for the webpush site
+apiInstance.createWebpushSite(webPushSite, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.createWebpushSite(webPushSite, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -257,11 +267,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="getAllWebPushSites"></a>
-# **getAllWebPushSites**
+
+## getAllWebPushSites
+
 > TagCollection1 getAllWebPushSites(opts)
 
 Get all webpush sites
@@ -269,34 +280,35 @@ Get all webpush sites
 Returns all wepush&#39;s sites
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.WebpushApi();
-var opts = {
+let apiInstance = new egoisdk.WebpushApi();
+let opts = {
   'offset': 56, // Number | Element offset (starting at zero for the first element)
   'limit': 10, // Number | Number of items to return
   'order': "'desc'", // String | Type of order
   'orderBy': "'list_id'", // String | Reference attribute to order sites
   'listId': 56 // Number | Select sites referenced to a list
 };
-var callback = function(error, data, response) {
+apiInstance.getAllWebPushSites(opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getAllWebPushSites(opts, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -316,41 +328,43 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="patchWebPushCampaign"></a>
-# **patchWebPushCampaign**
-> CampaignHash patchWebPushCampaign(campaignHash, webPushPatchCampaign)
+
+## patchWebPushCampaign
+
+> PatchVoiceCampaign200Response patchWebPushCampaign(campaignHash, webPushPatchCampaign)
 
 Update a specific webpush campaign
 
 Update a webpush campaign
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.WebpushApi();
-var campaignHash = "campaignHash_example"; // String | ID of the Campaign
-var webPushPatchCampaign = new egoiSdk.WebPushPatchCampaign(); // WebPushPatchCampaign | Parameters for the Webpush Campaign
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.WebpushApi();
+let campaignHash = "campaignHash_example"; // String | ID of the Campaign
+let webPushPatchCampaign = new egoisdk.WebPushPatchCampaign(); // WebPushPatchCampaign | Parameters for the Webpush Campaign
+apiInstance.patchWebPushCampaign(campaignHash, webPushPatchCampaign, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.patchWebPushCampaign(campaignHash, webPushPatchCampaign, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -359,7 +373,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**CampaignHash**](CampaignHash.md)
+[**PatchVoiceCampaign200Response**](PatchVoiceCampaign200Response.md)
 
 ### Authorization
 
@@ -367,6 +381,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 

@@ -1,6 +1,7 @@
-# egoiSdk.StartAutomationRequest
+# egoisdk.StartAutomationRequest
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **automationId** | **Number** |  | 

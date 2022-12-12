@@ -1,6 +1,7 @@
-# egoiSdk.VoicePatchCampaign
+# egoisdk.VoicePatchCampaign
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **internalName** | **String** | Voice campaign internal name | [optional] 

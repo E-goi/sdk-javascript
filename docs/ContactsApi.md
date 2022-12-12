@@ -1,4 +1,4 @@
-# egoiSdk.ContactsApi
+# egoisdk.ContactsApi
 
 All URIs are relative to *https://api.egoiapp.com*
 
@@ -13,6 +13,7 @@ Method | HTTP request | Description
 [**actionImportBulk**](ContactsApi.md#actionImportBulk) | **POST** /lists/{list_id}/contacts/actions/import-bulk | Import collection of contacts
 [**actionStartAutomation**](ContactsApi.md#actionStartAutomation) | **POST** /lists/{list_id}/contacts/actions/start-automation | Start automation
 [**actionUnsubscribeContact**](ContactsApi.md#actionUnsubscribeContact) | **POST** /lists/{list_id}/contacts/actions/unsubscribe | Unsubscribes contacts
+[**actionUpdateContacts**](ContactsApi.md#actionUpdateContacts) | **POST** /lists/{list_id}/contacts/actions/update | Updates contacts
 [**createContact**](ContactsApi.md#createContact) | **POST** /lists/{list_id}/contacts | Create new contact
 [**getAllContactActivities**](ContactsApi.md#getAllContactActivities) | **GET** /lists/{list_id}/contacts/{contact_id}/activities | Get all contact activities
 [**getAllContacts**](ContactsApi.md#getAllContacts) | **GET** /lists/{list_id}/contacts | Get all contacts
@@ -22,8 +23,9 @@ Method | HTTP request | Description
 [**searchContacts**](ContactsApi.md#searchContacts) | **GET** /contacts/search | Search contact
 
 
-<a name="actionActivateContacts"></a>
-# **actionActivateContacts**
+
+## actionActivateContacts
+
 > AcceptedResponse actionActivateContacts(listId, activateContactsRequest)
 
 Activate contacts
@@ -31,29 +33,30 @@ Activate contacts
 Activates a collection of contacts (does not apply to removed contacts)
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.ContactsApi();
-var listId = 56; // Number | ID of the List
-var activateContactsRequest = new egoiSdk.ActivateContactsRequest(); // ActivateContactsRequest | Parameters for the request
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.ContactsApi();
+let listId = 56; // Number | ID of the List
+let activateContactsRequest = new egoisdk.ActivateContactsRequest(); // ActivateContactsRequest | Parameters for the request
+apiInstance.actionActivateContacts(listId, activateContactsRequest, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.actionActivateContacts(listId, activateContactsRequest, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -70,41 +73,43 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="actionAttachTag"></a>
-# **actionAttachTag**
-> AttachTagResponse actionAttachTag(listId, attachTagRequest)
+
+## actionAttachTag
+
+> AcceptedResponse actionAttachTag(listId, attachTagRequest)
 
 Attach tag to contact
 
-Attaches a tag to the provided contacts. &lt;br&gt;***Note:***&lt;br&gt; If you provide the array of **contacts** there will be a maximum limit of 1000 contacts in the payload, but if you provide a **segment_id** instead of     the array of contacts you will get an asynchronous response with the status code 202
+Attaches a tag to the provided contacts.
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.ContactsApi();
-var listId = 56; // Number | ID of the List
-var attachTagRequest = new egoiSdk.AttachTagRequest(); // AttachTagRequest | Parameters for the Tag
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.ContactsApi();
+let listId = 56; // Number | ID of the List
+let attachTagRequest = new egoisdk.AttachTagRequest(); // AttachTagRequest | Parameters for the Tag
+apiInstance.actionAttachTag(listId, attachTagRequest, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.actionAttachTag(listId, attachTagRequest, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -113,7 +118,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**AttachTagResponse**](AttachTagResponse.md)
+[**AcceptedResponse**](AcceptedResponse.md)
 
 ### Authorization
 
@@ -121,11 +126,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="actionDeactivateContacts"></a>
-# **actionDeactivateContacts**
+
+## actionDeactivateContacts
+
 > AcceptedResponse actionDeactivateContacts(listId, deactivateContactsRequest)
 
 Deactivate contacts
@@ -133,29 +139,30 @@ Deactivate contacts
 Deactivates a collection of contacts (does not apply to removed contacts)
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.ContactsApi();
-var listId = 56; // Number | ID of the List
-var deactivateContactsRequest = new egoiSdk.DeactivateContactsRequest(); // DeactivateContactsRequest | Parameters for the request
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.ContactsApi();
+let listId = 56; // Number | ID of the List
+let deactivateContactsRequest = new egoisdk.DeactivateContactsRequest(); // DeactivateContactsRequest | Parameters for the request
+apiInstance.actionDeactivateContacts(listId, deactivateContactsRequest, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.actionDeactivateContacts(listId, deactivateContactsRequest, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -172,50 +179,52 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="actionDetachTag"></a>
-# **actionDetachTag**
-> AttachTagResponse actionDetachTag(listId, attachTagRequest)
+
+## actionDetachTag
+
+> AcceptedResponse actionDetachTag(listId, detachTagRequest)
 
 Detach tag to contact
 
 Detach a tag to the provided contacts
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.ContactsApi();
-var listId = 56; // Number | ID of the List
-var attachTagRequest = new egoiSdk.AttachTagRequest(); // AttachTagRequest | Parameters for the Tag
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.ContactsApi();
+let listId = 56; // Number | ID of the List
+let detachTagRequest = new egoisdk.DetachTagRequest(); // DetachTagRequest | Parameters for the Tag
+apiInstance.actionDetachTag(listId, detachTagRequest, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.actionDetachTag(listId, attachTagRequest, callback);
+});
 ```
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **listId** | **Number**| ID of the List | 
- **attachTagRequest** | [**AttachTagRequest**](AttachTagRequest.md)| Parameters for the Tag | 
+ **detachTagRequest** | [**DetachTagRequest**](DetachTagRequest.md)| Parameters for the Tag | 
 
 ### Return type
 
-[**AttachTagResponse**](AttachTagResponse.md)
+[**AcceptedResponse**](AcceptedResponse.md)
 
 ### Authorization
 
@@ -223,11 +232,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="actionExportContacts"></a>
-# **actionExportContacts**
+
+## actionExportContacts
+
 > AcceptedResponse actionExportContacts(listId, contactExportRequest)
 
 Exports a list of contacts
@@ -235,29 +245,30 @@ Exports a list of contacts
 Exports a list of contacts to the desired callback url
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.ContactsApi();
-var listId = 56; // Number | ID of the List
-var contactExportRequest = new egoiSdk.ContactExportRequest(); // ContactExportRequest | Parameters for export
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.ContactsApi();
+let listId = 56; // Number | ID of the List
+let contactExportRequest = new egoisdk.ContactExportRequest(); // ContactExportRequest | Parameters for export
+apiInstance.actionExportContacts(listId, contactExportRequest, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.actionExportContacts(listId, contactExportRequest, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -274,41 +285,43 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="actionForgetContacts"></a>
-# **actionForgetContacts**
+
+## actionForgetContacts
+
 > AcceptedResponse actionForgetContacts(listId, contactForgetRequest)
 
 Forget contacts
 
-Forgets a list of contacts to the desired callback url
+Forgets a list of contacts
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.ContactsApi();
-var listId = 56; // Number | ID of the List
-var contactForgetRequest = new egoiSdk.ContactForgetRequest(); // ContactForgetRequest | Parameters for the action
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.ContactsApi();
+let listId = 56; // Number | ID of the List
+let contactForgetRequest = new egoisdk.ContactForgetRequest(); // ContactForgetRequest | Parameters for the action
+apiInstance.actionForgetContacts(listId, contactForgetRequest, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.actionForgetContacts(listId, contactForgetRequest, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -325,46 +338,48 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="actionImportBulk"></a>
-# **actionImportBulk**
-> AcceptedResponse actionImportBulk(listId, importBulkRequest)
+
+## actionImportBulk
+
+> AcceptedResponse actionImportBulk(listId, importBulkFileRequest)
 
 Import collection of contacts
 
-Imports a collection of contacts &lt;/br&gt;      **DISCLAIMER:** stream limits applied. [view here](#section/Stream-Limits &#39;Stream Limits&#39;)&lt;br&gt; ***Note:*** minimum of 2 contacts to use this method. [use Create new contact method instead](#operation/createContact &#39;Create new contact&#39;)
+Imports a collection of contacts &lt;/br&gt;      **DISCLAIMER:** stream limits applied. [view here](#section/Stream-Limits &#39;Stream Limits&#39;)&lt;br&gt; ***Notes:***&lt;br&gt;Minimum of 2 contacts to use this method. [Use Create new contact method instead](#operation/createContact &#39;Create new contact&#39;)&lt;br&gt;It defaults to ***Bulk object*** import.
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.ContactsApi();
-var listId = 56; // Number | ID of the List
-var importBulkRequest = new egoiSdk.ImportBulkRequest(); // ImportBulkRequest | Parameters for the bulk import
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.ContactsApi();
+let listId = 56; // Number | ID of the List
+let importBulkFileRequest = new egoisdk.ImportBulkFileRequest(); // ImportBulkFileRequest | Parameters for the bulk import
+apiInstance.actionImportBulk(listId, importBulkFileRequest, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.actionImportBulk(listId, importBulkRequest, callback);
+});
 ```
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **listId** | **Number**| ID of the List | 
- **importBulkRequest** | [**ImportBulkRequest**](ImportBulkRequest.md)| Parameters for the bulk import | 
+ **importBulkFileRequest** | [**ImportBulkFileRequest**](ImportBulkFileRequest.md)| Parameters for the bulk import | 
 
 ### Return type
 
@@ -376,11 +391,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="actionStartAutomation"></a>
-# **actionStartAutomation**
+
+## actionStartAutomation
+
 > StartAutomationResponse actionStartAutomation(listId, startAutomationRequest)
 
 Start automation
@@ -388,29 +404,30 @@ Start automation
 Start automation to the provided contacts
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.ContactsApi();
-var listId = 56; // Number | ID of the List
-var startAutomationRequest = new egoiSdk.StartAutomationRequest(); // StartAutomationRequest | Parameters for the operation to start automation
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.ContactsApi();
+let listId = 56; // Number | ID of the List
+let startAutomationRequest = new egoisdk.StartAutomationRequest(); // StartAutomationRequest | Parameters for the operation to start automation
+apiInstance.actionStartAutomation(listId, startAutomationRequest, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.actionStartAutomation(listId, startAutomationRequest, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -427,11 +444,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="actionUnsubscribeContact"></a>
-# **actionUnsubscribeContact**
+
+## actionUnsubscribeContact
+
 > RemoveResponse actionUnsubscribeContact(listId, removeRequest)
 
 Unsubscribes contacts
@@ -439,29 +457,30 @@ Unsubscribes contacts
 Unsubscribes contacts
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.ContactsApi();
-var listId = 56; // Number | ID of the List
-var removeRequest = new egoiSdk.RemoveRequest(); // RemoveRequest | Parameters for the contact to unsubscribe
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.ContactsApi();
+let listId = 56; // Number | ID of the List
+let removeRequest = new egoisdk.RemoveRequest(); // RemoveRequest | Parameters for the contact to unsubscribe
+apiInstance.actionUnsubscribeContact(listId, removeRequest, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.actionUnsubscribeContact(listId, removeRequest, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -478,46 +497,101 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="createContact"></a>
-# **createContact**
-> CreateContactResponse createContact(listId, contactBaseExtra)
+
+## actionUpdateContacts
+
+> AcceptedResponse actionUpdateContacts(listId, updateContactsRequest)
+
+Updates contacts
+
+Updates a collection of contacts (does not apply to removed contacts).      Note that all contacts will be updated with the same values and the existance of unique fields in the payload will trigger a 409 Conflict response.
+
+### Example
+
+```javascript
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
+// Configure API key authorization: Apikey
+let Apikey = defaultClient.authentications['Apikey'];
+Apikey.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//Apikey.apiKeyPrefix = 'Token';
+
+let apiInstance = new egoisdk.ContactsApi();
+let listId = 56; // Number | ID of the List
+let updateContactsRequest = new egoisdk.UpdateContactsRequest(); // UpdateContactsRequest | Parameters for the request
+apiInstance.actionUpdateContacts(listId, updateContactsRequest, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **listId** | **Number**| ID of the List | 
+ **updateContactsRequest** | [**UpdateContactsRequest**](UpdateContactsRequest.md)| Parameters for the request | 
+
+### Return type
+
+[**AcceptedResponse**](AcceptedResponse.md)
+
+### Authorization
+
+[Apikey](../README.md#Apikey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## createContact
+
+> CreateContactResponse createContact(listId, contactBaseExtraPost)
 
 Create new contact
 
 Create a new contact
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.ContactsApi();
-var listId = 56; // Number | ID of the list where the contact belongs
-var contactBaseExtra = new egoiSdk.ContactBaseExtra(); // ContactBaseExtra | Parameters for the Contact
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.ContactsApi();
+let listId = 56; // Number | ID of the list where the contact belongs
+let contactBaseExtraPost = new egoisdk.ContactBaseExtraPost(); // ContactBaseExtraPost | Parameters for the Contact
+apiInstance.createContact(listId, contactBaseExtraPost, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.createContact(listId, contactBaseExtra, callback);
+});
 ```
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **listId** | **Number**| ID of the list where the contact belongs | 
- **contactBaseExtra** | [**ContactBaseExtra**](ContactBaseExtra.md)| Parameters for the Contact | 
+ **contactBaseExtraPost** | [**ContactBaseExtraPost**](ContactBaseExtraPost.md)| Parameters for the Contact | 
 
 ### Return type
 
@@ -529,11 +603,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="getAllContactActivities"></a>
-# **getAllContactActivities**
+
+## getAllContactActivities
+
 > ActivityCollection getAllContactActivities(contactId, listId, opts)
 
 Get all contact activities
@@ -541,35 +616,36 @@ Get all contact activities
 Returns all contact activities
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.ContactsApi();
-var contactId = "contactId_example"; // String | ID of the Contact
-var listId = 56; // Number | ID of the List
-var opts = {
+let apiInstance = new egoisdk.ContactsApi();
+let contactId = "contactId_example"; // String | ID of the Contact
+let listId = 56; // Number | ID of the List
+let opts = {
   'offset': 56, // Number | Element offset (starting at zero for the first element)
   'limit': 10, // Number | Number of items to return
   'dateMin': new Date("2013-10-20T19:20:30+01:00"), // Date | Start date
   'dateMax': new Date("2013-10-20T19:20:30+01:00") // Date | End date
 };
-var callback = function(error, data, response) {
+apiInstance.getAllContactActivities(contactId, listId, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getAllContactActivities(contactId, listId, opts, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -590,11 +666,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getAllContacts"></a>
-# **getAllContacts**
+
+## getAllContacts
+
 > ContactCollection getAllContacts(listId, opts)
 
 Get all contacts
@@ -602,18 +679,19 @@ Get all contacts
 Returns all contacts
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.ContactsApi();
-var listId = 56; // Number | ID of the List
-var opts = {
+let apiInstance = new egoisdk.ContactsApi();
+let listId = 56; // Number | ID of the List
+let opts = {
   'offset': 56, // Number | Element offset (starting at zero for the first element)
   'limit': 10, // Number | Number of items to return
   'firstName': "firstName_example", // String | First name of the contacts to return
@@ -626,19 +704,19 @@ var opts = {
   'phoneStatus': true, // Boolean | PhoneStatus of the contacts to return
   'birthDate': null, // Date | Birth date of the contacts to return
   'language': "language_example", // String | Language date of the contacts to return
-  'extraFieldId': ["null"] // [String] | Extra field of contacts, extra_field_id[field_id]=value
+  'extraFieldId': {key: null} // GetAllContactsExtraFieldIdParameter | Extra field of contacts<div><span class='sc-cJSrbW cWGDGi'> Example: </span> <span class='sc-uJMKN cTkJKI'> 'extra_field_id[field_id]=value' </span></div>
 };
-var callback = function(error, data, response) {
+apiInstance.getAllContacts(listId, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getAllContacts(listId, opts, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -655,7 +733,7 @@ Name | Type | Description  | Notes
  **phoneStatus** | **Boolean**| PhoneStatus of the contacts to return | [optional] 
  **birthDate** | [**Date**](.md)| Birth date of the contacts to return | [optional] 
  **language** | **String**| Language date of the contacts to return | [optional] 
- **extraFieldId** | [**[String]**](String.md)| Extra field of contacts, extra_field_id[field_id]&#x3D;value | [optional] 
+ **extraFieldId** | [**GetAllContactsExtraFieldIdParameter**](.md)| Extra field of contacts&lt;div&gt;&lt;span class&#x3D;&#39;sc-cJSrbW cWGDGi&#39;&gt; Example: &lt;/span&gt; &lt;span class&#x3D;&#39;sc-uJMKN cTkJKI&#39;&gt; &#39;extra_field_id[field_id]&#x3D;value&#39; &lt;/span&gt;&lt;/div&gt; | [optional] 
 
 ### Return type
 
@@ -667,11 +745,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getAllContactsBySegment"></a>
-# **getAllContactsBySegment**
+
+## getAllContactsBySegment
+
 > ContactCollection getAllContactsBySegment(listId, segmentId, opts)
 
 Get all contacts by Segment Id
@@ -679,34 +758,35 @@ Get all contacts by Segment Id
 Returns all contacts filtered by Segment Id
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.ContactsApi();
-var listId = 56; // Number | ID of the List
-var segmentId = "segmentId_example"; // String | ID of the Segment
-var opts = {
+let apiInstance = new egoisdk.ContactsApi();
+let listId = 56; // Number | ID of the List
+let segmentId = "segmentId_example"; // String | ID of the Segment
+let opts = {
   'offset': 56, // Number | Element offset (starting at zero for the first element)
   'limit': 10, // Number | Number of items to return
-  'showRemoved': true // Boolean | Show removed contacts
+  'showRemoved': false // Boolean | Show removed contacts
 };
-var callback = function(error, data, response) {
+apiInstance.getAllContactsBySegment(listId, segmentId, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getAllContactsBySegment(listId, segmentId, opts, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -714,7 +794,7 @@ Name | Type | Description  | Notes
  **segmentId** | **String**| ID of the Segment | 
  **offset** | **Number**| Element offset (starting at zero for the first element) | [optional] 
  **limit** | **Number**| Number of items to return | [optional] [default to 10]
- **showRemoved** | **Boolean**| Show removed contacts | [optional] 
+ **showRemoved** | **Boolean**| Show removed contacts | [optional] [default to false]
 
 ### Return type
 
@@ -726,11 +806,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getContact"></a>
-# **getContact**
+
+## getContact
+
 > ComplexContact getContact(contactId, listId)
 
 Get contact
@@ -738,29 +819,30 @@ Get contact
 Returns contact information given its ID
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.ContactsApi();
-var contactId = "contactId_example"; // String | ID of the Contact
-var listId = 56; // Number | ID of the List
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.ContactsApi();
+let contactId = "contactId_example"; // String | ID of the Contact
+let listId = 56; // Number | ID of the List
+apiInstance.getContact(contactId, listId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getContact(contactId, listId, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -777,48 +859,50 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="patchContact"></a>
-# **patchContact**
-> CreateContactResponse patchContact(contactId, listId, contactBaseStatusExtra)
+
+## patchContact
+
+> CreateContactResponse patchContact(contactId, listId, contactBaseStatusExtraNoRemoved)
 
 Update a specific contact
 
 Update contact
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.ContactsApi();
-var contactId = "contactId_example"; // String | ID of the Contact
-var listId = 56; // Number | ID of the List
-var contactBaseStatusExtra = new egoiSdk.ContactBaseStatusExtra(); // ContactBaseStatusExtra | Parameters for the contact
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.ContactsApi();
+let contactId = "contactId_example"; // String | ID of the Contact
+let listId = 56; // Number | ID of the List
+let contactBaseStatusExtraNoRemoved = new egoisdk.ContactBaseStatusExtraNoRemoved(); // ContactBaseStatusExtraNoRemoved | Parameters for the contact
+apiInstance.patchContact(contactId, listId, contactBaseStatusExtraNoRemoved, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.patchContact(contactId, listId, contactBaseStatusExtra, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **contactId** | **String**| ID of the Contact | 
  **listId** | **Number**| ID of the List | 
- **contactBaseStatusExtra** | [**ContactBaseStatusExtra**](ContactBaseStatusExtra.md)| Parameters for the contact | 
+ **contactBaseStatusExtraNoRemoved** | [**ContactBaseStatusExtraNoRemoved**](ContactBaseStatusExtraNoRemoved.md)| Parameters for the contact | 
 
 ### Return type
 
@@ -830,43 +914,45 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="searchContacts"></a>
-# **searchContacts**
-> InlineResponse200 searchContacts(contact, opts)
+
+## searchContacts
+
+> SearchContacts200Response searchContacts(contact, opts)
 
 Search contact
 
 Searches a contact across all lists and returns a collection of contacts found
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.ContactsApi();
-var contact = "contact_example"; // String | Contact to search
-var opts = {
+let apiInstance = new egoisdk.ContactsApi();
+let contact = "contact_example"; // String | Contact to search
+let opts = {
   'type': "'email'" // String | Type of contact to search (defaults to 'email')
 };
-var callback = function(error, data, response) {
+apiInstance.searchContacts(contact, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.searchContacts(contact, opts, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -875,7 +961,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse200**](InlineResponse200.md)
+[**SearchContacts200Response**](SearchContacts200Response.md)
 
 ### Authorization
 
@@ -883,6 +969,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 

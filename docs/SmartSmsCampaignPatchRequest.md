@@ -1,6 +1,7 @@
-# egoiSdk.SmartSmsCampaignPatchRequest
+# egoisdk.SmartSmsCampaignPatchRequest
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **internalName** | **String** | SMS campaign internal name | [optional] 

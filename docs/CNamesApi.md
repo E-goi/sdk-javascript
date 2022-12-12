@@ -1,4 +1,4 @@
-# egoiSdk.CNamesApi
+# egoisdk.CNamesApi
 
 All URIs are relative to *https://api.egoiapp.com*
 
@@ -8,41 +8,43 @@ Method | HTTP request | Description
 [**getAllCNames**](CNamesApi.md#getAllCNames) | **GET** /cnames | Get All CNames
 
 
-<a name="createCName"></a>
-# **createCName**
-> CName createCName(cName)
+
+## createCName
+
+> CName createCName(cNamePost)
 
 Create cname
 
 Creates a cnames
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.CNamesApi();
-var cName = new egoiSdk.CName(); // CName | Parameters for the cname
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.CNamesApi();
+let cNamePost = new egoisdk.CNamePost(); // CNamePost | Parameters for the cname
+apiInstance.createCName(cNamePost, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.createCName(cName, callback);
+});
 ```
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cName** | [**CName**](CName.md)| Parameters for the cname | 
+ **cNamePost** | [**CNamePost**](CNamePost.md)| Parameters for the cname | 
 
 ### Return type
 
@@ -54,11 +56,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="getAllCNames"></a>
-# **getAllCNames**
+
+## getAllCNames
+
 > CNamesCollection getAllCNames()
 
 Get All CNames
@@ -66,27 +69,28 @@ Get All CNames
 Returns all cnames
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.CNamesApi();
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.CNamesApi();
+apiInstance.getAllCNames((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getAllCNames(callback);
+});
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -99,6 +103,6 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 

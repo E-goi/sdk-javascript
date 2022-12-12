@@ -1,4 +1,4 @@
-# egoiSdk.SegmentsApi
+# egoisdk.SegmentsApi
 
 All URIs are relative to *https://api.egoiapp.com*
 
@@ -8,8 +8,9 @@ Method | HTTP request | Description
 [**getAllSegments**](SegmentsApi.md#getAllSegments) | **GET** /lists/{list_id}/segments | Get all segments
 
 
-<a name="deleteSegment"></a>
-# **deleteSegment**
+
+## deleteSegment
+
 > deleteSegment(segmentId, listId)
 
 Remove segment
@@ -17,29 +18,30 @@ Remove segment
 Remove segment information given its ID
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.SegmentsApi();
-var segmentId = "segmentId_example"; // String | ID of the Segment
-var listId = 56; // Number | ID of the List
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.SegmentsApi();
+let segmentId = "segmentId_example"; // String | ID of the Segment
+let listId = 56; // Number | ID of the List
+apiInstance.deleteSegment(segmentId, listId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully.');
   }
-};
-apiInstance.deleteSegment(segmentId, listId, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -56,11 +58,12 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getAllSegments"></a>
-# **getAllSegments**
+
+## getAllSegments
+
 > SegmentCollection getAllSegments(listId, opts)
 
 Get all segments
@@ -68,34 +71,35 @@ Get all segments
 Returns all segments
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.SegmentsApi();
-var listId = 56; // Number | ID of the List
-var opts = {
+let apiInstance = new egoisdk.SegmentsApi();
+let listId = 56; // Number | ID of the List
+let opts = {
   'type': "type_example", // String | Type of segment
   'name': "name_example", // String | Segment name
   'offset': 56, // Number | Element offset (starting at zero for the first element)
   'limit': 10 // Number | Number of items to return
 };
-var callback = function(error, data, response) {
+apiInstance.getAllSegments(listId, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getAllSegments(listId, opts, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -115,6 +119,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 

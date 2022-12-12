@@ -1,12 +1,13 @@
-# egoiSdk.DomainAlreadyDefinedErrors
+# egoisdk.DomainAlreadyDefinedErrors
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **domainAlreadyDefined** | **String** | Occurs when a domain was already active | [optional] 
 
 
-<a name="DomainAlreadyDefinedEnum"></a>
+
 ## Enum: DomainAlreadyDefinedEnum
 
 

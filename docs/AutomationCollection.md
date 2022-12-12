@@ -1,6 +1,7 @@
-# egoiSdk.AutomationCollection
+# egoisdk.AutomationCollection
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **totalItems** | **Number** | Returned automations | [optional] 

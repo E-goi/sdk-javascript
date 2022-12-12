@@ -1,6 +1,7 @@
-# egoiSdk.ReportCampaignsGroup
+# egoisdk.ReportCampaignsGroup
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **listId** | **Number** |  | 
@@ -8,7 +9,7 @@ Name | Type | Description | Notes
 **data** | **[Number]** | Array of campaign groups | 
 
 
-<a name="TypeEnum"></a>
+
 ## Enum: TypeEnum
 
 

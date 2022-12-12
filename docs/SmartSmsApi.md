@@ -1,4 +1,4 @@
-# egoiSdk.SmartSmsApi
+# egoisdk.SmartSmsApi
 
 All URIs are relative to *https://api.egoiapp.com*
 
@@ -9,8 +9,9 @@ Method | HTTP request | Description
 [**patchSmartSmsCampaign**](SmartSmsApi.md#patchSmartSmsCampaign) | **PATCH** /campaigns/smart-sms/{campaign_hash} | Update a specific smart sms campaign
 
 
-<a name="actionSendSmartSms"></a>
-# **actionSendSmartSms**
+
+## actionSendSmartSms
+
 > AcceptedResponse actionSendSmartSms(campaignHash, campaignSmsSendRequest)
 
 Send smart sms message
@@ -18,29 +19,30 @@ Send smart sms message
 Deploys and sends a smart sms message
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.SmartSmsApi();
-var campaignHash = "campaignHash_example"; // String | ID of the Campaign
-var campaignSmsSendRequest = new egoiSdk.CampaignSmsSendRequest(); // CampaignSmsSendRequest | Parameters for the 'send sms' action
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.SmartSmsApi();
+let campaignHash = "campaignHash_example"; // String | ID of the Campaign
+let campaignSmsSendRequest = new egoisdk.CampaignSmsSendRequest(); // CampaignSmsSendRequest | Parameters for the 'send sms' action
+apiInstance.actionSendSmartSms(campaignHash, campaignSmsSendRequest, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.actionSendSmartSms(campaignHash, campaignSmsSendRequest, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -57,11 +59,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="createSmartSmsCampaign"></a>
-# **createSmartSmsCampaign**
+
+## createSmartSmsCampaign
+
 > HashcodeCampaign createSmartSmsCampaign(smartSmsCampaign)
 
 Create new smart sms campaign
@@ -69,28 +72,29 @@ Create new smart sms campaign
 Creates a new smart sms campaign.                         **DISCLAIMER:** A URL will be added at the end of your SMS
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.SmartSmsApi();
-var smartSmsCampaign = new egoiSdk.SmartSmsCampaign(); // SmartSmsCampaign | Parameters for the Smart Sms Campaign
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.SmartSmsApi();
+let smartSmsCampaign = new egoisdk.SmartSmsCampaign(); // SmartSmsCampaign | Parameters for the Smart Sms Campaign
+apiInstance.createSmartSmsCampaign(smartSmsCampaign, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.createSmartSmsCampaign(smartSmsCampaign, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -106,11 +110,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="patchSmartSmsCampaign"></a>
-# **patchSmartSmsCampaign**
+
+## patchSmartSmsCampaign
+
 > HashcodeCampaign patchSmartSmsCampaign(campaignHash, smartSmsCampaignPatchRequest)
 
 Update a specific smart sms campaign
@@ -118,29 +123,30 @@ Update a specific smart sms campaign
 Update smart sms campaign
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.SmartSmsApi();
-var campaignHash = "campaignHash_example"; // String | ID of the Campaign
-var smartSmsCampaignPatchRequest = new egoiSdk.SmartSmsCampaignPatchRequest(); // SmartSmsCampaignPatchRequest | Parameters for the Smart Sms Campaign
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.SmartSmsApi();
+let campaignHash = "campaignHash_example"; // String | ID of the Campaign
+let smartSmsCampaignPatchRequest = new egoisdk.SmartSmsCampaignPatchRequest(); // SmartSmsCampaignPatchRequest | Parameters for the Smart Sms Campaign
+apiInstance.patchSmartSmsCampaign(campaignHash, smartSmsCampaignPatchRequest, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.patchSmartSmsCampaign(campaignHash, smartSmsCampaignPatchRequest, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -157,6 +163,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 

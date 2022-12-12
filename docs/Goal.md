@@ -1,6 +1,7 @@
-# egoiSdk.Goal
+# egoisdk.Goal
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **domain** | **String** | Domain where goal exists | [optional] 

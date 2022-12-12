@@ -1,8 +1,9 @@
-# egoiSdk.CreateCartResponse
+# egoisdk.CreateCartResponse
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**cartId** | **String** |  | [optional] 
+**cartId** | **String** |  | [optional] [readonly] 
 
 

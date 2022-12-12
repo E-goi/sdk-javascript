@@ -1,6 +1,7 @@
-# egoiSdk.BadRequest
+# egoisdk.BadRequest
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **String** | RFC for status code definitions | [optional] 
@@ -9,7 +10,7 @@ Name | Type | Description | Notes
 **detail** | **String** | Error detail | [optional] 
 
 
-<a name="TitleEnum"></a>
+
 ## Enum: TitleEnum
 
 

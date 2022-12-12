@@ -1,4 +1,4 @@
-# egoiSdk.CampaignGroupsApi
+# egoisdk.CampaignGroupsApi
 
 All URIs are relative to *https://api.egoiapp.com*
 
@@ -10,41 +10,43 @@ Method | HTTP request | Description
 [**updateCampaignGroup**](CampaignGroupsApi.md#updateCampaignGroup) | **PUT** /campaign-groups/{group_id} | Update a specific campaign group
 
 
-<a name="createCampaignGroup"></a>
-# **createCampaignGroup**
-> CampaignGroup createCampaignGroup(campaignGroup)
+
+## createCampaignGroup
+
+> CampaignGroup createCampaignGroup(campaignGroupPost)
 
 Create new campaign group
 
 Create a new campaign group
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.CampaignGroupsApi();
-var campaignGroup = new egoiSdk.CampaignGroup(); // CampaignGroup | Parameters for the Campaign Group
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.CampaignGroupsApi();
+let campaignGroupPost = new egoisdk.CampaignGroupPost(); // CampaignGroupPost | Parameters for the Campaign Group
+apiInstance.createCampaignGroup(campaignGroupPost, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.createCampaignGroup(campaignGroup, callback);
+});
 ```
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaignGroup** | [**CampaignGroup**](CampaignGroup.md)| Parameters for the Campaign Group | 
+ **campaignGroupPost** | [**CampaignGroupPost**](CampaignGroupPost.md)| Parameters for the Campaign Group | 
 
 ### Return type
 
@@ -56,11 +58,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="deleteCampaignGroup"></a>
-# **deleteCampaignGroup**
+
+## deleteCampaignGroup
+
 > deleteCampaignGroup(groupId)
 
 Remove Campaign Group
@@ -68,28 +71,29 @@ Remove Campaign Group
 Remove campaign group information given its ID
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.CampaignGroupsApi();
-var groupId = 56; // Number | ID of the Campaign Group
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.CampaignGroupsApi();
+let groupId = 56; // Number | ID of the Campaign Group
+apiInstance.deleteCampaignGroup(groupId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully.');
   }
-};
-apiInstance.deleteCampaignGroup(groupId, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -105,11 +109,12 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getAllCampaignGroups"></a>
-# **getAllCampaignGroups**
+
+## getAllCampaignGroups
+
 > CampaignGroupCollection getAllCampaignGroups(opts)
 
 Get all campaign groups
@@ -117,33 +122,34 @@ Get all campaign groups
 Returns all campaign groups
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.CampaignGroupsApi();
-var opts = {
+let apiInstance = new egoisdk.CampaignGroupsApi();
+let opts = {
   'groupId': 56, // Number | Reference attribute to campaign group id
   'name': "name_example", // String | Reference attribute to campaign group id
   'limit': 10, // Number | Number of items to return
   'offset': 56 // Number | Element offset (starting at zero for the first element)
 };
-var callback = function(error, data, response) {
+apiInstance.getAllCampaignGroups(opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getAllCampaignGroups(opts, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -162,46 +168,48 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="updateCampaignGroup"></a>
-# **updateCampaignGroup**
-> CampaignGroup updateCampaignGroup(groupId, campaignGroup)
+
+## updateCampaignGroup
+
+> CampaignGroup updateCampaignGroup(groupId, campaignGroupPost)
 
 Update a specific campaign group
 
 Update a campaign group
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.CampaignGroupsApi();
-var groupId = 56; // Number | ID of the Campaign Group
-var campaignGroup = new egoiSdk.CampaignGroup(); // CampaignGroup | Parameters for the Campaign Group
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.CampaignGroupsApi();
+let groupId = 56; // Number | ID of the Campaign Group
+let campaignGroupPost = new egoisdk.CampaignGroupPost(); // CampaignGroupPost | Parameters for the Campaign Group
+apiInstance.updateCampaignGroup(groupId, campaignGroupPost, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.updateCampaignGroup(groupId, campaignGroup, callback);
+});
 ```
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **groupId** | **Number**| ID of the Campaign Group | 
- **campaignGroup** | [**CampaignGroup**](CampaignGroup.md)| Parameters for the Campaign Group | 
+ **campaignGroupPost** | [**CampaignGroupPost**](CampaignGroupPost.md)| Parameters for the Campaign Group | 
 
 ### Return type
 
@@ -213,6 +221,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 

@@ -1,4 +1,4 @@
-# egoiSdk.UtilitiesApi
+# egoisdk.UtilitiesApi
 
 All URIs are relative to *https://api.egoiapp.com*
 
@@ -7,8 +7,9 @@ Method | HTTP request | Description
 [**getAllCountries**](UtilitiesApi.md#getAllCountries) | **GET** /utilities/countries | Get all countries
 
 
-<a name="getAllCountries"></a>
-# **getAllCountries**
+
+## getAllCountries
+
 > CountryCollection getAllCountries(opts)
 
 Get all countries
@@ -16,30 +17,31 @@ Get all countries
 Returns all countries
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.UtilitiesApi();
-var opts = {
+let apiInstance = new egoisdk.UtilitiesApi();
+let opts = {
   'phone': "phone_example" // String | Phone number without country code to get all countries which can use that phone number
 };
-var callback = function(error, data, response) {
+apiInstance.getAllCountries(opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getAllCountries(opts, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -55,6 +57,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 

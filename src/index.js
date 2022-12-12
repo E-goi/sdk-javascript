@@ -1,2267 +1,4430 @@
 /**
  * APIv3 (New)
- *  # Introduction This is our new version of API. We invite you to start using it and give us your feedback # Getting Started  E-goi can be integrated with many environments and programming languages via our REST API. We've created a developer focused portal to give your organization a clear and quick overview of how to integrate with E-goi. The developer portal focuses on scenarios for integration and flow of events. We recommend familiarizing yourself with all of the content in the developer portal, before start using our rest API.   The E-goi  APIv3 is served over HTTPS. To ensure data privacy, unencrypted HTTP is not supported.  Request data is passed to the API by POSTing JSON objects to the API endpoints with the appropriate parameters.   BaseURL = api.egoiapp.com  # RESTful Services This API supports 5 HTTP methods:  * <b>GET</b>: The HTTP GET method is used to **read** (or retrieve) a representation of a resource. * <b>POST</b>: The POST verb is most-often utilized to **create** new resources. * <b>PATCH</b>: PATCH is used for **modify** capabilities. The PATCH request only needs to contain the changes to the resource, not the complete resource * <b>PUT</b>: PUT is most-often utilized for **update** capabilities, PUT-ing to a known resource URI with the request body containing the newly-updated representation of the original resource. * <b>DELETE</b>: DELETE is pretty easy to understand. It is used to **delete** a resource identified by a URI.  # Authentication   We use a custom authentication method, you will need a apikey that you can find in your account settings. Below you will see a curl example to get your account information:  #!/bin/bash  curl -X GET 'https://api.egoiapp.com/my-account' \\  -H 'accept: application/json' \\  -H 'Apikey: <YOUR_APY_KEY>'  Here you can see a curl Post example with authentication:  #!/bin/bash  curl -X POST 'http://api.egoiapp.com/tags' \\  -H 'accept: application/json' \\  -H 'Apikey: <YOUR_APY_KEY>' \\  -H 'Content-Type: application/json' \\  -d '{`name`:`Your custom tag`,`color`:`#FFFFFF`}'  # SDK Get started quickly with E-goi with our integration tools. Our SDK is a modern open source library that makes it easy to integrate your application with E-goi services.  * <a href='https://github.com/E-goi/sdk-java'>Java</a>  * <a href='https://github.com/E-goi/sdk-php'>PHP</a>  * <a href='https://github.com/E-goi/sdk-python'>Python</a>  * <a href='https://github.com/E-goi/sdk-ruby'>Ruby</a>  * <a href='https://github.com/E-goi/sdk-javascript'>Javascript</a>  * <a href='https://github.com/E-goi/sdk-csharp'>C#</a>  # Stream Limits Stream limits are security mesures we have to make sure our API have a fair use policy, for this reason, any request that creates or modifies data (**POST**, **PATCH** and **PUT**) is limited to a maximum of **20MB** of content length. If you arrive to this limit in one of your request, you'll receive a HTTP code **413 (Request Entity Too Large)** and the request will be ignored. To avoid this error in importation's requests, it's advised the request's division in batches that have each one less than 20MB.  # Timeouts Timeouts set a maximum waiting time on a request's response. Our API, sets a default timeout for each request and when breached, you'll receive an HTTP **408 (Request Timeout)** error code. You should take into consideration that response times can vary widely based on the complexity of the request, amount of data being analyzed, and the load on the system and workspace at the time of the query. When dealing with such errors, you should first attempt to reduce the complexity and amount of data under analysis, and only then, if problems are still occurring ask for support.  For all these reasons, the default timeout for each request is **10 Seconds** and any request that creates or modifies data (**POST**, **PATCH** and **PUT**) will have a timeout of **60 Seconds**. Specific timeouts may exist for specific requests, these can be found in the request's documentation.  <security-definitions/>
+ *  # Introduction This is our new version of API. We invite you to start using it and give us your feedback # Getting Started  E-goi can be integrated with many environments and programming languages via our REST API. We've created a developer focused portal to give your organization a clear and quick overview of how to integrate with E-goi. The developer portal focuses on scenarios for integration and flow of events. We recommend familiarizing yourself with all of the content in the developer portal, before start using our rest API.  The E-goi  APIv3 is served over HTTPS. To ensure data privacy, unencrypted HTTP is not supported.  Request data is passed to the API by POSTing JSON objects to the API endpoints with the appropriate parameters.      BaseURL = api.egoiapp.com  # RESTful Services This API supports 5 HTTP methods:  * <b>GET</b>: The HTTP GET method is used to **read** (or retrieve) a representation of a resource. * <b>POST</b>: The POST verb is most-often utilized to **create** new resources. * <b>PATCH</b>: PATCH is used for **modify** capabilities. The PATCH request only needs to contain the changes to the resource, not the complete resource * <b>PUT</b>: PUT is most-often utilized for **update** capabilities, PUT-ing to a known resource URI with the request body containing the newly-updated representation of the original resource. * <b>DELETE</b>: DELETE is pretty easy to understand. It is used to **delete** a resource identified by a URI.  # Authentication  We use a custom authentication method, you will need a apikey that you can find in your account settings. Below you will see a curl example to get your account information:     #!/bin/bash     curl -X GET 'https://api.egoiapp.com/my-account' \\     -H 'accept: application/json' \\     -H 'Apikey: <YOUR_APY_KEY>'  Here you can see a curl Post example with authentication:     #!/bin/bash     curl -X POST 'http://api.egoiapp.com/tags' \\     -H 'accept: application/json' \\     -H 'Apikey: <YOUR_APY_KEY>' \\     -H 'Content-Type: application/json' \\     -d '{`name`:`Your custom tag`,`color`:`#FFFFFF`}'  # SDK Get started quickly with E-goi with our integration tools. Our SDK is a modern open source library that makes it easy to integrate your application with E-goi services.  * <a href='https://github.com/E-goi/sdk-java'>Java</a>  * <a href='https://github.com/E-goi/sdk-php'>PHP</a>  * <a href='https://github.com/E-goi/sdk-python'>Python</a>  * <a href='https://github.com/E-goi/sdk-ruby'>Ruby</a>  * <a href='https://github.com/E-goi/sdk-javascript'>Javascript</a>  * <a href='https://github.com/E-goi/sdk-csharp'>C#</a>  # Stream Limits Stream limits are security mesures we have to make sure our API have a fair use policy, for this reason, any request that creates or modifies data (**POST**, **PATCH** and **PUT**) is limited to a maximum of **20MB** of content length. If you arrive to this limit in one of your request, you'll receive a HTTP code **413 (Request Entity Too Large)** and the request will be ignored. To avoid this error in importation's requests, it's advised the request's division in batches that have each one less than 20MB.  # Timeouts Timeouts set a maximum waiting time on a request's response. Our API, sets a default timeout for each request and when breached, you'll receive an HTTP **408 (Request Timeout)** error code. You should take into consideration that response times can vary widely based on the complexity of the request, amount of data being analyzed, and the load on the system and workspace at the time of the query. When dealing with such errors, you should first attempt to reduce the complexity and amount of data under analysis, and only then, if problems are still occurring ask for support.  For all these reasons, the default timeout for each request is **10 Seconds** and any request that creates or modifies data (**POST**, **PATCH** and **PUT**) will have a timeout of **60 Seconds**. Specific timeouts may exist for specific requests, these can be found in the request's documentation.  # Callbacks A callback is an asynchronous API request that originates from the API server and is sent to the client in response to a previous request sent by that client.  The API will make a **POST** request to the address defined in the URL with the information regarding the event of interest and share data related to that event.  ***Note:*** Only http or https protocols are supported in the Url parameter.  <security-definitions/>
  *
- * OpenAPI spec version: 3.0.0
+ * The version of the OpenAPI document: 3.0.0
+ * 
  *
  * NOTE: This class is auto generated by OpenAPI Generator (https://openapi-generator.tech).
  * https://openapi-generator.tech
- *
- * OpenAPI Generator version: 3.3.4
- *
  * Do not edit the class manually.
  *
  */
 
-(function(factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient', 'egoiSdk/AbstractCampaignSendRequest', 'egoiSdk/AbstractCampaignSendRequestSegments', 'egoiSdk/AbstractCampaignTemplate', 'egoiSdk/AbstractCellphoneSender', 'egoiSdk/AbstractSegment', 'egoiSdk/AbstractSendEmail', 'egoiSdk/AbstractSendVoice', 'egoiSdk/AcceptedResponse', 'egoiSdk/ActivateContactsAll', 'egoiSdk/ActivateContactsMany', 'egoiSdk/ActivateContactsRequest', 'egoiSdk/ActivityCollection', 'egoiSdk/AdvancedReport', 'egoiSdk/AdvancedReportCampaignsObject', 'egoiSdk/AdvancedReportEmailBouncesColumns', 'egoiSdk/AdvancedReportEmailBouncesOptions', 'egoiSdk/AdvancedReportEmailClicksByContactColumns', 'egoiSdk/AdvancedReportEmailClicksByContactOptions', 'egoiSdk/AdvancedReportEmailClicksByUrlColumns', 'egoiSdk/AdvancedReportEmailClicksByUrlOptions', 'egoiSdk/AdvancedReportEmailEventsColumns', 'egoiSdk/AdvancedReportEmailEventsOptions', 'egoiSdk/AdvancedReportEmailUnsubscriptionsColumns', 'egoiSdk/AdvancedReportEmailUnsubscriptionsOptions', 'egoiSdk/AdvancedReportRange', 'egoiSdk/AdvancedReportSendsColumns', 'egoiSdk/AdvancedReportSendsOptions', 'egoiSdk/AdvancedReportSmsBouncesColumns', 'egoiSdk/AdvancedReportSmsBouncesOptions', 'egoiSdk/AdvancedReportSmsEventsColumns', 'egoiSdk/AdvancedReportSmsEventsOptions', 'egoiSdk/AdvancedReportSubscriptionsColumns', 'egoiSdk/AdvancedReportSubscriptionsOptions', 'egoiSdk/AdvancedReportUnsubscriptionsColumns', 'egoiSdk/AdvancedReportUnsubscriptionsOptions', 'egoiSdk/AdvancedReportsCollection', 'egoiSdk/AlphanumericCellphoneSender', 'egoiSdk/AppStructure', 'egoiSdk/AppStructureList', 'egoiSdk/AttachTagRequest', 'egoiSdk/AttachTagResponse', 'egoiSdk/AutomaticSegment', 'egoiSdk/Automation', 'egoiSdk/AutomationCollection', 'egoiSdk/BadRequest', 'egoiSdk/BalanceInfo', 'egoiSdk/BalanceInfoBalanceInfo', 'egoiSdk/BaseConflict', 'egoiSdk/BasicProduct', 'egoiSdk/BasicSender', 'egoiSdk/BillingInfo', 'egoiSdk/BulkActionResponse', 'egoiSdk/CName', 'egoiSdk/CNamesCollection', 'egoiSdk/Campaign', 'egoiSdk/CampaignEmailBaseContent', 'egoiSdk/CampaignEmailContent', 'egoiSdk/CampaignEmailContentFile', 'egoiSdk/CampaignEmailContentHtml', 'egoiSdk/CampaignEmailContentHtmlPatch', 'egoiSdk/CampaignEmailContentTemplate', 'egoiSdk/CampaignEmailContentWebPage', 'egoiSdk/CampaignEmailRssContent', 'egoiSdk/CampaignEmailRssContentHtml', 'egoiSdk/CampaignEmailScheduleRequest', 'egoiSdk/CampaignEmailSendNowRequest', 'egoiSdk/CampaignEmailSendRequest', 'egoiSdk/CampaignGroup', 'egoiSdk/CampaignGroupCollection', 'egoiSdk/CampaignHash', 'egoiSdk/CampaignPushContent', 'egoiSdk/CampaignPushContentTemplate', 'egoiSdk/CampaignPushContentText', 'egoiSdk/CampaignPushScheduleRequest', 'egoiSdk/CampaignPushSendRequest', 'egoiSdk/CampaignScheduleDate', 'egoiSdk/CampaignSentLast30Days', 'egoiSdk/CampaignSentLast30DaysErrors', 'egoiSdk/CampaignSmartSmsHtml', 'egoiSdk/CampaignSmartSmsImport', 'egoiSdk/CampaignSmartSmsOptions', 'egoiSdk/CampaignSmartSmsPageContent', 'egoiSdk/CampaignSmartSmsRedirect', 'egoiSdk/CampaignSmartSmsScheduleRequest', 'egoiSdk/CampaignSmartSmsSendRequest', 'egoiSdk/CampaignSmsContent', 'egoiSdk/CampaignSmsContentTemplate', 'egoiSdk/CampaignSmsContentText', 'egoiSdk/CampaignSmsOptions', 'egoiSdk/CampaignSmsScheduleRequest', 'egoiSdk/CampaignSmsSendRequest', 'egoiSdk/CampaignVoiceScheduleRequest', 'egoiSdk/CampaignVoiceSendRequest', 'egoiSdk/CampaignWebPushScheduleRequest', 'egoiSdk/CampaignWebPushSendRequest', 'egoiSdk/CampaignsCollection', 'egoiSdk/Cart', 'egoiSdk/CartPatchRequest', 'egoiSdk/Catalog', 'egoiSdk/CatalogCollection', 'egoiSdk/CatalogPostRequest', 'egoiSdk/CellphoneSender', 'egoiSdk/CellphoneSenderCollection', 'egoiSdk/CnameExists', 'egoiSdk/CnameExistsErrors', 'egoiSdk/ComplexContact', 'egoiSdk/ComplexField', 'egoiSdk/ComplexList', 'egoiSdk/ComplexUser', 'egoiSdk/Conflict', 'egoiSdk/Contact', 'egoiSdk/ContactActivity', 'egoiSdk/ContactActivityAbstractActionsWithData', 'egoiSdk/ContactActivityClick', 'egoiSdk/ContactBaseExtra', 'egoiSdk/ContactBaseExtraBulk', 'egoiSdk/ContactBaseExtraFull', 'egoiSdk/ContactBaseFieldsBulkSchema', 'egoiSdk/ContactBaseFieldsSchema', 'egoiSdk/ContactBaseFieldsWithIdSchema', 'egoiSdk/ContactBaseStatusExtra', 'egoiSdk/ContactBaseStatusExtraBulk', 'egoiSdk/ContactBaseWithStatusFieldsBulkSchema', 'egoiSdk/ContactBaseWithStatusFieldsSchema', 'egoiSdk/ContactBaseWithStatusFieldsSchemaBase', 'egoiSdk/ContactBaseWithStatusFieldsSchemaBasePushTokenAndroid', 'egoiSdk/ContactBaseWithStatusFieldsSchemaBasePushTokenIos', 'egoiSdk/ContactBulk', 'egoiSdk/ContactCollection', 'egoiSdk/ContactExportRequest', 'egoiSdk/ContactExtraFieldCellphone', 'egoiSdk/ContactExtraFieldCellphoneBulk', 'egoiSdk/ContactExtraFieldDate', 'egoiSdk/ContactExtraFieldEmail', 'egoiSdk/ContactExtraFieldEmailBulk', 'egoiSdk/ContactExtraFieldNumber', 'egoiSdk/ContactExtraFieldOptions', 'egoiSdk/ContactExtraFieldPhone', 'egoiSdk/ContactExtraFieldPhoneBulk', 'egoiSdk/ContactExtraFieldText', 'egoiSdk/ContactExtraFields', 'egoiSdk/ContactExtraFieldsBulk', 'egoiSdk/ContactExtraFieldsBulkSchema', 'egoiSdk/ContactExtraFieldsSchema', 'egoiSdk/ContactForgetRequest', 'egoiSdk/ContactInsideBase', 'egoiSdk/ContactInsideBaseBulk', 'egoiSdk/ContactInsideBaseWithId', 'egoiSdk/ContactOtherActivity', 'egoiSdk/ContactSearchResponse', 'egoiSdk/ContactStatusFieldsBulkSchema', 'egoiSdk/ContactStatusFieldsSchema', 'egoiSdk/ContactTags', 'egoiSdk/ContactTagsBulk', 'egoiSdk/ContentVoice', 'egoiSdk/ContentVoiceAudio', 'egoiSdk/ContentVoicePatch', 'egoiSdk/ContentVoiceTemplate', 'egoiSdk/Country', 'egoiSdk/CountryCollection', 'egoiSdk/CreateCartResponse', 'egoiSdk/CreateContactResponse', 'egoiSdk/CreateOrder', 'egoiSdk/CreateOrderResponse', 'egoiSdk/DeactivateContactsAll', 'egoiSdk/DeactivateContactsMany', 'egoiSdk/DeactivateContactsRequest', 'egoiSdk/DeleteCampaignsConflict', 'egoiSdk/DeleteFieldsConflict', 'egoiSdk/DeleteListsConflict', 'egoiSdk/DeleteListsConflictsErrors', 'egoiSdk/DeleteSegmentsConflict', 'egoiSdk/DeleteSegmentsConflictsErrors', 'egoiSdk/Domain', 'egoiSdk/DomainAlreadyDefined', 'egoiSdk/DomainAlreadyDefinedErrors', 'egoiSdk/DomainCollection', 'egoiSdk/DomainListRequired', 'egoiSdk/DomainListRequiredErrors', 'egoiSdk/EmailBouncesCampaignFields', 'egoiSdk/EmailBouncesListStatsFields', 'egoiSdk/EmailCampaignCreate', 'egoiSdk/EmailCampaignPatch', 'egoiSdk/EmailCampaignTemplate', 'egoiSdk/EmailClicksByContactCampaignFields', 'egoiSdk/EmailClicksByContactListStatsFields', 'egoiSdk/EmailClicksByUrlCampaignFields', 'egoiSdk/EmailClicksByUrlListStatsFields', 'egoiSdk/EmailEventsCampaignFields', 'egoiSdk/EmailEventsListStatsFields', 'egoiSdk/EmailRssCampaignCreate', 'egoiSdk/EmailSendSegment', 'egoiSdk/EmailSender', 'egoiSdk/EmailSenderCollection', 'egoiSdk/EmailSenderPutRequest', 'egoiSdk/EmailUnsubscriptionsCampaignFields', 'egoiSdk/EmailUnsubscriptionsListStatsFields', 'egoiSdk/EnableTeConflict', 'egoiSdk/EnableTeConflictsErrors', 'egoiSdk/ExportContactsWebhookData', 'egoiSdk/Field', 'egoiSdk/FieldCollection', 'egoiSdk/FieldInUse', 'egoiSdk/FieldInUseErrors', 'egoiSdk/FieldInUseErrorsFieldInUseData', 'egoiSdk/FieldOption', 'egoiSdk/FieldOptionsCollection', 'egoiSdk/Forbidden', 'egoiSdk/Form', 'egoiSdk/GeneralInfo', 'egoiSdk/GenerateEmailBouncesReport', 'egoiSdk/GenerateEmailClicksByContactReport', 'egoiSdk/GenerateEmailClicksByUrlReport', 'egoiSdk/GenerateEmailEventsReport', 'egoiSdk/GenerateEmailUnsubscriptionsReport', 'egoiSdk/GenerateFormAnswersReport', 'egoiSdk/GenerateSendsReport', 'egoiSdk/GenerateSmsBouncesReport', 'egoiSdk/GenerateSmsEventsReport', 'egoiSdk/GenerateSubscriptionsReport', 'egoiSdk/GenerateUnsubscriptionsReport', 'egoiSdk/Goal', 'egoiSdk/GoalAutommaticInfo', 'egoiSdk/GoalCollection', 'egoiSdk/GoalInfo', 'egoiSdk/GoalManualInfo', 'egoiSdk/GoalTimeInfo', 'egoiSdk/HasAutomations', 'egoiSdk/HasAutomationsErrors', 'egoiSdk/HasCampaignsLastThirtyDays', 'egoiSdk/HasCampaignsLastThirtyDaysErrors', 'egoiSdk/HasPushApp', 'egoiSdk/HasPushAppErrors', 'egoiSdk/HasQueuedCampaigns', 'egoiSdk/HasQueuedCampaignsErrors', 'egoiSdk/HasQueuedOperations', 'egoiSdk/HasQueuedOperationsErrors', 'egoiSdk/HasWebPushSite', 'egoiSdk/HasWebPushSiteErrors', 'egoiSdk/HashcodeCampaign', 'egoiSdk/HeaderFooter', 'egoiSdk/HeaderFooterFooterLinks', 'egoiSdk/HeaderFooterHeaderLinks', 'egoiSdk/HeaderFooterTemplate', 'egoiSdk/ImportBulkRequest', 'egoiSdk/ImportOrdersBulkBulkRequest', 'egoiSdk/ImportOrdersBulkBulkRequestItems', 'egoiSdk/InlineObject', 'egoiSdk/InlineResponse200', 'egoiSdk/InternalServerError', 'egoiSdk/InvalidSegmentType', 'egoiSdk/InvalidSegmentTypeErrors', 'egoiSdk/Language', 'egoiSdk/LimitContactsActionSend', 'egoiSdk/LimitContactsPercentActionSend', 'egoiSdk/LimitContactsValueActionSend', 'egoiSdk/LimitHourActionSend', 'egoiSdk/LimitHourActionSendLimitHour', 'egoiSdk/LimitSpeedActionSend', 'egoiSdk/List', 'egoiSdk/ListCollection', 'egoiSdk/ListCollection1', 'egoiSdk/ListLimitReached', 'egoiSdk/ListLimitReachedErrors', 'egoiSdk/MessageWebPush', 'egoiSdk/MessageWebPushPost', 'egoiSdk/MessageWebPushRss', 'egoiSdk/ModuleInfo', 'egoiSdk/ModuleInfoModuleInfo', 'egoiSdk/ModuleInfoModuleInfoTe', 'egoiSdk/MyAccount', 'egoiSdk/NameAlreadyExists', 'egoiSdk/NameAlreadyExistsErrors', 'egoiSdk/NotFound', 'egoiSdk/NotifyUserIdArrayActionSend', 'egoiSdk/Now', 'egoiSdk/NumericCellphoneSender', 'egoiSdk/OLimitContactsActionSend', 'egoiSdk/OSegmentsActionSend', 'egoiSdk/OSegmentsWithoutContactActionSend', 'egoiSdk/Operation', 'egoiSdk/OperationActionRequest', 'egoiSdk/OperationActionResponse', 'egoiSdk/OperationActionResponseError', 'egoiSdk/OperationOperationData', 'egoiSdk/OperationsCollection', 'egoiSdk/Order', 'egoiSdk/OrderPatchRequest', 'egoiSdk/Overall', 'egoiSdk/OverallOverall', 'egoiSdk/PatchRequestBaseField', 'egoiSdk/PatchRequestField', 'egoiSdk/PatchRequestList', 'egoiSdk/PhoneCampaignTemplate', 'egoiSdk/PhoneReport', 'egoiSdk/PhoneSender', 'egoiSdk/PhoneSenderCollection', 'egoiSdk/Ping', 'egoiSdk/PlanInfo', 'egoiSdk/PlanInfoPlanInfo', 'egoiSdk/PostCNameConflict', 'egoiSdk/PostContactsConflict', 'egoiSdk/PostListsConflict', 'egoiSdk/PostProductsConflict', 'egoiSdk/PostRequestList', 'egoiSdk/PostWebpushSiteConflict', 'egoiSdk/Product', 'egoiSdk/ProductAlreadyExists', 'egoiSdk/ProductAlreadyExistsErrors', 'egoiSdk/ProductBulkRequest', 'egoiSdk/ProductCollection', 'egoiSdk/ProductCustomAttributes', 'egoiSdk/ProductPatchRequest', 'egoiSdk/ProductPatchRequestRelatedProducts', 'egoiSdk/ProductPostRequest', 'egoiSdk/PushCampaignPatchRequest', 'egoiSdk/PushCampaignPatchRequestContent', 'egoiSdk/PushCampaignPostRequest', 'egoiSdk/PushCampaignPostRequestActions', 'egoiSdk/PushCampaignPostRequestGeoOptions', 'egoiSdk/PushCampaignPostRequestNotificationOptions', 'egoiSdk/PushEvent', 'egoiSdk/PushNotificationSoundSchema', 'egoiSdk/PushNotificationSoundSchemaDefault', 'egoiSdk/PushNotificationSoundSchemaNone', 'egoiSdk/PushNotificationSoundSchemaUrl', 'egoiSdk/PushReport', 'egoiSdk/PushResponse', 'egoiSdk/PushToken', 'egoiSdk/PushTokenTwoStepsData', 'egoiSdk/PushVersions', 'egoiSdk/PushVersionsVersions', 'egoiSdk/RemoveRequest', 'egoiSdk/RemoveResponse', 'egoiSdk/RemoveResponseErrors', 'egoiSdk/ReportCampaignsAll', 'egoiSdk/ReportCampaignsGroup', 'egoiSdk/ReportCampaignsLast', 'egoiSdk/ReportCampaignsSpecific', 'egoiSdk/RequestItemsUnsubscribe', 'egoiSdk/RequestTimeout', 'egoiSdk/SavedSegment', 'egoiSdk/Segment', 'egoiSdk/SegmentCollection', 'egoiSdk/SegmentsActionSend', 'egoiSdk/SegmentsWithoutContactActionSend', 'egoiSdk/SendContact', 'egoiSdk/SendContactCellphone', 'egoiSdk/SendEmailContact', 'egoiSdk/SendNone', 'egoiSdk/SendPush', 'egoiSdk/SendSegment', 'egoiSdk/SendSmartSms', 'egoiSdk/SendSms', 'egoiSdk/SendWebPush', 'egoiSdk/SendsCampaignFields', 'egoiSdk/ServiceUnavailable', 'egoiSdk/SingleCartObject', 'egoiSdk/SingleOrderObject', 'egoiSdk/SmartSmsCampaign', 'egoiSdk/SmartSmsCampaignCampaignContent', 'egoiSdk/SmartSmsCampaignPatchRequest', 'egoiSdk/SmartSmsCampaignPatchRequestCampaignContent', 'egoiSdk/SmartSmsCampaignPatchRequestPageContent', 'egoiSdk/SmartSmsSegmentsActionSend', 'egoiSdk/SmsBouncesCampaignFields', 'egoiSdk/SmsBouncesListStatsFields', 'egoiSdk/SmsCampaign', 'egoiSdk/SmsCampaignPatchRequest', 'egoiSdk/SmsCampaignPatchRequestContent', 'egoiSdk/SmsCampaignTemplate', 'egoiSdk/SmsEventsCampaignFields', 'egoiSdk/SmsEventsListStatsFields', 'egoiSdk/SmsSegmentsActionSend', 'egoiSdk/StartAutomationRequest', 'egoiSdk/StartAutomationResponse', 'egoiSdk/SubscriptionsListStatsFields', 'egoiSdk/SuppressionList', 'egoiSdk/SuppressionListItems', 'egoiSdk/Tag', 'egoiSdk/TagCollection', 'egoiSdk/TagCollection1', 'egoiSdk/TagRequest', 'egoiSdk/TagSegment', 'egoiSdk/TeResponse', 'egoiSdk/TooManyRequests', 'egoiSdk/Unauthorized', 'egoiSdk/UniqueFieldInUse', 'egoiSdk/UniqueFieldInUseErrors', 'egoiSdk/UnprocessableEntity', 'egoiSdk/UnsubscriptionObject', 'egoiSdk/UnsubscriptionsListStatsFields', 'egoiSdk/UsedInAutomations', 'egoiSdk/UsedInAutomationsErrors', 'egoiSdk/UsedInRecurringMessages', 'egoiSdk/UsedInRecurringMessagesErrors', 'egoiSdk/User', 'egoiSdk/UserCollection', 'egoiSdk/UserPostRequest', 'egoiSdk/VoiceCampaign', 'egoiSdk/VoiceCampaignTemplate', 'egoiSdk/VoicePatchCampaign', 'egoiSdk/WebPushCampaign', 'egoiSdk/WebPushPatchCampaign', 'egoiSdk/WebPushReport', 'egoiSdk/WebPushReportBrowsers', 'egoiSdk/WebPushReportOperatingSystems', 'egoiSdk/WebPushRssCampaign', 'egoiSdk/WebPushSite', 'egoiSdk/WebPushStats', 'egoiSdk/Webhook', 'egoiSdk/WebhookActionSchema', 'egoiApi/AdvancedReportsApi', 'egoiApi/AutomationsApi', 'egoiApi/CNamesApi', 'egoiApi/CampaignGroupsApi', 'egoiApi/CampaignsApi', 'egoiApi/ContactsApi', 'egoiApi/EcommerceApi', 'egoiApi/EcommerceActivityApi', 'egoiApi/EmailApi', 'egoiApi/FieldsApi', 'egoiApi/ListsApi', 'egoiApi/MyAccountApi', 'egoiApi/OperationsApi', 'egoiApi/PingApi', 'egoiApi/PushApi', 'egoiApi/ReportsApi', 'egoiApi/SegmentsApi', 'egoiApi/SendersApi', 'egoiApi/SmartSmsApi', 'egoiApi/SmsApi', 'egoiApi/SuppressionListApi', 'egoiApi/TagsApi', 'egoiApi/TrackEngageApi', 'egoiApi/UsersApi', 'egoiApi/UtilitiesApi', 'egoiApi/VoiceApi', 'egoiApi/WebHooksApi', 'egoiApi/WebpushApi'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('./ApiClient'), require('./egoiSdk/AbstractCampaignSendRequest'), require('./egoiSdk/AbstractCampaignSendRequestSegments'), require('./egoiSdk/AbstractCampaignTemplate'), require('./egoiSdk/AbstractCellphoneSender'), require('./egoiSdk/AbstractSegment'), require('./egoiSdk/AbstractSendEmail'), require('./egoiSdk/AbstractSendVoice'), require('./egoiSdk/AcceptedResponse'), require('./egoiSdk/ActivateContactsAll'), require('./egoiSdk/ActivateContactsMany'), require('./egoiSdk/ActivateContactsRequest'), require('./egoiSdk/ActivityCollection'), require('./egoiSdk/AdvancedReport'), require('./egoiSdk/AdvancedReportCampaignsObject'), require('./egoiSdk/AdvancedReportEmailBouncesColumns'), require('./egoiSdk/AdvancedReportEmailBouncesOptions'), require('./egoiSdk/AdvancedReportEmailClicksByContactColumns'), require('./egoiSdk/AdvancedReportEmailClicksByContactOptions'), require('./egoiSdk/AdvancedReportEmailClicksByUrlColumns'), require('./egoiSdk/AdvancedReportEmailClicksByUrlOptions'), require('./egoiSdk/AdvancedReportEmailEventsColumns'), require('./egoiSdk/AdvancedReportEmailEventsOptions'), require('./egoiSdk/AdvancedReportEmailUnsubscriptionsColumns'), require('./egoiSdk/AdvancedReportEmailUnsubscriptionsOptions'), require('./egoiSdk/AdvancedReportRange'), require('./egoiSdk/AdvancedReportSendsColumns'), require('./egoiSdk/AdvancedReportSendsOptions'), require('./egoiSdk/AdvancedReportSmsBouncesColumns'), require('./egoiSdk/AdvancedReportSmsBouncesOptions'), require('./egoiSdk/AdvancedReportSmsEventsColumns'), require('./egoiSdk/AdvancedReportSmsEventsOptions'), require('./egoiSdk/AdvancedReportSubscriptionsColumns'), require('./egoiSdk/AdvancedReportSubscriptionsOptions'), require('./egoiSdk/AdvancedReportUnsubscriptionsColumns'), require('./egoiSdk/AdvancedReportUnsubscriptionsOptions'), require('./egoiSdk/AdvancedReportsCollection'), require('./egoiSdk/AlphanumericCellphoneSender'), require('./egoiSdk/AppStructure'), require('./egoiSdk/AppStructureList'), require('./egoiSdk/AttachTagRequest'), require('./egoiSdk/AttachTagResponse'), require('./egoiSdk/AutomaticSegment'), require('./egoiSdk/Automation'), require('./egoiSdk/AutomationCollection'), require('./egoiSdk/BadRequest'), require('./egoiSdk/BalanceInfo'), require('./egoiSdk/BalanceInfoBalanceInfo'), require('./egoiSdk/BaseConflict'), require('./egoiSdk/BasicProduct'), require('./egoiSdk/BasicSender'), require('./egoiSdk/BillingInfo'), require('./egoiSdk/BulkActionResponse'), require('./egoiSdk/CName'), require('./egoiSdk/CNamesCollection'), require('./egoiSdk/Campaign'), require('./egoiSdk/CampaignEmailBaseContent'), require('./egoiSdk/CampaignEmailContent'), require('./egoiSdk/CampaignEmailContentFile'), require('./egoiSdk/CampaignEmailContentHtml'), require('./egoiSdk/CampaignEmailContentHtmlPatch'), require('./egoiSdk/CampaignEmailContentTemplate'), require('./egoiSdk/CampaignEmailContentWebPage'), require('./egoiSdk/CampaignEmailRssContent'), require('./egoiSdk/CampaignEmailRssContentHtml'), require('./egoiSdk/CampaignEmailScheduleRequest'), require('./egoiSdk/CampaignEmailSendNowRequest'), require('./egoiSdk/CampaignEmailSendRequest'), require('./egoiSdk/CampaignGroup'), require('./egoiSdk/CampaignGroupCollection'), require('./egoiSdk/CampaignHash'), require('./egoiSdk/CampaignPushContent'), require('./egoiSdk/CampaignPushContentTemplate'), require('./egoiSdk/CampaignPushContentText'), require('./egoiSdk/CampaignPushScheduleRequest'), require('./egoiSdk/CampaignPushSendRequest'), require('./egoiSdk/CampaignScheduleDate'), require('./egoiSdk/CampaignSentLast30Days'), require('./egoiSdk/CampaignSentLast30DaysErrors'), require('./egoiSdk/CampaignSmartSmsHtml'), require('./egoiSdk/CampaignSmartSmsImport'), require('./egoiSdk/CampaignSmartSmsOptions'), require('./egoiSdk/CampaignSmartSmsPageContent'), require('./egoiSdk/CampaignSmartSmsRedirect'), require('./egoiSdk/CampaignSmartSmsScheduleRequest'), require('./egoiSdk/CampaignSmartSmsSendRequest'), require('./egoiSdk/CampaignSmsContent'), require('./egoiSdk/CampaignSmsContentTemplate'), require('./egoiSdk/CampaignSmsContentText'), require('./egoiSdk/CampaignSmsOptions'), require('./egoiSdk/CampaignSmsScheduleRequest'), require('./egoiSdk/CampaignSmsSendRequest'), require('./egoiSdk/CampaignVoiceScheduleRequest'), require('./egoiSdk/CampaignVoiceSendRequest'), require('./egoiSdk/CampaignWebPushScheduleRequest'), require('./egoiSdk/CampaignWebPushSendRequest'), require('./egoiSdk/CampaignsCollection'), require('./egoiSdk/Cart'), require('./egoiSdk/CartPatchRequest'), require('./egoiSdk/Catalog'), require('./egoiSdk/CatalogCollection'), require('./egoiSdk/CatalogPostRequest'), require('./egoiSdk/CellphoneSender'), require('./egoiSdk/CellphoneSenderCollection'), require('./egoiSdk/CnameExists'), require('./egoiSdk/CnameExistsErrors'), require('./egoiSdk/ComplexContact'), require('./egoiSdk/ComplexField'), require('./egoiSdk/ComplexList'), require('./egoiSdk/ComplexUser'), require('./egoiSdk/Conflict'), require('./egoiSdk/Contact'), require('./egoiSdk/ContactActivity'), require('./egoiSdk/ContactActivityAbstractActionsWithData'), require('./egoiSdk/ContactActivityClick'), require('./egoiSdk/ContactBaseExtra'), require('./egoiSdk/ContactBaseExtraBulk'), require('./egoiSdk/ContactBaseExtraFull'), require('./egoiSdk/ContactBaseFieldsBulkSchema'), require('./egoiSdk/ContactBaseFieldsSchema'), require('./egoiSdk/ContactBaseFieldsWithIdSchema'), require('./egoiSdk/ContactBaseStatusExtra'), require('./egoiSdk/ContactBaseStatusExtraBulk'), require('./egoiSdk/ContactBaseWithStatusFieldsBulkSchema'), require('./egoiSdk/ContactBaseWithStatusFieldsSchema'), require('./egoiSdk/ContactBaseWithStatusFieldsSchemaBase'), require('./egoiSdk/ContactBaseWithStatusFieldsSchemaBasePushTokenAndroid'), require('./egoiSdk/ContactBaseWithStatusFieldsSchemaBasePushTokenIos'), require('./egoiSdk/ContactBulk'), require('./egoiSdk/ContactCollection'), require('./egoiSdk/ContactExportRequest'), require('./egoiSdk/ContactExtraFieldCellphone'), require('./egoiSdk/ContactExtraFieldCellphoneBulk'), require('./egoiSdk/ContactExtraFieldDate'), require('./egoiSdk/ContactExtraFieldEmail'), require('./egoiSdk/ContactExtraFieldEmailBulk'), require('./egoiSdk/ContactExtraFieldNumber'), require('./egoiSdk/ContactExtraFieldOptions'), require('./egoiSdk/ContactExtraFieldPhone'), require('./egoiSdk/ContactExtraFieldPhoneBulk'), require('./egoiSdk/ContactExtraFieldText'), require('./egoiSdk/ContactExtraFields'), require('./egoiSdk/ContactExtraFieldsBulk'), require('./egoiSdk/ContactExtraFieldsBulkSchema'), require('./egoiSdk/ContactExtraFieldsSchema'), require('./egoiSdk/ContactForgetRequest'), require('./egoiSdk/ContactInsideBase'), require('./egoiSdk/ContactInsideBaseBulk'), require('./egoiSdk/ContactInsideBaseWithId'), require('./egoiSdk/ContactOtherActivity'), require('./egoiSdk/ContactSearchResponse'), require('./egoiSdk/ContactStatusFieldsBulkSchema'), require('./egoiSdk/ContactStatusFieldsSchema'), require('./egoiSdk/ContactTags'), require('./egoiSdk/ContactTagsBulk'), require('./egoiSdk/ContentVoice'), require('./egoiSdk/ContentVoiceAudio'), require('./egoiSdk/ContentVoicePatch'), require('./egoiSdk/ContentVoiceTemplate'), require('./egoiSdk/Country'), require('./egoiSdk/CountryCollection'), require('./egoiSdk/CreateCartResponse'), require('./egoiSdk/CreateContactResponse'), require('./egoiSdk/CreateOrder'), require('./egoiSdk/CreateOrderResponse'), require('./egoiSdk/DeactivateContactsAll'), require('./egoiSdk/DeactivateContactsMany'), require('./egoiSdk/DeactivateContactsRequest'), require('./egoiSdk/DeleteCampaignsConflict'), require('./egoiSdk/DeleteFieldsConflict'), require('./egoiSdk/DeleteListsConflict'), require('./egoiSdk/DeleteListsConflictsErrors'), require('./egoiSdk/DeleteSegmentsConflict'), require('./egoiSdk/DeleteSegmentsConflictsErrors'), require('./egoiSdk/Domain'), require('./egoiSdk/DomainAlreadyDefined'), require('./egoiSdk/DomainAlreadyDefinedErrors'), require('./egoiSdk/DomainCollection'), require('./egoiSdk/DomainListRequired'), require('./egoiSdk/DomainListRequiredErrors'), require('./egoiSdk/EmailBouncesCampaignFields'), require('./egoiSdk/EmailBouncesListStatsFields'), require('./egoiSdk/EmailCampaignCreate'), require('./egoiSdk/EmailCampaignPatch'), require('./egoiSdk/EmailCampaignTemplate'), require('./egoiSdk/EmailClicksByContactCampaignFields'), require('./egoiSdk/EmailClicksByContactListStatsFields'), require('./egoiSdk/EmailClicksByUrlCampaignFields'), require('./egoiSdk/EmailClicksByUrlListStatsFields'), require('./egoiSdk/EmailEventsCampaignFields'), require('./egoiSdk/EmailEventsListStatsFields'), require('./egoiSdk/EmailRssCampaignCreate'), require('./egoiSdk/EmailSendSegment'), require('./egoiSdk/EmailSender'), require('./egoiSdk/EmailSenderCollection'), require('./egoiSdk/EmailSenderPutRequest'), require('./egoiSdk/EmailUnsubscriptionsCampaignFields'), require('./egoiSdk/EmailUnsubscriptionsListStatsFields'), require('./egoiSdk/EnableTeConflict'), require('./egoiSdk/EnableTeConflictsErrors'), require('./egoiSdk/ExportContactsWebhookData'), require('./egoiSdk/Field'), require('./egoiSdk/FieldCollection'), require('./egoiSdk/FieldInUse'), require('./egoiSdk/FieldInUseErrors'), require('./egoiSdk/FieldInUseErrorsFieldInUseData'), require('./egoiSdk/FieldOption'), require('./egoiSdk/FieldOptionsCollection'), require('./egoiSdk/Forbidden'), require('./egoiSdk/Form'), require('./egoiSdk/GeneralInfo'), require('./egoiSdk/GenerateEmailBouncesReport'), require('./egoiSdk/GenerateEmailClicksByContactReport'), require('./egoiSdk/GenerateEmailClicksByUrlReport'), require('./egoiSdk/GenerateEmailEventsReport'), require('./egoiSdk/GenerateEmailUnsubscriptionsReport'), require('./egoiSdk/GenerateFormAnswersReport'), require('./egoiSdk/GenerateSendsReport'), require('./egoiSdk/GenerateSmsBouncesReport'), require('./egoiSdk/GenerateSmsEventsReport'), require('./egoiSdk/GenerateSubscriptionsReport'), require('./egoiSdk/GenerateUnsubscriptionsReport'), require('./egoiSdk/Goal'), require('./egoiSdk/GoalAutommaticInfo'), require('./egoiSdk/GoalCollection'), require('./egoiSdk/GoalInfo'), require('./egoiSdk/GoalManualInfo'), require('./egoiSdk/GoalTimeInfo'), require('./egoiSdk/HasAutomations'), require('./egoiSdk/HasAutomationsErrors'), require('./egoiSdk/HasCampaignsLastThirtyDays'), require('./egoiSdk/HasCampaignsLastThirtyDaysErrors'), require('./egoiSdk/HasPushApp'), require('./egoiSdk/HasPushAppErrors'), require('./egoiSdk/HasQueuedCampaigns'), require('./egoiSdk/HasQueuedCampaignsErrors'), require('./egoiSdk/HasQueuedOperations'), require('./egoiSdk/HasQueuedOperationsErrors'), require('./egoiSdk/HasWebPushSite'), require('./egoiSdk/HasWebPushSiteErrors'), require('./egoiSdk/HashcodeCampaign'), require('./egoiSdk/HeaderFooter'), require('./egoiSdk/HeaderFooterFooterLinks'), require('./egoiSdk/HeaderFooterHeaderLinks'), require('./egoiSdk/HeaderFooterTemplate'), require('./egoiSdk/ImportBulkRequest'), require('./egoiSdk/ImportOrdersBulkBulkRequest'), require('./egoiSdk/ImportOrdersBulkBulkRequestItems'), require('./egoiSdk/InlineObject'), require('./egoiSdk/InlineResponse200'), require('./egoiSdk/InternalServerError'), require('./egoiSdk/InvalidSegmentType'), require('./egoiSdk/InvalidSegmentTypeErrors'), require('./egoiSdk/Language'), require('./egoiSdk/LimitContactsActionSend'), require('./egoiSdk/LimitContactsPercentActionSend'), require('./egoiSdk/LimitContactsValueActionSend'), require('./egoiSdk/LimitHourActionSend'), require('./egoiSdk/LimitHourActionSendLimitHour'), require('./egoiSdk/LimitSpeedActionSend'), require('./egoiSdk/List'), require('./egoiSdk/ListCollection'), require('./egoiSdk/ListCollection1'), require('./egoiSdk/ListLimitReached'), require('./egoiSdk/ListLimitReachedErrors'), require('./egoiSdk/MessageWebPush'), require('./egoiSdk/MessageWebPushPost'), require('./egoiSdk/MessageWebPushRss'), require('./egoiSdk/ModuleInfo'), require('./egoiSdk/ModuleInfoModuleInfo'), require('./egoiSdk/ModuleInfoModuleInfoTe'), require('./egoiSdk/MyAccount'), require('./egoiSdk/NameAlreadyExists'), require('./egoiSdk/NameAlreadyExistsErrors'), require('./egoiSdk/NotFound'), require('./egoiSdk/NotifyUserIdArrayActionSend'), require('./egoiSdk/Now'), require('./egoiSdk/NumericCellphoneSender'), require('./egoiSdk/OLimitContactsActionSend'), require('./egoiSdk/OSegmentsActionSend'), require('./egoiSdk/OSegmentsWithoutContactActionSend'), require('./egoiSdk/Operation'), require('./egoiSdk/OperationActionRequest'), require('./egoiSdk/OperationActionResponse'), require('./egoiSdk/OperationActionResponseError'), require('./egoiSdk/OperationOperationData'), require('./egoiSdk/OperationsCollection'), require('./egoiSdk/Order'), require('./egoiSdk/OrderPatchRequest'), require('./egoiSdk/Overall'), require('./egoiSdk/OverallOverall'), require('./egoiSdk/PatchRequestBaseField'), require('./egoiSdk/PatchRequestField'), require('./egoiSdk/PatchRequestList'), require('./egoiSdk/PhoneCampaignTemplate'), require('./egoiSdk/PhoneReport'), require('./egoiSdk/PhoneSender'), require('./egoiSdk/PhoneSenderCollection'), require('./egoiSdk/Ping'), require('./egoiSdk/PlanInfo'), require('./egoiSdk/PlanInfoPlanInfo'), require('./egoiSdk/PostCNameConflict'), require('./egoiSdk/PostContactsConflict'), require('./egoiSdk/PostListsConflict'), require('./egoiSdk/PostProductsConflict'), require('./egoiSdk/PostRequestList'), require('./egoiSdk/PostWebpushSiteConflict'), require('./egoiSdk/Product'), require('./egoiSdk/ProductAlreadyExists'), require('./egoiSdk/ProductAlreadyExistsErrors'), require('./egoiSdk/ProductBulkRequest'), require('./egoiSdk/ProductCollection'), require('./egoiSdk/ProductCustomAttributes'), require('./egoiSdk/ProductPatchRequest'), require('./egoiSdk/ProductPatchRequestRelatedProducts'), require('./egoiSdk/ProductPostRequest'), require('./egoiSdk/PushCampaignPatchRequest'), require('./egoiSdk/PushCampaignPatchRequestContent'), require('./egoiSdk/PushCampaignPostRequest'), require('./egoiSdk/PushCampaignPostRequestActions'), require('./egoiSdk/PushCampaignPostRequestGeoOptions'), require('./egoiSdk/PushCampaignPostRequestNotificationOptions'), require('./egoiSdk/PushEvent'), require('./egoiSdk/PushNotificationSoundSchema'), require('./egoiSdk/PushNotificationSoundSchemaDefault'), require('./egoiSdk/PushNotificationSoundSchemaNone'), require('./egoiSdk/PushNotificationSoundSchemaUrl'), require('./egoiSdk/PushReport'), require('./egoiSdk/PushResponse'), require('./egoiSdk/PushToken'), require('./egoiSdk/PushTokenTwoStepsData'), require('./egoiSdk/PushVersions'), require('./egoiSdk/PushVersionsVersions'), require('./egoiSdk/RemoveRequest'), require('./egoiSdk/RemoveResponse'), require('./egoiSdk/RemoveResponseErrors'), require('./egoiSdk/ReportCampaignsAll'), require('./egoiSdk/ReportCampaignsGroup'), require('./egoiSdk/ReportCampaignsLast'), require('./egoiSdk/ReportCampaignsSpecific'), require('./egoiSdk/RequestItemsUnsubscribe'), require('./egoiSdk/RequestTimeout'), require('./egoiSdk/SavedSegment'), require('./egoiSdk/Segment'), require('./egoiSdk/SegmentCollection'), require('./egoiSdk/SegmentsActionSend'), require('./egoiSdk/SegmentsWithoutContactActionSend'), require('./egoiSdk/SendContact'), require('./egoiSdk/SendContactCellphone'), require('./egoiSdk/SendEmailContact'), require('./egoiSdk/SendNone'), require('./egoiSdk/SendPush'), require('./egoiSdk/SendSegment'), require('./egoiSdk/SendSmartSms'), require('./egoiSdk/SendSms'), require('./egoiSdk/SendWebPush'), require('./egoiSdk/SendsCampaignFields'), require('./egoiSdk/ServiceUnavailable'), require('./egoiSdk/SingleCartObject'), require('./egoiSdk/SingleOrderObject'), require('./egoiSdk/SmartSmsCampaign'), require('./egoiSdk/SmartSmsCampaignCampaignContent'), require('./egoiSdk/SmartSmsCampaignPatchRequest'), require('./egoiSdk/SmartSmsCampaignPatchRequestCampaignContent'), require('./egoiSdk/SmartSmsCampaignPatchRequestPageContent'), require('./egoiSdk/SmartSmsSegmentsActionSend'), require('./egoiSdk/SmsBouncesCampaignFields'), require('./egoiSdk/SmsBouncesListStatsFields'), require('./egoiSdk/SmsCampaign'), require('./egoiSdk/SmsCampaignPatchRequest'), require('./egoiSdk/SmsCampaignPatchRequestContent'), require('./egoiSdk/SmsCampaignTemplate'), require('./egoiSdk/SmsEventsCampaignFields'), require('./egoiSdk/SmsEventsListStatsFields'), require('./egoiSdk/SmsSegmentsActionSend'), require('./egoiSdk/StartAutomationRequest'), require('./egoiSdk/StartAutomationResponse'), require('./egoiSdk/SubscriptionsListStatsFields'), require('./egoiSdk/SuppressionList'), require('./egoiSdk/SuppressionListItems'), require('./egoiSdk/Tag'), require('./egoiSdk/TagCollection'), require('./egoiSdk/TagCollection1'), require('./egoiSdk/TagRequest'), require('./egoiSdk/TagSegment'), require('./egoiSdk/TeResponse'), require('./egoiSdk/TooManyRequests'), require('./egoiSdk/Unauthorized'), require('./egoiSdk/UniqueFieldInUse'), require('./egoiSdk/UniqueFieldInUseErrors'), require('./egoiSdk/UnprocessableEntity'), require('./egoiSdk/UnsubscriptionObject'), require('./egoiSdk/UnsubscriptionsListStatsFields'), require('./egoiSdk/UsedInAutomations'), require('./egoiSdk/UsedInAutomationsErrors'), require('./egoiSdk/UsedInRecurringMessages'), require('./egoiSdk/UsedInRecurringMessagesErrors'), require('./egoiSdk/User'), require('./egoiSdk/UserCollection'), require('./egoiSdk/UserPostRequest'), require('./egoiSdk/VoiceCampaign'), require('./egoiSdk/VoiceCampaignTemplate'), require('./egoiSdk/VoicePatchCampaign'), require('./egoiSdk/WebPushCampaign'), require('./egoiSdk/WebPushPatchCampaign'), require('./egoiSdk/WebPushReport'), require('./egoiSdk/WebPushReportBrowsers'), require('./egoiSdk/WebPushReportOperatingSystems'), require('./egoiSdk/WebPushRssCampaign'), require('./egoiSdk/WebPushSite'), require('./egoiSdk/WebPushStats'), require('./egoiSdk/Webhook'), require('./egoiSdk/WebhookActionSchema'), require('./egoiApi/AdvancedReportsApi'), require('./egoiApi/AutomationsApi'), require('./egoiApi/CNamesApi'), require('./egoiApi/CampaignGroupsApi'), require('./egoiApi/CampaignsApi'), require('./egoiApi/ContactsApi'), require('./egoiApi/EcommerceApi'), require('./egoiApi/EcommerceActivityApi'), require('./egoiApi/EmailApi'), require('./egoiApi/FieldsApi'), require('./egoiApi/ListsApi'), require('./egoiApi/MyAccountApi'), require('./egoiApi/OperationsApi'), require('./egoiApi/PingApi'), require('./egoiApi/PushApi'), require('./egoiApi/ReportsApi'), require('./egoiApi/SegmentsApi'), require('./egoiApi/SendersApi'), require('./egoiApi/SmartSmsApi'), require('./egoiApi/SmsApi'), require('./egoiApi/SuppressionListApi'), require('./egoiApi/TagsApi'), require('./egoiApi/TrackEngageApi'), require('./egoiApi/UsersApi'), require('./egoiApi/UtilitiesApi'), require('./egoiApi/VoiceApi'), require('./egoiApi/WebHooksApi'), require('./egoiApi/WebpushApi'));
-  }
-}(function(ApiClient, AbstractCampaignSendRequest, AbstractCampaignSendRequestSegments, AbstractCampaignTemplate, AbstractCellphoneSender, AbstractSegment, AbstractSendEmail, AbstractSendVoice, AcceptedResponse, ActivateContactsAll, ActivateContactsMany, ActivateContactsRequest, ActivityCollection, AdvancedReport, AdvancedReportCampaignsObject, AdvancedReportEmailBouncesColumns, AdvancedReportEmailBouncesOptions, AdvancedReportEmailClicksByContactColumns, AdvancedReportEmailClicksByContactOptions, AdvancedReportEmailClicksByUrlColumns, AdvancedReportEmailClicksByUrlOptions, AdvancedReportEmailEventsColumns, AdvancedReportEmailEventsOptions, AdvancedReportEmailUnsubscriptionsColumns, AdvancedReportEmailUnsubscriptionsOptions, AdvancedReportRange, AdvancedReportSendsColumns, AdvancedReportSendsOptions, AdvancedReportSmsBouncesColumns, AdvancedReportSmsBouncesOptions, AdvancedReportSmsEventsColumns, AdvancedReportSmsEventsOptions, AdvancedReportSubscriptionsColumns, AdvancedReportSubscriptionsOptions, AdvancedReportUnsubscriptionsColumns, AdvancedReportUnsubscriptionsOptions, AdvancedReportsCollection, AlphanumericCellphoneSender, AppStructure, AppStructureList, AttachTagRequest, AttachTagResponse, AutomaticSegment, Automation, AutomationCollection, BadRequest, BalanceInfo, BalanceInfoBalanceInfo, BaseConflict, BasicProduct, BasicSender, BillingInfo, BulkActionResponse, CName, CNamesCollection, Campaign, CampaignEmailBaseContent, CampaignEmailContent, CampaignEmailContentFile, CampaignEmailContentHtml, CampaignEmailContentHtmlPatch, CampaignEmailContentTemplate, CampaignEmailContentWebPage, CampaignEmailRssContent, CampaignEmailRssContentHtml, CampaignEmailScheduleRequest, CampaignEmailSendNowRequest, CampaignEmailSendRequest, CampaignGroup, CampaignGroupCollection, CampaignHash, CampaignPushContent, CampaignPushContentTemplate, CampaignPushContentText, CampaignPushScheduleRequest, CampaignPushSendRequest, CampaignScheduleDate, CampaignSentLast30Days, CampaignSentLast30DaysErrors, CampaignSmartSmsHtml, CampaignSmartSmsImport, CampaignSmartSmsOptions, CampaignSmartSmsPageContent, CampaignSmartSmsRedirect, CampaignSmartSmsScheduleRequest, CampaignSmartSmsSendRequest, CampaignSmsContent, CampaignSmsContentTemplate, CampaignSmsContentText, CampaignSmsOptions, CampaignSmsScheduleRequest, CampaignSmsSendRequest, CampaignVoiceScheduleRequest, CampaignVoiceSendRequest, CampaignWebPushScheduleRequest, CampaignWebPushSendRequest, CampaignsCollection, Cart, CartPatchRequest, Catalog, CatalogCollection, CatalogPostRequest, CellphoneSender, CellphoneSenderCollection, CnameExists, CnameExistsErrors, ComplexContact, ComplexField, ComplexList, ComplexUser, Conflict, Contact, ContactActivity, ContactActivityAbstractActionsWithData, ContactActivityClick, ContactBaseExtra, ContactBaseExtraBulk, ContactBaseExtraFull, ContactBaseFieldsBulkSchema, ContactBaseFieldsSchema, ContactBaseFieldsWithIdSchema, ContactBaseStatusExtra, ContactBaseStatusExtraBulk, ContactBaseWithStatusFieldsBulkSchema, ContactBaseWithStatusFieldsSchema, ContactBaseWithStatusFieldsSchemaBase, ContactBaseWithStatusFieldsSchemaBasePushTokenAndroid, ContactBaseWithStatusFieldsSchemaBasePushTokenIos, ContactBulk, ContactCollection, ContactExportRequest, ContactExtraFieldCellphone, ContactExtraFieldCellphoneBulk, ContactExtraFieldDate, ContactExtraFieldEmail, ContactExtraFieldEmailBulk, ContactExtraFieldNumber, ContactExtraFieldOptions, ContactExtraFieldPhone, ContactExtraFieldPhoneBulk, ContactExtraFieldText, ContactExtraFields, ContactExtraFieldsBulk, ContactExtraFieldsBulkSchema, ContactExtraFieldsSchema, ContactForgetRequest, ContactInsideBase, ContactInsideBaseBulk, ContactInsideBaseWithId, ContactOtherActivity, ContactSearchResponse, ContactStatusFieldsBulkSchema, ContactStatusFieldsSchema, ContactTags, ContactTagsBulk, ContentVoice, ContentVoiceAudio, ContentVoicePatch, ContentVoiceTemplate, Country, CountryCollection, CreateCartResponse, CreateContactResponse, CreateOrder, CreateOrderResponse, DeactivateContactsAll, DeactivateContactsMany, DeactivateContactsRequest, DeleteCampaignsConflict, DeleteFieldsConflict, DeleteListsConflict, DeleteListsConflictsErrors, DeleteSegmentsConflict, DeleteSegmentsConflictsErrors, Domain, DomainAlreadyDefined, DomainAlreadyDefinedErrors, DomainCollection, DomainListRequired, DomainListRequiredErrors, EmailBouncesCampaignFields, EmailBouncesListStatsFields, EmailCampaignCreate, EmailCampaignPatch, EmailCampaignTemplate, EmailClicksByContactCampaignFields, EmailClicksByContactListStatsFields, EmailClicksByUrlCampaignFields, EmailClicksByUrlListStatsFields, EmailEventsCampaignFields, EmailEventsListStatsFields, EmailRssCampaignCreate, EmailSendSegment, EmailSender, EmailSenderCollection, EmailSenderPutRequest, EmailUnsubscriptionsCampaignFields, EmailUnsubscriptionsListStatsFields, EnableTeConflict, EnableTeConflictsErrors, ExportContactsWebhookData, Field, FieldCollection, FieldInUse, FieldInUseErrors, FieldInUseErrorsFieldInUseData, FieldOption, FieldOptionsCollection, Forbidden, Form, GeneralInfo, GenerateEmailBouncesReport, GenerateEmailClicksByContactReport, GenerateEmailClicksByUrlReport, GenerateEmailEventsReport, GenerateEmailUnsubscriptionsReport, GenerateFormAnswersReport, GenerateSendsReport, GenerateSmsBouncesReport, GenerateSmsEventsReport, GenerateSubscriptionsReport, GenerateUnsubscriptionsReport, Goal, GoalAutommaticInfo, GoalCollection, GoalInfo, GoalManualInfo, GoalTimeInfo, HasAutomations, HasAutomationsErrors, HasCampaignsLastThirtyDays, HasCampaignsLastThirtyDaysErrors, HasPushApp, HasPushAppErrors, HasQueuedCampaigns, HasQueuedCampaignsErrors, HasQueuedOperations, HasQueuedOperationsErrors, HasWebPushSite, HasWebPushSiteErrors, HashcodeCampaign, HeaderFooter, HeaderFooterFooterLinks, HeaderFooterHeaderLinks, HeaderFooterTemplate, ImportBulkRequest, ImportOrdersBulkBulkRequest, ImportOrdersBulkBulkRequestItems, InlineObject, InlineResponse200, InternalServerError, InvalidSegmentType, InvalidSegmentTypeErrors, Language, LimitContactsActionSend, LimitContactsPercentActionSend, LimitContactsValueActionSend, LimitHourActionSend, LimitHourActionSendLimitHour, LimitSpeedActionSend, List, ListCollection, ListCollection1, ListLimitReached, ListLimitReachedErrors, MessageWebPush, MessageWebPushPost, MessageWebPushRss, ModuleInfo, ModuleInfoModuleInfo, ModuleInfoModuleInfoTe, MyAccount, NameAlreadyExists, NameAlreadyExistsErrors, NotFound, NotifyUserIdArrayActionSend, Now, NumericCellphoneSender, OLimitContactsActionSend, OSegmentsActionSend, OSegmentsWithoutContactActionSend, Operation, OperationActionRequest, OperationActionResponse, OperationActionResponseError, OperationOperationData, OperationsCollection, Order, OrderPatchRequest, Overall, OverallOverall, PatchRequestBaseField, PatchRequestField, PatchRequestList, PhoneCampaignTemplate, PhoneReport, PhoneSender, PhoneSenderCollection, Ping, PlanInfo, PlanInfoPlanInfo, PostCNameConflict, PostContactsConflict, PostListsConflict, PostProductsConflict, PostRequestList, PostWebpushSiteConflict, Product, ProductAlreadyExists, ProductAlreadyExistsErrors, ProductBulkRequest, ProductCollection, ProductCustomAttributes, ProductPatchRequest, ProductPatchRequestRelatedProducts, ProductPostRequest, PushCampaignPatchRequest, PushCampaignPatchRequestContent, PushCampaignPostRequest, PushCampaignPostRequestActions, PushCampaignPostRequestGeoOptions, PushCampaignPostRequestNotificationOptions, PushEvent, PushNotificationSoundSchema, PushNotificationSoundSchemaDefault, PushNotificationSoundSchemaNone, PushNotificationSoundSchemaUrl, PushReport, PushResponse, PushToken, PushTokenTwoStepsData, PushVersions, PushVersionsVersions, RemoveRequest, RemoveResponse, RemoveResponseErrors, ReportCampaignsAll, ReportCampaignsGroup, ReportCampaignsLast, ReportCampaignsSpecific, RequestItemsUnsubscribe, RequestTimeout, SavedSegment, Segment, SegmentCollection, SegmentsActionSend, SegmentsWithoutContactActionSend, SendContact, SendContactCellphone, SendEmailContact, SendNone, SendPush, SendSegment, SendSmartSms, SendSms, SendWebPush, SendsCampaignFields, ServiceUnavailable, SingleCartObject, SingleOrderObject, SmartSmsCampaign, SmartSmsCampaignCampaignContent, SmartSmsCampaignPatchRequest, SmartSmsCampaignPatchRequestCampaignContent, SmartSmsCampaignPatchRequestPageContent, SmartSmsSegmentsActionSend, SmsBouncesCampaignFields, SmsBouncesListStatsFields, SmsCampaign, SmsCampaignPatchRequest, SmsCampaignPatchRequestContent, SmsCampaignTemplate, SmsEventsCampaignFields, SmsEventsListStatsFields, SmsSegmentsActionSend, StartAutomationRequest, StartAutomationResponse, SubscriptionsListStatsFields, SuppressionList, SuppressionListItems, Tag, TagCollection, TagCollection1, TagRequest, TagSegment, TeResponse, TooManyRequests, Unauthorized, UniqueFieldInUse, UniqueFieldInUseErrors, UnprocessableEntity, UnsubscriptionObject, UnsubscriptionsListStatsFields, UsedInAutomations, UsedInAutomationsErrors, UsedInRecurringMessages, UsedInRecurringMessagesErrors, User, UserCollection, UserPostRequest, VoiceCampaign, VoiceCampaignTemplate, VoicePatchCampaign, WebPushCampaign, WebPushPatchCampaign, WebPushReport, WebPushReportBrowsers, WebPushReportOperatingSystems, WebPushRssCampaign, WebPushSite, WebPushStats, Webhook, WebhookActionSchema, AdvancedReportsApi, AutomationsApi, CNamesApi, CampaignGroupsApi, CampaignsApi, ContactsApi, EcommerceApi, EcommerceActivityApi, EmailApi, FieldsApi, ListsApi, MyAccountApi, OperationsApi, PingApi, PushApi, ReportsApi, SegmentsApi, SendersApi, SmartSmsApi, SmsApi, SuppressionListApi, TagsApi, TrackEngageApi, UsersApi, UtilitiesApi, VoiceApi, WebHooksApi, WebpushApi) {
-  'use strict';
 
-  /**
-   * __IntroductionThis_is_our_new_version_of_API__We_invite_you_to_start_using_it_and_give_us_your_feedback_Getting_StartedE_goi_can_be_integrated_with_many_environments_and_programming_languages_via_our_REST_API_Weve_created_a_developer_focused_portal_to_give_your_organization_a_clear_and_quick_overview_of_how_to_integrate_with_E_goi_The_developer_portal_focuses_on_scenarios_for_integration_and_flow_of_events__We_recommend_familiarizing_yourself_with_all_of_the_content_in_the_developer_portal_before_start_using_our_rest_API__The_E_goi__APIv3_is_served_over_HTTPS__To_ensure_data_privacy_unencrypted_HTTP_is_not_supported_Request_data_is_passed_to_the_API_by_POSTing_JSON_objects_to_the_API_endpoints_with_the_appropriate_parameters_BaseURL__api_egoiapp_com_RESTful_ServicesThis_API_supports_5_HTTP_methods_bGETbThe_HTTP_GET_method_is_used_to_read__or_retrieve_a_representation_of_a_resource__bPOSTbThe_POST_verb_is_most_often_utilized_to_create_new_resources__bPATCHbPATCH_is_used_for_modify_capabilities__The_PATCH_request_only_needs_to_contain_the_changes_to_the_resource_not_the_complete_resource_bPUTbPUT_is_most_often_utilized_for_update_capabilities_PUT_ing_to_a_known_resource_URI_with_the_request_body_containing_the_newly_updated_representation_of_the_original_resource__bDELETEbDELETE_is_pretty_easy_to_understand__It_is_used_to_delete_a_resource_identified_by_a_URI__Authentication_We_use_a_custom_authentication_method_you_will_need_a_apikey_that_you_can_find_in_your_account_settings__Below_you_will_see_a_curl_example_to_get_your_account_informationbinbashcurl__X_GET_httpsapi_egoiapp_commy_account__H_accept_applicationjson__H_Apikey_YOUR_APY_KEYHere_you_can_see_a_curl_Post_example_with_authenticationbinbashcurl__X_POST_httpapi_egoiapp_comtags__H_accept_applicationjson__H_Apikey_YOUR_APY_KEY__H_Content_Type_applicationjson__d_nameYour_custom_tagcolorFFFFFF_SDKGet_started_quickly_with_E_goi_with_our_integration_tools__Our_SDK_is_a_modern_open_source_library_that_makes_it_easy_to_integrate_your_application_with_E_goi_services___a_hrefhttpsgithub_comE_goisdk_javaJavaa__a_hrefhttpsgithub_comE_goisdk_phpPHPa__a_hrefhttpsgithub_comE_goisdk_pythonPythona__a_hrefhttpsgithub_comE_goisdk_rubyRubya__a_hrefhttpsgithub_comE_goisdk_javascriptJavascripta__a_hrefhttpsgithub_comE_goisdk_csharpCa_Stream_LimitsStream_limits_are_security_mesures_we_have_to_make_sure_our_API_have_a_fair_use_policy_for_this_reason_any_request_that_creates_or_modifies_data__POST_PATCH_and_PUT_is_limited_to_a_maximum_of_20MB_of_content_length__If_you_arrive_to_this_limit_in_one_of_your_request_youll_receive_a_HTTP_code_413__Request_Entity_Too_Large_and_the_request_will_be_ignored__To_avoid_this_error_in_importations_requests_its_advised_the_requests_division_in_batches_that_have_each_one_less_than_20MB__TimeoutsTimeouts_set_a_maximum_waiting_time_on_a_requests_response__Our_API_sets_a_default_timeout_for_each_request_and_when_breached_youll_receive_an_HTTP_408__Request_Timeout_error_code__You_should_take_into_consideration_that_response_times_can_vary_widely_based_on_the_complexity_of_the_request_amount_of_data_being_analyzed_and_the_load_on_the_system_and_workspace_at_the_time_of_the_query__When_dealing_with_such_errors_you_should_first_attempt_to_reduce_the_complexity_and_amount_of_data_under_analysis_and_only_then_if_problems_are_still_occurring_ask_for_support_For_all_these_reasons_the_default_timeout_for_each_request_is_10_Seconds_and_any_request_that_creates_or_modifies_data__POST_PATCH_and_PUT_will_have_a_timeout_of_60_Seconds__Specific_timeouts_may_exist_for_specific_requests_these_can_be_found_in_the_requests_documentation_security_definitions.<br>
-   * The <code>index</code> module provides access to constructors for all the classes which comprise the public API.
-   * <p>
-   * An AMD (recommended!) or CommonJS application will generally do something equivalent to the following:
-   * <pre>
-   * var egoiSdk = require('index'); // See note below*.
-   * var xxxSvc = new egoiSdk.XxxApi(); // Allocate the API class we're going to use.
-   * var yyyModel = new egoiSdk.Yyy(); // Construct a model instance.
-   * yyyModel.someProperty = 'someValue';
-   * ...
-   * var zzz = xxxSvc.doSomething(yyyModel); // Invoke the service.
-   * ...
-   * </pre>
-   * <em>*NOTE: For a top-level AMD script, use require(['index'], function(){...})
-   * and put the application logic within the callback function.</em>
-   * </p>
-   * <p>
-   * A non-AMD browser application (discouraged) might do something like this:
-   * <pre>
-   * var xxxSvc = new egoiSdk.XxxApi(); // Allocate the API class we're going to use.
-   * var yyy = new egoiSdk.Yyy(); // Construct a model instance.
-   * yyyModel.someProperty = 'someValue';
-   * ...
-   * var zzz = xxxSvc.doSomething(yyyModel); // Invoke the service.
-   * ...
-   * </pre>
-   * </p>
-   * @module index
-   * @version 1.1.1RC1
-   */
-  var exports = {
+import ApiClient from './ApiClient';
+import AbstractCampaignSendRequest from './egoisdk/AbstractCampaignSendRequest';
+import AbstractCampaignSendRequestSegments from './egoisdk/AbstractCampaignSendRequestSegments';
+import AbstractCampaignTemplate from './egoisdk/AbstractCampaignTemplate';
+import AbstractCellphoneSender from './egoisdk/AbstractCellphoneSender';
+import AbstractCellphoneSenderAllOf from './egoisdk/AbstractCellphoneSenderAllOf';
+import AbstractSegment from './egoisdk/AbstractSegment';
+import AbstractSendEmail from './egoisdk/AbstractSendEmail';
+import AbstractSendVoice from './egoisdk/AbstractSendVoice';
+import AbstractSendVoiceAllOf from './egoisdk/AbstractSendVoiceAllOf';
+import AbstractSendVoiceAllOf1 from './egoisdk/AbstractSendVoiceAllOf1';
+import AbstractSuppresionList from './egoisdk/AbstractSuppresionList';
+import AcceptedResponse from './egoisdk/AcceptedResponse';
+import ActivateContactsAll from './egoisdk/ActivateContactsAll';
+import ActivateContactsMany from './egoisdk/ActivateContactsMany';
+import ActivateContactsRequest from './egoisdk/ActivateContactsRequest';
+import ActivityCollection from './egoisdk/ActivityCollection';
+import AdvancedReport from './egoisdk/AdvancedReport';
+import AdvancedReportCampaignsObject from './egoisdk/AdvancedReportCampaignsObject';
+import AdvancedReportEmailBouncesColumns from './egoisdk/AdvancedReportEmailBouncesColumns';
+import AdvancedReportEmailBouncesOptions from './egoisdk/AdvancedReportEmailBouncesOptions';
+import AdvancedReportEmailClicksByContactColumns from './egoisdk/AdvancedReportEmailClicksByContactColumns';
+import AdvancedReportEmailClicksByContactOptions from './egoisdk/AdvancedReportEmailClicksByContactOptions';
+import AdvancedReportEmailClicksByUrlColumns from './egoisdk/AdvancedReportEmailClicksByUrlColumns';
+import AdvancedReportEmailClicksByUrlOptions from './egoisdk/AdvancedReportEmailClicksByUrlOptions';
+import AdvancedReportEmailEventsColumns from './egoisdk/AdvancedReportEmailEventsColumns';
+import AdvancedReportEmailEventsOptions from './egoisdk/AdvancedReportEmailEventsOptions';
+import AdvancedReportEmailUnsubscriptionsColumns from './egoisdk/AdvancedReportEmailUnsubscriptionsColumns';
+import AdvancedReportEmailUnsubscriptionsOptions from './egoisdk/AdvancedReportEmailUnsubscriptionsOptions';
+import AdvancedReportFormsInner from './egoisdk/AdvancedReportFormsInner';
+import AdvancedReportListExtraFieldsInner from './egoisdk/AdvancedReportListExtraFieldsInner';
+import AdvancedReportRange from './egoisdk/AdvancedReportRange';
+import AdvancedReportSendsColumns from './egoisdk/AdvancedReportSendsColumns';
+import AdvancedReportSendsOptions from './egoisdk/AdvancedReportSendsOptions';
+import AdvancedReportSmsBouncesColumns from './egoisdk/AdvancedReportSmsBouncesColumns';
+import AdvancedReportSmsBouncesOptions from './egoisdk/AdvancedReportSmsBouncesOptions';
+import AdvancedReportSmsEventsColumns from './egoisdk/AdvancedReportSmsEventsColumns';
+import AdvancedReportSmsEventsOptions from './egoisdk/AdvancedReportSmsEventsOptions';
+import AdvancedReportSubscriptionsColumns from './egoisdk/AdvancedReportSubscriptionsColumns';
+import AdvancedReportSubscriptionsOptions from './egoisdk/AdvancedReportSubscriptionsOptions';
+import AdvancedReportUnsubscriptionsColumns from './egoisdk/AdvancedReportUnsubscriptionsColumns';
+import AdvancedReportUnsubscriptionsOptions from './egoisdk/AdvancedReportUnsubscriptionsOptions';
+import AdvancedReportsCollection from './egoisdk/AdvancedReportsCollection';
+import AlphanumericCellphoneSender from './egoisdk/AlphanumericCellphoneSender';
+import AlphanumericCellphoneSenderPost from './egoisdk/AlphanumericCellphoneSenderPost';
+import AlphanumericCellphoneSenderPostAllOf from './egoisdk/AlphanumericCellphoneSenderPostAllOf';
+import AppStructure from './egoisdk/AppStructure';
+import AppStructureList from './egoisdk/AppStructureList';
+import AttachByContacts from './egoisdk/AttachByContacts';
+import AttachBySegment from './egoisdk/AttachBySegment';
+import AttachTagRequest from './egoisdk/AttachTagRequest';
+import AttachTagResponse from './egoisdk/AttachTagResponse';
+import AutomaticSegment from './egoisdk/AutomaticSegment';
+import AutomaticSegmentAllOf from './egoisdk/AutomaticSegmentAllOf';
+import Automation from './egoisdk/Automation';
+import AutomationAllOf from './egoisdk/AutomationAllOf';
+import AutomationCollection from './egoisdk/AutomationCollection';
+import AutomationPost from './egoisdk/AutomationPost';
+import AutomationPostAllOf from './egoisdk/AutomationPostAllOf';
+import BadRequest from './egoisdk/BadRequest';
+import BalanceInfo from './egoisdk/BalanceInfo';
+import BalanceInfoBalanceInfo from './egoisdk/BalanceInfoBalanceInfo';
+import BaseConflict from './egoisdk/BaseConflict';
+import BasicProduct from './egoisdk/BasicProduct';
+import BasicSender from './egoisdk/BasicSender';
+import BillingInfo from './egoisdk/BillingInfo';
+import BillingInfoAllOf from './egoisdk/BillingInfoAllOf';
+import BillingInfoAllOfBillingInfo from './egoisdk/BillingInfoAllOfBillingInfo';
+import BillingInfoAllOfBillingInfoCountry from './egoisdk/BillingInfoAllOfBillingInfoCountry';
+import BulkActionResponse from './egoisdk/BulkActionResponse';
+import CName from './egoisdk/CName';
+import CNamePost from './egoisdk/CNamePost';
+import CNamesCollection from './egoisdk/CNamesCollection';
+import Campaign from './egoisdk/Campaign';
+import CampaignEmailBaseContent from './egoisdk/CampaignEmailBaseContent';
+import CampaignEmailContent from './egoisdk/CampaignEmailContent';
+import CampaignEmailContentFile from './egoisdk/CampaignEmailContentFile';
+import CampaignEmailContentFileAllOf from './egoisdk/CampaignEmailContentFileAllOf';
+import CampaignEmailContentHtml from './egoisdk/CampaignEmailContentHtml';
+import CampaignEmailContentHtmlAllOf from './egoisdk/CampaignEmailContentHtmlAllOf';
+import CampaignEmailContentHtmlPatch from './egoisdk/CampaignEmailContentHtmlPatch';
+import CampaignEmailContentHtmlPatchAllOf from './egoisdk/CampaignEmailContentHtmlPatchAllOf';
+import CampaignEmailContentTemplate from './egoisdk/CampaignEmailContentTemplate';
+import CampaignEmailContentTemplateAllOf from './egoisdk/CampaignEmailContentTemplateAllOf';
+import CampaignEmailContentWebPage from './egoisdk/CampaignEmailContentWebPage';
+import CampaignEmailContentWebPageAllOf from './egoisdk/CampaignEmailContentWebPageAllOf';
+import CampaignEmailRssContent from './egoisdk/CampaignEmailRssContent';
+import CampaignEmailRssContentHtml from './egoisdk/CampaignEmailRssContentHtml';
+import CampaignEmailRssContentHtmlAllOf from './egoisdk/CampaignEmailRssContentHtmlAllOf';
+import CampaignEmailScheduleRequest from './egoisdk/CampaignEmailScheduleRequest';
+import CampaignEmailScheduleRequestAllOf from './egoisdk/CampaignEmailScheduleRequestAllOf';
+import CampaignEmailSendNowRequest from './egoisdk/CampaignEmailSendNowRequest';
+import CampaignEmailSendRequest from './egoisdk/CampaignEmailSendRequest';
+import CampaignGroup from './egoisdk/CampaignGroup';
+import CampaignGroupAllOf from './egoisdk/CampaignGroupAllOf';
+import CampaignGroupCollection from './egoisdk/CampaignGroupCollection';
+import CampaignGroupPost from './egoisdk/CampaignGroupPost';
+import CampaignGroupPostAllOf from './egoisdk/CampaignGroupPostAllOf';
+import CampaignHash from './egoisdk/CampaignHash';
+import CampaignPushContent from './egoisdk/CampaignPushContent';
+import CampaignPushContentTemplate from './egoisdk/CampaignPushContentTemplate';
+import CampaignPushContentText from './egoisdk/CampaignPushContentText';
+import CampaignPushScheduleRequest from './egoisdk/CampaignPushScheduleRequest';
+import CampaignPushSendRequest from './egoisdk/CampaignPushSendRequest';
+import CampaignScheduleDate from './egoisdk/CampaignScheduleDate';
+import CampaignSentLast30Days from './egoisdk/CampaignSentLast30Days';
+import CampaignSentLast30DaysErrors from './egoisdk/CampaignSentLast30DaysErrors';
+import CampaignSmartSmsHtml from './egoisdk/CampaignSmartSmsHtml';
+import CampaignSmartSmsImport from './egoisdk/CampaignSmartSmsImport';
+import CampaignSmartSmsOptions from './egoisdk/CampaignSmartSmsOptions';
+import CampaignSmartSmsPageContent from './egoisdk/CampaignSmartSmsPageContent';
+import CampaignSmartSmsRedirect from './egoisdk/CampaignSmartSmsRedirect';
+import CampaignSmartSmsScheduleRequest from './egoisdk/CampaignSmartSmsScheduleRequest';
+import CampaignSmartSmsSendRequest from './egoisdk/CampaignSmartSmsSendRequest';
+import CampaignSmsContent from './egoisdk/CampaignSmsContent';
+import CampaignSmsContentTemplate from './egoisdk/CampaignSmsContentTemplate';
+import CampaignSmsContentText from './egoisdk/CampaignSmsContentText';
+import CampaignSmsOptions from './egoisdk/CampaignSmsOptions';
+import CampaignSmsScheduleRequest from './egoisdk/CampaignSmsScheduleRequest';
+import CampaignSmsSendRequest from './egoisdk/CampaignSmsSendRequest';
+import CampaignVoiceScheduleRequest from './egoisdk/CampaignVoiceScheduleRequest';
+import CampaignVoiceSendRequest from './egoisdk/CampaignVoiceSendRequest';
+import CampaignWebPushScheduleRequest from './egoisdk/CampaignWebPushScheduleRequest';
+import CampaignWebPushSendRequest from './egoisdk/CampaignWebPushSendRequest';
+import CampaignsCollection from './egoisdk/CampaignsCollection';
+import Cart from './egoisdk/Cart';
+import CartPatchRequest from './egoisdk/CartPatchRequest';
+import Catalog from './egoisdk/Catalog';
+import CatalogCollection from './egoisdk/CatalogCollection';
+import CatalogPost from './egoisdk/CatalogPost';
+import CatalogPostRequest from './egoisdk/CatalogPostRequest';
+import CellphoneSender from './egoisdk/CellphoneSender';
+import CellphoneSenderCollection from './egoisdk/CellphoneSenderCollection';
+import CellphoneSenderPost from './egoisdk/CellphoneSenderPost';
+import ClientAlreadyEnabled from './egoisdk/ClientAlreadyEnabled';
+import ClientAlreadyEnabledErrors from './egoisdk/ClientAlreadyEnabledErrors';
+import ClientIsBeingEnabled from './egoisdk/ClientIsBeingEnabled';
+import ClientIsBeingEnabledErrors from './egoisdk/ClientIsBeingEnabledErrors';
+import CnameExists from './egoisdk/CnameExists';
+import CnameExistsErrors from './egoisdk/CnameExistsErrors';
+import ComplexContact from './egoisdk/ComplexContact';
+import ComplexContactAllOf from './egoisdk/ComplexContactAllOf';
+import ComplexContactAllOfEmailStats from './egoisdk/ComplexContactAllOfEmailStats';
+import ComplexContactAllOfPushStats from './egoisdk/ComplexContactAllOfPushStats';
+import ComplexContactAllOfSmsStats from './egoisdk/ComplexContactAllOfSmsStats';
+import ComplexContactAllOfVoiceStats from './egoisdk/ComplexContactAllOfVoiceStats';
+import ComplexContactAllOfWebpushStats from './egoisdk/ComplexContactAllOfWebpushStats';
+import ComplexField from './egoisdk/ComplexField';
+import ComplexFieldAllOf from './egoisdk/ComplexFieldAllOf';
+import ComplexList from './egoisdk/ComplexList';
+import ComplexListAllOf from './egoisdk/ComplexListAllOf';
+import ComplexListAllOfStats from './egoisdk/ComplexListAllOfStats';
+import ComplexUser from './egoisdk/ComplexUser';
+import ComplexUserAllOf from './egoisdk/ComplexUserAllOf';
+import ComplexUserPost from './egoisdk/ComplexUserPost';
+import Conflict from './egoisdk/Conflict';
+import ConflictAllOf from './egoisdk/ConflictAllOf';
+import ConnectedSitesDomain from './egoisdk/ConnectedSitesDomain';
+import ConnectedSitesDomainDetail from './egoisdk/ConnectedSitesDomainDetail';
+import ConnectedSitesEmbedForm from './egoisdk/ConnectedSitesEmbedForm';
+import ConnectedSitesGeneralProductAppDetail from './egoisdk/ConnectedSitesGeneralProductAppDetail';
+import ConnectedSitesGeneralProductAppDetailGlobal from './egoisdk/ConnectedSitesGeneralProductAppDetailGlobal';
+import ConnectedSitesGeneralProductFormDetail from './egoisdk/ConnectedSitesGeneralProductFormDetail';
+import ConnectedSitesGeneralProductFormDetailGlobal from './egoisdk/ConnectedSitesGeneralProductFormDetailGlobal';
+import ConnectedSitesGeneralProductTEDetailGlobal from './egoisdk/ConnectedSitesGeneralProductTEDetailGlobal';
+import ConnectedSitesProductEmbedFormDetail from './egoisdk/ConnectedSitesProductEmbedFormDetail';
+import ConnectedSitesProducts from './egoisdk/ConnectedSitesProducts';
+import Contact from './egoisdk/Contact';
+import Contact1 from './egoisdk/Contact1';
+import Contact2 from './egoisdk/Contact2';
+import ContactActivity from './egoisdk/ContactActivity';
+import ContactActivityAbstractActionsWithData from './egoisdk/ContactActivityAbstractActionsWithData';
+import ContactActivityClick from './egoisdk/ContactActivityClick';
+import ContactActivityClickAllOf from './egoisdk/ContactActivityClickAllOf';
+import ContactActivityClickAllOfActionData from './egoisdk/ContactActivityClickAllOfActionData';
+import ContactBaseExtra from './egoisdk/ContactBaseExtra';
+import ContactBaseExtraBulk from './egoisdk/ContactBaseExtraBulk';
+import ContactBaseExtraFull from './egoisdk/ContactBaseExtraFull';
+import ContactBaseExtraPost from './egoisdk/ContactBaseExtraPost';
+import ContactBaseFieldsBulkSchema from './egoisdk/ContactBaseFieldsBulkSchema';
+import ContactBaseFieldsBulkSchemaBase from './egoisdk/ContactBaseFieldsBulkSchemaBase';
+import ContactBaseFieldsPostSchema from './egoisdk/ContactBaseFieldsPostSchema';
+import ContactBaseFieldsPostSchemaBase from './egoisdk/ContactBaseFieldsPostSchemaBase';
+import ContactBaseFieldsSchema from './egoisdk/ContactBaseFieldsSchema';
+import ContactBaseFieldsSchemaBase from './egoisdk/ContactBaseFieldsSchemaBase';
+import ContactBaseFieldsWithIdSchema from './egoisdk/ContactBaseFieldsWithIdSchema';
+import ContactBaseFieldsWithIdSchemaBase from './egoisdk/ContactBaseFieldsWithIdSchemaBase';
+import ContactBaseStatusExtra from './egoisdk/ContactBaseStatusExtra';
+import ContactBaseStatusExtraBulk from './egoisdk/ContactBaseStatusExtraBulk';
+import ContactBaseStatusExtraNoRemoved from './egoisdk/ContactBaseStatusExtraNoRemoved';
+import ContactBaseWithStatusFieldsBulkSchema from './egoisdk/ContactBaseWithStatusFieldsBulkSchema';
+import ContactBaseWithStatusFieldsNoTokensSchema from './egoisdk/ContactBaseWithStatusFieldsNoTokensSchema';
+import ContactBaseWithStatusFieldsNoTokensSchemaBase from './egoisdk/ContactBaseWithStatusFieldsNoTokensSchemaBase';
+import ContactBaseWithStatusFieldsSchema from './egoisdk/ContactBaseWithStatusFieldsSchema';
+import ContactBaseWithStatusFieldsSchemaBase from './egoisdk/ContactBaseWithStatusFieldsSchemaBase';
+import ContactBaseWithStatusNoRemovedFieldsSchema from './egoisdk/ContactBaseWithStatusNoRemovedFieldsSchema';
+import ContactBaseWithStatusNoRemovedFieldsSchemaBase from './egoisdk/ContactBaseWithStatusNoRemovedFieldsSchemaBase';
+import ContactBaseWithStatusNoRemovedFieldsSchemaBasePushTokenAndroidInner from './egoisdk/ContactBaseWithStatusNoRemovedFieldsSchemaBasePushTokenAndroidInner';
+import ContactBaseWithStatusNoRemovedFieldsSchemaBasePushTokenIosInner from './egoisdk/ContactBaseWithStatusNoRemovedFieldsSchemaBasePushTokenIosInner';
+import ContactBulk from './egoisdk/ContactBulk';
+import ContactBulkFile from './egoisdk/ContactBulkFile';
+import ContactBulkFileAllOf from './egoisdk/ContactBulkFileAllOf';
+import ContactBulkFileAllOf1 from './egoisdk/ContactBulkFileAllOf1';
+import ContactBulkFileAllOf2 from './egoisdk/ContactBulkFileAllOf2';
+import ContactBulkFileAllOf3 from './egoisdk/ContactBulkFileAllOf3';
+import ContactCollection from './egoisdk/ContactCollection';
+import ContactExportRequest from './egoisdk/ContactExportRequest';
+import ContactExtraFieldCellphone from './egoisdk/ContactExtraFieldCellphone';
+import ContactExtraFieldCellphoneBulk from './egoisdk/ContactExtraFieldCellphoneBulk';
+import ContactExtraFieldDate from './egoisdk/ContactExtraFieldDate';
+import ContactExtraFieldEmail from './egoisdk/ContactExtraFieldEmail';
+import ContactExtraFieldEmailBulk from './egoisdk/ContactExtraFieldEmailBulk';
+import ContactExtraFieldNumber from './egoisdk/ContactExtraFieldNumber';
+import ContactExtraFieldOptions from './egoisdk/ContactExtraFieldOptions';
+import ContactExtraFieldPhone from './egoisdk/ContactExtraFieldPhone';
+import ContactExtraFieldPhoneBulk from './egoisdk/ContactExtraFieldPhoneBulk';
+import ContactExtraFieldText from './egoisdk/ContactExtraFieldText';
+import ContactExtraFields from './egoisdk/ContactExtraFields';
+import ContactExtraFieldsBulk from './egoisdk/ContactExtraFieldsBulk';
+import ContactExtraFieldsBulkSchema from './egoisdk/ContactExtraFieldsBulkSchema';
+import ContactExtraFieldsSchema from './egoisdk/ContactExtraFieldsSchema';
+import ContactFieldMappingFileBulkSchema from './egoisdk/ContactFieldMappingFileBulkSchema';
+import ContactForgetRequest from './egoisdk/ContactForgetRequest';
+import ContactInsideBase from './egoisdk/ContactInsideBase';
+import ContactInsideBaseBulk from './egoisdk/ContactInsideBaseBulk';
+import ContactInsideBasePost from './egoisdk/ContactInsideBasePost';
+import ContactInsideBaseWithId from './egoisdk/ContactInsideBaseWithId';
+import ContactOtherActivity from './egoisdk/ContactOtherActivity';
+import ContactSearchResponse from './egoisdk/ContactSearchResponse';
+import ContactStatusFieldsBulkSchema from './egoisdk/ContactStatusFieldsBulkSchema';
+import ContactStatusFieldsSchema from './egoisdk/ContactStatusFieldsSchema';
+import ContactTags from './egoisdk/ContactTags';
+import ContactTagsBulk from './egoisdk/ContactTagsBulk';
+import ContactsActionUpdateContactsSchema from './egoisdk/ContactsActionUpdateContactsSchema';
+import ContentVoice from './egoisdk/ContentVoice';
+import ContentVoiceAudio from './egoisdk/ContentVoiceAudio';
+import ContentVoicePatch from './egoisdk/ContentVoicePatch';
+import ContentVoiceTemplate from './egoisdk/ContentVoiceTemplate';
+import Country from './egoisdk/Country';
+import CountryCollection from './egoisdk/CountryCollection';
+import CreateCartResponse from './egoisdk/CreateCartResponse';
+import CreateContactResponse from './egoisdk/CreateContactResponse';
+import CreateOrder from './egoisdk/CreateOrder';
+import CreateOrderResponse from './egoisdk/CreateOrderResponse';
+import CreateSuppressionListRequest from './egoisdk/CreateSuppressionListRequest';
+import DeactivateContactsAll from './egoisdk/DeactivateContactsAll';
+import DeactivateContactsMany from './egoisdk/DeactivateContactsMany';
+import DeactivateContactsRequest from './egoisdk/DeactivateContactsRequest';
+import DeleteCampaignsConflict from './egoisdk/DeleteCampaignsConflict';
+import DeleteFieldsConflict from './egoisdk/DeleteFieldsConflict';
+import DeleteListsConflict from './egoisdk/DeleteListsConflict';
+import DeleteListsConflictsErrors from './egoisdk/DeleteListsConflictsErrors';
+import DeleteSegmentsConflict from './egoisdk/DeleteSegmentsConflict';
+import DeleteSegmentsConflictsErrors from './egoisdk/DeleteSegmentsConflictsErrors';
+import DeleteSuppressionListConflictsErrors from './egoisdk/DeleteSuppressionListConflictsErrors';
+import DetachByContacts from './egoisdk/DetachByContacts';
+import DetachBySegment from './egoisdk/DetachBySegment';
+import DetachTagRequest from './egoisdk/DetachTagRequest';
+import Domain from './egoisdk/Domain';
+import DomainAlreadyDefined from './egoisdk/DomainAlreadyDefined';
+import DomainAlreadyDefinedErrors from './egoisdk/DomainAlreadyDefinedErrors';
+import DomainCollection from './egoisdk/DomainCollection';
+import DomainListRequired from './egoisdk/DomainListRequired';
+import DomainListRequiredErrors from './egoisdk/DomainListRequiredErrors';
+import EmailBouncesCampaignFields from './egoisdk/EmailBouncesCampaignFields';
+import EmailBouncesListStatsFields from './egoisdk/EmailBouncesListStatsFields';
+import EmailCampaignCreate from './egoisdk/EmailCampaignCreate';
+import EmailCampaignPatch from './egoisdk/EmailCampaignPatch';
+import EmailCampaignTemplate from './egoisdk/EmailCampaignTemplate';
+import EmailCampaignTemplateAllOf from './egoisdk/EmailCampaignTemplateAllOf';
+import EmailCampaignTemplateAllOfReplyToData from './egoisdk/EmailCampaignTemplateAllOfReplyToData';
+import EmailCampaignTemplateAllOfSenderData from './egoisdk/EmailCampaignTemplateAllOfSenderData';
+import EmailClicksByContactCampaignFields from './egoisdk/EmailClicksByContactCampaignFields';
+import EmailClicksByContactListStatsFields from './egoisdk/EmailClicksByContactListStatsFields';
+import EmailClicksByUrlCampaignFields from './egoisdk/EmailClicksByUrlCampaignFields';
+import EmailClicksByUrlListStatsFields from './egoisdk/EmailClicksByUrlListStatsFields';
+import EmailEventsCampaignFields from './egoisdk/EmailEventsCampaignFields';
+import EmailEventsListStatsFields from './egoisdk/EmailEventsListStatsFields';
+import EmailReport from './egoisdk/EmailReport';
+import EmailReportAllOf from './egoisdk/EmailReportAllOf';
+import EmailReportByDate from './egoisdk/EmailReportByDate';
+import EmailReportByDateDateInner from './egoisdk/EmailReportByDateDateInner';
+import EmailReportByDomain from './egoisdk/EmailReportByDomain';
+import EmailReportByDomainDomainInner from './egoisdk/EmailReportByDomainDomainInner';
+import EmailReportByEcommerce from './egoisdk/EmailReportByEcommerce';
+import EmailReportByEcommerceEcommerce from './egoisdk/EmailReportByEcommerceEcommerce';
+import EmailReportByHour from './egoisdk/EmailReportByHour';
+import EmailReportByHourHourInner from './egoisdk/EmailReportByHourHourInner';
+import EmailReportByLocation from './egoisdk/EmailReportByLocation';
+import EmailReportByLocationLocationInner from './egoisdk/EmailReportByLocationLocationInner';
+import EmailReportByReader from './egoisdk/EmailReportByReader';
+import EmailReportByReaderReaderInner from './egoisdk/EmailReportByReaderReaderInner';
+import EmailReportByUrl from './egoisdk/EmailReportByUrl';
+import EmailReportByUrlUrlInner from './egoisdk/EmailReportByUrlUrlInner';
+import EmailReportByWeekday from './egoisdk/EmailReportByWeekday';
+import EmailReportByWeekdayWeekdayInner from './egoisdk/EmailReportByWeekdayWeekdayInner';
+import EmailReportOverall from './egoisdk/EmailReportOverall';
+import EmailReportOverallOverall from './egoisdk/EmailReportOverallOverall';
+import EmailRssCampaignCreate from './egoisdk/EmailRssCampaignCreate';
+import EmailSendSegment from './egoisdk/EmailSendSegment';
+import EmailSender from './egoisdk/EmailSender';
+import EmailSenderAllOf from './egoisdk/EmailSenderAllOf';
+import EmailSenderCollection from './egoisdk/EmailSenderCollection';
+import EmailSenderPost from './egoisdk/EmailSenderPost';
+import EmailSenderPutRequest from './egoisdk/EmailSenderPutRequest';
+import EmailUnsubscriptionsCampaignFields from './egoisdk/EmailUnsubscriptionsCampaignFields';
+import EmailUnsubscriptionsListStatsFields from './egoisdk/EmailUnsubscriptionsListStatsFields';
+import EnableTeConflict from './egoisdk/EnableTeConflict';
+import EnableTeConflictsErrors from './egoisdk/EnableTeConflictsErrors';
+import EnableTeRequest from './egoisdk/EnableTeRequest';
+import EnableTransactionalConflict from './egoisdk/EnableTransactionalConflict';
+import EnableTransactionalConflictsErrors from './egoisdk/EnableTransactionalConflictsErrors';
+import ExportContactsWebhookData from './egoisdk/ExportContactsWebhookData';
+import Field from './egoisdk/Field';
+import FieldCollection from './egoisdk/FieldCollection';
+import FieldInUse from './egoisdk/FieldInUse';
+import FieldInUseErrors from './egoisdk/FieldInUseErrors';
+import FieldInUseErrorsFieldInUseData from './egoisdk/FieldInUseErrorsFieldInUseData';
+import FieldOption from './egoisdk/FieldOption';
+import FieldOptionPost from './egoisdk/FieldOptionPost';
+import FieldOptionsCollection from './egoisdk/FieldOptionsCollection';
+import Forbidden from './egoisdk/Forbidden';
+import Form from './egoisdk/Form';
+import GeneralInfo from './egoisdk/GeneralInfo';
+import GeneralInfoAllOf from './egoisdk/GeneralInfoAllOf';
+import GeneralInfoAllOfGeneralInfo from './egoisdk/GeneralInfoAllOfGeneralInfo';
+import GenerateEmailBouncesReport from './egoisdk/GenerateEmailBouncesReport';
+import GenerateEmailClicksByContactReport from './egoisdk/GenerateEmailClicksByContactReport';
+import GenerateEmailClicksByUrlReport from './egoisdk/GenerateEmailClicksByUrlReport';
+import GenerateEmailEventsReport from './egoisdk/GenerateEmailEventsReport';
+import GenerateEmailUnsubscriptionsReport from './egoisdk/GenerateEmailUnsubscriptionsReport';
+import GenerateFormAnswersReport from './egoisdk/GenerateFormAnswersReport';
+import GenerateSendsReport from './egoisdk/GenerateSendsReport';
+import GenerateSmsBouncesReport from './egoisdk/GenerateSmsBouncesReport';
+import GenerateSmsEventsReport from './egoisdk/GenerateSmsEventsReport';
+import GenerateSubscriptionsReport from './egoisdk/GenerateSubscriptionsReport';
+import GenerateUnsubscriptionsReport from './egoisdk/GenerateUnsubscriptionsReport';
+import GetAllContactsExtraFieldIdParameter from './egoisdk/GetAllContactsExtraFieldIdParameter';
+import GetAllProductsCustomAttributesParameter from './egoisdk/GetAllProductsCustomAttributesParameter';
+import Goal from './egoisdk/Goal';
+import GoalAutommaticInfo from './egoisdk/GoalAutommaticInfo';
+import GoalCollection from './egoisdk/GoalCollection';
+import GoalInfo from './egoisdk/GoalInfo';
+import GoalManualInfo from './egoisdk/GoalManualInfo';
+import GoalTimeInfo from './egoisdk/GoalTimeInfo';
+import HasAutomations from './egoisdk/HasAutomations';
+import HasAutomationsErrors from './egoisdk/HasAutomationsErrors';
+import HasCampaignsLastThirtyDays from './egoisdk/HasCampaignsLastThirtyDays';
+import HasCampaignsLastThirtyDaysErrors from './egoisdk/HasCampaignsLastThirtyDaysErrors';
+import HasPushApp from './egoisdk/HasPushApp';
+import HasPushAppErrors from './egoisdk/HasPushAppErrors';
+import HasQueuedCampaigns from './egoisdk/HasQueuedCampaigns';
+import HasQueuedCampaignsErrors from './egoisdk/HasQueuedCampaignsErrors';
+import HasQueuedOperations from './egoisdk/HasQueuedOperations';
+import HasQueuedOperationsErrors from './egoisdk/HasQueuedOperationsErrors';
+import HasWebPushSite from './egoisdk/HasWebPushSite';
+import HasWebPushSiteErrors from './egoisdk/HasWebPushSiteErrors';
+import HashcodeCampaign from './egoisdk/HashcodeCampaign';
+import HeaderFooter from './egoisdk/HeaderFooter';
+import HeaderFooterFooterLinks from './egoisdk/HeaderFooterFooterLinks';
+import HeaderFooterHeaderLinks from './egoisdk/HeaderFooterHeaderLinks';
+import HeaderFooterTemplate from './egoisdk/HeaderFooterTemplate';
+import ImportBulkFileRequest from './egoisdk/ImportBulkFileRequest';
+import ImportBulkFileRequestSchema from './egoisdk/ImportBulkFileRequestSchema';
+import ImportBulkFileRequestSchemaFile from './egoisdk/ImportBulkFileRequestSchemaFile';
+import ImportBulkRequest from './egoisdk/ImportBulkRequest';
+import ImportOrdersBulkBulkRequest from './egoisdk/ImportOrdersBulkBulkRequest';
+import ImportOrdersBulkBulkRequestItems from './egoisdk/ImportOrdersBulkBulkRequestItems';
+import InternalServerError from './egoisdk/InternalServerError';
+import InvalidSegmentType from './egoisdk/InvalidSegmentType';
+import InvalidSegmentTypeErrors from './egoisdk/InvalidSegmentTypeErrors';
+import Language from './egoisdk/Language';
+import LimitContactsActionSend from './egoisdk/LimitContactsActionSend';
+import LimitContactsPercentActionSend from './egoisdk/LimitContactsPercentActionSend';
+import LimitContactsValueActionSend from './egoisdk/LimitContactsValueActionSend';
+import LimitHourActionSend from './egoisdk/LimitHourActionSend';
+import LimitHourActionSendLimitHour from './egoisdk/LimitHourActionSendLimitHour';
+import LimitSpeedActionSend from './egoisdk/LimitSpeedActionSend';
+import List from './egoisdk/List';
+import ListCollection from './egoisdk/ListCollection';
+import ListCollection1 from './egoisdk/ListCollection1';
+import ListLimitReached from './egoisdk/ListLimitReached';
+import ListLimitReachedErrors from './egoisdk/ListLimitReachedErrors';
+import MessageWebPush from './egoisdk/MessageWebPush';
+import MessageWebPushPost from './egoisdk/MessageWebPushPost';
+import MessageWebPushRss from './egoisdk/MessageWebPushRss';
+import ModuleInfo from './egoisdk/ModuleInfo';
+import ModuleInfoModuleInfo from './egoisdk/ModuleInfoModuleInfo';
+import ModuleInfoModuleInfoTe from './egoisdk/ModuleInfoModuleInfoTe';
+import MyAccount from './egoisdk/MyAccount';
+import NameAlreadyExists from './egoisdk/NameAlreadyExists';
+import NameAlreadyExistsErrors from './egoisdk/NameAlreadyExistsErrors';
+import NotFound from './egoisdk/NotFound';
+import NotifyUserIdArrayActionSend from './egoisdk/NotifyUserIdArrayActionSend';
+import Now from './egoisdk/Now';
+import NumericCellphoneSender from './egoisdk/NumericCellphoneSender';
+import NumericCellphoneSenderPost from './egoisdk/NumericCellphoneSenderPost';
+import NumericCellphoneSenderPostAllOf from './egoisdk/NumericCellphoneSenderPostAllOf';
+import OLimitContactsActionSend from './egoisdk/OLimitContactsActionSend';
+import OSegmentsActionSend from './egoisdk/OSegmentsActionSend';
+import OSegmentsWithoutContactActionSend from './egoisdk/OSegmentsWithoutContactActionSend';
+import Operation from './egoisdk/Operation';
+import OperationActionRequest from './egoisdk/OperationActionRequest';
+import OperationActionResponse from './egoisdk/OperationActionResponse';
+import OperationActionResponseError from './egoisdk/OperationActionResponseError';
+import OperationOperationData from './egoisdk/OperationOperationData';
+import OperationsCollection from './egoisdk/OperationsCollection';
+import Order from './egoisdk/Order';
+import OrderPatchRequest from './egoisdk/OrderPatchRequest';
+import Overall from './egoisdk/Overall';
+import OverallOverall from './egoisdk/OverallOverall';
+import PatchRequestBaseField from './egoisdk/PatchRequestBaseField';
+import PatchRequestField from './egoisdk/PatchRequestField';
+import PatchRequestList from './egoisdk/PatchRequestList';
+import PatchVoiceCampaign200Response from './egoisdk/PatchVoiceCampaign200Response';
+import PayloadTooLarge from './egoisdk/PayloadTooLarge';
+import PhoneCampaignTemplate from './egoisdk/PhoneCampaignTemplate';
+import PhoneCampaignTemplateAllOf from './egoisdk/PhoneCampaignTemplateAllOf';
+import PhoneReport from './egoisdk/PhoneReport';
+import PhoneReportAllOf from './egoisdk/PhoneReportAllOf';
+import PhoneReportAllOfNetworks from './egoisdk/PhoneReportAllOfNetworks';
+import PhoneSender from './egoisdk/PhoneSender';
+import PhoneSenderAllOf from './egoisdk/PhoneSenderAllOf';
+import PhoneSenderCollection from './egoisdk/PhoneSenderCollection';
+import PhoneSenderPost from './egoisdk/PhoneSenderPost';
+import Ping from './egoisdk/Ping';
+import PlanInfo from './egoisdk/PlanInfo';
+import PlanInfoPlanInfo from './egoisdk/PlanInfoPlanInfo';
+import PostCNameConflict from './egoisdk/PostCNameConflict';
+import PostContactsConflict from './egoisdk/PostContactsConflict';
+import PostListsConflict from './egoisdk/PostListsConflict';
+import PostProductsConflict from './egoisdk/PostProductsConflict';
+import PostRequestList from './egoisdk/PostRequestList';
+import PostWebpushSiteConflict from './egoisdk/PostWebpushSiteConflict';
+import Product from './egoisdk/Product';
+import ProductAllOf from './egoisdk/ProductAllOf';
+import ProductAlreadyExists from './egoisdk/ProductAlreadyExists';
+import ProductAlreadyExistsErrors from './egoisdk/ProductAlreadyExistsErrors';
+import ProductBulkRequest from './egoisdk/ProductBulkRequest';
+import ProductCollection from './egoisdk/ProductCollection';
+import ProductCustomAttributes from './egoisdk/ProductCustomAttributes';
+import ProductPatchRequest from './egoisdk/ProductPatchRequest';
+import ProductPatchRequestRelatedProducts from './egoisdk/ProductPatchRequestRelatedProducts';
+import ProductPostRequest from './egoisdk/ProductPostRequest';
+import PushCampaignPatchRequest from './egoisdk/PushCampaignPatchRequest';
+import PushCampaignPatchRequestContent from './egoisdk/PushCampaignPatchRequestContent';
+import PushCampaignPatchRequestGeoOptions from './egoisdk/PushCampaignPatchRequestGeoOptions';
+import PushCampaignPostRequest from './egoisdk/PushCampaignPostRequest';
+import PushCampaignPostRequestActions from './egoisdk/PushCampaignPostRequestActions';
+import PushCampaignPostRequestGeoOptions from './egoisdk/PushCampaignPostRequestGeoOptions';
+import PushCampaignPostRequestNotificationOptions from './egoisdk/PushCampaignPostRequestNotificationOptions';
+import PushEvent from './egoisdk/PushEvent';
+import PushNotificationSoundSchema from './egoisdk/PushNotificationSoundSchema';
+import PushNotificationSoundSchemaDefault from './egoisdk/PushNotificationSoundSchemaDefault';
+import PushNotificationSoundSchemaNone from './egoisdk/PushNotificationSoundSchemaNone';
+import PushNotificationSoundSchemaUrl from './egoisdk/PushNotificationSoundSchemaUrl';
+import PushReport from './egoisdk/PushReport';
+import PushReportAllOf from './egoisdk/PushReportAllOf';
+import PushResponse from './egoisdk/PushResponse';
+import PushToken from './egoisdk/PushToken';
+import PushTokenTwoStepsData from './egoisdk/PushTokenTwoStepsData';
+import PushVersions from './egoisdk/PushVersions';
+import PushVersionsVersionsInner from './egoisdk/PushVersionsVersionsInner';
+import RemoveRequest from './egoisdk/RemoveRequest';
+import RemoveResponse from './egoisdk/RemoveResponse';
+import RemoveResponseErrors from './egoisdk/RemoveResponseErrors';
+import ReportCampaignsAll from './egoisdk/ReportCampaignsAll';
+import ReportCampaignsGroup from './egoisdk/ReportCampaignsGroup';
+import ReportCampaignsLast from './egoisdk/ReportCampaignsLast';
+import ReportCampaignsSpecific from './egoisdk/ReportCampaignsSpecific';
+import RequestEntityTooLarge from './egoisdk/RequestEntityTooLarge';
+import RequestItemsUnsubscribe from './egoisdk/RequestItemsUnsubscribe';
+import RequestItemsUnsubscribeAllOf from './egoisdk/RequestItemsUnsubscribeAllOf';
+import RequestTimeout from './egoisdk/RequestTimeout';
+import SavedSegment from './egoisdk/SavedSegment';
+import SavedSegmentAllOf from './egoisdk/SavedSegmentAllOf';
+import SavedSegmentAllOf1 from './egoisdk/SavedSegmentAllOf1';
+import SavedSegmentAllOf1SegmentFilter from './egoisdk/SavedSegmentAllOf1SegmentFilter';
+import SavedSegmentAllOf1SegmentFilterSegmentFilterArray from './egoisdk/SavedSegmentAllOf1SegmentFilterSegmentFilterArray';
+import SearchContacts200Response from './egoisdk/SearchContacts200Response';
+import Segment from './egoisdk/Segment';
+import SegmentCollection from './egoisdk/SegmentCollection';
+import SegmentsActionSend from './egoisdk/SegmentsActionSend';
+import SegmentsWithoutContactActionSend from './egoisdk/SegmentsWithoutContactActionSend';
+import SendContact from './egoisdk/SendContact';
+import SendContactCellphone from './egoisdk/SendContactCellphone';
+import SendEmailContact from './egoisdk/SendEmailContact';
+import SendNone from './egoisdk/SendNone';
+import SendPush from './egoisdk/SendPush';
+import SendPushAllOf from './egoisdk/SendPushAllOf';
+import SendSegment from './egoisdk/SendSegment';
+import SendSmartSms from './egoisdk/SendSmartSms';
+import SendSmartSmsAllOf from './egoisdk/SendSmartSmsAllOf';
+import SendSmartSmsAllOf1 from './egoisdk/SendSmartSmsAllOf1';
+import SendSmartSmsAllOf2 from './egoisdk/SendSmartSmsAllOf2';
+import SendSms from './egoisdk/SendSms';
+import SendSmsAllOf from './egoisdk/SendSmsAllOf';
+import SendSmsAllOf1 from './egoisdk/SendSmsAllOf1';
+import SendWebPush from './egoisdk/SendWebPush';
+import SendWebPushAllOf from './egoisdk/SendWebPushAllOf';
+import SendsCampaignFields from './egoisdk/SendsCampaignFields';
+import ServiceUnavailable from './egoisdk/ServiceUnavailable';
+import SingleCartObject from './egoisdk/SingleCartObject';
+import SingleOrderObject from './egoisdk/SingleOrderObject';
+import SmartSmsCampaign from './egoisdk/SmartSmsCampaign';
+import SmartSmsCampaignCampaignContent from './egoisdk/SmartSmsCampaignCampaignContent';
+import SmartSmsCampaignPatchRequest from './egoisdk/SmartSmsCampaignPatchRequest';
+import SmartSmsCampaignPatchRequestCampaignContent from './egoisdk/SmartSmsCampaignPatchRequestCampaignContent';
+import SmartSmsCampaignPatchRequestPageContent from './egoisdk/SmartSmsCampaignPatchRequestPageContent';
+import SmartSmsSegmentsActionSend from './egoisdk/SmartSmsSegmentsActionSend';
+import SmsBouncesCampaignFields from './egoisdk/SmsBouncesCampaignFields';
+import SmsBouncesListStatsFields from './egoisdk/SmsBouncesListStatsFields';
+import SmsCampaign from './egoisdk/SmsCampaign';
+import SmsCampaignPatchRequest from './egoisdk/SmsCampaignPatchRequest';
+import SmsCampaignPatchRequestContent from './egoisdk/SmsCampaignPatchRequestContent';
+import SmsCampaignTemplate from './egoisdk/SmsCampaignTemplate';
+import SmsCampaignTemplateAllOf from './egoisdk/SmsCampaignTemplateAllOf';
+import SmsEventsCampaignFields from './egoisdk/SmsEventsCampaignFields';
+import SmsEventsListStatsFields from './egoisdk/SmsEventsListStatsFields';
+import SmsSegmentsActionSend from './egoisdk/SmsSegmentsActionSend';
+import StartAutomationRequest from './egoisdk/StartAutomationRequest';
+import StartAutomationResponse from './egoisdk/StartAutomationResponse';
+import SubscriptionsListStatsFields from './egoisdk/SubscriptionsListStatsFields';
+import SuppressionList from './egoisdk/SuppressionList';
+import SuppressionListItems from './egoisdk/SuppressionListItems';
+import SuppressionTypeCellphone from './egoisdk/SuppressionTypeCellphone';
+import SuppressionTypeCellphoneAllOf from './egoisdk/SuppressionTypeCellphoneAllOf';
+import SuppressionTypeCellphoneAllOf1 from './egoisdk/SuppressionTypeCellphoneAllOf1';
+import SuppressionTypeEmail from './egoisdk/SuppressionTypeEmail';
+import SuppressionTypeEmailAllOf from './egoisdk/SuppressionTypeEmailAllOf';
+import SuppressionTypeEmailAllOf1 from './egoisdk/SuppressionTypeEmailAllOf1';
+import SuppressionTypeEmailDomain from './egoisdk/SuppressionTypeEmailDomain';
+import SuppressionTypeEmailDomainAllOf from './egoisdk/SuppressionTypeEmailDomainAllOf';
+import SuppressionTypeEmailDomainAllOf1 from './egoisdk/SuppressionTypeEmailDomainAllOf1';
+import SuppressionTypePhone from './egoisdk/SuppressionTypePhone';
+import SuppressionTypePhoneAllOf from './egoisdk/SuppressionTypePhoneAllOf';
+import SuppressionTypePhoneAllOf1 from './egoisdk/SuppressionTypePhoneAllOf1';
+import SuppressionTypeUserEmail from './egoisdk/SuppressionTypeUserEmail';
+import SuppressionTypeUserEmailAllOf from './egoisdk/SuppressionTypeUserEmailAllOf';
+import SuppressionTypeUserEmailAllOf1 from './egoisdk/SuppressionTypeUserEmailAllOf1';
+import Tag from './egoisdk/Tag';
+import TagCollection from './egoisdk/TagCollection';
+import TagCollection1 from './egoisdk/TagCollection1';
+import TagRequest from './egoisdk/TagRequest';
+import TagSegment from './egoisdk/TagSegment';
+import TagSegmentAllOf from './egoisdk/TagSegmentAllOf';
+import TeResponse from './egoisdk/TeResponse';
+import TeResponseAllOf from './egoisdk/TeResponseAllOf';
+import TooManyRequests from './egoisdk/TooManyRequests';
+import Unauthorized from './egoisdk/Unauthorized';
+import UniqueFieldInUse from './egoisdk/UniqueFieldInUse';
+import UniqueFieldInUseErrors from './egoisdk/UniqueFieldInUseErrors';
+import UnprocessableEntity from './egoisdk/UnprocessableEntity';
+import UnremovableEntry from './egoisdk/UnremovableEntry';
+import UnremovableEntryErrors from './egoisdk/UnremovableEntryErrors';
+import UnsubscriptionObject from './egoisdk/UnsubscriptionObject';
+import UnsubscriptionsListStatsFields from './egoisdk/UnsubscriptionsListStatsFields';
+import UpdateByContact from './egoisdk/UpdateByContact';
+import UpdateBySegment from './egoisdk/UpdateBySegment';
+import UpdateContactsRequest from './egoisdk/UpdateContactsRequest';
+import UpdateForAll from './egoisdk/UpdateForAll';
+import UsedInAutomations from './egoisdk/UsedInAutomations';
+import UsedInAutomationsErrors from './egoisdk/UsedInAutomationsErrors';
+import UsedInRecurringMessages from './egoisdk/UsedInRecurringMessages';
+import UsedInRecurringMessagesErrors from './egoisdk/UsedInRecurringMessagesErrors';
+import User from './egoisdk/User';
+import UserAllOf from './egoisdk/UserAllOf';
+import UserCollection from './egoisdk/UserCollection';
+import UserPost from './egoisdk/UserPost';
+import UserPostAllOf from './egoisdk/UserPostAllOf';
+import UserPostRequest from './egoisdk/UserPostRequest';
+import UserPostRequestAllOf from './egoisdk/UserPostRequestAllOf';
+import VoiceCampaign from './egoisdk/VoiceCampaign';
+import VoiceCampaignAllOf from './egoisdk/VoiceCampaignAllOf';
+import VoiceCampaignTemplate from './egoisdk/VoiceCampaignTemplate';
+import VoiceCampaignTemplateAllOf from './egoisdk/VoiceCampaignTemplateAllOf';
+import VoicePatchCampaign from './egoisdk/VoicePatchCampaign';
+import VoicePatchCampaignAllOf from './egoisdk/VoicePatchCampaignAllOf';
+import WebPushCampaign from './egoisdk/WebPushCampaign';
+import WebPushPatchCampaign from './egoisdk/WebPushPatchCampaign';
+import WebPushReport from './egoisdk/WebPushReport';
+import WebPushReportBrowsersInner from './egoisdk/WebPushReportBrowsersInner';
+import WebPushReportBrowsersInnerVersionsInner from './egoisdk/WebPushReportBrowsersInnerVersionsInner';
+import WebPushReportBrowsersInnerVersionsInnerAllOf from './egoisdk/WebPushReportBrowsersInnerVersionsInnerAllOf';
+import WebPushReportDevicesInner from './egoisdk/WebPushReportDevicesInner';
+import WebPushReportDevicesInnerAllOf from './egoisdk/WebPushReportDevicesInnerAllOf';
+import WebPushReportOperatingSystemsInner from './egoisdk/WebPushReportOperatingSystemsInner';
+import WebPushReportOperatingSystemsInnerVersionsInner from './egoisdk/WebPushReportOperatingSystemsInnerVersionsInner';
+import WebPushReportOperatingSystemsInnerVersionsInnerAllOf from './egoisdk/WebPushReportOperatingSystemsInnerVersionsInnerAllOf';
+import WebPushReportUrlInner from './egoisdk/WebPushReportUrlInner';
+import WebPushReportUrlInnerAllOf from './egoisdk/WebPushReportUrlInnerAllOf';
+import WebPushRssCampaign from './egoisdk/WebPushRssCampaign';
+import WebPushSite from './egoisdk/WebPushSite';
+import WebPushStats from './egoisdk/WebPushStats';
+import Webhook from './egoisdk/Webhook';
+import WebhookActionSchema from './egoisdk/WebhookActionSchema';
+import WebpushActionsInner from './egoisdk/WebpushActionsInner';
+import AdvancedReportsApi from './egoiApi/AdvancedReportsApi';
+import AutomationsApi from './egoiApi/AutomationsApi';
+import CNamesApi from './egoiApi/CNamesApi';
+import CampaignGroupsApi from './egoiApi/CampaignGroupsApi';
+import CampaignsApi from './egoiApi/CampaignsApi';
+import ConnectedSitesApi from './egoiApi/ConnectedSitesApi';
+import ContactsApi from './egoiApi/ContactsApi';
+import EcommerceApi from './egoiApi/EcommerceApi';
+import EcommerceActivityApi from './egoiApi/EcommerceActivityApi';
+import EmailApi from './egoiApi/EmailApi';
+import FieldsApi from './egoiApi/FieldsApi';
+import ListsApi from './egoiApi/ListsApi';
+import MyAccountApi from './egoiApi/MyAccountApi';
+import OperationsApi from './egoiApi/OperationsApi';
+import PingApi from './egoiApi/PingApi';
+import PushApi from './egoiApi/PushApi';
+import ReportsApi from './egoiApi/ReportsApi';
+import SegmentsApi from './egoiApi/SegmentsApi';
+import SendersApi from './egoiApi/SendersApi';
+import SmartSmsApi from './egoiApi/SmartSmsApi';
+import SmsApi from './egoiApi/SmsApi';
+import SuppressionListApi from './egoiApi/SuppressionListApi';
+import TagsApi from './egoiApi/TagsApi';
+import TrackEngageApi from './egoiApi/TrackEngageApi';
+import UsersApi from './egoiApi/UsersApi';
+import UtilitiesApi from './egoiApi/UtilitiesApi';
+import VoiceApi from './egoiApi/VoiceApi';
+import WebHooksApi from './egoiApi/WebHooksApi';
+import WebpushApi from './egoiApi/WebpushApi';
+
+
+/**
+*  # Introduction This is our new version of API. We invite you to start using it and give us your feedback # Getting Started  E-goi can be integrated with many environments and programming languages via our REST API. We&#39;ve created a developer focused portal to give your organization a clear and quick overview of how to integrate with E-goi. The developer portal focuses on scenarios for integration and flow of events. We recommend familiarizing yourself with all of the content in the developer portal, before start using our rest API.  The E-goi  APIv3 is served over HTTPS. To ensure data privacy, unencrypted HTTP is not supported.  Request data is passed to the API by POSTing JSON objects to the API endpoints with the appropriate parameters.      BaseURL &#x3D; api.egoiapp.com  # RESTful Services This API supports 5 HTTP methods:  * &lt;b&gt;GET&lt;/b&gt;: The HTTP GET method is used to **read** (or retrieve) a representation of a resource. * &lt;b&gt;POST&lt;/b&gt;: The POST verb is most-often utilized to **create** new resources. * &lt;b&gt;PATCH&lt;/b&gt;: PATCH is used for **modify** capabilities. The PATCH request only needs to contain the changes to the resource, not the complete resource * &lt;b&gt;PUT&lt;/b&gt;: PUT is most-often utilized for **update** capabilities, PUT-ing to a known resource URI with the request body containing the newly-updated representation of the original resource. * &lt;b&gt;DELETE&lt;/b&gt;: DELETE is pretty easy to understand. It is used to **delete** a resource identified by a URI.  # Authentication  We use a custom authentication method, you will need a apikey that you can find in your account settings. Below you will see a curl example to get your account information:     #!/bin/bash     curl -X GET &#39;https://api.egoiapp.com/my-account&#39; \\     -H &#39;accept: application/json&#39; \\     -H &#39;Apikey: &lt;YOUR_APY_KEY&gt;&#39;  Here you can see a curl Post example with authentication:     #!/bin/bash     curl -X POST &#39;http://api.egoiapp.com/tags&#39; \\     -H &#39;accept: application/json&#39; \\     -H &#39;Apikey: &lt;YOUR_APY_KEY&gt;&#39; \\     -H &#39;Content-Type: application/json&#39; \\     -d &#39;{&#x60;name&#x60;:&#x60;Your custom tag&#x60;,&#x60;color&#x60;:&#x60;#FFFFFF&#x60;}&#39;  # SDK Get started quickly with E-goi with our integration tools. Our SDK is a modern open source library that makes it easy to integrate your application with E-goi services.  * &lt;a href&#x3D;&#39;https://github.com/E-goi/sdk-java&#39;&gt;Java&lt;/a&gt;  * &lt;a href&#x3D;&#39;https://github.com/E-goi/sdk-php&#39;&gt;PHP&lt;/a&gt;  * &lt;a href&#x3D;&#39;https://github.com/E-goi/sdk-python&#39;&gt;Python&lt;/a&gt;  * &lt;a href&#x3D;&#39;https://github.com/E-goi/sdk-ruby&#39;&gt;Ruby&lt;/a&gt;  * &lt;a href&#x3D;&#39;https://github.com/E-goi/sdk-javascript&#39;&gt;Javascript&lt;/a&gt;  * &lt;a href&#x3D;&#39;https://github.com/E-goi/sdk-csharp&#39;&gt;C#&lt;/a&gt;  # Stream Limits Stream limits are security mesures we have to make sure our API have a fair use policy, for this reason, any request that creates or modifies data (**POST**, **PATCH** and **PUT**) is limited to a maximum of **20MB** of content length. If you arrive to this limit in one of your request, you&#39;ll receive a HTTP code **413 (Request Entity Too Large)** and the request will be ignored. To avoid this error in importation&#39;s requests, it&#39;s advised the request&#39;s division in batches that have each one less than 20MB.  # Timeouts Timeouts set a maximum waiting time on a request&#39;s response. Our API, sets a default timeout for each request and when breached, you&#39;ll receive an HTTP **408 (Request Timeout)** error code. You should take into consideration that response times can vary widely based on the complexity of the request, amount of data being analyzed, and the load on the system and workspace at the time of the query. When dealing with such errors, you should first attempt to reduce the complexity and amount of data under analysis, and only then, if problems are still occurring ask for support.  For all these reasons, the default timeout for each request is **10 Seconds** and any request that creates or modifies data (**POST**, **PATCH** and **PUT**) will have a timeout of **60 Seconds**. Specific timeouts may exist for specific requests, these can be found in the request&#39;s documentation.  # Callbacks A callback is an asynchronous API request that originates from the API server and is sent to the client in response to a previous request sent by that client.  The API will make a **POST** request to the address defined in the URL with the information regarding the event of interest and share data related to that event.  ***Note:*** Only http or https protocols are supported in the Url parameter.  &lt;security-definitions/&gt;.<br>
+* The <code>index</code> module provides access to constructors for all the classes which comprise the public API.
+* <p>
+* An AMD (recommended!) or CommonJS application will generally do something equivalent to the following:
+* <pre>
+* var egoisdk = require('index'); // See note below*.
+* var xxxSvc = new egoisdk.XxxApi(); // Allocate the API class we're going to use.
+* var yyyModel = new egoisdk.Yyy(); // Construct a model instance.
+* yyyModel.someProperty = 'someValue';
+* ...
+* var zzz = xxxSvc.doSomething(yyyModel); // Invoke the service.
+* ...
+* </pre>
+* <em>*NOTE: For a top-level AMD script, use require(['index'], function(){...})
+* and put the application logic within the callback function.</em>
+* </p>
+* <p>
+* A non-AMD browser application (discouraged) might do something like this:
+* <pre>
+* var xxxSvc = new egoisdk.XxxApi(); // Allocate the API class we're going to use.
+* var yyy = new egoisdk.Yyy(); // Construct a model instance.
+* yyyModel.someProperty = 'someValue';
+* ...
+* var zzz = xxxSvc.doSomething(yyyModel); // Invoke the service.
+* ...
+* </pre>
+* </p>
+* @module index
+* @version 1.1.2RC1
+*/
+export {
     /**
      * The ApiClient constructor.
      * @property {module:ApiClient}
      */
-    ApiClient: ApiClient,
+    ApiClient,
+
     /**
      * The AbstractCampaignSendRequest model constructor.
-     * @property {module:egoiSdk/AbstractCampaignSendRequest}
+     * @property {module:egoisdk/AbstractCampaignSendRequest}
      */
-    AbstractCampaignSendRequest: AbstractCampaignSendRequest,
+    AbstractCampaignSendRequest,
+
     /**
      * The AbstractCampaignSendRequestSegments model constructor.
-     * @property {module:egoiSdk/AbstractCampaignSendRequestSegments}
+     * @property {module:egoisdk/AbstractCampaignSendRequestSegments}
      */
-    AbstractCampaignSendRequestSegments: AbstractCampaignSendRequestSegments,
+    AbstractCampaignSendRequestSegments,
+
     /**
      * The AbstractCampaignTemplate model constructor.
-     * @property {module:egoiSdk/AbstractCampaignTemplate}
+     * @property {module:egoisdk/AbstractCampaignTemplate}
      */
-    AbstractCampaignTemplate: AbstractCampaignTemplate,
+    AbstractCampaignTemplate,
+
     /**
      * The AbstractCellphoneSender model constructor.
-     * @property {module:egoiSdk/AbstractCellphoneSender}
+     * @property {module:egoisdk/AbstractCellphoneSender}
      */
-    AbstractCellphoneSender: AbstractCellphoneSender,
+    AbstractCellphoneSender,
+
+    /**
+     * The AbstractCellphoneSenderAllOf model constructor.
+     * @property {module:egoisdk/AbstractCellphoneSenderAllOf}
+     */
+    AbstractCellphoneSenderAllOf,
+
     /**
      * The AbstractSegment model constructor.
-     * @property {module:egoiSdk/AbstractSegment}
+     * @property {module:egoisdk/AbstractSegment}
      */
-    AbstractSegment: AbstractSegment,
+    AbstractSegment,
+
     /**
      * The AbstractSendEmail model constructor.
-     * @property {module:egoiSdk/AbstractSendEmail}
+     * @property {module:egoisdk/AbstractSendEmail}
      */
-    AbstractSendEmail: AbstractSendEmail,
+    AbstractSendEmail,
+
     /**
      * The AbstractSendVoice model constructor.
-     * @property {module:egoiSdk/AbstractSendVoice}
+     * @property {module:egoisdk/AbstractSendVoice}
      */
-    AbstractSendVoice: AbstractSendVoice,
+    AbstractSendVoice,
+
+    /**
+     * The AbstractSendVoiceAllOf model constructor.
+     * @property {module:egoisdk/AbstractSendVoiceAllOf}
+     */
+    AbstractSendVoiceAllOf,
+
+    /**
+     * The AbstractSendVoiceAllOf1 model constructor.
+     * @property {module:egoisdk/AbstractSendVoiceAllOf1}
+     */
+    AbstractSendVoiceAllOf1,
+
+    /**
+     * The AbstractSuppresionList model constructor.
+     * @property {module:egoisdk/AbstractSuppresionList}
+     */
+    AbstractSuppresionList,
+
     /**
      * The AcceptedResponse model constructor.
-     * @property {module:egoiSdk/AcceptedResponse}
+     * @property {module:egoisdk/AcceptedResponse}
      */
-    AcceptedResponse: AcceptedResponse,
+    AcceptedResponse,
+
     /**
      * The ActivateContactsAll model constructor.
-     * @property {module:egoiSdk/ActivateContactsAll}
+     * @property {module:egoisdk/ActivateContactsAll}
      */
-    ActivateContactsAll: ActivateContactsAll,
+    ActivateContactsAll,
+
     /**
      * The ActivateContactsMany model constructor.
-     * @property {module:egoiSdk/ActivateContactsMany}
+     * @property {module:egoisdk/ActivateContactsMany}
      */
-    ActivateContactsMany: ActivateContactsMany,
+    ActivateContactsMany,
+
     /**
      * The ActivateContactsRequest model constructor.
-     * @property {module:egoiSdk/ActivateContactsRequest}
+     * @property {module:egoisdk/ActivateContactsRequest}
      */
-    ActivateContactsRequest: ActivateContactsRequest,
+    ActivateContactsRequest,
+
     /**
      * The ActivityCollection model constructor.
-     * @property {module:egoiSdk/ActivityCollection}
+     * @property {module:egoisdk/ActivityCollection}
      */
-    ActivityCollection: ActivityCollection,
+    ActivityCollection,
+
     /**
      * The AdvancedReport model constructor.
-     * @property {module:egoiSdk/AdvancedReport}
+     * @property {module:egoisdk/AdvancedReport}
      */
-    AdvancedReport: AdvancedReport,
+    AdvancedReport,
+
     /**
      * The AdvancedReportCampaignsObject model constructor.
-     * @property {module:egoiSdk/AdvancedReportCampaignsObject}
+     * @property {module:egoisdk/AdvancedReportCampaignsObject}
      */
-    AdvancedReportCampaignsObject: AdvancedReportCampaignsObject,
+    AdvancedReportCampaignsObject,
+
     /**
      * The AdvancedReportEmailBouncesColumns model constructor.
-     * @property {module:egoiSdk/AdvancedReportEmailBouncesColumns}
+     * @property {module:egoisdk/AdvancedReportEmailBouncesColumns}
      */
-    AdvancedReportEmailBouncesColumns: AdvancedReportEmailBouncesColumns,
+    AdvancedReportEmailBouncesColumns,
+
     /**
      * The AdvancedReportEmailBouncesOptions model constructor.
-     * @property {module:egoiSdk/AdvancedReportEmailBouncesOptions}
+     * @property {module:egoisdk/AdvancedReportEmailBouncesOptions}
      */
-    AdvancedReportEmailBouncesOptions: AdvancedReportEmailBouncesOptions,
+    AdvancedReportEmailBouncesOptions,
+
     /**
      * The AdvancedReportEmailClicksByContactColumns model constructor.
-     * @property {module:egoiSdk/AdvancedReportEmailClicksByContactColumns}
+     * @property {module:egoisdk/AdvancedReportEmailClicksByContactColumns}
      */
-    AdvancedReportEmailClicksByContactColumns: AdvancedReportEmailClicksByContactColumns,
+    AdvancedReportEmailClicksByContactColumns,
+
     /**
      * The AdvancedReportEmailClicksByContactOptions model constructor.
-     * @property {module:egoiSdk/AdvancedReportEmailClicksByContactOptions}
+     * @property {module:egoisdk/AdvancedReportEmailClicksByContactOptions}
      */
-    AdvancedReportEmailClicksByContactOptions: AdvancedReportEmailClicksByContactOptions,
+    AdvancedReportEmailClicksByContactOptions,
+
     /**
      * The AdvancedReportEmailClicksByUrlColumns model constructor.
-     * @property {module:egoiSdk/AdvancedReportEmailClicksByUrlColumns}
+     * @property {module:egoisdk/AdvancedReportEmailClicksByUrlColumns}
      */
-    AdvancedReportEmailClicksByUrlColumns: AdvancedReportEmailClicksByUrlColumns,
+    AdvancedReportEmailClicksByUrlColumns,
+
     /**
      * The AdvancedReportEmailClicksByUrlOptions model constructor.
-     * @property {module:egoiSdk/AdvancedReportEmailClicksByUrlOptions}
+     * @property {module:egoisdk/AdvancedReportEmailClicksByUrlOptions}
      */
-    AdvancedReportEmailClicksByUrlOptions: AdvancedReportEmailClicksByUrlOptions,
+    AdvancedReportEmailClicksByUrlOptions,
+
     /**
      * The AdvancedReportEmailEventsColumns model constructor.
-     * @property {module:egoiSdk/AdvancedReportEmailEventsColumns}
+     * @property {module:egoisdk/AdvancedReportEmailEventsColumns}
      */
-    AdvancedReportEmailEventsColumns: AdvancedReportEmailEventsColumns,
+    AdvancedReportEmailEventsColumns,
+
     /**
      * The AdvancedReportEmailEventsOptions model constructor.
-     * @property {module:egoiSdk/AdvancedReportEmailEventsOptions}
+     * @property {module:egoisdk/AdvancedReportEmailEventsOptions}
      */
-    AdvancedReportEmailEventsOptions: AdvancedReportEmailEventsOptions,
+    AdvancedReportEmailEventsOptions,
+
     /**
      * The AdvancedReportEmailUnsubscriptionsColumns model constructor.
-     * @property {module:egoiSdk/AdvancedReportEmailUnsubscriptionsColumns}
+     * @property {module:egoisdk/AdvancedReportEmailUnsubscriptionsColumns}
      */
-    AdvancedReportEmailUnsubscriptionsColumns: AdvancedReportEmailUnsubscriptionsColumns,
+    AdvancedReportEmailUnsubscriptionsColumns,
+
     /**
      * The AdvancedReportEmailUnsubscriptionsOptions model constructor.
-     * @property {module:egoiSdk/AdvancedReportEmailUnsubscriptionsOptions}
+     * @property {module:egoisdk/AdvancedReportEmailUnsubscriptionsOptions}
      */
-    AdvancedReportEmailUnsubscriptionsOptions: AdvancedReportEmailUnsubscriptionsOptions,
+    AdvancedReportEmailUnsubscriptionsOptions,
+
+    /**
+     * The AdvancedReportFormsInner model constructor.
+     * @property {module:egoisdk/AdvancedReportFormsInner}
+     */
+    AdvancedReportFormsInner,
+
+    /**
+     * The AdvancedReportListExtraFieldsInner model constructor.
+     * @property {module:egoisdk/AdvancedReportListExtraFieldsInner}
+     */
+    AdvancedReportListExtraFieldsInner,
+
     /**
      * The AdvancedReportRange model constructor.
-     * @property {module:egoiSdk/AdvancedReportRange}
+     * @property {module:egoisdk/AdvancedReportRange}
      */
-    AdvancedReportRange: AdvancedReportRange,
+    AdvancedReportRange,
+
     /**
      * The AdvancedReportSendsColumns model constructor.
-     * @property {module:egoiSdk/AdvancedReportSendsColumns}
+     * @property {module:egoisdk/AdvancedReportSendsColumns}
      */
-    AdvancedReportSendsColumns: AdvancedReportSendsColumns,
+    AdvancedReportSendsColumns,
+
     /**
      * The AdvancedReportSendsOptions model constructor.
-     * @property {module:egoiSdk/AdvancedReportSendsOptions}
+     * @property {module:egoisdk/AdvancedReportSendsOptions}
      */
-    AdvancedReportSendsOptions: AdvancedReportSendsOptions,
+    AdvancedReportSendsOptions,
+
     /**
      * The AdvancedReportSmsBouncesColumns model constructor.
-     * @property {module:egoiSdk/AdvancedReportSmsBouncesColumns}
+     * @property {module:egoisdk/AdvancedReportSmsBouncesColumns}
      */
-    AdvancedReportSmsBouncesColumns: AdvancedReportSmsBouncesColumns,
+    AdvancedReportSmsBouncesColumns,
+
     /**
      * The AdvancedReportSmsBouncesOptions model constructor.
-     * @property {module:egoiSdk/AdvancedReportSmsBouncesOptions}
+     * @property {module:egoisdk/AdvancedReportSmsBouncesOptions}
      */
-    AdvancedReportSmsBouncesOptions: AdvancedReportSmsBouncesOptions,
+    AdvancedReportSmsBouncesOptions,
+
     /**
      * The AdvancedReportSmsEventsColumns model constructor.
-     * @property {module:egoiSdk/AdvancedReportSmsEventsColumns}
+     * @property {module:egoisdk/AdvancedReportSmsEventsColumns}
      */
-    AdvancedReportSmsEventsColumns: AdvancedReportSmsEventsColumns,
+    AdvancedReportSmsEventsColumns,
+
     /**
      * The AdvancedReportSmsEventsOptions model constructor.
-     * @property {module:egoiSdk/AdvancedReportSmsEventsOptions}
+     * @property {module:egoisdk/AdvancedReportSmsEventsOptions}
      */
-    AdvancedReportSmsEventsOptions: AdvancedReportSmsEventsOptions,
+    AdvancedReportSmsEventsOptions,
+
     /**
      * The AdvancedReportSubscriptionsColumns model constructor.
-     * @property {module:egoiSdk/AdvancedReportSubscriptionsColumns}
+     * @property {module:egoisdk/AdvancedReportSubscriptionsColumns}
      */
-    AdvancedReportSubscriptionsColumns: AdvancedReportSubscriptionsColumns,
+    AdvancedReportSubscriptionsColumns,
+
     /**
      * The AdvancedReportSubscriptionsOptions model constructor.
-     * @property {module:egoiSdk/AdvancedReportSubscriptionsOptions}
+     * @property {module:egoisdk/AdvancedReportSubscriptionsOptions}
      */
-    AdvancedReportSubscriptionsOptions: AdvancedReportSubscriptionsOptions,
+    AdvancedReportSubscriptionsOptions,
+
     /**
      * The AdvancedReportUnsubscriptionsColumns model constructor.
-     * @property {module:egoiSdk/AdvancedReportUnsubscriptionsColumns}
+     * @property {module:egoisdk/AdvancedReportUnsubscriptionsColumns}
      */
-    AdvancedReportUnsubscriptionsColumns: AdvancedReportUnsubscriptionsColumns,
+    AdvancedReportUnsubscriptionsColumns,
+
     /**
      * The AdvancedReportUnsubscriptionsOptions model constructor.
-     * @property {module:egoiSdk/AdvancedReportUnsubscriptionsOptions}
+     * @property {module:egoisdk/AdvancedReportUnsubscriptionsOptions}
      */
-    AdvancedReportUnsubscriptionsOptions: AdvancedReportUnsubscriptionsOptions,
+    AdvancedReportUnsubscriptionsOptions,
+
     /**
      * The AdvancedReportsCollection model constructor.
-     * @property {module:egoiSdk/AdvancedReportsCollection}
+     * @property {module:egoisdk/AdvancedReportsCollection}
      */
-    AdvancedReportsCollection: AdvancedReportsCollection,
+    AdvancedReportsCollection,
+
     /**
      * The AlphanumericCellphoneSender model constructor.
-     * @property {module:egoiSdk/AlphanumericCellphoneSender}
+     * @property {module:egoisdk/AlphanumericCellphoneSender}
      */
-    AlphanumericCellphoneSender: AlphanumericCellphoneSender,
+    AlphanumericCellphoneSender,
+
+    /**
+     * The AlphanumericCellphoneSenderPost model constructor.
+     * @property {module:egoisdk/AlphanumericCellphoneSenderPost}
+     */
+    AlphanumericCellphoneSenderPost,
+
+    /**
+     * The AlphanumericCellphoneSenderPostAllOf model constructor.
+     * @property {module:egoisdk/AlphanumericCellphoneSenderPostAllOf}
+     */
+    AlphanumericCellphoneSenderPostAllOf,
+
     /**
      * The AppStructure model constructor.
-     * @property {module:egoiSdk/AppStructure}
+     * @property {module:egoisdk/AppStructure}
      */
-    AppStructure: AppStructure,
+    AppStructure,
+
     /**
      * The AppStructureList model constructor.
-     * @property {module:egoiSdk/AppStructureList}
+     * @property {module:egoisdk/AppStructureList}
      */
-    AppStructureList: AppStructureList,
+    AppStructureList,
+
+    /**
+     * The AttachByContacts model constructor.
+     * @property {module:egoisdk/AttachByContacts}
+     */
+    AttachByContacts,
+
+    /**
+     * The AttachBySegment model constructor.
+     * @property {module:egoisdk/AttachBySegment}
+     */
+    AttachBySegment,
+
     /**
      * The AttachTagRequest model constructor.
-     * @property {module:egoiSdk/AttachTagRequest}
+     * @property {module:egoisdk/AttachTagRequest}
      */
-    AttachTagRequest: AttachTagRequest,
+    AttachTagRequest,
+
     /**
      * The AttachTagResponse model constructor.
-     * @property {module:egoiSdk/AttachTagResponse}
+     * @property {module:egoisdk/AttachTagResponse}
      */
-    AttachTagResponse: AttachTagResponse,
+    AttachTagResponse,
+
     /**
      * The AutomaticSegment model constructor.
-     * @property {module:egoiSdk/AutomaticSegment}
+     * @property {module:egoisdk/AutomaticSegment}
      */
-    AutomaticSegment: AutomaticSegment,
+    AutomaticSegment,
+
+    /**
+     * The AutomaticSegmentAllOf model constructor.
+     * @property {module:egoisdk/AutomaticSegmentAllOf}
+     */
+    AutomaticSegmentAllOf,
+
     /**
      * The Automation model constructor.
-     * @property {module:egoiSdk/Automation}
+     * @property {module:egoisdk/Automation}
      */
-    Automation: Automation,
+    Automation,
+
+    /**
+     * The AutomationAllOf model constructor.
+     * @property {module:egoisdk/AutomationAllOf}
+     */
+    AutomationAllOf,
+
     /**
      * The AutomationCollection model constructor.
-     * @property {module:egoiSdk/AutomationCollection}
+     * @property {module:egoisdk/AutomationCollection}
      */
-    AutomationCollection: AutomationCollection,
+    AutomationCollection,
+
+    /**
+     * The AutomationPost model constructor.
+     * @property {module:egoisdk/AutomationPost}
+     */
+    AutomationPost,
+
+    /**
+     * The AutomationPostAllOf model constructor.
+     * @property {module:egoisdk/AutomationPostAllOf}
+     */
+    AutomationPostAllOf,
+
     /**
      * The BadRequest model constructor.
-     * @property {module:egoiSdk/BadRequest}
+     * @property {module:egoisdk/BadRequest}
      */
-    BadRequest: BadRequest,
+    BadRequest,
+
     /**
      * The BalanceInfo model constructor.
-     * @property {module:egoiSdk/BalanceInfo}
+     * @property {module:egoisdk/BalanceInfo}
      */
-    BalanceInfo: BalanceInfo,
+    BalanceInfo,
+
     /**
      * The BalanceInfoBalanceInfo model constructor.
-     * @property {module:egoiSdk/BalanceInfoBalanceInfo}
+     * @property {module:egoisdk/BalanceInfoBalanceInfo}
      */
-    BalanceInfoBalanceInfo: BalanceInfoBalanceInfo,
+    BalanceInfoBalanceInfo,
+
     /**
      * The BaseConflict model constructor.
-     * @property {module:egoiSdk/BaseConflict}
+     * @property {module:egoisdk/BaseConflict}
      */
-    BaseConflict: BaseConflict,
+    BaseConflict,
+
     /**
      * The BasicProduct model constructor.
-     * @property {module:egoiSdk/BasicProduct}
+     * @property {module:egoisdk/BasicProduct}
      */
-    BasicProduct: BasicProduct,
+    BasicProduct,
+
     /**
      * The BasicSender model constructor.
-     * @property {module:egoiSdk/BasicSender}
+     * @property {module:egoisdk/BasicSender}
      */
-    BasicSender: BasicSender,
+    BasicSender,
+
     /**
      * The BillingInfo model constructor.
-     * @property {module:egoiSdk/BillingInfo}
+     * @property {module:egoisdk/BillingInfo}
      */
-    BillingInfo: BillingInfo,
+    BillingInfo,
+
+    /**
+     * The BillingInfoAllOf model constructor.
+     * @property {module:egoisdk/BillingInfoAllOf}
+     */
+    BillingInfoAllOf,
+
+    /**
+     * The BillingInfoAllOfBillingInfo model constructor.
+     * @property {module:egoisdk/BillingInfoAllOfBillingInfo}
+     */
+    BillingInfoAllOfBillingInfo,
+
+    /**
+     * The BillingInfoAllOfBillingInfoCountry model constructor.
+     * @property {module:egoisdk/BillingInfoAllOfBillingInfoCountry}
+     */
+    BillingInfoAllOfBillingInfoCountry,
+
     /**
      * The BulkActionResponse model constructor.
-     * @property {module:egoiSdk/BulkActionResponse}
+     * @property {module:egoisdk/BulkActionResponse}
      */
-    BulkActionResponse: BulkActionResponse,
+    BulkActionResponse,
+
     /**
      * The CName model constructor.
-     * @property {module:egoiSdk/CName}
+     * @property {module:egoisdk/CName}
      */
-    CName: CName,
+    CName,
+
+    /**
+     * The CNamePost model constructor.
+     * @property {module:egoisdk/CNamePost}
+     */
+    CNamePost,
+
     /**
      * The CNamesCollection model constructor.
-     * @property {module:egoiSdk/CNamesCollection}
+     * @property {module:egoisdk/CNamesCollection}
      */
-    CNamesCollection: CNamesCollection,
+    CNamesCollection,
+
     /**
      * The Campaign model constructor.
-     * @property {module:egoiSdk/Campaign}
+     * @property {module:egoisdk/Campaign}
      */
-    Campaign: Campaign,
+    Campaign,
+
     /**
      * The CampaignEmailBaseContent model constructor.
-     * @property {module:egoiSdk/CampaignEmailBaseContent}
+     * @property {module:egoisdk/CampaignEmailBaseContent}
      */
-    CampaignEmailBaseContent: CampaignEmailBaseContent,
+    CampaignEmailBaseContent,
+
     /**
      * The CampaignEmailContent model constructor.
-     * @property {module:egoiSdk/CampaignEmailContent}
+     * @property {module:egoisdk/CampaignEmailContent}
      */
-    CampaignEmailContent: CampaignEmailContent,
+    CampaignEmailContent,
+
     /**
      * The CampaignEmailContentFile model constructor.
-     * @property {module:egoiSdk/CampaignEmailContentFile}
+     * @property {module:egoisdk/CampaignEmailContentFile}
      */
-    CampaignEmailContentFile: CampaignEmailContentFile,
+    CampaignEmailContentFile,
+
+    /**
+     * The CampaignEmailContentFileAllOf model constructor.
+     * @property {module:egoisdk/CampaignEmailContentFileAllOf}
+     */
+    CampaignEmailContentFileAllOf,
+
     /**
      * The CampaignEmailContentHtml model constructor.
-     * @property {module:egoiSdk/CampaignEmailContentHtml}
+     * @property {module:egoisdk/CampaignEmailContentHtml}
      */
-    CampaignEmailContentHtml: CampaignEmailContentHtml,
+    CampaignEmailContentHtml,
+
+    /**
+     * The CampaignEmailContentHtmlAllOf model constructor.
+     * @property {module:egoisdk/CampaignEmailContentHtmlAllOf}
+     */
+    CampaignEmailContentHtmlAllOf,
+
     /**
      * The CampaignEmailContentHtmlPatch model constructor.
-     * @property {module:egoiSdk/CampaignEmailContentHtmlPatch}
+     * @property {module:egoisdk/CampaignEmailContentHtmlPatch}
      */
-    CampaignEmailContentHtmlPatch: CampaignEmailContentHtmlPatch,
+    CampaignEmailContentHtmlPatch,
+
+    /**
+     * The CampaignEmailContentHtmlPatchAllOf model constructor.
+     * @property {module:egoisdk/CampaignEmailContentHtmlPatchAllOf}
+     */
+    CampaignEmailContentHtmlPatchAllOf,
+
     /**
      * The CampaignEmailContentTemplate model constructor.
-     * @property {module:egoiSdk/CampaignEmailContentTemplate}
+     * @property {module:egoisdk/CampaignEmailContentTemplate}
      */
-    CampaignEmailContentTemplate: CampaignEmailContentTemplate,
+    CampaignEmailContentTemplate,
+
+    /**
+     * The CampaignEmailContentTemplateAllOf model constructor.
+     * @property {module:egoisdk/CampaignEmailContentTemplateAllOf}
+     */
+    CampaignEmailContentTemplateAllOf,
+
     /**
      * The CampaignEmailContentWebPage model constructor.
-     * @property {module:egoiSdk/CampaignEmailContentWebPage}
+     * @property {module:egoisdk/CampaignEmailContentWebPage}
      */
-    CampaignEmailContentWebPage: CampaignEmailContentWebPage,
+    CampaignEmailContentWebPage,
+
+    /**
+     * The CampaignEmailContentWebPageAllOf model constructor.
+     * @property {module:egoisdk/CampaignEmailContentWebPageAllOf}
+     */
+    CampaignEmailContentWebPageAllOf,
+
     /**
      * The CampaignEmailRssContent model constructor.
-     * @property {module:egoiSdk/CampaignEmailRssContent}
+     * @property {module:egoisdk/CampaignEmailRssContent}
      */
-    CampaignEmailRssContent: CampaignEmailRssContent,
+    CampaignEmailRssContent,
+
     /**
      * The CampaignEmailRssContentHtml model constructor.
-     * @property {module:egoiSdk/CampaignEmailRssContentHtml}
+     * @property {module:egoisdk/CampaignEmailRssContentHtml}
      */
-    CampaignEmailRssContentHtml: CampaignEmailRssContentHtml,
+    CampaignEmailRssContentHtml,
+
+    /**
+     * The CampaignEmailRssContentHtmlAllOf model constructor.
+     * @property {module:egoisdk/CampaignEmailRssContentHtmlAllOf}
+     */
+    CampaignEmailRssContentHtmlAllOf,
+
     /**
      * The CampaignEmailScheduleRequest model constructor.
-     * @property {module:egoiSdk/CampaignEmailScheduleRequest}
+     * @property {module:egoisdk/CampaignEmailScheduleRequest}
      */
-    CampaignEmailScheduleRequest: CampaignEmailScheduleRequest,
+    CampaignEmailScheduleRequest,
+
+    /**
+     * The CampaignEmailScheduleRequestAllOf model constructor.
+     * @property {module:egoisdk/CampaignEmailScheduleRequestAllOf}
+     */
+    CampaignEmailScheduleRequestAllOf,
+
     /**
      * The CampaignEmailSendNowRequest model constructor.
-     * @property {module:egoiSdk/CampaignEmailSendNowRequest}
+     * @property {module:egoisdk/CampaignEmailSendNowRequest}
      */
-    CampaignEmailSendNowRequest: CampaignEmailSendNowRequest,
+    CampaignEmailSendNowRequest,
+
     /**
      * The CampaignEmailSendRequest model constructor.
-     * @property {module:egoiSdk/CampaignEmailSendRequest}
+     * @property {module:egoisdk/CampaignEmailSendRequest}
      */
-    CampaignEmailSendRequest: CampaignEmailSendRequest,
+    CampaignEmailSendRequest,
+
     /**
      * The CampaignGroup model constructor.
-     * @property {module:egoiSdk/CampaignGroup}
+     * @property {module:egoisdk/CampaignGroup}
      */
-    CampaignGroup: CampaignGroup,
+    CampaignGroup,
+
+    /**
+     * The CampaignGroupAllOf model constructor.
+     * @property {module:egoisdk/CampaignGroupAllOf}
+     */
+    CampaignGroupAllOf,
+
     /**
      * The CampaignGroupCollection model constructor.
-     * @property {module:egoiSdk/CampaignGroupCollection}
+     * @property {module:egoisdk/CampaignGroupCollection}
      */
-    CampaignGroupCollection: CampaignGroupCollection,
+    CampaignGroupCollection,
+
+    /**
+     * The CampaignGroupPost model constructor.
+     * @property {module:egoisdk/CampaignGroupPost}
+     */
+    CampaignGroupPost,
+
+    /**
+     * The CampaignGroupPostAllOf model constructor.
+     * @property {module:egoisdk/CampaignGroupPostAllOf}
+     */
+    CampaignGroupPostAllOf,
+
     /**
      * The CampaignHash model constructor.
-     * @property {module:egoiSdk/CampaignHash}
+     * @property {module:egoisdk/CampaignHash}
      */
-    CampaignHash: CampaignHash,
+    CampaignHash,
+
     /**
      * The CampaignPushContent model constructor.
-     * @property {module:egoiSdk/CampaignPushContent}
+     * @property {module:egoisdk/CampaignPushContent}
      */
-    CampaignPushContent: CampaignPushContent,
+    CampaignPushContent,
+
     /**
      * The CampaignPushContentTemplate model constructor.
-     * @property {module:egoiSdk/CampaignPushContentTemplate}
+     * @property {module:egoisdk/CampaignPushContentTemplate}
      */
-    CampaignPushContentTemplate: CampaignPushContentTemplate,
+    CampaignPushContentTemplate,
+
     /**
      * The CampaignPushContentText model constructor.
-     * @property {module:egoiSdk/CampaignPushContentText}
+     * @property {module:egoisdk/CampaignPushContentText}
      */
-    CampaignPushContentText: CampaignPushContentText,
+    CampaignPushContentText,
+
     /**
      * The CampaignPushScheduleRequest model constructor.
-     * @property {module:egoiSdk/CampaignPushScheduleRequest}
+     * @property {module:egoisdk/CampaignPushScheduleRequest}
      */
-    CampaignPushScheduleRequest: CampaignPushScheduleRequest,
+    CampaignPushScheduleRequest,
+
     /**
      * The CampaignPushSendRequest model constructor.
-     * @property {module:egoiSdk/CampaignPushSendRequest}
+     * @property {module:egoisdk/CampaignPushSendRequest}
      */
-    CampaignPushSendRequest: CampaignPushSendRequest,
+    CampaignPushSendRequest,
+
     /**
      * The CampaignScheduleDate model constructor.
-     * @property {module:egoiSdk/CampaignScheduleDate}
+     * @property {module:egoisdk/CampaignScheduleDate}
      */
-    CampaignScheduleDate: CampaignScheduleDate,
+    CampaignScheduleDate,
+
     /**
      * The CampaignSentLast30Days model constructor.
-     * @property {module:egoiSdk/CampaignSentLast30Days}
+     * @property {module:egoisdk/CampaignSentLast30Days}
      */
-    CampaignSentLast30Days: CampaignSentLast30Days,
+    CampaignSentLast30Days,
+
     /**
      * The CampaignSentLast30DaysErrors model constructor.
-     * @property {module:egoiSdk/CampaignSentLast30DaysErrors}
+     * @property {module:egoisdk/CampaignSentLast30DaysErrors}
      */
-    CampaignSentLast30DaysErrors: CampaignSentLast30DaysErrors,
+    CampaignSentLast30DaysErrors,
+
     /**
      * The CampaignSmartSmsHtml model constructor.
-     * @property {module:egoiSdk/CampaignSmartSmsHtml}
+     * @property {module:egoisdk/CampaignSmartSmsHtml}
      */
-    CampaignSmartSmsHtml: CampaignSmartSmsHtml,
+    CampaignSmartSmsHtml,
+
     /**
      * The CampaignSmartSmsImport model constructor.
-     * @property {module:egoiSdk/CampaignSmartSmsImport}
+     * @property {module:egoisdk/CampaignSmartSmsImport}
      */
-    CampaignSmartSmsImport: CampaignSmartSmsImport,
+    CampaignSmartSmsImport,
+
     /**
      * The CampaignSmartSmsOptions model constructor.
-     * @property {module:egoiSdk/CampaignSmartSmsOptions}
+     * @property {module:egoisdk/CampaignSmartSmsOptions}
      */
-    CampaignSmartSmsOptions: CampaignSmartSmsOptions,
+    CampaignSmartSmsOptions,
+
     /**
      * The CampaignSmartSmsPageContent model constructor.
-     * @property {module:egoiSdk/CampaignSmartSmsPageContent}
+     * @property {module:egoisdk/CampaignSmartSmsPageContent}
      */
-    CampaignSmartSmsPageContent: CampaignSmartSmsPageContent,
+    CampaignSmartSmsPageContent,
+
     /**
      * The CampaignSmartSmsRedirect model constructor.
-     * @property {module:egoiSdk/CampaignSmartSmsRedirect}
+     * @property {module:egoisdk/CampaignSmartSmsRedirect}
      */
-    CampaignSmartSmsRedirect: CampaignSmartSmsRedirect,
+    CampaignSmartSmsRedirect,
+
     /**
      * The CampaignSmartSmsScheduleRequest model constructor.
-     * @property {module:egoiSdk/CampaignSmartSmsScheduleRequest}
+     * @property {module:egoisdk/CampaignSmartSmsScheduleRequest}
      */
-    CampaignSmartSmsScheduleRequest: CampaignSmartSmsScheduleRequest,
+    CampaignSmartSmsScheduleRequest,
+
     /**
      * The CampaignSmartSmsSendRequest model constructor.
-     * @property {module:egoiSdk/CampaignSmartSmsSendRequest}
+     * @property {module:egoisdk/CampaignSmartSmsSendRequest}
      */
-    CampaignSmartSmsSendRequest: CampaignSmartSmsSendRequest,
+    CampaignSmartSmsSendRequest,
+
     /**
      * The CampaignSmsContent model constructor.
-     * @property {module:egoiSdk/CampaignSmsContent}
+     * @property {module:egoisdk/CampaignSmsContent}
      */
-    CampaignSmsContent: CampaignSmsContent,
+    CampaignSmsContent,
+
     /**
      * The CampaignSmsContentTemplate model constructor.
-     * @property {module:egoiSdk/CampaignSmsContentTemplate}
+     * @property {module:egoisdk/CampaignSmsContentTemplate}
      */
-    CampaignSmsContentTemplate: CampaignSmsContentTemplate,
+    CampaignSmsContentTemplate,
+
     /**
      * The CampaignSmsContentText model constructor.
-     * @property {module:egoiSdk/CampaignSmsContentText}
+     * @property {module:egoisdk/CampaignSmsContentText}
      */
-    CampaignSmsContentText: CampaignSmsContentText,
+    CampaignSmsContentText,
+
     /**
      * The CampaignSmsOptions model constructor.
-     * @property {module:egoiSdk/CampaignSmsOptions}
+     * @property {module:egoisdk/CampaignSmsOptions}
      */
-    CampaignSmsOptions: CampaignSmsOptions,
+    CampaignSmsOptions,
+
     /**
      * The CampaignSmsScheduleRequest model constructor.
-     * @property {module:egoiSdk/CampaignSmsScheduleRequest}
+     * @property {module:egoisdk/CampaignSmsScheduleRequest}
      */
-    CampaignSmsScheduleRequest: CampaignSmsScheduleRequest,
+    CampaignSmsScheduleRequest,
+
     /**
      * The CampaignSmsSendRequest model constructor.
-     * @property {module:egoiSdk/CampaignSmsSendRequest}
+     * @property {module:egoisdk/CampaignSmsSendRequest}
      */
-    CampaignSmsSendRequest: CampaignSmsSendRequest,
+    CampaignSmsSendRequest,
+
     /**
      * The CampaignVoiceScheduleRequest model constructor.
-     * @property {module:egoiSdk/CampaignVoiceScheduleRequest}
+     * @property {module:egoisdk/CampaignVoiceScheduleRequest}
      */
-    CampaignVoiceScheduleRequest: CampaignVoiceScheduleRequest,
+    CampaignVoiceScheduleRequest,
+
     /**
      * The CampaignVoiceSendRequest model constructor.
-     * @property {module:egoiSdk/CampaignVoiceSendRequest}
+     * @property {module:egoisdk/CampaignVoiceSendRequest}
      */
-    CampaignVoiceSendRequest: CampaignVoiceSendRequest,
+    CampaignVoiceSendRequest,
+
     /**
      * The CampaignWebPushScheduleRequest model constructor.
-     * @property {module:egoiSdk/CampaignWebPushScheduleRequest}
+     * @property {module:egoisdk/CampaignWebPushScheduleRequest}
      */
-    CampaignWebPushScheduleRequest: CampaignWebPushScheduleRequest,
+    CampaignWebPushScheduleRequest,
+
     /**
      * The CampaignWebPushSendRequest model constructor.
-     * @property {module:egoiSdk/CampaignWebPushSendRequest}
+     * @property {module:egoisdk/CampaignWebPushSendRequest}
      */
-    CampaignWebPushSendRequest: CampaignWebPushSendRequest,
+    CampaignWebPushSendRequest,
+
     /**
      * The CampaignsCollection model constructor.
-     * @property {module:egoiSdk/CampaignsCollection}
+     * @property {module:egoisdk/CampaignsCollection}
      */
-    CampaignsCollection: CampaignsCollection,
+    CampaignsCollection,
+
     /**
      * The Cart model constructor.
-     * @property {module:egoiSdk/Cart}
+     * @property {module:egoisdk/Cart}
      */
-    Cart: Cart,
+    Cart,
+
     /**
      * The CartPatchRequest model constructor.
-     * @property {module:egoiSdk/CartPatchRequest}
+     * @property {module:egoisdk/CartPatchRequest}
      */
-    CartPatchRequest: CartPatchRequest,
+    CartPatchRequest,
+
     /**
      * The Catalog model constructor.
-     * @property {module:egoiSdk/Catalog}
+     * @property {module:egoisdk/Catalog}
      */
-    Catalog: Catalog,
+    Catalog,
+
     /**
      * The CatalogCollection model constructor.
-     * @property {module:egoiSdk/CatalogCollection}
+     * @property {module:egoisdk/CatalogCollection}
      */
-    CatalogCollection: CatalogCollection,
+    CatalogCollection,
+
+    /**
+     * The CatalogPost model constructor.
+     * @property {module:egoisdk/CatalogPost}
+     */
+    CatalogPost,
+
     /**
      * The CatalogPostRequest model constructor.
-     * @property {module:egoiSdk/CatalogPostRequest}
+     * @property {module:egoisdk/CatalogPostRequest}
      */
-    CatalogPostRequest: CatalogPostRequest,
+    CatalogPostRequest,
+
     /**
      * The CellphoneSender model constructor.
-     * @property {module:egoiSdk/CellphoneSender}
+     * @property {module:egoisdk/CellphoneSender}
      */
-    CellphoneSender: CellphoneSender,
+    CellphoneSender,
+
     /**
      * The CellphoneSenderCollection model constructor.
-     * @property {module:egoiSdk/CellphoneSenderCollection}
+     * @property {module:egoisdk/CellphoneSenderCollection}
      */
-    CellphoneSenderCollection: CellphoneSenderCollection,
+    CellphoneSenderCollection,
+
+    /**
+     * The CellphoneSenderPost model constructor.
+     * @property {module:egoisdk/CellphoneSenderPost}
+     */
+    CellphoneSenderPost,
+
+    /**
+     * The ClientAlreadyEnabled model constructor.
+     * @property {module:egoisdk/ClientAlreadyEnabled}
+     */
+    ClientAlreadyEnabled,
+
+    /**
+     * The ClientAlreadyEnabledErrors model constructor.
+     * @property {module:egoisdk/ClientAlreadyEnabledErrors}
+     */
+    ClientAlreadyEnabledErrors,
+
+    /**
+     * The ClientIsBeingEnabled model constructor.
+     * @property {module:egoisdk/ClientIsBeingEnabled}
+     */
+    ClientIsBeingEnabled,
+
+    /**
+     * The ClientIsBeingEnabledErrors model constructor.
+     * @property {module:egoisdk/ClientIsBeingEnabledErrors}
+     */
+    ClientIsBeingEnabledErrors,
+
     /**
      * The CnameExists model constructor.
-     * @property {module:egoiSdk/CnameExists}
+     * @property {module:egoisdk/CnameExists}
      */
-    CnameExists: CnameExists,
+    CnameExists,
+
     /**
      * The CnameExistsErrors model constructor.
-     * @property {module:egoiSdk/CnameExistsErrors}
+     * @property {module:egoisdk/CnameExistsErrors}
      */
-    CnameExistsErrors: CnameExistsErrors,
+    CnameExistsErrors,
+
     /**
      * The ComplexContact model constructor.
-     * @property {module:egoiSdk/ComplexContact}
+     * @property {module:egoisdk/ComplexContact}
      */
-    ComplexContact: ComplexContact,
+    ComplexContact,
+
+    /**
+     * The ComplexContactAllOf model constructor.
+     * @property {module:egoisdk/ComplexContactAllOf}
+     */
+    ComplexContactAllOf,
+
+    /**
+     * The ComplexContactAllOfEmailStats model constructor.
+     * @property {module:egoisdk/ComplexContactAllOfEmailStats}
+     */
+    ComplexContactAllOfEmailStats,
+
+    /**
+     * The ComplexContactAllOfPushStats model constructor.
+     * @property {module:egoisdk/ComplexContactAllOfPushStats}
+     */
+    ComplexContactAllOfPushStats,
+
+    /**
+     * The ComplexContactAllOfSmsStats model constructor.
+     * @property {module:egoisdk/ComplexContactAllOfSmsStats}
+     */
+    ComplexContactAllOfSmsStats,
+
+    /**
+     * The ComplexContactAllOfVoiceStats model constructor.
+     * @property {module:egoisdk/ComplexContactAllOfVoiceStats}
+     */
+    ComplexContactAllOfVoiceStats,
+
+    /**
+     * The ComplexContactAllOfWebpushStats model constructor.
+     * @property {module:egoisdk/ComplexContactAllOfWebpushStats}
+     */
+    ComplexContactAllOfWebpushStats,
+
     /**
      * The ComplexField model constructor.
-     * @property {module:egoiSdk/ComplexField}
+     * @property {module:egoisdk/ComplexField}
      */
-    ComplexField: ComplexField,
+    ComplexField,
+
+    /**
+     * The ComplexFieldAllOf model constructor.
+     * @property {module:egoisdk/ComplexFieldAllOf}
+     */
+    ComplexFieldAllOf,
+
     /**
      * The ComplexList model constructor.
-     * @property {module:egoiSdk/ComplexList}
+     * @property {module:egoisdk/ComplexList}
      */
-    ComplexList: ComplexList,
+    ComplexList,
+
+    /**
+     * The ComplexListAllOf model constructor.
+     * @property {module:egoisdk/ComplexListAllOf}
+     */
+    ComplexListAllOf,
+
+    /**
+     * The ComplexListAllOfStats model constructor.
+     * @property {module:egoisdk/ComplexListAllOfStats}
+     */
+    ComplexListAllOfStats,
+
     /**
      * The ComplexUser model constructor.
-     * @property {module:egoiSdk/ComplexUser}
+     * @property {module:egoisdk/ComplexUser}
      */
-    ComplexUser: ComplexUser,
+    ComplexUser,
+
+    /**
+     * The ComplexUserAllOf model constructor.
+     * @property {module:egoisdk/ComplexUserAllOf}
+     */
+    ComplexUserAllOf,
+
+    /**
+     * The ComplexUserPost model constructor.
+     * @property {module:egoisdk/ComplexUserPost}
+     */
+    ComplexUserPost,
+
     /**
      * The Conflict model constructor.
-     * @property {module:egoiSdk/Conflict}
+     * @property {module:egoisdk/Conflict}
      */
-    Conflict: Conflict,
+    Conflict,
+
+    /**
+     * The ConflictAllOf model constructor.
+     * @property {module:egoisdk/ConflictAllOf}
+     */
+    ConflictAllOf,
+
+    /**
+     * The ConnectedSitesDomain model constructor.
+     * @property {module:egoisdk/ConnectedSitesDomain}
+     */
+    ConnectedSitesDomain,
+
+    /**
+     * The ConnectedSitesDomainDetail model constructor.
+     * @property {module:egoisdk/ConnectedSitesDomainDetail}
+     */
+    ConnectedSitesDomainDetail,
+
+    /**
+     * The ConnectedSitesEmbedForm model constructor.
+     * @property {module:egoisdk/ConnectedSitesEmbedForm}
+     */
+    ConnectedSitesEmbedForm,
+
+    /**
+     * The ConnectedSitesGeneralProductAppDetail model constructor.
+     * @property {module:egoisdk/ConnectedSitesGeneralProductAppDetail}
+     */
+    ConnectedSitesGeneralProductAppDetail,
+
+    /**
+     * The ConnectedSitesGeneralProductAppDetailGlobal model constructor.
+     * @property {module:egoisdk/ConnectedSitesGeneralProductAppDetailGlobal}
+     */
+    ConnectedSitesGeneralProductAppDetailGlobal,
+
+    /**
+     * The ConnectedSitesGeneralProductFormDetail model constructor.
+     * @property {module:egoisdk/ConnectedSitesGeneralProductFormDetail}
+     */
+    ConnectedSitesGeneralProductFormDetail,
+
+    /**
+     * The ConnectedSitesGeneralProductFormDetailGlobal model constructor.
+     * @property {module:egoisdk/ConnectedSitesGeneralProductFormDetailGlobal}
+     */
+    ConnectedSitesGeneralProductFormDetailGlobal,
+
+    /**
+     * The ConnectedSitesGeneralProductTEDetailGlobal model constructor.
+     * @property {module:egoisdk/ConnectedSitesGeneralProductTEDetailGlobal}
+     */
+    ConnectedSitesGeneralProductTEDetailGlobal,
+
+    /**
+     * The ConnectedSitesProductEmbedFormDetail model constructor.
+     * @property {module:egoisdk/ConnectedSitesProductEmbedFormDetail}
+     */
+    ConnectedSitesProductEmbedFormDetail,
+
+    /**
+     * The ConnectedSitesProducts model constructor.
+     * @property {module:egoisdk/ConnectedSitesProducts}
+     */
+    ConnectedSitesProducts,
+
     /**
      * The Contact model constructor.
-     * @property {module:egoiSdk/Contact}
+     * @property {module:egoisdk/Contact}
      */
-    Contact: Contact,
+    Contact,
+
+    /**
+     * The Contact1 model constructor.
+     * @property {module:egoisdk/Contact1}
+     */
+    Contact1,
+
+    /**
+     * The Contact2 model constructor.
+     * @property {module:egoisdk/Contact2}
+     */
+    Contact2,
+
     /**
      * The ContactActivity model constructor.
-     * @property {module:egoiSdk/ContactActivity}
+     * @property {module:egoisdk/ContactActivity}
      */
-    ContactActivity: ContactActivity,
+    ContactActivity,
+
     /**
      * The ContactActivityAbstractActionsWithData model constructor.
-     * @property {module:egoiSdk/ContactActivityAbstractActionsWithData}
+     * @property {module:egoisdk/ContactActivityAbstractActionsWithData}
      */
-    ContactActivityAbstractActionsWithData: ContactActivityAbstractActionsWithData,
+    ContactActivityAbstractActionsWithData,
+
     /**
      * The ContactActivityClick model constructor.
-     * @property {module:egoiSdk/ContactActivityClick}
+     * @property {module:egoisdk/ContactActivityClick}
      */
-    ContactActivityClick: ContactActivityClick,
+    ContactActivityClick,
+
+    /**
+     * The ContactActivityClickAllOf model constructor.
+     * @property {module:egoisdk/ContactActivityClickAllOf}
+     */
+    ContactActivityClickAllOf,
+
+    /**
+     * The ContactActivityClickAllOfActionData model constructor.
+     * @property {module:egoisdk/ContactActivityClickAllOfActionData}
+     */
+    ContactActivityClickAllOfActionData,
+
     /**
      * The ContactBaseExtra model constructor.
-     * @property {module:egoiSdk/ContactBaseExtra}
+     * @property {module:egoisdk/ContactBaseExtra}
      */
-    ContactBaseExtra: ContactBaseExtra,
+    ContactBaseExtra,
+
     /**
      * The ContactBaseExtraBulk model constructor.
-     * @property {module:egoiSdk/ContactBaseExtraBulk}
+     * @property {module:egoisdk/ContactBaseExtraBulk}
      */
-    ContactBaseExtraBulk: ContactBaseExtraBulk,
+    ContactBaseExtraBulk,
+
     /**
      * The ContactBaseExtraFull model constructor.
-     * @property {module:egoiSdk/ContactBaseExtraFull}
+     * @property {module:egoisdk/ContactBaseExtraFull}
      */
-    ContactBaseExtraFull: ContactBaseExtraFull,
+    ContactBaseExtraFull,
+
+    /**
+     * The ContactBaseExtraPost model constructor.
+     * @property {module:egoisdk/ContactBaseExtraPost}
+     */
+    ContactBaseExtraPost,
+
     /**
      * The ContactBaseFieldsBulkSchema model constructor.
-     * @property {module:egoiSdk/ContactBaseFieldsBulkSchema}
+     * @property {module:egoisdk/ContactBaseFieldsBulkSchema}
      */
-    ContactBaseFieldsBulkSchema: ContactBaseFieldsBulkSchema,
+    ContactBaseFieldsBulkSchema,
+
+    /**
+     * The ContactBaseFieldsBulkSchemaBase model constructor.
+     * @property {module:egoisdk/ContactBaseFieldsBulkSchemaBase}
+     */
+    ContactBaseFieldsBulkSchemaBase,
+
+    /**
+     * The ContactBaseFieldsPostSchema model constructor.
+     * @property {module:egoisdk/ContactBaseFieldsPostSchema}
+     */
+    ContactBaseFieldsPostSchema,
+
+    /**
+     * The ContactBaseFieldsPostSchemaBase model constructor.
+     * @property {module:egoisdk/ContactBaseFieldsPostSchemaBase}
+     */
+    ContactBaseFieldsPostSchemaBase,
+
     /**
      * The ContactBaseFieldsSchema model constructor.
-     * @property {module:egoiSdk/ContactBaseFieldsSchema}
+     * @property {module:egoisdk/ContactBaseFieldsSchema}
      */
-    ContactBaseFieldsSchema: ContactBaseFieldsSchema,
+    ContactBaseFieldsSchema,
+
+    /**
+     * The ContactBaseFieldsSchemaBase model constructor.
+     * @property {module:egoisdk/ContactBaseFieldsSchemaBase}
+     */
+    ContactBaseFieldsSchemaBase,
+
     /**
      * The ContactBaseFieldsWithIdSchema model constructor.
-     * @property {module:egoiSdk/ContactBaseFieldsWithIdSchema}
+     * @property {module:egoisdk/ContactBaseFieldsWithIdSchema}
      */
-    ContactBaseFieldsWithIdSchema: ContactBaseFieldsWithIdSchema,
+    ContactBaseFieldsWithIdSchema,
+
+    /**
+     * The ContactBaseFieldsWithIdSchemaBase model constructor.
+     * @property {module:egoisdk/ContactBaseFieldsWithIdSchemaBase}
+     */
+    ContactBaseFieldsWithIdSchemaBase,
+
     /**
      * The ContactBaseStatusExtra model constructor.
-     * @property {module:egoiSdk/ContactBaseStatusExtra}
+     * @property {module:egoisdk/ContactBaseStatusExtra}
      */
-    ContactBaseStatusExtra: ContactBaseStatusExtra,
+    ContactBaseStatusExtra,
+
     /**
      * The ContactBaseStatusExtraBulk model constructor.
-     * @property {module:egoiSdk/ContactBaseStatusExtraBulk}
+     * @property {module:egoisdk/ContactBaseStatusExtraBulk}
      */
-    ContactBaseStatusExtraBulk: ContactBaseStatusExtraBulk,
+    ContactBaseStatusExtraBulk,
+
+    /**
+     * The ContactBaseStatusExtraNoRemoved model constructor.
+     * @property {module:egoisdk/ContactBaseStatusExtraNoRemoved}
+     */
+    ContactBaseStatusExtraNoRemoved,
+
     /**
      * The ContactBaseWithStatusFieldsBulkSchema model constructor.
-     * @property {module:egoiSdk/ContactBaseWithStatusFieldsBulkSchema}
+     * @property {module:egoisdk/ContactBaseWithStatusFieldsBulkSchema}
      */
-    ContactBaseWithStatusFieldsBulkSchema: ContactBaseWithStatusFieldsBulkSchema,
+    ContactBaseWithStatusFieldsBulkSchema,
+
+    /**
+     * The ContactBaseWithStatusFieldsNoTokensSchema model constructor.
+     * @property {module:egoisdk/ContactBaseWithStatusFieldsNoTokensSchema}
+     */
+    ContactBaseWithStatusFieldsNoTokensSchema,
+
+    /**
+     * The ContactBaseWithStatusFieldsNoTokensSchemaBase model constructor.
+     * @property {module:egoisdk/ContactBaseWithStatusFieldsNoTokensSchemaBase}
+     */
+    ContactBaseWithStatusFieldsNoTokensSchemaBase,
+
     /**
      * The ContactBaseWithStatusFieldsSchema model constructor.
-     * @property {module:egoiSdk/ContactBaseWithStatusFieldsSchema}
+     * @property {module:egoisdk/ContactBaseWithStatusFieldsSchema}
      */
-    ContactBaseWithStatusFieldsSchema: ContactBaseWithStatusFieldsSchema,
+    ContactBaseWithStatusFieldsSchema,
+
     /**
      * The ContactBaseWithStatusFieldsSchemaBase model constructor.
-     * @property {module:egoiSdk/ContactBaseWithStatusFieldsSchemaBase}
+     * @property {module:egoisdk/ContactBaseWithStatusFieldsSchemaBase}
      */
-    ContactBaseWithStatusFieldsSchemaBase: ContactBaseWithStatusFieldsSchemaBase,
+    ContactBaseWithStatusFieldsSchemaBase,
+
     /**
-     * The ContactBaseWithStatusFieldsSchemaBasePushTokenAndroid model constructor.
-     * @property {module:egoiSdk/ContactBaseWithStatusFieldsSchemaBasePushTokenAndroid}
+     * The ContactBaseWithStatusNoRemovedFieldsSchema model constructor.
+     * @property {module:egoisdk/ContactBaseWithStatusNoRemovedFieldsSchema}
      */
-    ContactBaseWithStatusFieldsSchemaBasePushTokenAndroid: ContactBaseWithStatusFieldsSchemaBasePushTokenAndroid,
+    ContactBaseWithStatusNoRemovedFieldsSchema,
+
     /**
-     * The ContactBaseWithStatusFieldsSchemaBasePushTokenIos model constructor.
-     * @property {module:egoiSdk/ContactBaseWithStatusFieldsSchemaBasePushTokenIos}
+     * The ContactBaseWithStatusNoRemovedFieldsSchemaBase model constructor.
+     * @property {module:egoisdk/ContactBaseWithStatusNoRemovedFieldsSchemaBase}
      */
-    ContactBaseWithStatusFieldsSchemaBasePushTokenIos: ContactBaseWithStatusFieldsSchemaBasePushTokenIos,
+    ContactBaseWithStatusNoRemovedFieldsSchemaBase,
+
+    /**
+     * The ContactBaseWithStatusNoRemovedFieldsSchemaBasePushTokenAndroidInner model constructor.
+     * @property {module:egoisdk/ContactBaseWithStatusNoRemovedFieldsSchemaBasePushTokenAndroidInner}
+     */
+    ContactBaseWithStatusNoRemovedFieldsSchemaBasePushTokenAndroidInner,
+
+    /**
+     * The ContactBaseWithStatusNoRemovedFieldsSchemaBasePushTokenIosInner model constructor.
+     * @property {module:egoisdk/ContactBaseWithStatusNoRemovedFieldsSchemaBasePushTokenIosInner}
+     */
+    ContactBaseWithStatusNoRemovedFieldsSchemaBasePushTokenIosInner,
+
     /**
      * The ContactBulk model constructor.
-     * @property {module:egoiSdk/ContactBulk}
+     * @property {module:egoisdk/ContactBulk}
      */
-    ContactBulk: ContactBulk,
+    ContactBulk,
+
+    /**
+     * The ContactBulkFile model constructor.
+     * @property {module:egoisdk/ContactBulkFile}
+     */
+    ContactBulkFile,
+
+    /**
+     * The ContactBulkFileAllOf model constructor.
+     * @property {module:egoisdk/ContactBulkFileAllOf}
+     */
+    ContactBulkFileAllOf,
+
+    /**
+     * The ContactBulkFileAllOf1 model constructor.
+     * @property {module:egoisdk/ContactBulkFileAllOf1}
+     */
+    ContactBulkFileAllOf1,
+
+    /**
+     * The ContactBulkFileAllOf2 model constructor.
+     * @property {module:egoisdk/ContactBulkFileAllOf2}
+     */
+    ContactBulkFileAllOf2,
+
+    /**
+     * The ContactBulkFileAllOf3 model constructor.
+     * @property {module:egoisdk/ContactBulkFileAllOf3}
+     */
+    ContactBulkFileAllOf3,
+
     /**
      * The ContactCollection model constructor.
-     * @property {module:egoiSdk/ContactCollection}
+     * @property {module:egoisdk/ContactCollection}
      */
-    ContactCollection: ContactCollection,
+    ContactCollection,
+
     /**
      * The ContactExportRequest model constructor.
-     * @property {module:egoiSdk/ContactExportRequest}
+     * @property {module:egoisdk/ContactExportRequest}
      */
-    ContactExportRequest: ContactExportRequest,
+    ContactExportRequest,
+
     /**
      * The ContactExtraFieldCellphone model constructor.
-     * @property {module:egoiSdk/ContactExtraFieldCellphone}
+     * @property {module:egoisdk/ContactExtraFieldCellphone}
      */
-    ContactExtraFieldCellphone: ContactExtraFieldCellphone,
+    ContactExtraFieldCellphone,
+
     /**
      * The ContactExtraFieldCellphoneBulk model constructor.
-     * @property {module:egoiSdk/ContactExtraFieldCellphoneBulk}
+     * @property {module:egoisdk/ContactExtraFieldCellphoneBulk}
      */
-    ContactExtraFieldCellphoneBulk: ContactExtraFieldCellphoneBulk,
+    ContactExtraFieldCellphoneBulk,
+
     /**
      * The ContactExtraFieldDate model constructor.
-     * @property {module:egoiSdk/ContactExtraFieldDate}
+     * @property {module:egoisdk/ContactExtraFieldDate}
      */
-    ContactExtraFieldDate: ContactExtraFieldDate,
+    ContactExtraFieldDate,
+
     /**
      * The ContactExtraFieldEmail model constructor.
-     * @property {module:egoiSdk/ContactExtraFieldEmail}
+     * @property {module:egoisdk/ContactExtraFieldEmail}
      */
-    ContactExtraFieldEmail: ContactExtraFieldEmail,
+    ContactExtraFieldEmail,
+
     /**
      * The ContactExtraFieldEmailBulk model constructor.
-     * @property {module:egoiSdk/ContactExtraFieldEmailBulk}
+     * @property {module:egoisdk/ContactExtraFieldEmailBulk}
      */
-    ContactExtraFieldEmailBulk: ContactExtraFieldEmailBulk,
+    ContactExtraFieldEmailBulk,
+
     /**
      * The ContactExtraFieldNumber model constructor.
-     * @property {module:egoiSdk/ContactExtraFieldNumber}
+     * @property {module:egoisdk/ContactExtraFieldNumber}
      */
-    ContactExtraFieldNumber: ContactExtraFieldNumber,
+    ContactExtraFieldNumber,
+
     /**
      * The ContactExtraFieldOptions model constructor.
-     * @property {module:egoiSdk/ContactExtraFieldOptions}
+     * @property {module:egoisdk/ContactExtraFieldOptions}
      */
-    ContactExtraFieldOptions: ContactExtraFieldOptions,
+    ContactExtraFieldOptions,
+
     /**
      * The ContactExtraFieldPhone model constructor.
-     * @property {module:egoiSdk/ContactExtraFieldPhone}
+     * @property {module:egoisdk/ContactExtraFieldPhone}
      */
-    ContactExtraFieldPhone: ContactExtraFieldPhone,
+    ContactExtraFieldPhone,
+
     /**
      * The ContactExtraFieldPhoneBulk model constructor.
-     * @property {module:egoiSdk/ContactExtraFieldPhoneBulk}
+     * @property {module:egoisdk/ContactExtraFieldPhoneBulk}
      */
-    ContactExtraFieldPhoneBulk: ContactExtraFieldPhoneBulk,
+    ContactExtraFieldPhoneBulk,
+
     /**
      * The ContactExtraFieldText model constructor.
-     * @property {module:egoiSdk/ContactExtraFieldText}
+     * @property {module:egoisdk/ContactExtraFieldText}
      */
-    ContactExtraFieldText: ContactExtraFieldText,
+    ContactExtraFieldText,
+
     /**
      * The ContactExtraFields model constructor.
-     * @property {module:egoiSdk/ContactExtraFields}
+     * @property {module:egoisdk/ContactExtraFields}
      */
-    ContactExtraFields: ContactExtraFields,
+    ContactExtraFields,
+
     /**
      * The ContactExtraFieldsBulk model constructor.
-     * @property {module:egoiSdk/ContactExtraFieldsBulk}
+     * @property {module:egoisdk/ContactExtraFieldsBulk}
      */
-    ContactExtraFieldsBulk: ContactExtraFieldsBulk,
+    ContactExtraFieldsBulk,
+
     /**
      * The ContactExtraFieldsBulkSchema model constructor.
-     * @property {module:egoiSdk/ContactExtraFieldsBulkSchema}
+     * @property {module:egoisdk/ContactExtraFieldsBulkSchema}
      */
-    ContactExtraFieldsBulkSchema: ContactExtraFieldsBulkSchema,
+    ContactExtraFieldsBulkSchema,
+
     /**
      * The ContactExtraFieldsSchema model constructor.
-     * @property {module:egoiSdk/ContactExtraFieldsSchema}
+     * @property {module:egoisdk/ContactExtraFieldsSchema}
      */
-    ContactExtraFieldsSchema: ContactExtraFieldsSchema,
+    ContactExtraFieldsSchema,
+
+    /**
+     * The ContactFieldMappingFileBulkSchema model constructor.
+     * @property {module:egoisdk/ContactFieldMappingFileBulkSchema}
+     */
+    ContactFieldMappingFileBulkSchema,
+
     /**
      * The ContactForgetRequest model constructor.
-     * @property {module:egoiSdk/ContactForgetRequest}
+     * @property {module:egoisdk/ContactForgetRequest}
      */
-    ContactForgetRequest: ContactForgetRequest,
+    ContactForgetRequest,
+
     /**
      * The ContactInsideBase model constructor.
-     * @property {module:egoiSdk/ContactInsideBase}
+     * @property {module:egoisdk/ContactInsideBase}
      */
-    ContactInsideBase: ContactInsideBase,
+    ContactInsideBase,
+
     /**
      * The ContactInsideBaseBulk model constructor.
-     * @property {module:egoiSdk/ContactInsideBaseBulk}
+     * @property {module:egoisdk/ContactInsideBaseBulk}
      */
-    ContactInsideBaseBulk: ContactInsideBaseBulk,
+    ContactInsideBaseBulk,
+
+    /**
+     * The ContactInsideBasePost model constructor.
+     * @property {module:egoisdk/ContactInsideBasePost}
+     */
+    ContactInsideBasePost,
+
     /**
      * The ContactInsideBaseWithId model constructor.
-     * @property {module:egoiSdk/ContactInsideBaseWithId}
+     * @property {module:egoisdk/ContactInsideBaseWithId}
      */
-    ContactInsideBaseWithId: ContactInsideBaseWithId,
+    ContactInsideBaseWithId,
+
     /**
      * The ContactOtherActivity model constructor.
-     * @property {module:egoiSdk/ContactOtherActivity}
+     * @property {module:egoisdk/ContactOtherActivity}
      */
-    ContactOtherActivity: ContactOtherActivity,
+    ContactOtherActivity,
+
     /**
      * The ContactSearchResponse model constructor.
-     * @property {module:egoiSdk/ContactSearchResponse}
+     * @property {module:egoisdk/ContactSearchResponse}
      */
-    ContactSearchResponse: ContactSearchResponse,
+    ContactSearchResponse,
+
     /**
      * The ContactStatusFieldsBulkSchema model constructor.
-     * @property {module:egoiSdk/ContactStatusFieldsBulkSchema}
+     * @property {module:egoisdk/ContactStatusFieldsBulkSchema}
      */
-    ContactStatusFieldsBulkSchema: ContactStatusFieldsBulkSchema,
+    ContactStatusFieldsBulkSchema,
+
     /**
      * The ContactStatusFieldsSchema model constructor.
-     * @property {module:egoiSdk/ContactStatusFieldsSchema}
+     * @property {module:egoisdk/ContactStatusFieldsSchema}
      */
-    ContactStatusFieldsSchema: ContactStatusFieldsSchema,
+    ContactStatusFieldsSchema,
+
     /**
      * The ContactTags model constructor.
-     * @property {module:egoiSdk/ContactTags}
+     * @property {module:egoisdk/ContactTags}
      */
-    ContactTags: ContactTags,
+    ContactTags,
+
     /**
      * The ContactTagsBulk model constructor.
-     * @property {module:egoiSdk/ContactTagsBulk}
+     * @property {module:egoisdk/ContactTagsBulk}
      */
-    ContactTagsBulk: ContactTagsBulk,
+    ContactTagsBulk,
+
+    /**
+     * The ContactsActionUpdateContactsSchema model constructor.
+     * @property {module:egoisdk/ContactsActionUpdateContactsSchema}
+     */
+    ContactsActionUpdateContactsSchema,
+
     /**
      * The ContentVoice model constructor.
-     * @property {module:egoiSdk/ContentVoice}
+     * @property {module:egoisdk/ContentVoice}
      */
-    ContentVoice: ContentVoice,
+    ContentVoice,
+
     /**
      * The ContentVoiceAudio model constructor.
-     * @property {module:egoiSdk/ContentVoiceAudio}
+     * @property {module:egoisdk/ContentVoiceAudio}
      */
-    ContentVoiceAudio: ContentVoiceAudio,
+    ContentVoiceAudio,
+
     /**
      * The ContentVoicePatch model constructor.
-     * @property {module:egoiSdk/ContentVoicePatch}
+     * @property {module:egoisdk/ContentVoicePatch}
      */
-    ContentVoicePatch: ContentVoicePatch,
+    ContentVoicePatch,
+
     /**
      * The ContentVoiceTemplate model constructor.
-     * @property {module:egoiSdk/ContentVoiceTemplate}
+     * @property {module:egoisdk/ContentVoiceTemplate}
      */
-    ContentVoiceTemplate: ContentVoiceTemplate,
+    ContentVoiceTemplate,
+
     /**
      * The Country model constructor.
-     * @property {module:egoiSdk/Country}
+     * @property {module:egoisdk/Country}
      */
-    Country: Country,
+    Country,
+
     /**
      * The CountryCollection model constructor.
-     * @property {module:egoiSdk/CountryCollection}
+     * @property {module:egoisdk/CountryCollection}
      */
-    CountryCollection: CountryCollection,
+    CountryCollection,
+
     /**
      * The CreateCartResponse model constructor.
-     * @property {module:egoiSdk/CreateCartResponse}
+     * @property {module:egoisdk/CreateCartResponse}
      */
-    CreateCartResponse: CreateCartResponse,
+    CreateCartResponse,
+
     /**
      * The CreateContactResponse model constructor.
-     * @property {module:egoiSdk/CreateContactResponse}
+     * @property {module:egoisdk/CreateContactResponse}
      */
-    CreateContactResponse: CreateContactResponse,
+    CreateContactResponse,
+
     /**
      * The CreateOrder model constructor.
-     * @property {module:egoiSdk/CreateOrder}
+     * @property {module:egoisdk/CreateOrder}
      */
-    CreateOrder: CreateOrder,
+    CreateOrder,
+
     /**
      * The CreateOrderResponse model constructor.
-     * @property {module:egoiSdk/CreateOrderResponse}
+     * @property {module:egoisdk/CreateOrderResponse}
      */
-    CreateOrderResponse: CreateOrderResponse,
+    CreateOrderResponse,
+
+    /**
+     * The CreateSuppressionListRequest model constructor.
+     * @property {module:egoisdk/CreateSuppressionListRequest}
+     */
+    CreateSuppressionListRequest,
+
     /**
      * The DeactivateContactsAll model constructor.
-     * @property {module:egoiSdk/DeactivateContactsAll}
+     * @property {module:egoisdk/DeactivateContactsAll}
      */
-    DeactivateContactsAll: DeactivateContactsAll,
+    DeactivateContactsAll,
+
     /**
      * The DeactivateContactsMany model constructor.
-     * @property {module:egoiSdk/DeactivateContactsMany}
+     * @property {module:egoisdk/DeactivateContactsMany}
      */
-    DeactivateContactsMany: DeactivateContactsMany,
+    DeactivateContactsMany,
+
     /**
      * The DeactivateContactsRequest model constructor.
-     * @property {module:egoiSdk/DeactivateContactsRequest}
+     * @property {module:egoisdk/DeactivateContactsRequest}
      */
-    DeactivateContactsRequest: DeactivateContactsRequest,
+    DeactivateContactsRequest,
+
     /**
      * The DeleteCampaignsConflict model constructor.
-     * @property {module:egoiSdk/DeleteCampaignsConflict}
+     * @property {module:egoisdk/DeleteCampaignsConflict}
      */
-    DeleteCampaignsConflict: DeleteCampaignsConflict,
+    DeleteCampaignsConflict,
+
     /**
      * The DeleteFieldsConflict model constructor.
-     * @property {module:egoiSdk/DeleteFieldsConflict}
+     * @property {module:egoisdk/DeleteFieldsConflict}
      */
-    DeleteFieldsConflict: DeleteFieldsConflict,
+    DeleteFieldsConflict,
+
     /**
      * The DeleteListsConflict model constructor.
-     * @property {module:egoiSdk/DeleteListsConflict}
+     * @property {module:egoisdk/DeleteListsConflict}
      */
-    DeleteListsConflict: DeleteListsConflict,
+    DeleteListsConflict,
+
     /**
      * The DeleteListsConflictsErrors model constructor.
-     * @property {module:egoiSdk/DeleteListsConflictsErrors}
+     * @property {module:egoisdk/DeleteListsConflictsErrors}
      */
-    DeleteListsConflictsErrors: DeleteListsConflictsErrors,
+    DeleteListsConflictsErrors,
+
     /**
      * The DeleteSegmentsConflict model constructor.
-     * @property {module:egoiSdk/DeleteSegmentsConflict}
+     * @property {module:egoisdk/DeleteSegmentsConflict}
      */
-    DeleteSegmentsConflict: DeleteSegmentsConflict,
+    DeleteSegmentsConflict,
+
     /**
      * The DeleteSegmentsConflictsErrors model constructor.
-     * @property {module:egoiSdk/DeleteSegmentsConflictsErrors}
+     * @property {module:egoisdk/DeleteSegmentsConflictsErrors}
      */
-    DeleteSegmentsConflictsErrors: DeleteSegmentsConflictsErrors,
+    DeleteSegmentsConflictsErrors,
+
+    /**
+     * The DeleteSuppressionListConflictsErrors model constructor.
+     * @property {module:egoisdk/DeleteSuppressionListConflictsErrors}
+     */
+    DeleteSuppressionListConflictsErrors,
+
+    /**
+     * The DetachByContacts model constructor.
+     * @property {module:egoisdk/DetachByContacts}
+     */
+    DetachByContacts,
+
+    /**
+     * The DetachBySegment model constructor.
+     * @property {module:egoisdk/DetachBySegment}
+     */
+    DetachBySegment,
+
+    /**
+     * The DetachTagRequest model constructor.
+     * @property {module:egoisdk/DetachTagRequest}
+     */
+    DetachTagRequest,
+
     /**
      * The Domain model constructor.
-     * @property {module:egoiSdk/Domain}
+     * @property {module:egoisdk/Domain}
      */
-    Domain: Domain,
+    Domain,
+
     /**
      * The DomainAlreadyDefined model constructor.
-     * @property {module:egoiSdk/DomainAlreadyDefined}
+     * @property {module:egoisdk/DomainAlreadyDefined}
      */
-    DomainAlreadyDefined: DomainAlreadyDefined,
+    DomainAlreadyDefined,
+
     /**
      * The DomainAlreadyDefinedErrors model constructor.
-     * @property {module:egoiSdk/DomainAlreadyDefinedErrors}
+     * @property {module:egoisdk/DomainAlreadyDefinedErrors}
      */
-    DomainAlreadyDefinedErrors: DomainAlreadyDefinedErrors,
+    DomainAlreadyDefinedErrors,
+
     /**
      * The DomainCollection model constructor.
-     * @property {module:egoiSdk/DomainCollection}
+     * @property {module:egoisdk/DomainCollection}
      */
-    DomainCollection: DomainCollection,
+    DomainCollection,
+
     /**
      * The DomainListRequired model constructor.
-     * @property {module:egoiSdk/DomainListRequired}
+     * @property {module:egoisdk/DomainListRequired}
      */
-    DomainListRequired: DomainListRequired,
+    DomainListRequired,
+
     /**
      * The DomainListRequiredErrors model constructor.
-     * @property {module:egoiSdk/DomainListRequiredErrors}
+     * @property {module:egoisdk/DomainListRequiredErrors}
      */
-    DomainListRequiredErrors: DomainListRequiredErrors,
+    DomainListRequiredErrors,
+
     /**
      * The EmailBouncesCampaignFields model constructor.
-     * @property {module:egoiSdk/EmailBouncesCampaignFields}
+     * @property {module:egoisdk/EmailBouncesCampaignFields}
      */
-    EmailBouncesCampaignFields: EmailBouncesCampaignFields,
+    EmailBouncesCampaignFields,
+
     /**
      * The EmailBouncesListStatsFields model constructor.
-     * @property {module:egoiSdk/EmailBouncesListStatsFields}
+     * @property {module:egoisdk/EmailBouncesListStatsFields}
      */
-    EmailBouncesListStatsFields: EmailBouncesListStatsFields,
+    EmailBouncesListStatsFields,
+
     /**
      * The EmailCampaignCreate model constructor.
-     * @property {module:egoiSdk/EmailCampaignCreate}
+     * @property {module:egoisdk/EmailCampaignCreate}
      */
-    EmailCampaignCreate: EmailCampaignCreate,
+    EmailCampaignCreate,
+
     /**
      * The EmailCampaignPatch model constructor.
-     * @property {module:egoiSdk/EmailCampaignPatch}
+     * @property {module:egoisdk/EmailCampaignPatch}
      */
-    EmailCampaignPatch: EmailCampaignPatch,
+    EmailCampaignPatch,
+
     /**
      * The EmailCampaignTemplate model constructor.
-     * @property {module:egoiSdk/EmailCampaignTemplate}
+     * @property {module:egoisdk/EmailCampaignTemplate}
      */
-    EmailCampaignTemplate: EmailCampaignTemplate,
+    EmailCampaignTemplate,
+
+    /**
+     * The EmailCampaignTemplateAllOf model constructor.
+     * @property {module:egoisdk/EmailCampaignTemplateAllOf}
+     */
+    EmailCampaignTemplateAllOf,
+
+    /**
+     * The EmailCampaignTemplateAllOfReplyToData model constructor.
+     * @property {module:egoisdk/EmailCampaignTemplateAllOfReplyToData}
+     */
+    EmailCampaignTemplateAllOfReplyToData,
+
+    /**
+     * The EmailCampaignTemplateAllOfSenderData model constructor.
+     * @property {module:egoisdk/EmailCampaignTemplateAllOfSenderData}
+     */
+    EmailCampaignTemplateAllOfSenderData,
+
     /**
      * The EmailClicksByContactCampaignFields model constructor.
-     * @property {module:egoiSdk/EmailClicksByContactCampaignFields}
+     * @property {module:egoisdk/EmailClicksByContactCampaignFields}
      */
-    EmailClicksByContactCampaignFields: EmailClicksByContactCampaignFields,
+    EmailClicksByContactCampaignFields,
+
     /**
      * The EmailClicksByContactListStatsFields model constructor.
-     * @property {module:egoiSdk/EmailClicksByContactListStatsFields}
+     * @property {module:egoisdk/EmailClicksByContactListStatsFields}
      */
-    EmailClicksByContactListStatsFields: EmailClicksByContactListStatsFields,
+    EmailClicksByContactListStatsFields,
+
     /**
      * The EmailClicksByUrlCampaignFields model constructor.
-     * @property {module:egoiSdk/EmailClicksByUrlCampaignFields}
+     * @property {module:egoisdk/EmailClicksByUrlCampaignFields}
      */
-    EmailClicksByUrlCampaignFields: EmailClicksByUrlCampaignFields,
+    EmailClicksByUrlCampaignFields,
+
     /**
      * The EmailClicksByUrlListStatsFields model constructor.
-     * @property {module:egoiSdk/EmailClicksByUrlListStatsFields}
+     * @property {module:egoisdk/EmailClicksByUrlListStatsFields}
      */
-    EmailClicksByUrlListStatsFields: EmailClicksByUrlListStatsFields,
+    EmailClicksByUrlListStatsFields,
+
     /**
      * The EmailEventsCampaignFields model constructor.
-     * @property {module:egoiSdk/EmailEventsCampaignFields}
+     * @property {module:egoisdk/EmailEventsCampaignFields}
      */
-    EmailEventsCampaignFields: EmailEventsCampaignFields,
+    EmailEventsCampaignFields,
+
     /**
      * The EmailEventsListStatsFields model constructor.
-     * @property {module:egoiSdk/EmailEventsListStatsFields}
+     * @property {module:egoisdk/EmailEventsListStatsFields}
      */
-    EmailEventsListStatsFields: EmailEventsListStatsFields,
+    EmailEventsListStatsFields,
+
+    /**
+     * The EmailReport model constructor.
+     * @property {module:egoisdk/EmailReport}
+     */
+    EmailReport,
+
+    /**
+     * The EmailReportAllOf model constructor.
+     * @property {module:egoisdk/EmailReportAllOf}
+     */
+    EmailReportAllOf,
+
+    /**
+     * The EmailReportByDate model constructor.
+     * @property {module:egoisdk/EmailReportByDate}
+     */
+    EmailReportByDate,
+
+    /**
+     * The EmailReportByDateDateInner model constructor.
+     * @property {module:egoisdk/EmailReportByDateDateInner}
+     */
+    EmailReportByDateDateInner,
+
+    /**
+     * The EmailReportByDomain model constructor.
+     * @property {module:egoisdk/EmailReportByDomain}
+     */
+    EmailReportByDomain,
+
+    /**
+     * The EmailReportByDomainDomainInner model constructor.
+     * @property {module:egoisdk/EmailReportByDomainDomainInner}
+     */
+    EmailReportByDomainDomainInner,
+
+    /**
+     * The EmailReportByEcommerce model constructor.
+     * @property {module:egoisdk/EmailReportByEcommerce}
+     */
+    EmailReportByEcommerce,
+
+    /**
+     * The EmailReportByEcommerceEcommerce model constructor.
+     * @property {module:egoisdk/EmailReportByEcommerceEcommerce}
+     */
+    EmailReportByEcommerceEcommerce,
+
+    /**
+     * The EmailReportByHour model constructor.
+     * @property {module:egoisdk/EmailReportByHour}
+     */
+    EmailReportByHour,
+
+    /**
+     * The EmailReportByHourHourInner model constructor.
+     * @property {module:egoisdk/EmailReportByHourHourInner}
+     */
+    EmailReportByHourHourInner,
+
+    /**
+     * The EmailReportByLocation model constructor.
+     * @property {module:egoisdk/EmailReportByLocation}
+     */
+    EmailReportByLocation,
+
+    /**
+     * The EmailReportByLocationLocationInner model constructor.
+     * @property {module:egoisdk/EmailReportByLocationLocationInner}
+     */
+    EmailReportByLocationLocationInner,
+
+    /**
+     * The EmailReportByReader model constructor.
+     * @property {module:egoisdk/EmailReportByReader}
+     */
+    EmailReportByReader,
+
+    /**
+     * The EmailReportByReaderReaderInner model constructor.
+     * @property {module:egoisdk/EmailReportByReaderReaderInner}
+     */
+    EmailReportByReaderReaderInner,
+
+    /**
+     * The EmailReportByUrl model constructor.
+     * @property {module:egoisdk/EmailReportByUrl}
+     */
+    EmailReportByUrl,
+
+    /**
+     * The EmailReportByUrlUrlInner model constructor.
+     * @property {module:egoisdk/EmailReportByUrlUrlInner}
+     */
+    EmailReportByUrlUrlInner,
+
+    /**
+     * The EmailReportByWeekday model constructor.
+     * @property {module:egoisdk/EmailReportByWeekday}
+     */
+    EmailReportByWeekday,
+
+    /**
+     * The EmailReportByWeekdayWeekdayInner model constructor.
+     * @property {module:egoisdk/EmailReportByWeekdayWeekdayInner}
+     */
+    EmailReportByWeekdayWeekdayInner,
+
+    /**
+     * The EmailReportOverall model constructor.
+     * @property {module:egoisdk/EmailReportOverall}
+     */
+    EmailReportOverall,
+
+    /**
+     * The EmailReportOverallOverall model constructor.
+     * @property {module:egoisdk/EmailReportOverallOverall}
+     */
+    EmailReportOverallOverall,
+
     /**
      * The EmailRssCampaignCreate model constructor.
-     * @property {module:egoiSdk/EmailRssCampaignCreate}
+     * @property {module:egoisdk/EmailRssCampaignCreate}
      */
-    EmailRssCampaignCreate: EmailRssCampaignCreate,
+    EmailRssCampaignCreate,
+
     /**
      * The EmailSendSegment model constructor.
-     * @property {module:egoiSdk/EmailSendSegment}
+     * @property {module:egoisdk/EmailSendSegment}
      */
-    EmailSendSegment: EmailSendSegment,
+    EmailSendSegment,
+
     /**
      * The EmailSender model constructor.
-     * @property {module:egoiSdk/EmailSender}
+     * @property {module:egoisdk/EmailSender}
      */
-    EmailSender: EmailSender,
+    EmailSender,
+
+    /**
+     * The EmailSenderAllOf model constructor.
+     * @property {module:egoisdk/EmailSenderAllOf}
+     */
+    EmailSenderAllOf,
+
     /**
      * The EmailSenderCollection model constructor.
-     * @property {module:egoiSdk/EmailSenderCollection}
+     * @property {module:egoisdk/EmailSenderCollection}
      */
-    EmailSenderCollection: EmailSenderCollection,
+    EmailSenderCollection,
+
+    /**
+     * The EmailSenderPost model constructor.
+     * @property {module:egoisdk/EmailSenderPost}
+     */
+    EmailSenderPost,
+
     /**
      * The EmailSenderPutRequest model constructor.
-     * @property {module:egoiSdk/EmailSenderPutRequest}
+     * @property {module:egoisdk/EmailSenderPutRequest}
      */
-    EmailSenderPutRequest: EmailSenderPutRequest,
+    EmailSenderPutRequest,
+
     /**
      * The EmailUnsubscriptionsCampaignFields model constructor.
-     * @property {module:egoiSdk/EmailUnsubscriptionsCampaignFields}
+     * @property {module:egoisdk/EmailUnsubscriptionsCampaignFields}
      */
-    EmailUnsubscriptionsCampaignFields: EmailUnsubscriptionsCampaignFields,
+    EmailUnsubscriptionsCampaignFields,
+
     /**
      * The EmailUnsubscriptionsListStatsFields model constructor.
-     * @property {module:egoiSdk/EmailUnsubscriptionsListStatsFields}
+     * @property {module:egoisdk/EmailUnsubscriptionsListStatsFields}
      */
-    EmailUnsubscriptionsListStatsFields: EmailUnsubscriptionsListStatsFields,
+    EmailUnsubscriptionsListStatsFields,
+
     /**
      * The EnableTeConflict model constructor.
-     * @property {module:egoiSdk/EnableTeConflict}
+     * @property {module:egoisdk/EnableTeConflict}
      */
-    EnableTeConflict: EnableTeConflict,
+    EnableTeConflict,
+
     /**
      * The EnableTeConflictsErrors model constructor.
-     * @property {module:egoiSdk/EnableTeConflictsErrors}
+     * @property {module:egoisdk/EnableTeConflictsErrors}
      */
-    EnableTeConflictsErrors: EnableTeConflictsErrors,
+    EnableTeConflictsErrors,
+
+    /**
+     * The EnableTeRequest model constructor.
+     * @property {module:egoisdk/EnableTeRequest}
+     */
+    EnableTeRequest,
+
+    /**
+     * The EnableTransactionalConflict model constructor.
+     * @property {module:egoisdk/EnableTransactionalConflict}
+     */
+    EnableTransactionalConflict,
+
+    /**
+     * The EnableTransactionalConflictsErrors model constructor.
+     * @property {module:egoisdk/EnableTransactionalConflictsErrors}
+     */
+    EnableTransactionalConflictsErrors,
+
     /**
      * The ExportContactsWebhookData model constructor.
-     * @property {module:egoiSdk/ExportContactsWebhookData}
+     * @property {module:egoisdk/ExportContactsWebhookData}
      */
-    ExportContactsWebhookData: ExportContactsWebhookData,
+    ExportContactsWebhookData,
+
     /**
      * The Field model constructor.
-     * @property {module:egoiSdk/Field}
+     * @property {module:egoisdk/Field}
      */
-    Field: Field,
+    Field,
+
     /**
      * The FieldCollection model constructor.
-     * @property {module:egoiSdk/FieldCollection}
+     * @property {module:egoisdk/FieldCollection}
      */
-    FieldCollection: FieldCollection,
+    FieldCollection,
+
     /**
      * The FieldInUse model constructor.
-     * @property {module:egoiSdk/FieldInUse}
+     * @property {module:egoisdk/FieldInUse}
      */
-    FieldInUse: FieldInUse,
+    FieldInUse,
+
     /**
      * The FieldInUseErrors model constructor.
-     * @property {module:egoiSdk/FieldInUseErrors}
+     * @property {module:egoisdk/FieldInUseErrors}
      */
-    FieldInUseErrors: FieldInUseErrors,
+    FieldInUseErrors,
+
     /**
      * The FieldInUseErrorsFieldInUseData model constructor.
-     * @property {module:egoiSdk/FieldInUseErrorsFieldInUseData}
+     * @property {module:egoisdk/FieldInUseErrorsFieldInUseData}
      */
-    FieldInUseErrorsFieldInUseData: FieldInUseErrorsFieldInUseData,
+    FieldInUseErrorsFieldInUseData,
+
     /**
      * The FieldOption model constructor.
-     * @property {module:egoiSdk/FieldOption}
+     * @property {module:egoisdk/FieldOption}
      */
-    FieldOption: FieldOption,
+    FieldOption,
+
+    /**
+     * The FieldOptionPost model constructor.
+     * @property {module:egoisdk/FieldOptionPost}
+     */
+    FieldOptionPost,
+
     /**
      * The FieldOptionsCollection model constructor.
-     * @property {module:egoiSdk/FieldOptionsCollection}
+     * @property {module:egoisdk/FieldOptionsCollection}
      */
-    FieldOptionsCollection: FieldOptionsCollection,
+    FieldOptionsCollection,
+
     /**
      * The Forbidden model constructor.
-     * @property {module:egoiSdk/Forbidden}
+     * @property {module:egoisdk/Forbidden}
      */
-    Forbidden: Forbidden,
+    Forbidden,
+
     /**
      * The Form model constructor.
-     * @property {module:egoiSdk/Form}
+     * @property {module:egoisdk/Form}
      */
-    Form: Form,
+    Form,
+
     /**
      * The GeneralInfo model constructor.
-     * @property {module:egoiSdk/GeneralInfo}
+     * @property {module:egoisdk/GeneralInfo}
      */
-    GeneralInfo: GeneralInfo,
+    GeneralInfo,
+
+    /**
+     * The GeneralInfoAllOf model constructor.
+     * @property {module:egoisdk/GeneralInfoAllOf}
+     */
+    GeneralInfoAllOf,
+
+    /**
+     * The GeneralInfoAllOfGeneralInfo model constructor.
+     * @property {module:egoisdk/GeneralInfoAllOfGeneralInfo}
+     */
+    GeneralInfoAllOfGeneralInfo,
+
     /**
      * The GenerateEmailBouncesReport model constructor.
-     * @property {module:egoiSdk/GenerateEmailBouncesReport}
+     * @property {module:egoisdk/GenerateEmailBouncesReport}
      */
-    GenerateEmailBouncesReport: GenerateEmailBouncesReport,
+    GenerateEmailBouncesReport,
+
     /**
      * The GenerateEmailClicksByContactReport model constructor.
-     * @property {module:egoiSdk/GenerateEmailClicksByContactReport}
+     * @property {module:egoisdk/GenerateEmailClicksByContactReport}
      */
-    GenerateEmailClicksByContactReport: GenerateEmailClicksByContactReport,
+    GenerateEmailClicksByContactReport,
+
     /**
      * The GenerateEmailClicksByUrlReport model constructor.
-     * @property {module:egoiSdk/GenerateEmailClicksByUrlReport}
+     * @property {module:egoisdk/GenerateEmailClicksByUrlReport}
      */
-    GenerateEmailClicksByUrlReport: GenerateEmailClicksByUrlReport,
+    GenerateEmailClicksByUrlReport,
+
     /**
      * The GenerateEmailEventsReport model constructor.
-     * @property {module:egoiSdk/GenerateEmailEventsReport}
+     * @property {module:egoisdk/GenerateEmailEventsReport}
      */
-    GenerateEmailEventsReport: GenerateEmailEventsReport,
+    GenerateEmailEventsReport,
+
     /**
      * The GenerateEmailUnsubscriptionsReport model constructor.
-     * @property {module:egoiSdk/GenerateEmailUnsubscriptionsReport}
+     * @property {module:egoisdk/GenerateEmailUnsubscriptionsReport}
      */
-    GenerateEmailUnsubscriptionsReport: GenerateEmailUnsubscriptionsReport,
+    GenerateEmailUnsubscriptionsReport,
+
     /**
      * The GenerateFormAnswersReport model constructor.
-     * @property {module:egoiSdk/GenerateFormAnswersReport}
+     * @property {module:egoisdk/GenerateFormAnswersReport}
      */
-    GenerateFormAnswersReport: GenerateFormAnswersReport,
+    GenerateFormAnswersReport,
+
     /**
      * The GenerateSendsReport model constructor.
-     * @property {module:egoiSdk/GenerateSendsReport}
+     * @property {module:egoisdk/GenerateSendsReport}
      */
-    GenerateSendsReport: GenerateSendsReport,
+    GenerateSendsReport,
+
     /**
      * The GenerateSmsBouncesReport model constructor.
-     * @property {module:egoiSdk/GenerateSmsBouncesReport}
+     * @property {module:egoisdk/GenerateSmsBouncesReport}
      */
-    GenerateSmsBouncesReport: GenerateSmsBouncesReport,
+    GenerateSmsBouncesReport,
+
     /**
      * The GenerateSmsEventsReport model constructor.
-     * @property {module:egoiSdk/GenerateSmsEventsReport}
+     * @property {module:egoisdk/GenerateSmsEventsReport}
      */
-    GenerateSmsEventsReport: GenerateSmsEventsReport,
+    GenerateSmsEventsReport,
+
     /**
      * The GenerateSubscriptionsReport model constructor.
-     * @property {module:egoiSdk/GenerateSubscriptionsReport}
+     * @property {module:egoisdk/GenerateSubscriptionsReport}
      */
-    GenerateSubscriptionsReport: GenerateSubscriptionsReport,
+    GenerateSubscriptionsReport,
+
     /**
      * The GenerateUnsubscriptionsReport model constructor.
-     * @property {module:egoiSdk/GenerateUnsubscriptionsReport}
+     * @property {module:egoisdk/GenerateUnsubscriptionsReport}
      */
-    GenerateUnsubscriptionsReport: GenerateUnsubscriptionsReport,
+    GenerateUnsubscriptionsReport,
+
+    /**
+     * The GetAllContactsExtraFieldIdParameter model constructor.
+     * @property {module:egoisdk/GetAllContactsExtraFieldIdParameter}
+     */
+    GetAllContactsExtraFieldIdParameter,
+
+    /**
+     * The GetAllProductsCustomAttributesParameter model constructor.
+     * @property {module:egoisdk/GetAllProductsCustomAttributesParameter}
+     */
+    GetAllProductsCustomAttributesParameter,
+
     /**
      * The Goal model constructor.
-     * @property {module:egoiSdk/Goal}
+     * @property {module:egoisdk/Goal}
      */
-    Goal: Goal,
+    Goal,
+
     /**
      * The GoalAutommaticInfo model constructor.
-     * @property {module:egoiSdk/GoalAutommaticInfo}
+     * @property {module:egoisdk/GoalAutommaticInfo}
      */
-    GoalAutommaticInfo: GoalAutommaticInfo,
+    GoalAutommaticInfo,
+
     /**
      * The GoalCollection model constructor.
-     * @property {module:egoiSdk/GoalCollection}
+     * @property {module:egoisdk/GoalCollection}
      */
-    GoalCollection: GoalCollection,
+    GoalCollection,
+
     /**
      * The GoalInfo model constructor.
-     * @property {module:egoiSdk/GoalInfo}
+     * @property {module:egoisdk/GoalInfo}
      */
-    GoalInfo: GoalInfo,
+    GoalInfo,
+
     /**
      * The GoalManualInfo model constructor.
-     * @property {module:egoiSdk/GoalManualInfo}
+     * @property {module:egoisdk/GoalManualInfo}
      */
-    GoalManualInfo: GoalManualInfo,
+    GoalManualInfo,
+
     /**
      * The GoalTimeInfo model constructor.
-     * @property {module:egoiSdk/GoalTimeInfo}
+     * @property {module:egoisdk/GoalTimeInfo}
      */
-    GoalTimeInfo: GoalTimeInfo,
+    GoalTimeInfo,
+
     /**
      * The HasAutomations model constructor.
-     * @property {module:egoiSdk/HasAutomations}
+     * @property {module:egoisdk/HasAutomations}
      */
-    HasAutomations: HasAutomations,
+    HasAutomations,
+
     /**
      * The HasAutomationsErrors model constructor.
-     * @property {module:egoiSdk/HasAutomationsErrors}
+     * @property {module:egoisdk/HasAutomationsErrors}
      */
-    HasAutomationsErrors: HasAutomationsErrors,
+    HasAutomationsErrors,
+
     /**
      * The HasCampaignsLastThirtyDays model constructor.
-     * @property {module:egoiSdk/HasCampaignsLastThirtyDays}
+     * @property {module:egoisdk/HasCampaignsLastThirtyDays}
      */
-    HasCampaignsLastThirtyDays: HasCampaignsLastThirtyDays,
+    HasCampaignsLastThirtyDays,
+
     /**
      * The HasCampaignsLastThirtyDaysErrors model constructor.
-     * @property {module:egoiSdk/HasCampaignsLastThirtyDaysErrors}
+     * @property {module:egoisdk/HasCampaignsLastThirtyDaysErrors}
      */
-    HasCampaignsLastThirtyDaysErrors: HasCampaignsLastThirtyDaysErrors,
+    HasCampaignsLastThirtyDaysErrors,
+
     /**
      * The HasPushApp model constructor.
-     * @property {module:egoiSdk/HasPushApp}
+     * @property {module:egoisdk/HasPushApp}
      */
-    HasPushApp: HasPushApp,
+    HasPushApp,
+
     /**
      * The HasPushAppErrors model constructor.
-     * @property {module:egoiSdk/HasPushAppErrors}
+     * @property {module:egoisdk/HasPushAppErrors}
      */
-    HasPushAppErrors: HasPushAppErrors,
+    HasPushAppErrors,
+
     /**
      * The HasQueuedCampaigns model constructor.
-     * @property {module:egoiSdk/HasQueuedCampaigns}
+     * @property {module:egoisdk/HasQueuedCampaigns}
      */
-    HasQueuedCampaigns: HasQueuedCampaigns,
+    HasQueuedCampaigns,
+
     /**
      * The HasQueuedCampaignsErrors model constructor.
-     * @property {module:egoiSdk/HasQueuedCampaignsErrors}
+     * @property {module:egoisdk/HasQueuedCampaignsErrors}
      */
-    HasQueuedCampaignsErrors: HasQueuedCampaignsErrors,
+    HasQueuedCampaignsErrors,
+
     /**
      * The HasQueuedOperations model constructor.
-     * @property {module:egoiSdk/HasQueuedOperations}
+     * @property {module:egoisdk/HasQueuedOperations}
      */
-    HasQueuedOperations: HasQueuedOperations,
+    HasQueuedOperations,
+
     /**
      * The HasQueuedOperationsErrors model constructor.
-     * @property {module:egoiSdk/HasQueuedOperationsErrors}
+     * @property {module:egoisdk/HasQueuedOperationsErrors}
      */
-    HasQueuedOperationsErrors: HasQueuedOperationsErrors,
+    HasQueuedOperationsErrors,
+
     /**
      * The HasWebPushSite model constructor.
-     * @property {module:egoiSdk/HasWebPushSite}
+     * @property {module:egoisdk/HasWebPushSite}
      */
-    HasWebPushSite: HasWebPushSite,
+    HasWebPushSite,
+
     /**
      * The HasWebPushSiteErrors model constructor.
-     * @property {module:egoiSdk/HasWebPushSiteErrors}
+     * @property {module:egoisdk/HasWebPushSiteErrors}
      */
-    HasWebPushSiteErrors: HasWebPushSiteErrors,
+    HasWebPushSiteErrors,
+
     /**
      * The HashcodeCampaign model constructor.
-     * @property {module:egoiSdk/HashcodeCampaign}
+     * @property {module:egoisdk/HashcodeCampaign}
      */
-    HashcodeCampaign: HashcodeCampaign,
+    HashcodeCampaign,
+
     /**
      * The HeaderFooter model constructor.
-     * @property {module:egoiSdk/HeaderFooter}
+     * @property {module:egoisdk/HeaderFooter}
      */
-    HeaderFooter: HeaderFooter,
+    HeaderFooter,
+
     /**
      * The HeaderFooterFooterLinks model constructor.
-     * @property {module:egoiSdk/HeaderFooterFooterLinks}
+     * @property {module:egoisdk/HeaderFooterFooterLinks}
      */
-    HeaderFooterFooterLinks: HeaderFooterFooterLinks,
+    HeaderFooterFooterLinks,
+
     /**
      * The HeaderFooterHeaderLinks model constructor.
-     * @property {module:egoiSdk/HeaderFooterHeaderLinks}
+     * @property {module:egoisdk/HeaderFooterHeaderLinks}
      */
-    HeaderFooterHeaderLinks: HeaderFooterHeaderLinks,
+    HeaderFooterHeaderLinks,
+
     /**
      * The HeaderFooterTemplate model constructor.
-     * @property {module:egoiSdk/HeaderFooterTemplate}
+     * @property {module:egoisdk/HeaderFooterTemplate}
      */
-    HeaderFooterTemplate: HeaderFooterTemplate,
+    HeaderFooterTemplate,
+
+    /**
+     * The ImportBulkFileRequest model constructor.
+     * @property {module:egoisdk/ImportBulkFileRequest}
+     */
+    ImportBulkFileRequest,
+
+    /**
+     * The ImportBulkFileRequestSchema model constructor.
+     * @property {module:egoisdk/ImportBulkFileRequestSchema}
+     */
+    ImportBulkFileRequestSchema,
+
+    /**
+     * The ImportBulkFileRequestSchemaFile model constructor.
+     * @property {module:egoisdk/ImportBulkFileRequestSchemaFile}
+     */
+    ImportBulkFileRequestSchemaFile,
+
     /**
      * The ImportBulkRequest model constructor.
-     * @property {module:egoiSdk/ImportBulkRequest}
+     * @property {module:egoisdk/ImportBulkRequest}
      */
-    ImportBulkRequest: ImportBulkRequest,
+    ImportBulkRequest,
+
     /**
      * The ImportOrdersBulkBulkRequest model constructor.
-     * @property {module:egoiSdk/ImportOrdersBulkBulkRequest}
+     * @property {module:egoisdk/ImportOrdersBulkBulkRequest}
      */
-    ImportOrdersBulkBulkRequest: ImportOrdersBulkBulkRequest,
+    ImportOrdersBulkBulkRequest,
+
     /**
      * The ImportOrdersBulkBulkRequestItems model constructor.
-     * @property {module:egoiSdk/ImportOrdersBulkBulkRequestItems}
+     * @property {module:egoisdk/ImportOrdersBulkBulkRequestItems}
      */
-    ImportOrdersBulkBulkRequestItems: ImportOrdersBulkBulkRequestItems,
-    /**
-     * The InlineObject model constructor.
-     * @property {module:egoiSdk/InlineObject}
-     */
-    InlineObject: InlineObject,
-    /**
-     * The InlineResponse200 model constructor.
-     * @property {module:egoiSdk/InlineResponse200}
-     */
-    InlineResponse200: InlineResponse200,
+    ImportOrdersBulkBulkRequestItems,
+
     /**
      * The InternalServerError model constructor.
-     * @property {module:egoiSdk/InternalServerError}
+     * @property {module:egoisdk/InternalServerError}
      */
-    InternalServerError: InternalServerError,
+    InternalServerError,
+
     /**
      * The InvalidSegmentType model constructor.
-     * @property {module:egoiSdk/InvalidSegmentType}
+     * @property {module:egoisdk/InvalidSegmentType}
      */
-    InvalidSegmentType: InvalidSegmentType,
+    InvalidSegmentType,
+
     /**
      * The InvalidSegmentTypeErrors model constructor.
-     * @property {module:egoiSdk/InvalidSegmentTypeErrors}
+     * @property {module:egoisdk/InvalidSegmentTypeErrors}
      */
-    InvalidSegmentTypeErrors: InvalidSegmentTypeErrors,
+    InvalidSegmentTypeErrors,
+
     /**
      * The Language model constructor.
-     * @property {module:egoiSdk/Language}
+     * @property {module:egoisdk/Language}
      */
-    Language: Language,
+    Language,
+
     /**
      * The LimitContactsActionSend model constructor.
-     * @property {module:egoiSdk/LimitContactsActionSend}
+     * @property {module:egoisdk/LimitContactsActionSend}
      */
-    LimitContactsActionSend: LimitContactsActionSend,
+    LimitContactsActionSend,
+
     /**
      * The LimitContactsPercentActionSend model constructor.
-     * @property {module:egoiSdk/LimitContactsPercentActionSend}
+     * @property {module:egoisdk/LimitContactsPercentActionSend}
      */
-    LimitContactsPercentActionSend: LimitContactsPercentActionSend,
+    LimitContactsPercentActionSend,
+
     /**
      * The LimitContactsValueActionSend model constructor.
-     * @property {module:egoiSdk/LimitContactsValueActionSend}
+     * @property {module:egoisdk/LimitContactsValueActionSend}
      */
-    LimitContactsValueActionSend: LimitContactsValueActionSend,
+    LimitContactsValueActionSend,
+
     /**
      * The LimitHourActionSend model constructor.
-     * @property {module:egoiSdk/LimitHourActionSend}
+     * @property {module:egoisdk/LimitHourActionSend}
      */
-    LimitHourActionSend: LimitHourActionSend,
+    LimitHourActionSend,
+
     /**
      * The LimitHourActionSendLimitHour model constructor.
-     * @property {module:egoiSdk/LimitHourActionSendLimitHour}
+     * @property {module:egoisdk/LimitHourActionSendLimitHour}
      */
-    LimitHourActionSendLimitHour: LimitHourActionSendLimitHour,
+    LimitHourActionSendLimitHour,
+
     /**
      * The LimitSpeedActionSend model constructor.
-     * @property {module:egoiSdk/LimitSpeedActionSend}
+     * @property {module:egoisdk/LimitSpeedActionSend}
      */
-    LimitSpeedActionSend: LimitSpeedActionSend,
+    LimitSpeedActionSend,
+
     /**
      * The List model constructor.
-     * @property {module:egoiSdk/List}
+     * @property {module:egoisdk/List}
      */
-    List: List,
+    List,
+
     /**
      * The ListCollection model constructor.
-     * @property {module:egoiSdk/ListCollection}
+     * @property {module:egoisdk/ListCollection}
      */
-    ListCollection: ListCollection,
+    ListCollection,
+
     /**
      * The ListCollection1 model constructor.
-     * @property {module:egoiSdk/ListCollection1}
+     * @property {module:egoisdk/ListCollection1}
      */
-    ListCollection1: ListCollection1,
+    ListCollection1,
+
     /**
      * The ListLimitReached model constructor.
-     * @property {module:egoiSdk/ListLimitReached}
+     * @property {module:egoisdk/ListLimitReached}
      */
-    ListLimitReached: ListLimitReached,
+    ListLimitReached,
+
     /**
      * The ListLimitReachedErrors model constructor.
-     * @property {module:egoiSdk/ListLimitReachedErrors}
+     * @property {module:egoisdk/ListLimitReachedErrors}
      */
-    ListLimitReachedErrors: ListLimitReachedErrors,
+    ListLimitReachedErrors,
+
     /**
      * The MessageWebPush model constructor.
-     * @property {module:egoiSdk/MessageWebPush}
+     * @property {module:egoisdk/MessageWebPush}
      */
-    MessageWebPush: MessageWebPush,
+    MessageWebPush,
+
     /**
      * The MessageWebPushPost model constructor.
-     * @property {module:egoiSdk/MessageWebPushPost}
+     * @property {module:egoisdk/MessageWebPushPost}
      */
-    MessageWebPushPost: MessageWebPushPost,
+    MessageWebPushPost,
+
     /**
      * The MessageWebPushRss model constructor.
-     * @property {module:egoiSdk/MessageWebPushRss}
+     * @property {module:egoisdk/MessageWebPushRss}
      */
-    MessageWebPushRss: MessageWebPushRss,
+    MessageWebPushRss,
+
     /**
      * The ModuleInfo model constructor.
-     * @property {module:egoiSdk/ModuleInfo}
+     * @property {module:egoisdk/ModuleInfo}
      */
-    ModuleInfo: ModuleInfo,
+    ModuleInfo,
+
     /**
      * The ModuleInfoModuleInfo model constructor.
-     * @property {module:egoiSdk/ModuleInfoModuleInfo}
+     * @property {module:egoisdk/ModuleInfoModuleInfo}
      */
-    ModuleInfoModuleInfo: ModuleInfoModuleInfo,
+    ModuleInfoModuleInfo,
+
     /**
      * The ModuleInfoModuleInfoTe model constructor.
-     * @property {module:egoiSdk/ModuleInfoModuleInfoTe}
+     * @property {module:egoisdk/ModuleInfoModuleInfoTe}
      */
-    ModuleInfoModuleInfoTe: ModuleInfoModuleInfoTe,
+    ModuleInfoModuleInfoTe,
+
     /**
      * The MyAccount model constructor.
-     * @property {module:egoiSdk/MyAccount}
+     * @property {module:egoisdk/MyAccount}
      */
-    MyAccount: MyAccount,
+    MyAccount,
+
     /**
      * The NameAlreadyExists model constructor.
-     * @property {module:egoiSdk/NameAlreadyExists}
+     * @property {module:egoisdk/NameAlreadyExists}
      */
-    NameAlreadyExists: NameAlreadyExists,
+    NameAlreadyExists,
+
     /**
      * The NameAlreadyExistsErrors model constructor.
-     * @property {module:egoiSdk/NameAlreadyExistsErrors}
+     * @property {module:egoisdk/NameAlreadyExistsErrors}
      */
-    NameAlreadyExistsErrors: NameAlreadyExistsErrors,
+    NameAlreadyExistsErrors,
+
     /**
      * The NotFound model constructor.
-     * @property {module:egoiSdk/NotFound}
+     * @property {module:egoisdk/NotFound}
      */
-    NotFound: NotFound,
+    NotFound,
+
     /**
      * The NotifyUserIdArrayActionSend model constructor.
-     * @property {module:egoiSdk/NotifyUserIdArrayActionSend}
+     * @property {module:egoisdk/NotifyUserIdArrayActionSend}
      */
-    NotifyUserIdArrayActionSend: NotifyUserIdArrayActionSend,
+    NotifyUserIdArrayActionSend,
+
     /**
      * The Now model constructor.
-     * @property {module:egoiSdk/Now}
+     * @property {module:egoisdk/Now}
      */
-    Now: Now,
+    Now,
+
     /**
      * The NumericCellphoneSender model constructor.
-     * @property {module:egoiSdk/NumericCellphoneSender}
+     * @property {module:egoisdk/NumericCellphoneSender}
      */
-    NumericCellphoneSender: NumericCellphoneSender,
+    NumericCellphoneSender,
+
+    /**
+     * The NumericCellphoneSenderPost model constructor.
+     * @property {module:egoisdk/NumericCellphoneSenderPost}
+     */
+    NumericCellphoneSenderPost,
+
+    /**
+     * The NumericCellphoneSenderPostAllOf model constructor.
+     * @property {module:egoisdk/NumericCellphoneSenderPostAllOf}
+     */
+    NumericCellphoneSenderPostAllOf,
+
     /**
      * The OLimitContactsActionSend model constructor.
-     * @property {module:egoiSdk/OLimitContactsActionSend}
+     * @property {module:egoisdk/OLimitContactsActionSend}
      */
-    OLimitContactsActionSend: OLimitContactsActionSend,
+    OLimitContactsActionSend,
+
     /**
      * The OSegmentsActionSend model constructor.
-     * @property {module:egoiSdk/OSegmentsActionSend}
+     * @property {module:egoisdk/OSegmentsActionSend}
      */
-    OSegmentsActionSend: OSegmentsActionSend,
+    OSegmentsActionSend,
+
     /**
      * The OSegmentsWithoutContactActionSend model constructor.
-     * @property {module:egoiSdk/OSegmentsWithoutContactActionSend}
+     * @property {module:egoisdk/OSegmentsWithoutContactActionSend}
      */
-    OSegmentsWithoutContactActionSend: OSegmentsWithoutContactActionSend,
+    OSegmentsWithoutContactActionSend,
+
     /**
      * The Operation model constructor.
-     * @property {module:egoiSdk/Operation}
+     * @property {module:egoisdk/Operation}
      */
-    Operation: Operation,
+    Operation,
+
     /**
      * The OperationActionRequest model constructor.
-     * @property {module:egoiSdk/OperationActionRequest}
+     * @property {module:egoisdk/OperationActionRequest}
      */
-    OperationActionRequest: OperationActionRequest,
+    OperationActionRequest,
+
     /**
      * The OperationActionResponse model constructor.
-     * @property {module:egoiSdk/OperationActionResponse}
+     * @property {module:egoisdk/OperationActionResponse}
      */
-    OperationActionResponse: OperationActionResponse,
+    OperationActionResponse,
+
     /**
      * The OperationActionResponseError model constructor.
-     * @property {module:egoiSdk/OperationActionResponseError}
+     * @property {module:egoisdk/OperationActionResponseError}
      */
-    OperationActionResponseError: OperationActionResponseError,
+    OperationActionResponseError,
+
     /**
      * The OperationOperationData model constructor.
-     * @property {module:egoiSdk/OperationOperationData}
+     * @property {module:egoisdk/OperationOperationData}
      */
-    OperationOperationData: OperationOperationData,
+    OperationOperationData,
+
     /**
      * The OperationsCollection model constructor.
-     * @property {module:egoiSdk/OperationsCollection}
+     * @property {module:egoisdk/OperationsCollection}
      */
-    OperationsCollection: OperationsCollection,
+    OperationsCollection,
+
     /**
      * The Order model constructor.
-     * @property {module:egoiSdk/Order}
+     * @property {module:egoisdk/Order}
      */
-    Order: Order,
+    Order,
+
     /**
      * The OrderPatchRequest model constructor.
-     * @property {module:egoiSdk/OrderPatchRequest}
+     * @property {module:egoisdk/OrderPatchRequest}
      */
-    OrderPatchRequest: OrderPatchRequest,
+    OrderPatchRequest,
+
     /**
      * The Overall model constructor.
-     * @property {module:egoiSdk/Overall}
+     * @property {module:egoisdk/Overall}
      */
-    Overall: Overall,
+    Overall,
+
     /**
      * The OverallOverall model constructor.
-     * @property {module:egoiSdk/OverallOverall}
+     * @property {module:egoisdk/OverallOverall}
      */
-    OverallOverall: OverallOverall,
+    OverallOverall,
+
     /**
      * The PatchRequestBaseField model constructor.
-     * @property {module:egoiSdk/PatchRequestBaseField}
+     * @property {module:egoisdk/PatchRequestBaseField}
      */
-    PatchRequestBaseField: PatchRequestBaseField,
+    PatchRequestBaseField,
+
     /**
      * The PatchRequestField model constructor.
-     * @property {module:egoiSdk/PatchRequestField}
+     * @property {module:egoisdk/PatchRequestField}
      */
-    PatchRequestField: PatchRequestField,
+    PatchRequestField,
+
     /**
      * The PatchRequestList model constructor.
-     * @property {module:egoiSdk/PatchRequestList}
+     * @property {module:egoisdk/PatchRequestList}
      */
-    PatchRequestList: PatchRequestList,
+    PatchRequestList,
+
+    /**
+     * The PatchVoiceCampaign200Response model constructor.
+     * @property {module:egoisdk/PatchVoiceCampaign200Response}
+     */
+    PatchVoiceCampaign200Response,
+
+    /**
+     * The PayloadTooLarge model constructor.
+     * @property {module:egoisdk/PayloadTooLarge}
+     */
+    PayloadTooLarge,
+
     /**
      * The PhoneCampaignTemplate model constructor.
-     * @property {module:egoiSdk/PhoneCampaignTemplate}
+     * @property {module:egoisdk/PhoneCampaignTemplate}
      */
-    PhoneCampaignTemplate: PhoneCampaignTemplate,
+    PhoneCampaignTemplate,
+
+    /**
+     * The PhoneCampaignTemplateAllOf model constructor.
+     * @property {module:egoisdk/PhoneCampaignTemplateAllOf}
+     */
+    PhoneCampaignTemplateAllOf,
+
     /**
      * The PhoneReport model constructor.
-     * @property {module:egoiSdk/PhoneReport}
+     * @property {module:egoisdk/PhoneReport}
      */
-    PhoneReport: PhoneReport,
+    PhoneReport,
+
+    /**
+     * The PhoneReportAllOf model constructor.
+     * @property {module:egoisdk/PhoneReportAllOf}
+     */
+    PhoneReportAllOf,
+
+    /**
+     * The PhoneReportAllOfNetworks model constructor.
+     * @property {module:egoisdk/PhoneReportAllOfNetworks}
+     */
+    PhoneReportAllOfNetworks,
+
     /**
      * The PhoneSender model constructor.
-     * @property {module:egoiSdk/PhoneSender}
+     * @property {module:egoisdk/PhoneSender}
      */
-    PhoneSender: PhoneSender,
+    PhoneSender,
+
+    /**
+     * The PhoneSenderAllOf model constructor.
+     * @property {module:egoisdk/PhoneSenderAllOf}
+     */
+    PhoneSenderAllOf,
+
     /**
      * The PhoneSenderCollection model constructor.
-     * @property {module:egoiSdk/PhoneSenderCollection}
+     * @property {module:egoisdk/PhoneSenderCollection}
      */
-    PhoneSenderCollection: PhoneSenderCollection,
+    PhoneSenderCollection,
+
+    /**
+     * The PhoneSenderPost model constructor.
+     * @property {module:egoisdk/PhoneSenderPost}
+     */
+    PhoneSenderPost,
+
     /**
      * The Ping model constructor.
-     * @property {module:egoiSdk/Ping}
+     * @property {module:egoisdk/Ping}
      */
-    Ping: Ping,
+    Ping,
+
     /**
      * The PlanInfo model constructor.
-     * @property {module:egoiSdk/PlanInfo}
+     * @property {module:egoisdk/PlanInfo}
      */
-    PlanInfo: PlanInfo,
+    PlanInfo,
+
     /**
      * The PlanInfoPlanInfo model constructor.
-     * @property {module:egoiSdk/PlanInfoPlanInfo}
+     * @property {module:egoisdk/PlanInfoPlanInfo}
      */
-    PlanInfoPlanInfo: PlanInfoPlanInfo,
+    PlanInfoPlanInfo,
+
     /**
      * The PostCNameConflict model constructor.
-     * @property {module:egoiSdk/PostCNameConflict}
+     * @property {module:egoisdk/PostCNameConflict}
      */
-    PostCNameConflict: PostCNameConflict,
+    PostCNameConflict,
+
     /**
      * The PostContactsConflict model constructor.
-     * @property {module:egoiSdk/PostContactsConflict}
+     * @property {module:egoisdk/PostContactsConflict}
      */
-    PostContactsConflict: PostContactsConflict,
+    PostContactsConflict,
+
     /**
      * The PostListsConflict model constructor.
-     * @property {module:egoiSdk/PostListsConflict}
+     * @property {module:egoisdk/PostListsConflict}
      */
-    PostListsConflict: PostListsConflict,
+    PostListsConflict,
+
     /**
      * The PostProductsConflict model constructor.
-     * @property {module:egoiSdk/PostProductsConflict}
+     * @property {module:egoisdk/PostProductsConflict}
      */
-    PostProductsConflict: PostProductsConflict,
+    PostProductsConflict,
+
     /**
      * The PostRequestList model constructor.
-     * @property {module:egoiSdk/PostRequestList}
+     * @property {module:egoisdk/PostRequestList}
      */
-    PostRequestList: PostRequestList,
+    PostRequestList,
+
     /**
      * The PostWebpushSiteConflict model constructor.
-     * @property {module:egoiSdk/PostWebpushSiteConflict}
+     * @property {module:egoisdk/PostWebpushSiteConflict}
      */
-    PostWebpushSiteConflict: PostWebpushSiteConflict,
+    PostWebpushSiteConflict,
+
     /**
      * The Product model constructor.
-     * @property {module:egoiSdk/Product}
+     * @property {module:egoisdk/Product}
      */
-    Product: Product,
+    Product,
+
+    /**
+     * The ProductAllOf model constructor.
+     * @property {module:egoisdk/ProductAllOf}
+     */
+    ProductAllOf,
+
     /**
      * The ProductAlreadyExists model constructor.
-     * @property {module:egoiSdk/ProductAlreadyExists}
+     * @property {module:egoisdk/ProductAlreadyExists}
      */
-    ProductAlreadyExists: ProductAlreadyExists,
+    ProductAlreadyExists,
+
     /**
      * The ProductAlreadyExistsErrors model constructor.
-     * @property {module:egoiSdk/ProductAlreadyExistsErrors}
+     * @property {module:egoisdk/ProductAlreadyExistsErrors}
      */
-    ProductAlreadyExistsErrors: ProductAlreadyExistsErrors,
+    ProductAlreadyExistsErrors,
+
     /**
      * The ProductBulkRequest model constructor.
-     * @property {module:egoiSdk/ProductBulkRequest}
+     * @property {module:egoisdk/ProductBulkRequest}
      */
-    ProductBulkRequest: ProductBulkRequest,
+    ProductBulkRequest,
+
     /**
      * The ProductCollection model constructor.
-     * @property {module:egoiSdk/ProductCollection}
+     * @property {module:egoisdk/ProductCollection}
      */
-    ProductCollection: ProductCollection,
+    ProductCollection,
+
     /**
      * The ProductCustomAttributes model constructor.
-     * @property {module:egoiSdk/ProductCustomAttributes}
+     * @property {module:egoisdk/ProductCustomAttributes}
      */
-    ProductCustomAttributes: ProductCustomAttributes,
+    ProductCustomAttributes,
+
     /**
      * The ProductPatchRequest model constructor.
-     * @property {module:egoiSdk/ProductPatchRequest}
+     * @property {module:egoisdk/ProductPatchRequest}
      */
-    ProductPatchRequest: ProductPatchRequest,
+    ProductPatchRequest,
+
     /**
      * The ProductPatchRequestRelatedProducts model constructor.
-     * @property {module:egoiSdk/ProductPatchRequestRelatedProducts}
+     * @property {module:egoisdk/ProductPatchRequestRelatedProducts}
      */
-    ProductPatchRequestRelatedProducts: ProductPatchRequestRelatedProducts,
+    ProductPatchRequestRelatedProducts,
+
     /**
      * The ProductPostRequest model constructor.
-     * @property {module:egoiSdk/ProductPostRequest}
+     * @property {module:egoisdk/ProductPostRequest}
      */
-    ProductPostRequest: ProductPostRequest,
+    ProductPostRequest,
+
     /**
      * The PushCampaignPatchRequest model constructor.
-     * @property {module:egoiSdk/PushCampaignPatchRequest}
+     * @property {module:egoisdk/PushCampaignPatchRequest}
      */
-    PushCampaignPatchRequest: PushCampaignPatchRequest,
+    PushCampaignPatchRequest,
+
     /**
      * The PushCampaignPatchRequestContent model constructor.
-     * @property {module:egoiSdk/PushCampaignPatchRequestContent}
+     * @property {module:egoisdk/PushCampaignPatchRequestContent}
      */
-    PushCampaignPatchRequestContent: PushCampaignPatchRequestContent,
+    PushCampaignPatchRequestContent,
+
+    /**
+     * The PushCampaignPatchRequestGeoOptions model constructor.
+     * @property {module:egoisdk/PushCampaignPatchRequestGeoOptions}
+     */
+    PushCampaignPatchRequestGeoOptions,
+
     /**
      * The PushCampaignPostRequest model constructor.
-     * @property {module:egoiSdk/PushCampaignPostRequest}
+     * @property {module:egoisdk/PushCampaignPostRequest}
      */
-    PushCampaignPostRequest: PushCampaignPostRequest,
+    PushCampaignPostRequest,
+
     /**
      * The PushCampaignPostRequestActions model constructor.
-     * @property {module:egoiSdk/PushCampaignPostRequestActions}
+     * @property {module:egoisdk/PushCampaignPostRequestActions}
      */
-    PushCampaignPostRequestActions: PushCampaignPostRequestActions,
+    PushCampaignPostRequestActions,
+
     /**
      * The PushCampaignPostRequestGeoOptions model constructor.
-     * @property {module:egoiSdk/PushCampaignPostRequestGeoOptions}
+     * @property {module:egoisdk/PushCampaignPostRequestGeoOptions}
      */
-    PushCampaignPostRequestGeoOptions: PushCampaignPostRequestGeoOptions,
+    PushCampaignPostRequestGeoOptions,
+
     /**
      * The PushCampaignPostRequestNotificationOptions model constructor.
-     * @property {module:egoiSdk/PushCampaignPostRequestNotificationOptions}
+     * @property {module:egoisdk/PushCampaignPostRequestNotificationOptions}
      */
-    PushCampaignPostRequestNotificationOptions: PushCampaignPostRequestNotificationOptions,
+    PushCampaignPostRequestNotificationOptions,
+
     /**
      * The PushEvent model constructor.
-     * @property {module:egoiSdk/PushEvent}
+     * @property {module:egoisdk/PushEvent}
      */
-    PushEvent: PushEvent,
+    PushEvent,
+
     /**
      * The PushNotificationSoundSchema model constructor.
-     * @property {module:egoiSdk/PushNotificationSoundSchema}
+     * @property {module:egoisdk/PushNotificationSoundSchema}
      */
-    PushNotificationSoundSchema: PushNotificationSoundSchema,
+    PushNotificationSoundSchema,
+
     /**
      * The PushNotificationSoundSchemaDefault model constructor.
-     * @property {module:egoiSdk/PushNotificationSoundSchemaDefault}
+     * @property {module:egoisdk/PushNotificationSoundSchemaDefault}
      */
-    PushNotificationSoundSchemaDefault: PushNotificationSoundSchemaDefault,
+    PushNotificationSoundSchemaDefault,
+
     /**
      * The PushNotificationSoundSchemaNone model constructor.
-     * @property {module:egoiSdk/PushNotificationSoundSchemaNone}
+     * @property {module:egoisdk/PushNotificationSoundSchemaNone}
      */
-    PushNotificationSoundSchemaNone: PushNotificationSoundSchemaNone,
+    PushNotificationSoundSchemaNone,
+
     /**
      * The PushNotificationSoundSchemaUrl model constructor.
-     * @property {module:egoiSdk/PushNotificationSoundSchemaUrl}
+     * @property {module:egoisdk/PushNotificationSoundSchemaUrl}
      */
-    PushNotificationSoundSchemaUrl: PushNotificationSoundSchemaUrl,
+    PushNotificationSoundSchemaUrl,
+
     /**
      * The PushReport model constructor.
-     * @property {module:egoiSdk/PushReport}
+     * @property {module:egoisdk/PushReport}
      */
-    PushReport: PushReport,
+    PushReport,
+
+    /**
+     * The PushReportAllOf model constructor.
+     * @property {module:egoisdk/PushReportAllOf}
+     */
+    PushReportAllOf,
+
     /**
      * The PushResponse model constructor.
-     * @property {module:egoiSdk/PushResponse}
+     * @property {module:egoisdk/PushResponse}
      */
-    PushResponse: PushResponse,
+    PushResponse,
+
     /**
      * The PushToken model constructor.
-     * @property {module:egoiSdk/PushToken}
+     * @property {module:egoisdk/PushToken}
      */
-    PushToken: PushToken,
+    PushToken,
+
     /**
      * The PushTokenTwoStepsData model constructor.
-     * @property {module:egoiSdk/PushTokenTwoStepsData}
+     * @property {module:egoisdk/PushTokenTwoStepsData}
      */
-    PushTokenTwoStepsData: PushTokenTwoStepsData,
+    PushTokenTwoStepsData,
+
     /**
      * The PushVersions model constructor.
-     * @property {module:egoiSdk/PushVersions}
+     * @property {module:egoisdk/PushVersions}
      */
-    PushVersions: PushVersions,
+    PushVersions,
+
     /**
-     * The PushVersionsVersions model constructor.
-     * @property {module:egoiSdk/PushVersionsVersions}
+     * The PushVersionsVersionsInner model constructor.
+     * @property {module:egoisdk/PushVersionsVersionsInner}
      */
-    PushVersionsVersions: PushVersionsVersions,
+    PushVersionsVersionsInner,
+
     /**
      * The RemoveRequest model constructor.
-     * @property {module:egoiSdk/RemoveRequest}
+     * @property {module:egoisdk/RemoveRequest}
      */
-    RemoveRequest: RemoveRequest,
+    RemoveRequest,
+
     /**
      * The RemoveResponse model constructor.
-     * @property {module:egoiSdk/RemoveResponse}
+     * @property {module:egoisdk/RemoveResponse}
      */
-    RemoveResponse: RemoveResponse,
+    RemoveResponse,
+
     /**
      * The RemoveResponseErrors model constructor.
-     * @property {module:egoiSdk/RemoveResponseErrors}
+     * @property {module:egoisdk/RemoveResponseErrors}
      */
-    RemoveResponseErrors: RemoveResponseErrors,
+    RemoveResponseErrors,
+
     /**
      * The ReportCampaignsAll model constructor.
-     * @property {module:egoiSdk/ReportCampaignsAll}
+     * @property {module:egoisdk/ReportCampaignsAll}
      */
-    ReportCampaignsAll: ReportCampaignsAll,
+    ReportCampaignsAll,
+
     /**
      * The ReportCampaignsGroup model constructor.
-     * @property {module:egoiSdk/ReportCampaignsGroup}
+     * @property {module:egoisdk/ReportCampaignsGroup}
      */
-    ReportCampaignsGroup: ReportCampaignsGroup,
+    ReportCampaignsGroup,
+
     /**
      * The ReportCampaignsLast model constructor.
-     * @property {module:egoiSdk/ReportCampaignsLast}
+     * @property {module:egoisdk/ReportCampaignsLast}
      */
-    ReportCampaignsLast: ReportCampaignsLast,
+    ReportCampaignsLast,
+
     /**
      * The ReportCampaignsSpecific model constructor.
-     * @property {module:egoiSdk/ReportCampaignsSpecific}
+     * @property {module:egoisdk/ReportCampaignsSpecific}
      */
-    ReportCampaignsSpecific: ReportCampaignsSpecific,
+    ReportCampaignsSpecific,
+
+    /**
+     * The RequestEntityTooLarge model constructor.
+     * @property {module:egoisdk/RequestEntityTooLarge}
+     */
+    RequestEntityTooLarge,
+
     /**
      * The RequestItemsUnsubscribe model constructor.
-     * @property {module:egoiSdk/RequestItemsUnsubscribe}
+     * @property {module:egoisdk/RequestItemsUnsubscribe}
      */
-    RequestItemsUnsubscribe: RequestItemsUnsubscribe,
+    RequestItemsUnsubscribe,
+
+    /**
+     * The RequestItemsUnsubscribeAllOf model constructor.
+     * @property {module:egoisdk/RequestItemsUnsubscribeAllOf}
+     */
+    RequestItemsUnsubscribeAllOf,
+
     /**
      * The RequestTimeout model constructor.
-     * @property {module:egoiSdk/RequestTimeout}
+     * @property {module:egoisdk/RequestTimeout}
      */
-    RequestTimeout: RequestTimeout,
+    RequestTimeout,
+
     /**
      * The SavedSegment model constructor.
-     * @property {module:egoiSdk/SavedSegment}
+     * @property {module:egoisdk/SavedSegment}
      */
-    SavedSegment: SavedSegment,
+    SavedSegment,
+
+    /**
+     * The SavedSegmentAllOf model constructor.
+     * @property {module:egoisdk/SavedSegmentAllOf}
+     */
+    SavedSegmentAllOf,
+
+    /**
+     * The SavedSegmentAllOf1 model constructor.
+     * @property {module:egoisdk/SavedSegmentAllOf1}
+     */
+    SavedSegmentAllOf1,
+
+    /**
+     * The SavedSegmentAllOf1SegmentFilter model constructor.
+     * @property {module:egoisdk/SavedSegmentAllOf1SegmentFilter}
+     */
+    SavedSegmentAllOf1SegmentFilter,
+
+    /**
+     * The SavedSegmentAllOf1SegmentFilterSegmentFilterArray model constructor.
+     * @property {module:egoisdk/SavedSegmentAllOf1SegmentFilterSegmentFilterArray}
+     */
+    SavedSegmentAllOf1SegmentFilterSegmentFilterArray,
+
+    /**
+     * The SearchContacts200Response model constructor.
+     * @property {module:egoisdk/SearchContacts200Response}
+     */
+    SearchContacts200Response,
+
     /**
      * The Segment model constructor.
-     * @property {module:egoiSdk/Segment}
+     * @property {module:egoisdk/Segment}
      */
-    Segment: Segment,
+    Segment,
+
     /**
      * The SegmentCollection model constructor.
-     * @property {module:egoiSdk/SegmentCollection}
+     * @property {module:egoisdk/SegmentCollection}
      */
-    SegmentCollection: SegmentCollection,
+    SegmentCollection,
+
     /**
      * The SegmentsActionSend model constructor.
-     * @property {module:egoiSdk/SegmentsActionSend}
+     * @property {module:egoisdk/SegmentsActionSend}
      */
-    SegmentsActionSend: SegmentsActionSend,
+    SegmentsActionSend,
+
     /**
      * The SegmentsWithoutContactActionSend model constructor.
-     * @property {module:egoiSdk/SegmentsWithoutContactActionSend}
+     * @property {module:egoisdk/SegmentsWithoutContactActionSend}
      */
-    SegmentsWithoutContactActionSend: SegmentsWithoutContactActionSend,
+    SegmentsWithoutContactActionSend,
+
     /**
      * The SendContact model constructor.
-     * @property {module:egoiSdk/SendContact}
+     * @property {module:egoisdk/SendContact}
      */
-    SendContact: SendContact,
+    SendContact,
+
     /**
      * The SendContactCellphone model constructor.
-     * @property {module:egoiSdk/SendContactCellphone}
+     * @property {module:egoisdk/SendContactCellphone}
      */
-    SendContactCellphone: SendContactCellphone,
+    SendContactCellphone,
+
     /**
      * The SendEmailContact model constructor.
-     * @property {module:egoiSdk/SendEmailContact}
+     * @property {module:egoisdk/SendEmailContact}
      */
-    SendEmailContact: SendEmailContact,
+    SendEmailContact,
+
     /**
      * The SendNone model constructor.
-     * @property {module:egoiSdk/SendNone}
+     * @property {module:egoisdk/SendNone}
      */
-    SendNone: SendNone,
+    SendNone,
+
     /**
      * The SendPush model constructor.
-     * @property {module:egoiSdk/SendPush}
+     * @property {module:egoisdk/SendPush}
      */
-    SendPush: SendPush,
+    SendPush,
+
+    /**
+     * The SendPushAllOf model constructor.
+     * @property {module:egoisdk/SendPushAllOf}
+     */
+    SendPushAllOf,
+
     /**
      * The SendSegment model constructor.
-     * @property {module:egoiSdk/SendSegment}
+     * @property {module:egoisdk/SendSegment}
      */
-    SendSegment: SendSegment,
+    SendSegment,
+
     /**
      * The SendSmartSms model constructor.
-     * @property {module:egoiSdk/SendSmartSms}
+     * @property {module:egoisdk/SendSmartSms}
      */
-    SendSmartSms: SendSmartSms,
+    SendSmartSms,
+
+    /**
+     * The SendSmartSmsAllOf model constructor.
+     * @property {module:egoisdk/SendSmartSmsAllOf}
+     */
+    SendSmartSmsAllOf,
+
+    /**
+     * The SendSmartSmsAllOf1 model constructor.
+     * @property {module:egoisdk/SendSmartSmsAllOf1}
+     */
+    SendSmartSmsAllOf1,
+
+    /**
+     * The SendSmartSmsAllOf2 model constructor.
+     * @property {module:egoisdk/SendSmartSmsAllOf2}
+     */
+    SendSmartSmsAllOf2,
+
     /**
      * The SendSms model constructor.
-     * @property {module:egoiSdk/SendSms}
+     * @property {module:egoisdk/SendSms}
      */
-    SendSms: SendSms,
+    SendSms,
+
+    /**
+     * The SendSmsAllOf model constructor.
+     * @property {module:egoisdk/SendSmsAllOf}
+     */
+    SendSmsAllOf,
+
+    /**
+     * The SendSmsAllOf1 model constructor.
+     * @property {module:egoisdk/SendSmsAllOf1}
+     */
+    SendSmsAllOf1,
+
     /**
      * The SendWebPush model constructor.
-     * @property {module:egoiSdk/SendWebPush}
+     * @property {module:egoisdk/SendWebPush}
      */
-    SendWebPush: SendWebPush,
+    SendWebPush,
+
+    /**
+     * The SendWebPushAllOf model constructor.
+     * @property {module:egoisdk/SendWebPushAllOf}
+     */
+    SendWebPushAllOf,
+
     /**
      * The SendsCampaignFields model constructor.
-     * @property {module:egoiSdk/SendsCampaignFields}
+     * @property {module:egoisdk/SendsCampaignFields}
      */
-    SendsCampaignFields: SendsCampaignFields,
+    SendsCampaignFields,
+
     /**
      * The ServiceUnavailable model constructor.
-     * @property {module:egoiSdk/ServiceUnavailable}
+     * @property {module:egoisdk/ServiceUnavailable}
      */
-    ServiceUnavailable: ServiceUnavailable,
+    ServiceUnavailable,
+
     /**
      * The SingleCartObject model constructor.
-     * @property {module:egoiSdk/SingleCartObject}
+     * @property {module:egoisdk/SingleCartObject}
      */
-    SingleCartObject: SingleCartObject,
+    SingleCartObject,
+
     /**
      * The SingleOrderObject model constructor.
-     * @property {module:egoiSdk/SingleOrderObject}
+     * @property {module:egoisdk/SingleOrderObject}
      */
-    SingleOrderObject: SingleOrderObject,
+    SingleOrderObject,
+
     /**
      * The SmartSmsCampaign model constructor.
-     * @property {module:egoiSdk/SmartSmsCampaign}
+     * @property {module:egoisdk/SmartSmsCampaign}
      */
-    SmartSmsCampaign: SmartSmsCampaign,
+    SmartSmsCampaign,
+
     /**
      * The SmartSmsCampaignCampaignContent model constructor.
-     * @property {module:egoiSdk/SmartSmsCampaignCampaignContent}
+     * @property {module:egoisdk/SmartSmsCampaignCampaignContent}
      */
-    SmartSmsCampaignCampaignContent: SmartSmsCampaignCampaignContent,
+    SmartSmsCampaignCampaignContent,
+
     /**
      * The SmartSmsCampaignPatchRequest model constructor.
-     * @property {module:egoiSdk/SmartSmsCampaignPatchRequest}
+     * @property {module:egoisdk/SmartSmsCampaignPatchRequest}
      */
-    SmartSmsCampaignPatchRequest: SmartSmsCampaignPatchRequest,
+    SmartSmsCampaignPatchRequest,
+
     /**
      * The SmartSmsCampaignPatchRequestCampaignContent model constructor.
-     * @property {module:egoiSdk/SmartSmsCampaignPatchRequestCampaignContent}
+     * @property {module:egoisdk/SmartSmsCampaignPatchRequestCampaignContent}
      */
-    SmartSmsCampaignPatchRequestCampaignContent: SmartSmsCampaignPatchRequestCampaignContent,
+    SmartSmsCampaignPatchRequestCampaignContent,
+
     /**
      * The SmartSmsCampaignPatchRequestPageContent model constructor.
-     * @property {module:egoiSdk/SmartSmsCampaignPatchRequestPageContent}
+     * @property {module:egoisdk/SmartSmsCampaignPatchRequestPageContent}
      */
-    SmartSmsCampaignPatchRequestPageContent: SmartSmsCampaignPatchRequestPageContent,
+    SmartSmsCampaignPatchRequestPageContent,
+
     /**
      * The SmartSmsSegmentsActionSend model constructor.
-     * @property {module:egoiSdk/SmartSmsSegmentsActionSend}
+     * @property {module:egoisdk/SmartSmsSegmentsActionSend}
      */
-    SmartSmsSegmentsActionSend: SmartSmsSegmentsActionSend,
+    SmartSmsSegmentsActionSend,
+
     /**
      * The SmsBouncesCampaignFields model constructor.
-     * @property {module:egoiSdk/SmsBouncesCampaignFields}
+     * @property {module:egoisdk/SmsBouncesCampaignFields}
      */
-    SmsBouncesCampaignFields: SmsBouncesCampaignFields,
+    SmsBouncesCampaignFields,
+
     /**
      * The SmsBouncesListStatsFields model constructor.
-     * @property {module:egoiSdk/SmsBouncesListStatsFields}
+     * @property {module:egoisdk/SmsBouncesListStatsFields}
      */
-    SmsBouncesListStatsFields: SmsBouncesListStatsFields,
+    SmsBouncesListStatsFields,
+
     /**
      * The SmsCampaign model constructor.
-     * @property {module:egoiSdk/SmsCampaign}
+     * @property {module:egoisdk/SmsCampaign}
      */
-    SmsCampaign: SmsCampaign,
+    SmsCampaign,
+
     /**
      * The SmsCampaignPatchRequest model constructor.
-     * @property {module:egoiSdk/SmsCampaignPatchRequest}
+     * @property {module:egoisdk/SmsCampaignPatchRequest}
      */
-    SmsCampaignPatchRequest: SmsCampaignPatchRequest,
+    SmsCampaignPatchRequest,
+
     /**
      * The SmsCampaignPatchRequestContent model constructor.
-     * @property {module:egoiSdk/SmsCampaignPatchRequestContent}
+     * @property {module:egoisdk/SmsCampaignPatchRequestContent}
      */
-    SmsCampaignPatchRequestContent: SmsCampaignPatchRequestContent,
+    SmsCampaignPatchRequestContent,
+
     /**
      * The SmsCampaignTemplate model constructor.
-     * @property {module:egoiSdk/SmsCampaignTemplate}
+     * @property {module:egoisdk/SmsCampaignTemplate}
      */
-    SmsCampaignTemplate: SmsCampaignTemplate,
+    SmsCampaignTemplate,
+
+    /**
+     * The SmsCampaignTemplateAllOf model constructor.
+     * @property {module:egoisdk/SmsCampaignTemplateAllOf}
+     */
+    SmsCampaignTemplateAllOf,
+
     /**
      * The SmsEventsCampaignFields model constructor.
-     * @property {module:egoiSdk/SmsEventsCampaignFields}
+     * @property {module:egoisdk/SmsEventsCampaignFields}
      */
-    SmsEventsCampaignFields: SmsEventsCampaignFields,
+    SmsEventsCampaignFields,
+
     /**
      * The SmsEventsListStatsFields model constructor.
-     * @property {module:egoiSdk/SmsEventsListStatsFields}
+     * @property {module:egoisdk/SmsEventsListStatsFields}
      */
-    SmsEventsListStatsFields: SmsEventsListStatsFields,
+    SmsEventsListStatsFields,
+
     /**
      * The SmsSegmentsActionSend model constructor.
-     * @property {module:egoiSdk/SmsSegmentsActionSend}
+     * @property {module:egoisdk/SmsSegmentsActionSend}
      */
-    SmsSegmentsActionSend: SmsSegmentsActionSend,
+    SmsSegmentsActionSend,
+
     /**
      * The StartAutomationRequest model constructor.
-     * @property {module:egoiSdk/StartAutomationRequest}
+     * @property {module:egoisdk/StartAutomationRequest}
      */
-    StartAutomationRequest: StartAutomationRequest,
+    StartAutomationRequest,
+
     /**
      * The StartAutomationResponse model constructor.
-     * @property {module:egoiSdk/StartAutomationResponse}
+     * @property {module:egoisdk/StartAutomationResponse}
      */
-    StartAutomationResponse: StartAutomationResponse,
+    StartAutomationResponse,
+
     /**
      * The SubscriptionsListStatsFields model constructor.
-     * @property {module:egoiSdk/SubscriptionsListStatsFields}
+     * @property {module:egoisdk/SubscriptionsListStatsFields}
      */
-    SubscriptionsListStatsFields: SubscriptionsListStatsFields,
+    SubscriptionsListStatsFields,
+
     /**
      * The SuppressionList model constructor.
-     * @property {module:egoiSdk/SuppressionList}
+     * @property {module:egoisdk/SuppressionList}
      */
-    SuppressionList: SuppressionList,
+    SuppressionList,
+
     /**
      * The SuppressionListItems model constructor.
-     * @property {module:egoiSdk/SuppressionListItems}
+     * @property {module:egoisdk/SuppressionListItems}
      */
-    SuppressionListItems: SuppressionListItems,
+    SuppressionListItems,
+
+    /**
+     * The SuppressionTypeCellphone model constructor.
+     * @property {module:egoisdk/SuppressionTypeCellphone}
+     */
+    SuppressionTypeCellphone,
+
+    /**
+     * The SuppressionTypeCellphoneAllOf model constructor.
+     * @property {module:egoisdk/SuppressionTypeCellphoneAllOf}
+     */
+    SuppressionTypeCellphoneAllOf,
+
+    /**
+     * The SuppressionTypeCellphoneAllOf1 model constructor.
+     * @property {module:egoisdk/SuppressionTypeCellphoneAllOf1}
+     */
+    SuppressionTypeCellphoneAllOf1,
+
+    /**
+     * The SuppressionTypeEmail model constructor.
+     * @property {module:egoisdk/SuppressionTypeEmail}
+     */
+    SuppressionTypeEmail,
+
+    /**
+     * The SuppressionTypeEmailAllOf model constructor.
+     * @property {module:egoisdk/SuppressionTypeEmailAllOf}
+     */
+    SuppressionTypeEmailAllOf,
+
+    /**
+     * The SuppressionTypeEmailAllOf1 model constructor.
+     * @property {module:egoisdk/SuppressionTypeEmailAllOf1}
+     */
+    SuppressionTypeEmailAllOf1,
+
+    /**
+     * The SuppressionTypeEmailDomain model constructor.
+     * @property {module:egoisdk/SuppressionTypeEmailDomain}
+     */
+    SuppressionTypeEmailDomain,
+
+    /**
+     * The SuppressionTypeEmailDomainAllOf model constructor.
+     * @property {module:egoisdk/SuppressionTypeEmailDomainAllOf}
+     */
+    SuppressionTypeEmailDomainAllOf,
+
+    /**
+     * The SuppressionTypeEmailDomainAllOf1 model constructor.
+     * @property {module:egoisdk/SuppressionTypeEmailDomainAllOf1}
+     */
+    SuppressionTypeEmailDomainAllOf1,
+
+    /**
+     * The SuppressionTypePhone model constructor.
+     * @property {module:egoisdk/SuppressionTypePhone}
+     */
+    SuppressionTypePhone,
+
+    /**
+     * The SuppressionTypePhoneAllOf model constructor.
+     * @property {module:egoisdk/SuppressionTypePhoneAllOf}
+     */
+    SuppressionTypePhoneAllOf,
+
+    /**
+     * The SuppressionTypePhoneAllOf1 model constructor.
+     * @property {module:egoisdk/SuppressionTypePhoneAllOf1}
+     */
+    SuppressionTypePhoneAllOf1,
+
+    /**
+     * The SuppressionTypeUserEmail model constructor.
+     * @property {module:egoisdk/SuppressionTypeUserEmail}
+     */
+    SuppressionTypeUserEmail,
+
+    /**
+     * The SuppressionTypeUserEmailAllOf model constructor.
+     * @property {module:egoisdk/SuppressionTypeUserEmailAllOf}
+     */
+    SuppressionTypeUserEmailAllOf,
+
+    /**
+     * The SuppressionTypeUserEmailAllOf1 model constructor.
+     * @property {module:egoisdk/SuppressionTypeUserEmailAllOf1}
+     */
+    SuppressionTypeUserEmailAllOf1,
+
     /**
      * The Tag model constructor.
-     * @property {module:egoiSdk/Tag}
+     * @property {module:egoisdk/Tag}
      */
-    Tag: Tag,
+    Tag,
+
     /**
      * The TagCollection model constructor.
-     * @property {module:egoiSdk/TagCollection}
+     * @property {module:egoisdk/TagCollection}
      */
-    TagCollection: TagCollection,
+    TagCollection,
+
     /**
      * The TagCollection1 model constructor.
-     * @property {module:egoiSdk/TagCollection1}
+     * @property {module:egoisdk/TagCollection1}
      */
-    TagCollection1: TagCollection1,
+    TagCollection1,
+
     /**
      * The TagRequest model constructor.
-     * @property {module:egoiSdk/TagRequest}
+     * @property {module:egoisdk/TagRequest}
      */
-    TagRequest: TagRequest,
+    TagRequest,
+
     /**
      * The TagSegment model constructor.
-     * @property {module:egoiSdk/TagSegment}
+     * @property {module:egoisdk/TagSegment}
      */
-    TagSegment: TagSegment,
+    TagSegment,
+
+    /**
+     * The TagSegmentAllOf model constructor.
+     * @property {module:egoisdk/TagSegmentAllOf}
+     */
+    TagSegmentAllOf,
+
     /**
      * The TeResponse model constructor.
-     * @property {module:egoiSdk/TeResponse}
+     * @property {module:egoisdk/TeResponse}
      */
-    TeResponse: TeResponse,
+    TeResponse,
+
+    /**
+     * The TeResponseAllOf model constructor.
+     * @property {module:egoisdk/TeResponseAllOf}
+     */
+    TeResponseAllOf,
+
     /**
      * The TooManyRequests model constructor.
-     * @property {module:egoiSdk/TooManyRequests}
+     * @property {module:egoisdk/TooManyRequests}
      */
-    TooManyRequests: TooManyRequests,
+    TooManyRequests,
+
     /**
      * The Unauthorized model constructor.
-     * @property {module:egoiSdk/Unauthorized}
+     * @property {module:egoisdk/Unauthorized}
      */
-    Unauthorized: Unauthorized,
+    Unauthorized,
+
     /**
      * The UniqueFieldInUse model constructor.
-     * @property {module:egoiSdk/UniqueFieldInUse}
+     * @property {module:egoisdk/UniqueFieldInUse}
      */
-    UniqueFieldInUse: UniqueFieldInUse,
+    UniqueFieldInUse,
+
     /**
      * The UniqueFieldInUseErrors model constructor.
-     * @property {module:egoiSdk/UniqueFieldInUseErrors}
+     * @property {module:egoisdk/UniqueFieldInUseErrors}
      */
-    UniqueFieldInUseErrors: UniqueFieldInUseErrors,
+    UniqueFieldInUseErrors,
+
     /**
      * The UnprocessableEntity model constructor.
-     * @property {module:egoiSdk/UnprocessableEntity}
+     * @property {module:egoisdk/UnprocessableEntity}
      */
-    UnprocessableEntity: UnprocessableEntity,
+    UnprocessableEntity,
+
+    /**
+     * The UnremovableEntry model constructor.
+     * @property {module:egoisdk/UnremovableEntry}
+     */
+    UnremovableEntry,
+
+    /**
+     * The UnremovableEntryErrors model constructor.
+     * @property {module:egoisdk/UnremovableEntryErrors}
+     */
+    UnremovableEntryErrors,
+
     /**
      * The UnsubscriptionObject model constructor.
-     * @property {module:egoiSdk/UnsubscriptionObject}
+     * @property {module:egoisdk/UnsubscriptionObject}
      */
-    UnsubscriptionObject: UnsubscriptionObject,
+    UnsubscriptionObject,
+
     /**
      * The UnsubscriptionsListStatsFields model constructor.
-     * @property {module:egoiSdk/UnsubscriptionsListStatsFields}
+     * @property {module:egoisdk/UnsubscriptionsListStatsFields}
      */
-    UnsubscriptionsListStatsFields: UnsubscriptionsListStatsFields,
+    UnsubscriptionsListStatsFields,
+
+    /**
+     * The UpdateByContact model constructor.
+     * @property {module:egoisdk/UpdateByContact}
+     */
+    UpdateByContact,
+
+    /**
+     * The UpdateBySegment model constructor.
+     * @property {module:egoisdk/UpdateBySegment}
+     */
+    UpdateBySegment,
+
+    /**
+     * The UpdateContactsRequest model constructor.
+     * @property {module:egoisdk/UpdateContactsRequest}
+     */
+    UpdateContactsRequest,
+
+    /**
+     * The UpdateForAll model constructor.
+     * @property {module:egoisdk/UpdateForAll}
+     */
+    UpdateForAll,
+
     /**
      * The UsedInAutomations model constructor.
-     * @property {module:egoiSdk/UsedInAutomations}
+     * @property {module:egoisdk/UsedInAutomations}
      */
-    UsedInAutomations: UsedInAutomations,
+    UsedInAutomations,
+
     /**
      * The UsedInAutomationsErrors model constructor.
-     * @property {module:egoiSdk/UsedInAutomationsErrors}
+     * @property {module:egoisdk/UsedInAutomationsErrors}
      */
-    UsedInAutomationsErrors: UsedInAutomationsErrors,
+    UsedInAutomationsErrors,
+
     /**
      * The UsedInRecurringMessages model constructor.
-     * @property {module:egoiSdk/UsedInRecurringMessages}
+     * @property {module:egoisdk/UsedInRecurringMessages}
      */
-    UsedInRecurringMessages: UsedInRecurringMessages,
+    UsedInRecurringMessages,
+
     /**
      * The UsedInRecurringMessagesErrors model constructor.
-     * @property {module:egoiSdk/UsedInRecurringMessagesErrors}
+     * @property {module:egoisdk/UsedInRecurringMessagesErrors}
      */
-    UsedInRecurringMessagesErrors: UsedInRecurringMessagesErrors,
+    UsedInRecurringMessagesErrors,
+
     /**
      * The User model constructor.
-     * @property {module:egoiSdk/User}
+     * @property {module:egoisdk/User}
      */
-    User: User,
+    User,
+
+    /**
+     * The UserAllOf model constructor.
+     * @property {module:egoisdk/UserAllOf}
+     */
+    UserAllOf,
+
     /**
      * The UserCollection model constructor.
-     * @property {module:egoiSdk/UserCollection}
+     * @property {module:egoisdk/UserCollection}
      */
-    UserCollection: UserCollection,
+    UserCollection,
+
+    /**
+     * The UserPost model constructor.
+     * @property {module:egoisdk/UserPost}
+     */
+    UserPost,
+
+    /**
+     * The UserPostAllOf model constructor.
+     * @property {module:egoisdk/UserPostAllOf}
+     */
+    UserPostAllOf,
+
     /**
      * The UserPostRequest model constructor.
-     * @property {module:egoiSdk/UserPostRequest}
+     * @property {module:egoisdk/UserPostRequest}
      */
-    UserPostRequest: UserPostRequest,
+    UserPostRequest,
+
+    /**
+     * The UserPostRequestAllOf model constructor.
+     * @property {module:egoisdk/UserPostRequestAllOf}
+     */
+    UserPostRequestAllOf,
+
     /**
      * The VoiceCampaign model constructor.
-     * @property {module:egoiSdk/VoiceCampaign}
+     * @property {module:egoisdk/VoiceCampaign}
      */
-    VoiceCampaign: VoiceCampaign,
+    VoiceCampaign,
+
+    /**
+     * The VoiceCampaignAllOf model constructor.
+     * @property {module:egoisdk/VoiceCampaignAllOf}
+     */
+    VoiceCampaignAllOf,
+
     /**
      * The VoiceCampaignTemplate model constructor.
-     * @property {module:egoiSdk/VoiceCampaignTemplate}
+     * @property {module:egoisdk/VoiceCampaignTemplate}
      */
-    VoiceCampaignTemplate: VoiceCampaignTemplate,
+    VoiceCampaignTemplate,
+
+    /**
+     * The VoiceCampaignTemplateAllOf model constructor.
+     * @property {module:egoisdk/VoiceCampaignTemplateAllOf}
+     */
+    VoiceCampaignTemplateAllOf,
+
     /**
      * The VoicePatchCampaign model constructor.
-     * @property {module:egoiSdk/VoicePatchCampaign}
+     * @property {module:egoisdk/VoicePatchCampaign}
      */
-    VoicePatchCampaign: VoicePatchCampaign,
+    VoicePatchCampaign,
+
+    /**
+     * The VoicePatchCampaignAllOf model constructor.
+     * @property {module:egoisdk/VoicePatchCampaignAllOf}
+     */
+    VoicePatchCampaignAllOf,
+
     /**
      * The WebPushCampaign model constructor.
-     * @property {module:egoiSdk/WebPushCampaign}
+     * @property {module:egoisdk/WebPushCampaign}
      */
-    WebPushCampaign: WebPushCampaign,
+    WebPushCampaign,
+
     /**
      * The WebPushPatchCampaign model constructor.
-     * @property {module:egoiSdk/WebPushPatchCampaign}
+     * @property {module:egoisdk/WebPushPatchCampaign}
      */
-    WebPushPatchCampaign: WebPushPatchCampaign,
+    WebPushPatchCampaign,
+
     /**
      * The WebPushReport model constructor.
-     * @property {module:egoiSdk/WebPushReport}
+     * @property {module:egoisdk/WebPushReport}
      */
-    WebPushReport: WebPushReport,
+    WebPushReport,
+
     /**
-     * The WebPushReportBrowsers model constructor.
-     * @property {module:egoiSdk/WebPushReportBrowsers}
+     * The WebPushReportBrowsersInner model constructor.
+     * @property {module:egoisdk/WebPushReportBrowsersInner}
      */
-    WebPushReportBrowsers: WebPushReportBrowsers,
+    WebPushReportBrowsersInner,
+
     /**
-     * The WebPushReportOperatingSystems model constructor.
-     * @property {module:egoiSdk/WebPushReportOperatingSystems}
+     * The WebPushReportBrowsersInnerVersionsInner model constructor.
+     * @property {module:egoisdk/WebPushReportBrowsersInnerVersionsInner}
      */
-    WebPushReportOperatingSystems: WebPushReportOperatingSystems,
+    WebPushReportBrowsersInnerVersionsInner,
+
+    /**
+     * The WebPushReportBrowsersInnerVersionsInnerAllOf model constructor.
+     * @property {module:egoisdk/WebPushReportBrowsersInnerVersionsInnerAllOf}
+     */
+    WebPushReportBrowsersInnerVersionsInnerAllOf,
+
+    /**
+     * The WebPushReportDevicesInner model constructor.
+     * @property {module:egoisdk/WebPushReportDevicesInner}
+     */
+    WebPushReportDevicesInner,
+
+    /**
+     * The WebPushReportDevicesInnerAllOf model constructor.
+     * @property {module:egoisdk/WebPushReportDevicesInnerAllOf}
+     */
+    WebPushReportDevicesInnerAllOf,
+
+    /**
+     * The WebPushReportOperatingSystemsInner model constructor.
+     * @property {module:egoisdk/WebPushReportOperatingSystemsInner}
+     */
+    WebPushReportOperatingSystemsInner,
+
+    /**
+     * The WebPushReportOperatingSystemsInnerVersionsInner model constructor.
+     * @property {module:egoisdk/WebPushReportOperatingSystemsInnerVersionsInner}
+     */
+    WebPushReportOperatingSystemsInnerVersionsInner,
+
+    /**
+     * The WebPushReportOperatingSystemsInnerVersionsInnerAllOf model constructor.
+     * @property {module:egoisdk/WebPushReportOperatingSystemsInnerVersionsInnerAllOf}
+     */
+    WebPushReportOperatingSystemsInnerVersionsInnerAllOf,
+
+    /**
+     * The WebPushReportUrlInner model constructor.
+     * @property {module:egoisdk/WebPushReportUrlInner}
+     */
+    WebPushReportUrlInner,
+
+    /**
+     * The WebPushReportUrlInnerAllOf model constructor.
+     * @property {module:egoisdk/WebPushReportUrlInnerAllOf}
+     */
+    WebPushReportUrlInnerAllOf,
+
     /**
      * The WebPushRssCampaign model constructor.
-     * @property {module:egoiSdk/WebPushRssCampaign}
+     * @property {module:egoisdk/WebPushRssCampaign}
      */
-    WebPushRssCampaign: WebPushRssCampaign,
+    WebPushRssCampaign,
+
     /**
      * The WebPushSite model constructor.
-     * @property {module:egoiSdk/WebPushSite}
+     * @property {module:egoisdk/WebPushSite}
      */
-    WebPushSite: WebPushSite,
+    WebPushSite,
+
     /**
      * The WebPushStats model constructor.
-     * @property {module:egoiSdk/WebPushStats}
+     * @property {module:egoisdk/WebPushStats}
      */
-    WebPushStats: WebPushStats,
+    WebPushStats,
+
     /**
      * The Webhook model constructor.
-     * @property {module:egoiSdk/Webhook}
+     * @property {module:egoisdk/Webhook}
      */
-    Webhook: Webhook,
+    Webhook,
+
     /**
      * The WebhookActionSchema model constructor.
-     * @property {module:egoiSdk/WebhookActionSchema}
+     * @property {module:egoisdk/WebhookActionSchema}
      */
-    WebhookActionSchema: WebhookActionSchema,
-    /**
-     * The AdvancedReportsApi service constructor.
-     * @property {module:egoiApi/AdvancedReportsApi}
-     */
-    AdvancedReportsApi: AdvancedReportsApi,
-    /**
-     * The AutomationsApi service constructor.
-     * @property {module:egoiApi/AutomationsApi}
-     */
-    AutomationsApi: AutomationsApi,
-    /**
-     * The CNamesApi service constructor.
-     * @property {module:egoiApi/CNamesApi}
-     */
-    CNamesApi: CNamesApi,
-    /**
-     * The CampaignGroupsApi service constructor.
-     * @property {module:egoiApi/CampaignGroupsApi}
-     */
-    CampaignGroupsApi: CampaignGroupsApi,
-    /**
-     * The CampaignsApi service constructor.
-     * @property {module:egoiApi/CampaignsApi}
-     */
-    CampaignsApi: CampaignsApi,
-    /**
-     * The ContactsApi service constructor.
-     * @property {module:egoiApi/ContactsApi}
-     */
-    ContactsApi: ContactsApi,
-    /**
-     * The EcommerceApi service constructor.
-     * @property {module:egoiApi/EcommerceApi}
-     */
-    EcommerceApi: EcommerceApi,
-    /**
-     * The EcommerceActivityApi service constructor.
-     * @property {module:egoiApi/EcommerceActivityApi}
-     */
-    EcommerceActivityApi: EcommerceActivityApi,
-    /**
-     * The EmailApi service constructor.
-     * @property {module:egoiApi/EmailApi}
-     */
-    EmailApi: EmailApi,
-    /**
-     * The FieldsApi service constructor.
-     * @property {module:egoiApi/FieldsApi}
-     */
-    FieldsApi: FieldsApi,
-    /**
-     * The ListsApi service constructor.
-     * @property {module:egoiApi/ListsApi}
-     */
-    ListsApi: ListsApi,
-    /**
-     * The MyAccountApi service constructor.
-     * @property {module:egoiApi/MyAccountApi}
-     */
-    MyAccountApi: MyAccountApi,
-    /**
-     * The OperationsApi service constructor.
-     * @property {module:egoiApi/OperationsApi}
-     */
-    OperationsApi: OperationsApi,
-    /**
-     * The PingApi service constructor.
-     * @property {module:egoiApi/PingApi}
-     */
-    PingApi: PingApi,
-    /**
-     * The PushApi service constructor.
-     * @property {module:egoiApi/PushApi}
-     */
-    PushApi: PushApi,
-    /**
-     * The ReportsApi service constructor.
-     * @property {module:egoiApi/ReportsApi}
-     */
-    ReportsApi: ReportsApi,
-    /**
-     * The SegmentsApi service constructor.
-     * @property {module:egoiApi/SegmentsApi}
-     */
-    SegmentsApi: SegmentsApi,
-    /**
-     * The SendersApi service constructor.
-     * @property {module:egoiApi/SendersApi}
-     */
-    SendersApi: SendersApi,
-    /**
-     * The SmartSmsApi service constructor.
-     * @property {module:egoiApi/SmartSmsApi}
-     */
-    SmartSmsApi: SmartSmsApi,
-    /**
-     * The SmsApi service constructor.
-     * @property {module:egoiApi/SmsApi}
-     */
-    SmsApi: SmsApi,
-    /**
-     * The SuppressionListApi service constructor.
-     * @property {module:egoiApi/SuppressionListApi}
-     */
-    SuppressionListApi: SuppressionListApi,
-    /**
-     * The TagsApi service constructor.
-     * @property {module:egoiApi/TagsApi}
-     */
-    TagsApi: TagsApi,
-    /**
-     * The TrackEngageApi service constructor.
-     * @property {module:egoiApi/TrackEngageApi}
-     */
-    TrackEngageApi: TrackEngageApi,
-    /**
-     * The UsersApi service constructor.
-     * @property {module:egoiApi/UsersApi}
-     */
-    UsersApi: UsersApi,
-    /**
-     * The UtilitiesApi service constructor.
-     * @property {module:egoiApi/UtilitiesApi}
-     */
-    UtilitiesApi: UtilitiesApi,
-    /**
-     * The VoiceApi service constructor.
-     * @property {module:egoiApi/VoiceApi}
-     */
-    VoiceApi: VoiceApi,
-    /**
-     * The WebHooksApi service constructor.
-     * @property {module:egoiApi/WebHooksApi}
-     */
-    WebHooksApi: WebHooksApi,
-    /**
-     * The WebpushApi service constructor.
-     * @property {module:egoiApi/WebpushApi}
-     */
-    WebpushApi: WebpushApi
-  };
+    WebhookActionSchema,
 
-  return exports;
-}));
+    /**
+     * The WebpushActionsInner model constructor.
+     * @property {module:egoisdk/WebpushActionsInner}
+     */
+    WebpushActionsInner,
+
+    /**
+    * The AdvancedReportsApi service constructor.
+    * @property {module:egoiApi/AdvancedReportsApi}
+    */
+    AdvancedReportsApi,
+
+    /**
+    * The AutomationsApi service constructor.
+    * @property {module:egoiApi/AutomationsApi}
+    */
+    AutomationsApi,
+
+    /**
+    * The CNamesApi service constructor.
+    * @property {module:egoiApi/CNamesApi}
+    */
+    CNamesApi,
+
+    /**
+    * The CampaignGroupsApi service constructor.
+    * @property {module:egoiApi/CampaignGroupsApi}
+    */
+    CampaignGroupsApi,
+
+    /**
+    * The CampaignsApi service constructor.
+    * @property {module:egoiApi/CampaignsApi}
+    */
+    CampaignsApi,
+
+    /**
+    * The ConnectedSitesApi service constructor.
+    * @property {module:egoiApi/ConnectedSitesApi}
+    */
+    ConnectedSitesApi,
+
+    /**
+    * The ContactsApi service constructor.
+    * @property {module:egoiApi/ContactsApi}
+    */
+    ContactsApi,
+
+    /**
+    * The EcommerceApi service constructor.
+    * @property {module:egoiApi/EcommerceApi}
+    */
+    EcommerceApi,
+
+    /**
+    * The EcommerceActivityApi service constructor.
+    * @property {module:egoiApi/EcommerceActivityApi}
+    */
+    EcommerceActivityApi,
+
+    /**
+    * The EmailApi service constructor.
+    * @property {module:egoiApi/EmailApi}
+    */
+    EmailApi,
+
+    /**
+    * The FieldsApi service constructor.
+    * @property {module:egoiApi/FieldsApi}
+    */
+    FieldsApi,
+
+    /**
+    * The ListsApi service constructor.
+    * @property {module:egoiApi/ListsApi}
+    */
+    ListsApi,
+
+    /**
+    * The MyAccountApi service constructor.
+    * @property {module:egoiApi/MyAccountApi}
+    */
+    MyAccountApi,
+
+    /**
+    * The OperationsApi service constructor.
+    * @property {module:egoiApi/OperationsApi}
+    */
+    OperationsApi,
+
+    /**
+    * The PingApi service constructor.
+    * @property {module:egoiApi/PingApi}
+    */
+    PingApi,
+
+    /**
+    * The PushApi service constructor.
+    * @property {module:egoiApi/PushApi}
+    */
+    PushApi,
+
+    /**
+    * The ReportsApi service constructor.
+    * @property {module:egoiApi/ReportsApi}
+    */
+    ReportsApi,
+
+    /**
+    * The SegmentsApi service constructor.
+    * @property {module:egoiApi/SegmentsApi}
+    */
+    SegmentsApi,
+
+    /**
+    * The SendersApi service constructor.
+    * @property {module:egoiApi/SendersApi}
+    */
+    SendersApi,
+
+    /**
+    * The SmartSmsApi service constructor.
+    * @property {module:egoiApi/SmartSmsApi}
+    */
+    SmartSmsApi,
+
+    /**
+    * The SmsApi service constructor.
+    * @property {module:egoiApi/SmsApi}
+    */
+    SmsApi,
+
+    /**
+    * The SuppressionListApi service constructor.
+    * @property {module:egoiApi/SuppressionListApi}
+    */
+    SuppressionListApi,
+
+    /**
+    * The TagsApi service constructor.
+    * @property {module:egoiApi/TagsApi}
+    */
+    TagsApi,
+
+    /**
+    * The TrackEngageApi service constructor.
+    * @property {module:egoiApi/TrackEngageApi}
+    */
+    TrackEngageApi,
+
+    /**
+    * The UsersApi service constructor.
+    * @property {module:egoiApi/UsersApi}
+    */
+    UsersApi,
+
+    /**
+    * The UtilitiesApi service constructor.
+    * @property {module:egoiApi/UtilitiesApi}
+    */
+    UtilitiesApi,
+
+    /**
+    * The VoiceApi service constructor.
+    * @property {module:egoiApi/VoiceApi}
+    */
+    VoiceApi,
+
+    /**
+    * The WebHooksApi service constructor.
+    * @property {module:egoiApi/WebHooksApi}
+    */
+    WebHooksApi,
+
+    /**
+    * The WebpushApi service constructor.
+    * @property {module:egoiApi/WebpushApi}
+    */
+    WebpushApi
+};

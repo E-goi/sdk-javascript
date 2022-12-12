@@ -1,14 +1,15 @@
-# egoiSdk.Domain
+# egoisdk.Domain
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **domain** | **String** | Domain | [optional] 
 **listId** | **String** | List id | [optional] 
-**status** | **String** | Domain status | [optional] 
+**status** | **String** | Domain status | [optional] [readonly] 
 
 
-<a name="StatusEnum"></a>
+
 ## Enum: StatusEnum
 
 

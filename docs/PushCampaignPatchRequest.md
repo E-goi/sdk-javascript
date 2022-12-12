@@ -1,13 +1,14 @@
-# egoiSdk.PushCampaignPatchRequest
+# egoisdk.PushCampaignPatchRequest
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**campaignHash** | **String** |  | [optional] 
+**campaignHash** | **String** |  | [optional] [readonly] 
 **title** | **String** | Push campaign subject | [optional] 
 **content** | [**PushCampaignPatchRequestContent**](PushCampaignPatchRequestContent.md) |  | [optional] 
-**actions** | [**[PushCampaignPostRequestActions]**](PushCampaignPostRequestActions.md) | Actions for push campaign | [optional] 
-**geoOptions** | [**PushCampaignPostRequestGeoOptions**](PushCampaignPostRequestGeoOptions.md) |  | [optional] 
+**actions** | [**PushCampaignPostRequestActions**](PushCampaignPostRequestActions.md) |  | [optional] 
+**geoOptions** | [**PushCampaignPatchRequestGeoOptions**](PushCampaignPatchRequestGeoOptions.md) |  | [optional] 
 **notificationOptions** | [**PushCampaignPostRequestNotificationOptions**](PushCampaignPostRequestNotificationOptions.md) |  | [optional] 
 
 

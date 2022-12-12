@@ -1,6 +1,7 @@
-# egoiSdk.PostRequestList
+# egoisdk.PostRequestList
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **internalName** | **String** | Internal name of the list | 

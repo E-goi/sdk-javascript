@@ -1,6 +1,7 @@
-# egoiSdk.SmartSmsCampaignPatchRequestPageContent
+# egoisdk.SmartSmsCampaignPatchRequestPageContent
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **pageUrl** | **String** | Smart SMS page URL | [optional] 

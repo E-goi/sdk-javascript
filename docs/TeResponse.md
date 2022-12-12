@@ -1,6 +1,7 @@
-# egoiSdk.TeResponse
+# egoisdk.TeResponse
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **result** | **Boolean** | result | [optional] 

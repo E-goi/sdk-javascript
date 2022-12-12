@@ -1,4 +1,4 @@
-# egoiSdk.SendersApi
+# egoisdk.SendersApi
 
 All URIs are relative to *https://api.egoiapp.com*
 
@@ -16,41 +16,43 @@ Method | HTTP request | Description
 [**putEmailSender**](SendersApi.md#putEmailSender) | **PUT** /senders/email/{sender_id} | Update email sender
 
 
-<a name="createCellphoneSender"></a>
-# **createCellphoneSender**
-> CellphoneSender createCellphoneSender(cellphoneSender)
+
+## createCellphoneSender
+
+> CellphoneSender createCellphoneSender(cellphoneSenderPost)
 
 Create cellphone sender
 
 Creates a cellphone sender
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.SendersApi();
-var cellphoneSender = new egoiSdk.CellphoneSender(); // CellphoneSender | Parameters for the sender
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.SendersApi();
+let cellphoneSenderPost = new egoisdk.CellphoneSenderPost(); // CellphoneSenderPost | Parameters for the sender
+apiInstance.createCellphoneSender(cellphoneSenderPost, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.createCellphoneSender(cellphoneSender, callback);
+});
 ```
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **cellphoneSender** | [**CellphoneSender**](CellphoneSender.md)| Parameters for the sender | 
+ **cellphoneSenderPost** | [**CellphoneSenderPost**](CellphoneSenderPost.md)| Parameters for the sender | 
 
 ### Return type
 
@@ -62,44 +64,46 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="createEmailSender"></a>
-# **createEmailSender**
-> EmailSender createEmailSender(emailSender)
+
+## createEmailSender
+
+> EmailSender createEmailSender(emailSenderPost)
 
 Create email sender
 
 Creates an email sender
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.SendersApi();
-var emailSender = new egoiSdk.EmailSender(); // EmailSender | Parameters for the sender
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.SendersApi();
+let emailSenderPost = new egoisdk.EmailSenderPost(); // EmailSenderPost | Parameters for the sender
+apiInstance.createEmailSender(emailSenderPost, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.createEmailSender(emailSender, callback);
+});
 ```
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **emailSender** | [**EmailSender**](EmailSender.md)| Parameters for the sender | 
+ **emailSenderPost** | [**EmailSenderPost**](EmailSenderPost.md)| Parameters for the sender | 
 
 ### Return type
 
@@ -111,44 +115,46 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="createPhoneSender"></a>
-# **createPhoneSender**
-> PhoneSender createPhoneSender(phoneSender)
+
+## createPhoneSender
+
+> PhoneSender createPhoneSender(phoneSenderPost)
 
 Create phone sender
 
 Creates a phone sender
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.SendersApi();
-var phoneSender = new egoiSdk.PhoneSender(); // PhoneSender | Parameters for the sender
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.SendersApi();
+let phoneSenderPost = new egoisdk.PhoneSenderPost(); // PhoneSenderPost | Parameters for the sender
+apiInstance.createPhoneSender(phoneSenderPost, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.createPhoneSender(phoneSender, callback);
+});
 ```
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **phoneSender** | [**PhoneSender**](PhoneSender.md)| Parameters for the sender | 
+ **phoneSenderPost** | [**PhoneSenderPost**](PhoneSenderPost.md)| Parameters for the sender | 
 
 ### Return type
 
@@ -160,11 +166,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="deleteCellphoneSender"></a>
-# **deleteCellphoneSender**
+
+## deleteCellphoneSender
+
 > deleteCellphoneSender(senderId)
 
 Remove cellphone sender
@@ -172,28 +179,29 @@ Remove cellphone sender
 Remove sender information given its ID
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.SendersApi();
-var senderId = 56; // Number | ID of the Sender
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.SendersApi();
+let senderId = 56; // Number | ID of the Sender
+apiInstance.deleteCellphoneSender(senderId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully.');
   }
-};
-apiInstance.deleteCellphoneSender(senderId, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -209,11 +217,12 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="deleteEmailSender"></a>
-# **deleteEmailSender**
+
+## deleteEmailSender
+
 > deleteEmailSender(senderId)
 
 Remove email sender
@@ -221,28 +230,29 @@ Remove email sender
 Remove sender information given its ID
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.SendersApi();
-var senderId = 56; // Number | ID of the Sender
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.SendersApi();
+let senderId = 56; // Number | ID of the Sender
+apiInstance.deleteEmailSender(senderId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully.');
   }
-};
-apiInstance.deleteEmailSender(senderId, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -258,11 +268,12 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="deletePhoneSender"></a>
-# **deletePhoneSender**
+
+## deletePhoneSender
+
 > deletePhoneSender(senderId)
 
 Remove phone sender
@@ -270,28 +281,29 @@ Remove phone sender
 Remove sender information given its ID
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.SendersApi();
-var senderId = 56; // Number | ID of the Sender
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.SendersApi();
+let senderId = 56; // Number | ID of the Sender
+apiInstance.deletePhoneSender(senderId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully.');
   }
-};
-apiInstance.deletePhoneSender(senderId, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -307,11 +319,12 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getAllCellphoneSenders"></a>
-# **getAllCellphoneSenders**
+
+## getAllCellphoneSenders
+
 > CellphoneSenderCollection getAllCellphoneSenders(opts)
 
 Get all cellphone senders
@@ -319,32 +332,33 @@ Get all cellphone senders
 Returns all cellphone senders
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.SendersApi();
-var opts = {
+let apiInstance = new egoisdk.SendersApi();
+let opts = {
   'offset': 56, // Number | Element offset (starting at zero for the first element)
   'limit': 10, // Number | Number of items to return
   'status': "status_example" // String | Status filter
 };
-var callback = function(error, data, response) {
+apiInstance.getAllCellphoneSenders(opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getAllCellphoneSenders(opts, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -362,11 +376,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getAllEmailSenders"></a>
-# **getAllEmailSenders**
+
+## getAllEmailSenders
+
 > EmailSenderCollection getAllEmailSenders(opts)
 
 Get all email senders
@@ -374,32 +389,33 @@ Get all email senders
 Returns all email senders
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.SendersApi();
-var opts = {
+let apiInstance = new egoisdk.SendersApi();
+let opts = {
   'offset': 56, // Number | Element offset (starting at zero for the first element)
   'limit': 10, // Number | Number of items to return
   'status': "status_example" // String | Status filter
 };
-var callback = function(error, data, response) {
+apiInstance.getAllEmailSenders(opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getAllEmailSenders(opts, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -417,11 +433,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getAllPhoneSenders"></a>
-# **getAllPhoneSenders**
+
+## getAllPhoneSenders
+
 > PhoneSenderCollection getAllPhoneSenders(opts)
 
 Get all phone senders
@@ -429,32 +446,33 @@ Get all phone senders
 Returns all phone senders
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.SendersApi();
-var opts = {
+let apiInstance = new egoisdk.SendersApi();
+let opts = {
   'offset': 56, // Number | Element offset (starting at zero for the first element)
   'limit': 10, // Number | Number of items to return
   'status': "status_example" // String | Status filter
 };
-var callback = function(error, data, response) {
+apiInstance.getAllPhoneSenders(opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getAllPhoneSenders(opts, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -472,11 +490,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="putEmailSender"></a>
-# **putEmailSender**
+
+## putEmailSender
+
 > EmailSender putEmailSender(senderId, emailSenderPutRequest)
 
 Update email sender
@@ -484,29 +503,30 @@ Update email sender
 Updates an email sender
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.SendersApi();
-var senderId = 56; // Number | ID of the Sender
-var emailSenderPutRequest = new egoiSdk.EmailSenderPutRequest(); // EmailSenderPutRequest | Parameters for the contact
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.SendersApi();
+let senderId = 56; // Number | ID of the Sender
+let emailSenderPutRequest = new egoisdk.EmailSenderPutRequest(); // EmailSenderPutRequest | Parameters for the contact
+apiInstance.putEmailSender(senderId, emailSenderPutRequest, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.putEmailSender(senderId, emailSenderPutRequest, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -523,6 +543,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 

@@ -1,6 +1,7 @@
-# egoiSdk.GenerateEmailClicksByUrlReport
+# egoisdk.GenerateEmailClicksByUrlReport
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **title** | **String** | Advanced report title | 

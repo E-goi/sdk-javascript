@@ -1,15 +1,16 @@
-# egoiSdk.Field
+# egoisdk.Field
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**fieldId** | **String** | Field ID | [optional] 
+**fieldId** | **String** | Field ID | [optional] [readonly] 
 **name** | **String** | Name of the field | 
 **format** | **String** | Field format | 
 **unique** | **Boolean** | True if the field is unique, false otherwise | [optional] 
 
 
-<a name="FormatEnum"></a>
+
 ## Enum: FormatEnum
 
 

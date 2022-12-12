@@ -1,8 +1,11 @@
-# egoiSdk.SendPush
+# egoisdk.SendPush
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**appId** | **Number** |  | [optional] 
+**appId** | **String** |  | 
+**segments** | [**OSegmentsWithoutContactActionSend**](OSegmentsWithoutContactActionSend.md) |  | 
+**notify** | **[Number]** | Array of IDs of the users to notify | [optional] 
 
 

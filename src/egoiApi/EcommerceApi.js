@@ -1,103 +1,107 @@
 /**
  * APIv3 (New)
- *  # Introduction This is our new version of API. We invite you to start using it and give us your feedback # Getting Started  E-goi can be integrated with many environments and programming languages via our REST API. We've created a developer focused portal to give your organization a clear and quick overview of how to integrate with E-goi. The developer portal focuses on scenarios for integration and flow of events. We recommend familiarizing yourself with all of the content in the developer portal, before start using our rest API.   The E-goi  APIv3 is served over HTTPS. To ensure data privacy, unencrypted HTTP is not supported.  Request data is passed to the API by POSTing JSON objects to the API endpoints with the appropriate parameters.   BaseURL = api.egoiapp.com  # RESTful Services This API supports 5 HTTP methods:  * <b>GET</b>: The HTTP GET method is used to **read** (or retrieve) a representation of a resource. * <b>POST</b>: The POST verb is most-often utilized to **create** new resources. * <b>PATCH</b>: PATCH is used for **modify** capabilities. The PATCH request only needs to contain the changes to the resource, not the complete resource * <b>PUT</b>: PUT is most-often utilized for **update** capabilities, PUT-ing to a known resource URI with the request body containing the newly-updated representation of the original resource. * <b>DELETE</b>: DELETE is pretty easy to understand. It is used to **delete** a resource identified by a URI.  # Authentication   We use a custom authentication method, you will need a apikey that you can find in your account settings. Below you will see a curl example to get your account information:  #!/bin/bash  curl -X GET 'https://api.egoiapp.com/my-account' \\  -H 'accept: application/json' \\  -H 'Apikey: <YOUR_APY_KEY>'  Here you can see a curl Post example with authentication:  #!/bin/bash  curl -X POST 'http://api.egoiapp.com/tags' \\  -H 'accept: application/json' \\  -H 'Apikey: <YOUR_APY_KEY>' \\  -H 'Content-Type: application/json' \\  -d '{`name`:`Your custom tag`,`color`:`#FFFFFF`}'  # SDK Get started quickly with E-goi with our integration tools. Our SDK is a modern open source library that makes it easy to integrate your application with E-goi services.  * <a href='https://github.com/E-goi/sdk-java'>Java</a>  * <a href='https://github.com/E-goi/sdk-php'>PHP</a>  * <a href='https://github.com/E-goi/sdk-python'>Python</a>  * <a href='https://github.com/E-goi/sdk-ruby'>Ruby</a>  * <a href='https://github.com/E-goi/sdk-javascript'>Javascript</a>  * <a href='https://github.com/E-goi/sdk-csharp'>C#</a>  # Stream Limits Stream limits are security mesures we have to make sure our API have a fair use policy, for this reason, any request that creates or modifies data (**POST**, **PATCH** and **PUT**) is limited to a maximum of **20MB** of content length. If you arrive to this limit in one of your request, you'll receive a HTTP code **413 (Request Entity Too Large)** and the request will be ignored. To avoid this error in importation's requests, it's advised the request's division in batches that have each one less than 20MB.  # Timeouts Timeouts set a maximum waiting time on a request's response. Our API, sets a default timeout for each request and when breached, you'll receive an HTTP **408 (Request Timeout)** error code. You should take into consideration that response times can vary widely based on the complexity of the request, amount of data being analyzed, and the load on the system and workspace at the time of the query. When dealing with such errors, you should first attempt to reduce the complexity and amount of data under analysis, and only then, if problems are still occurring ask for support.  For all these reasons, the default timeout for each request is **10 Seconds** and any request that creates or modifies data (**POST**, **PATCH** and **PUT**) will have a timeout of **60 Seconds**. Specific timeouts may exist for specific requests, these can be found in the request's documentation.  <security-definitions/>
+ *  # Introduction This is our new version of API. We invite you to start using it and give us your feedback # Getting Started  E-goi can be integrated with many environments and programming languages via our REST API. We've created a developer focused portal to give your organization a clear and quick overview of how to integrate with E-goi. The developer portal focuses on scenarios for integration and flow of events. We recommend familiarizing yourself with all of the content in the developer portal, before start using our rest API.  The E-goi  APIv3 is served over HTTPS. To ensure data privacy, unencrypted HTTP is not supported.  Request data is passed to the API by POSTing JSON objects to the API endpoints with the appropriate parameters.      BaseURL = api.egoiapp.com  # RESTful Services This API supports 5 HTTP methods:  * <b>GET</b>: The HTTP GET method is used to **read** (or retrieve) a representation of a resource. * <b>POST</b>: The POST verb is most-often utilized to **create** new resources. * <b>PATCH</b>: PATCH is used for **modify** capabilities. The PATCH request only needs to contain the changes to the resource, not the complete resource * <b>PUT</b>: PUT is most-often utilized for **update** capabilities, PUT-ing to a known resource URI with the request body containing the newly-updated representation of the original resource. * <b>DELETE</b>: DELETE is pretty easy to understand. It is used to **delete** a resource identified by a URI.  # Authentication  We use a custom authentication method, you will need a apikey that you can find in your account settings. Below you will see a curl example to get your account information:     #!/bin/bash     curl -X GET 'https://api.egoiapp.com/my-account' \\     -H 'accept: application/json' \\     -H 'Apikey: <YOUR_APY_KEY>'  Here you can see a curl Post example with authentication:     #!/bin/bash     curl -X POST 'http://api.egoiapp.com/tags' \\     -H 'accept: application/json' \\     -H 'Apikey: <YOUR_APY_KEY>' \\     -H 'Content-Type: application/json' \\     -d '{`name`:`Your custom tag`,`color`:`#FFFFFF`}'  # SDK Get started quickly with E-goi with our integration tools. Our SDK is a modern open source library that makes it easy to integrate your application with E-goi services.  * <a href='https://github.com/E-goi/sdk-java'>Java</a>  * <a href='https://github.com/E-goi/sdk-php'>PHP</a>  * <a href='https://github.com/E-goi/sdk-python'>Python</a>  * <a href='https://github.com/E-goi/sdk-ruby'>Ruby</a>  * <a href='https://github.com/E-goi/sdk-javascript'>Javascript</a>  * <a href='https://github.com/E-goi/sdk-csharp'>C#</a>  # Stream Limits Stream limits are security mesures we have to make sure our API have a fair use policy, for this reason, any request that creates or modifies data (**POST**, **PATCH** and **PUT**) is limited to a maximum of **20MB** of content length. If you arrive to this limit in one of your request, you'll receive a HTTP code **413 (Request Entity Too Large)** and the request will be ignored. To avoid this error in importation's requests, it's advised the request's division in batches that have each one less than 20MB.  # Timeouts Timeouts set a maximum waiting time on a request's response. Our API, sets a default timeout for each request and when breached, you'll receive an HTTP **408 (Request Timeout)** error code. You should take into consideration that response times can vary widely based on the complexity of the request, amount of data being analyzed, and the load on the system and workspace at the time of the query. When dealing with such errors, you should first attempt to reduce the complexity and amount of data under analysis, and only then, if problems are still occurring ask for support.  For all these reasons, the default timeout for each request is **10 Seconds** and any request that creates or modifies data (**POST**, **PATCH** and **PUT**) will have a timeout of **60 Seconds**. Specific timeouts may exist for specific requests, these can be found in the request's documentation.  # Callbacks A callback is an asynchronous API request that originates from the API server and is sent to the client in response to a previous request sent by that client.  The API will make a **POST** request to the address defined in the URL with the information regarding the event of interest and share data related to that event.  ***Note:*** Only http or https protocols are supported in the Url parameter.  <security-definitions/>
  *
- * OpenAPI spec version: 3.0.0
+ * The version of the OpenAPI document: 3.0.0
+ * 
  *
  * NOTE: This class is auto generated by OpenAPI Generator (https://openapi-generator.tech).
  * https://openapi-generator.tech
- *
- * OpenAPI Generator version: 3.3.4
- *
  * Do not edit the class manually.
  *
  */
 
-(function(root, factory) {
-  if (typeof define === 'function' && define.amd) {
-    // AMD. Register as an anonymous module.
-    define(['ApiClient', 'egoiSdk/AcceptedResponse', 'egoiSdk/BadRequest', 'egoiSdk/Cart', 'egoiSdk/Catalog', 'egoiSdk/CatalogCollection', 'egoiSdk/CatalogPostRequest', 'egoiSdk/CreateOrder', 'egoiSdk/Forbidden', 'egoiSdk/InternalServerError', 'egoiSdk/NotFound', 'egoiSdk/PostProductsConflict', 'egoiSdk/Product', 'egoiSdk/ProductBulkRequest', 'egoiSdk/ProductCollection', 'egoiSdk/ProductPatchRequest', 'egoiSdk/ProductPostRequest', 'egoiSdk/RequestTimeout', 'egoiSdk/ServiceUnavailable', 'egoiSdk/TooManyRequests', 'egoiSdk/Unauthorized', 'egoiSdk/UnprocessableEntity'], factory);
-  } else if (typeof module === 'object' && module.exports) {
-    // CommonJS-like environments that support module.exports, like Node.
-    module.exports = factory(require('../ApiClient'), require('../egoiSdk/AcceptedResponse'), require('../egoiSdk/BadRequest'), require('../egoiSdk/Cart'), require('../egoiSdk/Catalog'), require('../egoiSdk/CatalogCollection'), require('../egoiSdk/CatalogPostRequest'), require('../egoiSdk/CreateOrder'), require('../egoiSdk/Forbidden'), require('../egoiSdk/InternalServerError'), require('../egoiSdk/NotFound'), require('../egoiSdk/PostProductsConflict'), require('../egoiSdk/Product'), require('../egoiSdk/ProductBulkRequest'), require('../egoiSdk/ProductCollection'), require('../egoiSdk/ProductPatchRequest'), require('../egoiSdk/ProductPostRequest'), require('../egoiSdk/RequestTimeout'), require('../egoiSdk/ServiceUnavailable'), require('../egoiSdk/TooManyRequests'), require('../egoiSdk/Unauthorized'), require('../egoiSdk/UnprocessableEntity'));
-  } else {
-    // Browser globals (root is window)
-    if (!root.egoiSdk) {
-      root.egoiSdk = {};
+
+import ApiClient from "../ApiClient";
+import AcceptedResponse from '../egoisdk/AcceptedResponse';
+import BadRequest from '../egoisdk/BadRequest';
+import Cart from '../egoisdk/Cart';
+import Catalog from '../egoisdk/Catalog';
+import CatalogCollection from '../egoisdk/CatalogCollection';
+import CatalogPostRequest from '../egoisdk/CatalogPostRequest';
+import CreateOrder from '../egoisdk/CreateOrder';
+import Forbidden from '../egoisdk/Forbidden';
+import GetAllProductsCustomAttributesParameter from '../egoisdk/GetAllProductsCustomAttributesParameter';
+import InternalServerError from '../egoisdk/InternalServerError';
+import NotFound from '../egoisdk/NotFound';
+import PayloadTooLarge from '../egoisdk/PayloadTooLarge';
+import PostProductsConflict from '../egoisdk/PostProductsConflict';
+import Product from '../egoisdk/Product';
+import ProductBulkRequest from '../egoisdk/ProductBulkRequest';
+import ProductCollection from '../egoisdk/ProductCollection';
+import ProductPatchRequest from '../egoisdk/ProductPatchRequest';
+import ProductPostRequest from '../egoisdk/ProductPostRequest';
+import RequestEntityTooLarge from '../egoisdk/RequestEntityTooLarge';
+import RequestTimeout from '../egoisdk/RequestTimeout';
+import ServiceUnavailable from '../egoisdk/ServiceUnavailable';
+import TooManyRequests from '../egoisdk/TooManyRequests';
+import Unauthorized from '../egoisdk/Unauthorized';
+import UnprocessableEntity from '../egoisdk/UnprocessableEntity';
+
+/**
+* Ecommerce service.
+* @module egoiApi/EcommerceApi
+* @version 1.1.2RC1
+*/
+export default class EcommerceApi {
+
+    /**
+    * Constructs a new EcommerceApi. 
+    * @alias module:egoiApi/EcommerceApi
+    * @class
+    * @param {module:ApiClient} [apiClient] Optional API client implementation to use,
+    * default to {@link module:ApiClient#instance} if unspecified.
+    */
+    constructor(apiClient) {
+        this.apiClient = apiClient || ApiClient.instance;
     }
-    root.egoiSdk.EcommerceApi = factory(root.egoiSdk.ApiClient, root.egoiSdk.AcceptedResponse, root.egoiSdk.BadRequest, root.egoiSdk.Cart, root.egoiSdk.Catalog, root.egoiSdk.CatalogCollection, root.egoiSdk.CatalogPostRequest, root.egoiSdk.CreateOrder, root.egoiSdk.Forbidden, root.egoiSdk.InternalServerError, root.egoiSdk.NotFound, root.egoiSdk.PostProductsConflict, root.egoiSdk.Product, root.egoiSdk.ProductBulkRequest, root.egoiSdk.ProductCollection, root.egoiSdk.ProductPatchRequest, root.egoiSdk.ProductPostRequest, root.egoiSdk.RequestTimeout, root.egoiSdk.ServiceUnavailable, root.egoiSdk.TooManyRequests, root.egoiSdk.Unauthorized, root.egoiSdk.UnprocessableEntity);
-  }
-}(this, function(ApiClient, AcceptedResponse, BadRequest, Cart, Catalog, CatalogCollection, CatalogPostRequest, CreateOrder, Forbidden, InternalServerError, NotFound, PostProductsConflict, Product, ProductBulkRequest, ProductCollection, ProductPatchRequest, ProductPostRequest, RequestTimeout, ServiceUnavailable, TooManyRequests, Unauthorized, UnprocessableEntity) {
-  'use strict';
-
-  /**
-   * Ecommerce service.
-   * @module egoiApi/EcommerceApi
-   * @version 1.1.1RC1
-   */
-
-  /**
-   * Constructs a new EcommerceApi. 
-   * @alias module:egoiApi/EcommerceApi
-   * @class
-   * @param {module:ApiClient} [apiClient] Optional API client implementation to use,
-   * default to {@link module:ApiClient#instance} if unspecified.
-   */
-  var exports = function(apiClient) {
-    this.apiClient = apiClient || ApiClient.instance;
 
 
     /**
      * Callback function to receive the result of the createCart operation.
      * @callback module:egoiApi/EcommerceApi~createCartCallback
      * @param {String} error Error message, if any.
-     * @param {module:egoiSdk/AcceptedResponse} data The data returned by the service call.
+     * @param {module:egoisdk/AcceptedResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
      * Create cart
-     * Creates a new cart. If ***contact_id*** is specified, order will be atached to the contact, if the contact propreties are specified, we&#39;ll create the user, if its already in your list it will get the correct contact (**make sure you are sending atleast all configured list&#39;s unique fields**). This same logic is also applied to the **product_identifier**.
+     * Creates a new cart. If ***contact_id*** is specified, order will be atached to the contact, if the contact propreties are specified, we'll create the user, if its already in your list it will get the correct contact (**make sure you are sending atleast all configured list's unique fields**). This same logic is also applied to the **product_identifier**.
      * @param {String} domain Domain
-     * @param {module:egoiSdk/Cart} cart Parameters for the Carts
+     * @param {module:egoisdk/Cart} cart Parameters for the Carts
      * @param {module:egoiApi/EcommerceApi~createCartCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:egoiSdk/AcceptedResponse}
+     * data is of type: {@link module:egoisdk/AcceptedResponse}
      */
-    this.createCart = function(domain, cart, callback) {
-      var postBody = cart;
-
+    createCart(domain, cart, callback) {
+      let postBody = cart;
       // verify the required parameter 'domain' is set
       if (domain === undefined || domain === null) {
         throw new Error("Missing the required parameter 'domain' when calling createCart");
       }
-
       // verify the required parameter 'cart' is set
       if (cart === undefined || cart === null) {
         throw new Error("Missing the required parameter 'cart' when calling createCart");
       }
 
-
-      var pathParams = {
+      let pathParams = {
         'domain': domain
       };
-      var queryParams = {
+      let queryParams = {
       };
-      var collectionQueryParams = {
+      let headerParams = {
       };
-      var headerParams = {
-      };
-      var formParams = {
+      let formParams = {
       };
 
-      var authNames = ['Apikey'];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = AcceptedResponse;
-
+      let authNames = ['Apikey'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = AcceptedResponse;
       return this.apiClient.callApi(
         '/{domain}/carts', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
       );
     }
 
@@ -105,46 +109,41 @@
      * Callback function to receive the result of the createCatalog operation.
      * @callback module:egoiApi/EcommerceApi~createCatalogCallback
      * @param {String} error Error message, if any.
-     * @param {module:egoiSdk/Catalog} data The data returned by the service call.
+     * @param {module:egoisdk/Catalog} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
      * Create new catalog
      * Creates a new catalog
-     * @param {module:egoiSdk/CatalogPostRequest} catalogPostRequest Parameters for the Catalog
+     * @param {module:egoisdk/CatalogPostRequest} catalogPostRequest Parameters for the Catalog
      * @param {module:egoiApi/EcommerceApi~createCatalogCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:egoiSdk/Catalog}
+     * data is of type: {@link module:egoisdk/Catalog}
      */
-    this.createCatalog = function(catalogPostRequest, callback) {
-      var postBody = catalogPostRequest;
-
+    createCatalog(catalogPostRequest, callback) {
+      let postBody = catalogPostRequest;
       // verify the required parameter 'catalogPostRequest' is set
       if (catalogPostRequest === undefined || catalogPostRequest === null) {
         throw new Error("Missing the required parameter 'catalogPostRequest' when calling createCatalog");
       }
 
-
-      var pathParams = {
+      let pathParams = {
       };
-      var queryParams = {
+      let queryParams = {
       };
-      var collectionQueryParams = {
+      let headerParams = {
       };
-      var headerParams = {
-      };
-      var formParams = {
+      let formParams = {
       };
 
-      var authNames = ['Apikey'];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = Catalog;
-
+      let authNames = ['Apikey'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = Catalog;
       return this.apiClient.callApi(
         '/catalogs', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
       );
     }
 
@@ -152,53 +151,47 @@
      * Callback function to receive the result of the createOrder operation.
      * @callback module:egoiApi/EcommerceApi~createOrderCallback
      * @param {String} error Error message, if any.
-     * @param {module:egoiSdk/AcceptedResponse} data The data returned by the service call.
+     * @param {module:egoisdk/AcceptedResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
      * Create order
-     * Creates a new order. If **contact_id** is specified, order will be atached to the contact, if the contact propreties are specified, we&#39;ll create the user, if its already in your list it will get the correct contact (***make sure you are sending atleast all configured list&#39;s unique fields***). This same logic is also applied to the **product_identifier**.
+     * Creates a new order. If **contact_id** is specified, order will be atached to the contact, if the contact propreties are specified, we'll create the user, if its already in your list it will get the correct contact (***make sure you are sending atleast all configured list's unique fields***). This same logic is also applied to the **product_identifier**.
      * @param {String} domain Domain
-     * @param {module:egoiSdk/CreateOrder} createOrder Parameters for the Orders
+     * @param {module:egoisdk/CreateOrder} createOrder Parameters for the Orders
      * @param {module:egoiApi/EcommerceApi~createOrderCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:egoiSdk/AcceptedResponse}
+     * data is of type: {@link module:egoisdk/AcceptedResponse}
      */
-    this.createOrder = function(domain, createOrder, callback) {
-      var postBody = createOrder;
-
+    createOrder(domain, createOrder, callback) {
+      let postBody = createOrder;
       // verify the required parameter 'domain' is set
       if (domain === undefined || domain === null) {
         throw new Error("Missing the required parameter 'domain' when calling createOrder");
       }
-
       // verify the required parameter 'createOrder' is set
       if (createOrder === undefined || createOrder === null) {
         throw new Error("Missing the required parameter 'createOrder' when calling createOrder");
       }
 
-
-      var pathParams = {
+      let pathParams = {
         'domain': domain
       };
-      var queryParams = {
+      let queryParams = {
       };
-      var collectionQueryParams = {
+      let headerParams = {
       };
-      var headerParams = {
-      };
-      var formParams = {
+      let formParams = {
       };
 
-      var authNames = ['Apikey'];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = AcceptedResponse;
-
+      let authNames = ['Apikey'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = AcceptedResponse;
       return this.apiClient.callApi(
         '/{domain}/orders', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
       );
     }
 
@@ -206,7 +199,7 @@
      * Callback function to receive the result of the createProduct operation.
      * @callback module:egoiApi/EcommerceApi~createProductCallback
      * @param {String} error Error message, if any.
-     * @param {module:egoiSdk/Product} data The data returned by the service call.
+     * @param {module:egoisdk/Product} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -214,45 +207,39 @@
      * Create new product
      * Creates a new product
      * @param {Number} catalogId ID of the Catalog
-     * @param {module:egoiSdk/ProductPostRequest} productPostRequest Parameters for the Product
+     * @param {module:egoisdk/ProductPostRequest} productPostRequest Parameters for the Product
      * @param {module:egoiApi/EcommerceApi~createProductCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:egoiSdk/Product}
+     * data is of type: {@link module:egoisdk/Product}
      */
-    this.createProduct = function(catalogId, productPostRequest, callback) {
-      var postBody = productPostRequest;
-
+    createProduct(catalogId, productPostRequest, callback) {
+      let postBody = productPostRequest;
       // verify the required parameter 'catalogId' is set
       if (catalogId === undefined || catalogId === null) {
         throw new Error("Missing the required parameter 'catalogId' when calling createProduct");
       }
-
       // verify the required parameter 'productPostRequest' is set
       if (productPostRequest === undefined || productPostRequest === null) {
         throw new Error("Missing the required parameter 'productPostRequest' when calling createProduct");
       }
 
-
-      var pathParams = {
+      let pathParams = {
         'catalog_id': catalogId
       };
-      var queryParams = {
+      let queryParams = {
       };
-      var collectionQueryParams = {
+      let headerParams = {
       };
-      var headerParams = {
-      };
-      var formParams = {
+      let formParams = {
       };
 
-      var authNames = ['Apikey'];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = Product;
-
+      let authNames = ['Apikey'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = Product;
       return this.apiClient.callApi(
         '/catalogs/{catalog_id}/products', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
       );
     }
 
@@ -270,36 +257,31 @@
      * @param {Number} catalogId ID of the Catalog
      * @param {module:egoiApi/EcommerceApi~deleteCatalogCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.deleteCatalog = function(catalogId, callback) {
-      var postBody = null;
-
+    deleteCatalog(catalogId, callback) {
+      let postBody = null;
       // verify the required parameter 'catalogId' is set
       if (catalogId === undefined || catalogId === null) {
         throw new Error("Missing the required parameter 'catalogId' when calling deleteCatalog");
       }
 
-
-      var pathParams = {
+      let pathParams = {
         'catalog_id': catalogId
       };
-      var queryParams = {
+      let queryParams = {
       };
-      var collectionQueryParams = {
+      let headerParams = {
       };
-      var headerParams = {
-      };
-      var formParams = {
+      let formParams = {
       };
 
-      var authNames = ['Apikey'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = null;
-
+      let authNames = ['Apikey'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
       return this.apiClient.callApi(
         '/catalogs/{catalog_id}', 'DELETE',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
       );
     }
 
@@ -318,42 +300,36 @@
      * @param {String} productIdentifier ID of the Product
      * @param {module:egoiApi/EcommerceApi~deleteProductCallback} callback The callback function, accepting three arguments: error, data, response
      */
-    this.deleteProduct = function(catalogId, productIdentifier, callback) {
-      var postBody = null;
-
+    deleteProduct(catalogId, productIdentifier, callback) {
+      let postBody = null;
       // verify the required parameter 'catalogId' is set
       if (catalogId === undefined || catalogId === null) {
         throw new Error("Missing the required parameter 'catalogId' when calling deleteProduct");
       }
-
       // verify the required parameter 'productIdentifier' is set
       if (productIdentifier === undefined || productIdentifier === null) {
         throw new Error("Missing the required parameter 'productIdentifier' when calling deleteProduct");
       }
 
-
-      var pathParams = {
+      let pathParams = {
         'catalog_id': catalogId,
         'product_identifier': productIdentifier
       };
-      var queryParams = {
+      let queryParams = {
       };
-      var collectionQueryParams = {
+      let headerParams = {
       };
-      var headerParams = {
-      };
-      var formParams = {
+      let formParams = {
       };
 
-      var authNames = ['Apikey'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = null;
-
+      let authNames = ['Apikey'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = null;
       return this.apiClient.callApi(
         '/catalogs/{catalog_id}/products/{product_identifier}', 'DELETE',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
       );
     }
 
@@ -361,7 +337,7 @@
      * Callback function to receive the result of the getAllCatalogs operation.
      * @callback module:egoiApi/EcommerceApi~getAllCatalogsCallback
      * @param {String} error Error message, if any.
-     * @param {module:egoiSdk/CatalogCollection} data The data returned by the service call.
+     * @param {module:egoisdk/CatalogCollection} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -369,32 +345,28 @@
      * Get all catalogs
      * Returns all catalogs
      * @param {module:egoiApi/EcommerceApi~getAllCatalogsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:egoiSdk/CatalogCollection}
+     * data is of type: {@link module:egoisdk/CatalogCollection}
      */
-    this.getAllCatalogs = function(callback) {
-      var postBody = null;
+    getAllCatalogs(callback) {
+      let postBody = null;
 
-
-      var pathParams = {
+      let pathParams = {
       };
-      var queryParams = {
+      let queryParams = {
       };
-      var collectionQueryParams = {
+      let headerParams = {
       };
-      var headerParams = {
-      };
-      var formParams = {
+      let formParams = {
       };
 
-      var authNames = ['Apikey'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = CatalogCollection;
-
+      let authNames = ['Apikey'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = CatalogCollection;
       return this.apiClient.callApi(
         '/catalogs', 'GET',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
       );
     }
 
@@ -402,7 +374,7 @@
      * Callback function to receive the result of the getAllProducts operation.
      * @callback module:egoiApi/EcommerceApi~getAllProductsCallback
      * @param {String} error Error message, if any.
-     * @param {module:egoiSdk/ProductCollection} data The data returned by the service call.
+     * @param {module:egoisdk/ProductCollection} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -411,46 +383,63 @@
      * Returns all products for the given catalog
      * @param {Number} catalogId ID of the Catalog
      * @param {Object} opts Optional parameters
-     * @param {String} opts.productIdentifier Product ID in your store
+     * @param {String} opts.productIdentifier Filter by product ID in your store
+     * @param {String} opts.name Filter by name of the product
+     * @param {String} opts.description Filter by description of the product
+     * @param {String} opts.sku Filter by Stock Keeping Unit
+     * @param {String} opts.upc Filter by Universal Product Code
+     * @param {String} opts.ean Filter by European Article Numbering
+     * @param {String} opts.gtin Filter by Global Trade Item Number
+     * @param {String} opts.mpn Filter by Manufacturer Part Number
+     * @param {Number} opts.price Filter by price of the product
+     * @param {Number} opts.salePrice Filter by sale price of the product
+     * @param {String} opts.brand Filter by brand of the product
+     * @param {Object.<String, module:egoisdk/GetAllProductsCustomAttributesParameter>} opts.customAttributes Filter by custom attributes of products<div><span class='sc-cJSrbW cWGDGi'> Example: </span> <span class='sc-uJMKN cTkJKI'> 'custom_attributes[alias]=value' </span></div>
      * @param {Number} opts.offset Element offset (starting at zero for the first element)
      * @param {Number} opts.limit Number of items to return (default to 10)
      * @param {module:egoiApi/EcommerceApi~getAllProductsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:egoiSdk/ProductCollection}
+     * data is of type: {@link module:egoisdk/ProductCollection}
      */
-    this.getAllProducts = function(catalogId, opts, callback) {
+    getAllProducts(catalogId, opts, callback) {
       opts = opts || {};
-      var postBody = null;
-
+      let postBody = null;
       // verify the required parameter 'catalogId' is set
       if (catalogId === undefined || catalogId === null) {
         throw new Error("Missing the required parameter 'catalogId' when calling getAllProducts");
       }
 
-
-      var pathParams = {
+      let pathParams = {
         'catalog_id': catalogId
       };
-      var queryParams = {
+      let queryParams = {
         'product_identifier': opts['productIdentifier'],
+        'name': opts['name'],
+        'description': opts['description'],
+        'sku': opts['sku'],
+        'upc': opts['upc'],
+        'ean': opts['ean'],
+        'gtin': opts['gtin'],
+        'mpn': opts['mpn'],
+        'price': opts['price'],
+        'sale_price': opts['salePrice'],
+        'brand': opts['brand'],
+        'custom_attributes': opts['customAttributes'],
         'offset': opts['offset'],
-        'limit': opts['limit'],
+        'limit': opts['limit']
       };
-      var collectionQueryParams = {
+      let headerParams = {
       };
-      var headerParams = {
-      };
-      var formParams = {
+      let formParams = {
       };
 
-      var authNames = ['Apikey'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = ProductCollection;
-
+      let authNames = ['Apikey'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = ProductCollection;
       return this.apiClient.callApi(
         '/catalogs/{catalog_id}/products', 'GET',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
       );
     }
 
@@ -458,7 +447,7 @@
      * Callback function to receive the result of the getProduct operation.
      * @callback module:egoiApi/EcommerceApi~getProductCallback
      * @param {String} error Error message, if any.
-     * @param {module:egoiSdk/Product} data The data returned by the service call.
+     * @param {module:egoisdk/Product} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -468,44 +457,38 @@
      * @param {Number} catalogId ID of the Catalog
      * @param {String} productIdentifier ID of the Product
      * @param {module:egoiApi/EcommerceApi~getProductCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:egoiSdk/Product}
+     * data is of type: {@link module:egoisdk/Product}
      */
-    this.getProduct = function(catalogId, productIdentifier, callback) {
-      var postBody = null;
-
+    getProduct(catalogId, productIdentifier, callback) {
+      let postBody = null;
       // verify the required parameter 'catalogId' is set
       if (catalogId === undefined || catalogId === null) {
         throw new Error("Missing the required parameter 'catalogId' when calling getProduct");
       }
-
       // verify the required parameter 'productIdentifier' is set
       if (productIdentifier === undefined || productIdentifier === null) {
         throw new Error("Missing the required parameter 'productIdentifier' when calling getProduct");
       }
 
-
-      var pathParams = {
+      let pathParams = {
         'catalog_id': catalogId,
         'product_identifier': productIdentifier
       };
-      var queryParams = {
+      let queryParams = {
       };
-      var collectionQueryParams = {
+      let headerParams = {
       };
-      var headerParams = {
-      };
-      var formParams = {
+      let formParams = {
       };
 
-      var authNames = ['Apikey'];
-      var contentTypes = [];
-      var accepts = ['application/json'];
-      var returnType = Product;
-
+      let authNames = ['Apikey'];
+      let contentTypes = [];
+      let accepts = ['application/json'];
+      let returnType = Product;
       return this.apiClient.callApi(
         '/catalogs/{catalog_id}/products/{product_identifier}', 'GET',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
       );
     }
 
@@ -513,53 +496,47 @@
      * Callback function to receive the result of the importProducts operation.
      * @callback module:egoiApi/EcommerceApi~importProductsCallback
      * @param {String} error Error message, if any.
-     * @param {module:egoiSdk/AcceptedResponse} data The data returned by the service call.
+     * @param {module:egoisdk/AcceptedResponse} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
     /**
      * Import products
-     * Imports a collection of products&lt;/br&gt;      **DISCLAIMER:** stream limits applied. [view here](#section/Stream-Limits &#39;Stream Limits&#39;)
+     * Imports a collection of products</br>      **DISCLAIMER:** stream limits applied. [view here](#section/Stream-Limits 'Stream Limits')
      * @param {Number} catalogId ID of the Catalog
-     * @param {module:egoiSdk/ProductBulkRequest} productBulkRequest Parameters for the Product
+     * @param {module:egoisdk/ProductBulkRequest} productBulkRequest Parameters for the Product
      * @param {module:egoiApi/EcommerceApi~importProductsCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:egoiSdk/AcceptedResponse}
+     * data is of type: {@link module:egoisdk/AcceptedResponse}
      */
-    this.importProducts = function(catalogId, productBulkRequest, callback) {
-      var postBody = productBulkRequest;
-
+    importProducts(catalogId, productBulkRequest, callback) {
+      let postBody = productBulkRequest;
       // verify the required parameter 'catalogId' is set
       if (catalogId === undefined || catalogId === null) {
         throw new Error("Missing the required parameter 'catalogId' when calling importProducts");
       }
-
       // verify the required parameter 'productBulkRequest' is set
       if (productBulkRequest === undefined || productBulkRequest === null) {
         throw new Error("Missing the required parameter 'productBulkRequest' when calling importProducts");
       }
 
-
-      var pathParams = {
+      let pathParams = {
         'catalog_id': catalogId
       };
-      var queryParams = {
+      let queryParams = {
       };
-      var collectionQueryParams = {
+      let headerParams = {
       };
-      var headerParams = {
-      };
-      var formParams = {
+      let formParams = {
       };
 
-      var authNames = ['Apikey'];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = AcceptedResponse;
-
+      let authNames = ['Apikey'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = AcceptedResponse;
       return this.apiClient.callApi(
         '/catalogs/{catalog_id}/products/actions/import', 'POST',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
       );
     }
 
@@ -567,7 +544,7 @@
      * Callback function to receive the result of the updateProduct operation.
      * @callback module:egoiApi/EcommerceApi~updateProductCallback
      * @param {String} error Error message, if any.
-     * @param {module:egoiSdk/Product} data The data returned by the service call.
+     * @param {module:egoisdk/Product} data The data returned by the service call.
      * @param {String} response The complete HTTP response.
      */
 
@@ -576,54 +553,46 @@
      * Updates a product
      * @param {Number} catalogId ID of the Catalog
      * @param {String} productIdentifier ID of the Product
-     * @param {module:egoiSdk/ProductPatchRequest} productPatchRequest Parameters for the product
+     * @param {module:egoisdk/ProductPatchRequest} productPatchRequest Parameters for the product
      * @param {module:egoiApi/EcommerceApi~updateProductCallback} callback The callback function, accepting three arguments: error, data, response
-     * data is of type: {@link module:egoiSdk/Product}
+     * data is of type: {@link module:egoisdk/Product}
      */
-    this.updateProduct = function(catalogId, productIdentifier, productPatchRequest, callback) {
-      var postBody = productPatchRequest;
-
+    updateProduct(catalogId, productIdentifier, productPatchRequest, callback) {
+      let postBody = productPatchRequest;
       // verify the required parameter 'catalogId' is set
       if (catalogId === undefined || catalogId === null) {
         throw new Error("Missing the required parameter 'catalogId' when calling updateProduct");
       }
-
       // verify the required parameter 'productIdentifier' is set
       if (productIdentifier === undefined || productIdentifier === null) {
         throw new Error("Missing the required parameter 'productIdentifier' when calling updateProduct");
       }
-
       // verify the required parameter 'productPatchRequest' is set
       if (productPatchRequest === undefined || productPatchRequest === null) {
         throw new Error("Missing the required parameter 'productPatchRequest' when calling updateProduct");
       }
 
-
-      var pathParams = {
+      let pathParams = {
         'catalog_id': catalogId,
         'product_identifier': productIdentifier
       };
-      var queryParams = {
+      let queryParams = {
       };
-      var collectionQueryParams = {
+      let headerParams = {
       };
-      var headerParams = {
-      };
-      var formParams = {
+      let formParams = {
       };
 
-      var authNames = ['Apikey'];
-      var contentTypes = ['application/json'];
-      var accepts = ['application/json'];
-      var returnType = Product;
-
+      let authNames = ['Apikey'];
+      let contentTypes = ['application/json'];
+      let accepts = ['application/json'];
+      let returnType = Product;
       return this.apiClient.callApi(
         '/catalogs/{catalog_id}/products/{product_identifier}', 'PATCH',
-        pathParams, queryParams, collectionQueryParams, headerParams, formParams, postBody,
-        authNames, contentTypes, accepts, returnType, callback
+        pathParams, queryParams, headerParams, formParams, postBody,
+        authNames, contentTypes, accepts, returnType, null, callback
       );
     }
-  };
 
-  return exports;
-}));
+
+}

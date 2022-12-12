@@ -1,4 +1,4 @@
-# egoiSdk.TagsApi
+# egoisdk.TagsApi
 
 All URIs are relative to *https://api.egoiapp.com*
 
@@ -10,8 +10,9 @@ Method | HTTP request | Description
 [**updateTag**](TagsApi.md#updateTag) | **PUT** /tags/{tag_id} | Update a specific tag
 
 
-<a name="createTag"></a>
-# **createTag**
+
+## createTag
+
 > Tag createTag(tagRequest)
 
 Create new tag
@@ -19,28 +20,29 @@ Create new tag
 Create a new tag
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.TagsApi();
-var tagRequest = new egoiSdk.TagRequest(); // TagRequest | Parameters for the Tag
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.TagsApi();
+let tagRequest = new egoisdk.TagRequest(); // TagRequest | Parameters for the Tag
+apiInstance.createTag(tagRequest, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.createTag(tagRequest, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -56,11 +58,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="deleteTag"></a>
-# **deleteTag**
+
+## deleteTag
+
 > deleteTag(tagId)
 
 Remove tag
@@ -68,28 +71,29 @@ Remove tag
 Remove tag information given its ID
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.TagsApi();
-var tagId = 56; // Number | ID of the Tag
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.TagsApi();
+let tagId = 56; // Number | ID of the Tag
+apiInstance.deleteTag(tagId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully.');
   }
-};
-apiInstance.deleteTag(tagId, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -105,11 +109,12 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getAllTags"></a>
-# **getAllTags**
+
+## getAllTags
+
 > TagCollection getAllTags(opts)
 
 Get all tags
@@ -117,33 +122,34 @@ Get all tags
 Returns all tags
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.TagsApi();
-var opts = {
+let apiInstance = new egoisdk.TagsApi();
+let opts = {
   'offset': 56, // Number | Element offset (starting at zero for the first element)
   'limit': 10, // Number | Number of items to return
   'order': "'desc'", // String | Type of order
   'orderBy': "'tag_id'" // String | Reference attribute to order tags
 };
-var callback = function(error, data, response) {
+apiInstance.getAllTags(opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getAllTags(opts, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -162,11 +168,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="updateTag"></a>
-# **updateTag**
+
+## updateTag
+
 > Tag updateTag(tagId, tagRequest)
 
 Update a specific tag
@@ -174,29 +181,30 @@ Update a specific tag
 Update a tag
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.TagsApi();
-var tagId = 56; // Number | ID of the Tag
-var tagRequest = new egoiSdk.TagRequest(); // TagRequest | Parameters for the tag
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.TagsApi();
+let tagId = 56; // Number | ID of the Tag
+let tagRequest = new egoisdk.TagRequest(); // TagRequest | Parameters for the tag
+apiInstance.updateTag(tagId, tagRequest, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.updateTag(tagId, tagRequest, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -213,6 +221,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 

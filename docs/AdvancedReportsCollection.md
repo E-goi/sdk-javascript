@@ -1,6 +1,7 @@
-# egoiSdk.AdvancedReportsCollection
+# egoisdk.AdvancedReportsCollection
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **totalItems** | **Number** | Total advanced reports | [optional] 

@@ -1,6 +1,7 @@
-# egoiSdk.ReportCampaignsSpecific
+# egoisdk.ReportCampaignsSpecific
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **listId** | **Number** |  | 
@@ -8,7 +9,7 @@ Name | Type | Description | Notes
 **data** | **[String]** | Array of campaign hashes | 
 
 
-<a name="TypeEnum"></a>
+
 ## Enum: TypeEnum
 
 

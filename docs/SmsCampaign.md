@@ -1,6 +1,7 @@
-# egoiSdk.SmsCampaign
+# egoisdk.SmsCampaign
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **listId** | **Number** |  | 

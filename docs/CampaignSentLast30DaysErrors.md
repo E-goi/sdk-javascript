@@ -1,12 +1,13 @@
-# egoiSdk.CampaignSentLast30DaysErrors
+# egoisdk.CampaignSentLast30DaysErrors
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **campaignSentLast30Days** | **String** | Occurs when the campaign was sent in the last 30 days | [optional] 
 
 
-<a name="CampaignSentLast30DaysEnum"></a>
+
 ## Enum: CampaignSentLast30DaysEnum
 
 

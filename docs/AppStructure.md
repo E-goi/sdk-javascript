@@ -1,6 +1,7 @@
-# egoiSdk.AppStructure
+# egoisdk.AppStructure
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **appId** | **String** | The ID of the app. | [optional] 

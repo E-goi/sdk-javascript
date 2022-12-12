@@ -1,13 +1,16 @@
-# egoiSdk.CampaignEmailContentFile
+# egoisdk.CampaignEmailContentFile
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **String** |  | [optional] 
-**file** | **String** | Campaign file | [optional] 
+**type** | **String** |  | 
+**file** | **String** | Campaign file | 
+**plainText** | **String** | Plain text for the campaign | [optional] 
+**snippet** | **String** | Snippet text for the campaign | [optional] 
 
 
-<a name="TypeEnum"></a>
+
 ## Enum: TypeEnum
 
 

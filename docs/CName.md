@@ -1,14 +1,15 @@
-# egoiSdk.CName
+# egoisdk.CName
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**cnameId** | **Number** |  | [optional] 
+**cnameId** | **Number** |  | [optional] [readonly] 
 **value** | **String** | CName value | [optional] 
-**status** | **String** | CName status | [optional] 
+**status** | **String** | CName status | [optional] [readonly] 
 
 
-<a name="StatusEnum"></a>
+
 ## Enum: StatusEnum
 
 

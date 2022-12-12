@@ -1,4 +1,4 @@
-# egoiSdk.Language
+# egoisdk.Language
 
 ## Enum
 

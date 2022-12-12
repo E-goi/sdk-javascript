@@ -1,6 +1,7 @@
-# egoiSdk.WebPushRssCampaign
+# egoisdk.WebPushRssCampaign
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **siteId** | **Number** |  | 

@@ -1,6 +1,7 @@
-# egoiSdk.RemoveResponse
+# egoisdk.RemoveResponse
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **success** | **[String]** |  | [optional] 

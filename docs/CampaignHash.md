@@ -1,8 +1,9 @@
-# egoiSdk.CampaignHash
+# egoisdk.CampaignHash
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**campaignHash** | **String** |  | [optional] 
+**campaignHash** | **String** |  | [optional] [readonly] 
 
 

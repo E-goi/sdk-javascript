@@ -1,6 +1,7 @@
-# egoiSdk.EmailEventsListStatsFields
+# egoisdk.EmailEventsListStatsFields
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **opens** | **Boolean** | True to include opens, false otherwise | 

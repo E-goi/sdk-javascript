@@ -1,6 +1,7 @@
-# egoiSdk.SubscriptionsListStatsFields
+# egoisdk.SubscriptionsListStatsFields
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **subscriptionMethod** | **Boolean** | True to include subscription method, false otherwise | 

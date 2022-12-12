@@ -1,9 +1,10 @@
-# egoiSdk.AdvancedReport
+# egoisdk.AdvancedReport
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**advancedReportId** | **Number** |  | [optional] 
+**advancedReportId** | **Number** |  | [optional] [readonly] 
 **title** | **String** | Advanced report title | [optional] 
 **hash** | **String** | Advanced report hash | [optional] 
 **file** | **String** | Advanced report file | [optional] 
@@ -11,7 +12,7 @@ Name | Type | Description | Notes
 **created** | **Date** |  | [optional] 
 
 
-<a name="StatusEnum"></a>
+
 ## Enum: StatusEnum
 
 

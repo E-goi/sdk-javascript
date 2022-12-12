@@ -1,16 +1,23 @@
-# egoiSdk.TagSegment
+# egoisdk.TagSegment
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **String** | Type of segment | [optional] 
-**created** | **Date** |  | [optional] 
-**updated** | **Date** |  | [optional] 
+**type** | **String** | Type of segment | [optional] [readonly] 
+**created** | **Date** |  | [optional] [readonly] 
+**updated** | **Date** |  | [optional] [readonly] 
+**segmentId** | **String** |  | 
+**name** | **String** | Name of the segment | [optional] 
 
 
-<a name="TypeEnum"></a>
+
 ## Enum: TypeEnum
 
+
+* `auto` (value: `"auto"`)
+
+* `saved` (value: `"saved"`)
 
 * `tag` (value: `"tag"`)
 

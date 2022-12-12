@@ -1,4 +1,4 @@
-# egoiSdk.WebhookActionSchema
+# egoisdk.WebhookActionSchema
 
 ## Enum
 
@@ -39,6 +39,8 @@
 
 * `subscription` (value: `"subscription"`)
 
+* `edit_subscription` (value: `"edit_subscription"`)
+
 * `resubscription` (value: `"resubscription"`)
 
 * `facebook_like` (value: `"facebook_like"`)
@@ -66,5 +68,13 @@
 * `push_error` (value: `"push_error"`)
 
 * `push_canceled` (value: `"push_canceled"`)
+
+* `new_order` (value: `"new_order"`)
+
+* `cart_update` (value: `"cart_update"`)
+
+* `goal_conversion` (value: `"goal_conversion"`)
+
+* `product_view` (value: `"product_view"`)
 
 

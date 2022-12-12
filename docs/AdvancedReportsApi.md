@@ -1,4 +1,4 @@
-# egoiSdk.AdvancedReportsApi
+# egoisdk.AdvancedReportsApi
 
 All URIs are relative to *https://api.egoiapp.com*
 
@@ -18,8 +18,9 @@ Method | HTTP request | Description
 [**getAllAdvancedReports**](AdvancedReportsApi.md#getAllAdvancedReports) | **GET** /reports/advanced | Get all advanced reports
 
 
-<a name="generateEmailBouncesReport"></a>
-# **generateEmailBouncesReport**
+
+## generateEmailBouncesReport
+
 > AcceptedResponse generateEmailBouncesReport(generateEmailBouncesReport)
 
 Generate email bounces report
@@ -27,28 +28,29 @@ Generate email bounces report
 Generates a new email bounces report
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.AdvancedReportsApi();
-var generateEmailBouncesReport = new egoiSdk.GenerateEmailBouncesReport(); // GenerateEmailBouncesReport | Parameters for the email bounces report
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.AdvancedReportsApi();
+let generateEmailBouncesReport = new egoisdk.GenerateEmailBouncesReport(); // GenerateEmailBouncesReport | Parameters for the email bounces report
+apiInstance.generateEmailBouncesReport(generateEmailBouncesReport, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.generateEmailBouncesReport(generateEmailBouncesReport, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -64,11 +66,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="generateEmailClicksByContactReport"></a>
-# **generateEmailClicksByContactReport**
+
+## generateEmailClicksByContactReport
+
 > AcceptedResponse generateEmailClicksByContactReport(generateEmailClicksByContactReport)
 
 Generate email clicks by contact report
@@ -76,28 +79,29 @@ Generate email clicks by contact report
 Generates a new email clicks by contact report
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.AdvancedReportsApi();
-var generateEmailClicksByContactReport = new egoiSdk.GenerateEmailClicksByContactReport(); // GenerateEmailClicksByContactReport | Parameters for the email clicks by contact report
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.AdvancedReportsApi();
+let generateEmailClicksByContactReport = new egoisdk.GenerateEmailClicksByContactReport(); // GenerateEmailClicksByContactReport | Parameters for the email clicks by contact report
+apiInstance.generateEmailClicksByContactReport(generateEmailClicksByContactReport, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.generateEmailClicksByContactReport(generateEmailClicksByContactReport, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -113,11 +117,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="generateEmailClicksByUrlReport"></a>
-# **generateEmailClicksByUrlReport**
+
+## generateEmailClicksByUrlReport
+
 > AcceptedResponse generateEmailClicksByUrlReport(generateEmailClicksByUrlReport)
 
 Generate email clicks by URL report
@@ -125,28 +130,29 @@ Generate email clicks by URL report
 Generates a new email clicks by URL report
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.AdvancedReportsApi();
-var generateEmailClicksByUrlReport = new egoiSdk.GenerateEmailClicksByUrlReport(); // GenerateEmailClicksByUrlReport | Parameters for the email clicks by URL report
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.AdvancedReportsApi();
+let generateEmailClicksByUrlReport = new egoisdk.GenerateEmailClicksByUrlReport(); // GenerateEmailClicksByUrlReport | Parameters for the email clicks by URL report
+apiInstance.generateEmailClicksByUrlReport(generateEmailClicksByUrlReport, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.generateEmailClicksByUrlReport(generateEmailClicksByUrlReport, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -162,11 +168,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="generateEmailEventsReport"></a>
-# **generateEmailEventsReport**
+
+## generateEmailEventsReport
+
 > AcceptedResponse generateEmailEventsReport(generateEmailEventsReport)
 
 Generate email events report
@@ -174,28 +181,29 @@ Generate email events report
 Generates a new email events report
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.AdvancedReportsApi();
-var generateEmailEventsReport = new egoiSdk.GenerateEmailEventsReport(); // GenerateEmailEventsReport | Parameters for the email events report
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.AdvancedReportsApi();
+let generateEmailEventsReport = new egoisdk.GenerateEmailEventsReport(); // GenerateEmailEventsReport | Parameters for the email events report
+apiInstance.generateEmailEventsReport(generateEmailEventsReport, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.generateEmailEventsReport(generateEmailEventsReport, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -211,11 +219,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="generateEmailSmsReport"></a>
-# **generateEmailSmsReport**
+
+## generateEmailSmsReport
+
 > AcceptedResponse generateEmailSmsReport(generateSmsBouncesReport)
 
 Generate SMS bounces report
@@ -223,28 +232,29 @@ Generate SMS bounces report
 Generates a new SMS bounces report
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.AdvancedReportsApi();
-var generateSmsBouncesReport = new egoiSdk.GenerateSmsBouncesReport(); // GenerateSmsBouncesReport | Parameters for the SMS bounces report
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.AdvancedReportsApi();
+let generateSmsBouncesReport = new egoisdk.GenerateSmsBouncesReport(); // GenerateSmsBouncesReport | Parameters for the SMS bounces report
+apiInstance.generateEmailSmsReport(generateSmsBouncesReport, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.generateEmailSmsReport(generateSmsBouncesReport, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -260,11 +270,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="generateEmailUnsubscriptionsReport"></a>
-# **generateEmailUnsubscriptionsReport**
+
+## generateEmailUnsubscriptionsReport
+
 > AcceptedResponse generateEmailUnsubscriptionsReport(generateEmailUnsubscriptionsReport)
 
 Generate email unsubscriptions report
@@ -272,28 +283,29 @@ Generate email unsubscriptions report
 Generates a new email unsubscriptions report
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.AdvancedReportsApi();
-var generateEmailUnsubscriptionsReport = new egoiSdk.GenerateEmailUnsubscriptionsReport(); // GenerateEmailUnsubscriptionsReport | Parameters for the email unsubscriptions report
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.AdvancedReportsApi();
+let generateEmailUnsubscriptionsReport = new egoisdk.GenerateEmailUnsubscriptionsReport(); // GenerateEmailUnsubscriptionsReport | Parameters for the email unsubscriptions report
+apiInstance.generateEmailUnsubscriptionsReport(generateEmailUnsubscriptionsReport, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.generateEmailUnsubscriptionsReport(generateEmailUnsubscriptionsReport, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -309,11 +321,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="generateFormAnswersReport"></a>
-# **generateFormAnswersReport**
+
+## generateFormAnswersReport
+
 > AcceptedResponse generateFormAnswersReport(generateFormAnswersReport)
 
 Generate form answers report
@@ -321,28 +334,29 @@ Generate form answers report
 Generates a new form answers report
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.AdvancedReportsApi();
-var generateFormAnswersReport = new egoiSdk.GenerateFormAnswersReport(); // GenerateFormAnswersReport | Parameters for the form answers report
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.AdvancedReportsApi();
+let generateFormAnswersReport = new egoisdk.GenerateFormAnswersReport(); // GenerateFormAnswersReport | Parameters for the form answers report
+apiInstance.generateFormAnswersReport(generateFormAnswersReport, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.generateFormAnswersReport(generateFormAnswersReport, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -358,11 +372,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="generateSendsReport"></a>
-# **generateSendsReport**
+
+## generateSendsReport
+
 > AcceptedResponse generateSendsReport(generateSendsReport)
 
 Generate sends report
@@ -370,28 +385,29 @@ Generate sends report
 Generates a new sends report
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.AdvancedReportsApi();
-var generateSendsReport = new egoiSdk.GenerateSendsReport(); // GenerateSendsReport | Parameters for the sends report
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.AdvancedReportsApi();
+let generateSendsReport = new egoisdk.GenerateSendsReport(); // GenerateSendsReport | Parameters for the sends report
+apiInstance.generateSendsReport(generateSendsReport, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.generateSendsReport(generateSendsReport, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -407,11 +423,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="generateSmsEventsReport"></a>
-# **generateSmsEventsReport**
+
+## generateSmsEventsReport
+
 > AcceptedResponse generateSmsEventsReport(generateSmsEventsReport)
 
 Generate SMS events report
@@ -419,28 +436,29 @@ Generate SMS events report
 Generates a new SMS events report
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.AdvancedReportsApi();
-var generateSmsEventsReport = new egoiSdk.GenerateSmsEventsReport(); // GenerateSmsEventsReport | Parameters for the SMS events report
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.AdvancedReportsApi();
+let generateSmsEventsReport = new egoisdk.GenerateSmsEventsReport(); // GenerateSmsEventsReport | Parameters for the SMS events report
+apiInstance.generateSmsEventsReport(generateSmsEventsReport, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.generateSmsEventsReport(generateSmsEventsReport, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -456,11 +474,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="generateSubscriptionsReport"></a>
-# **generateSubscriptionsReport**
+
+## generateSubscriptionsReport
+
 > AcceptedResponse generateSubscriptionsReport(generateSubscriptionsReport)
 
 Generate subscriptions report
@@ -468,28 +487,29 @@ Generate subscriptions report
 Generates a new subscriptions report
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.AdvancedReportsApi();
-var generateSubscriptionsReport = new egoiSdk.GenerateSubscriptionsReport(); // GenerateSubscriptionsReport | Parameters for the subscriptions report
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.AdvancedReportsApi();
+let generateSubscriptionsReport = new egoisdk.GenerateSubscriptionsReport(); // GenerateSubscriptionsReport | Parameters for the subscriptions report
+apiInstance.generateSubscriptionsReport(generateSubscriptionsReport, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.generateSubscriptionsReport(generateSubscriptionsReport, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -505,11 +525,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="generateUnsubscriptionsReport"></a>
-# **generateUnsubscriptionsReport**
+
+## generateUnsubscriptionsReport
+
 > AcceptedResponse generateUnsubscriptionsReport(generateUnsubscriptionsReport)
 
 Generate unsubscriptions report
@@ -517,28 +538,29 @@ Generate unsubscriptions report
 Generates a new unsubscriptions report
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.AdvancedReportsApi();
-var generateUnsubscriptionsReport = new egoiSdk.GenerateUnsubscriptionsReport(); // GenerateUnsubscriptionsReport | Parameters for the unsubscriptions report
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.AdvancedReportsApi();
+let generateUnsubscriptionsReport = new egoisdk.GenerateUnsubscriptionsReport(); // GenerateUnsubscriptionsReport | Parameters for the unsubscriptions report
+apiInstance.generateUnsubscriptionsReport(generateUnsubscriptionsReport, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.generateUnsubscriptionsReport(generateUnsubscriptionsReport, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -554,11 +576,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="getAllAdvancedReports"></a>
-# **getAllAdvancedReports**
+
+## getAllAdvancedReports
+
 > AdvancedReportsCollection getAllAdvancedReports(opts)
 
 Get all advanced reports
@@ -566,17 +589,18 @@ Get all advanced reports
 Returns all advanced reports
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.AdvancedReportsApi();
-var opts = {
+let apiInstance = new egoisdk.AdvancedReportsApi();
+let opts = {
   'status': "status_example", // String | Advanced report status
   'title': "title_example", // String | Advanced report title
   'createdMin': new Date("2013-10-20T19:20:30+01:00"), // Date | Created initial date
@@ -586,17 +610,17 @@ var opts = {
   'order': "'desc'", // String | Type of order
   'orderBy': "'advanced_report_id'" // String | Reference attribute to order the advanced reports
 };
-var callback = function(error, data, response) {
+apiInstance.getAllAdvancedReports(opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getAllAdvancedReports(opts, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -619,6 +643,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 

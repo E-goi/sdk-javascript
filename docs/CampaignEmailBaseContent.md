@@ -1,6 +1,7 @@
-# egoiSdk.CampaignEmailBaseContent
+# egoisdk.CampaignEmailBaseContent
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **plainText** | **String** | Plain text for the campaign | [optional] 

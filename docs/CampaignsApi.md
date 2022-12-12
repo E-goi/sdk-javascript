@@ -1,4 +1,4 @@
-# egoiSdk.CampaignsApi
+# egoisdk.CampaignsApi
 
 All URIs are relative to *https://api.egoiapp.com*
 
@@ -8,8 +8,9 @@ Method | HTTP request | Description
 [**getAllCampaigns**](CampaignsApi.md#getAllCampaigns) | **GET** /campaigns | Get all Campaigns
 
 
-<a name="deleteCampaigns"></a>
-# **deleteCampaigns**
+
+## deleteCampaigns
+
 > deleteCampaigns(campaignHash)
 
 Remove Campaign
@@ -17,28 +18,29 @@ Remove Campaign
 Remove campaign information given its ID
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.CampaignsApi();
-var campaignHash = "campaignHash_example"; // String | ID of the Campaign
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.CampaignsApi();
+let campaignHash = "campaignHash_example"; // String | ID of the Campaign
+apiInstance.deleteCampaigns(campaignHash, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully.');
   }
-};
-apiInstance.deleteCampaigns(campaignHash, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -54,11 +56,12 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getAllCampaigns"></a>
-# **getAllCampaigns**
+
+## getAllCampaigns
+
 > CampaignsCollection getAllCampaigns(opts)
 
 Get all Campaigns
@@ -66,17 +69,18 @@ Get all Campaigns
 Returns all campaigns
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.CampaignsApi();
-var opts = {
+let apiInstance = new egoisdk.CampaignsApi();
+let opts = {
   'channel': "channel_example", // String | Channel of the campaign
   'campaignHash': "campaignHash_example", // String | Hash of the campaign
   'listId': 56, // Number | ID of the list where the campaign belongs
@@ -88,28 +92,28 @@ var opts = {
   'createdMax': new Date("2013-10-20T19:20:30+01:00"), // Date | Created finish
   'updatedMin': new Date("2013-10-20T19:20:30+01:00"), // Date | Updated initial
   'updatedMax': new Date("2013-10-20T19:20:30+01:00"), // Date | Updated finish
-  'startDateMin': new Date("2013-10-20"), // Date | Start date initial
-  'startDateMax': new Date("2013-10-20"), // Date | Start date finish
-  'endDateMin': new Date("2013-10-20"), // Date | End Date initial
-  'endDateMax': new Date("2013-10-20"), // Date | End Date finish
-  'scheduleDateMin': new Date("2013-10-20"), // Date | Schedule Date initial
-  'scheduleDateMax': new Date("2013-10-20"), // Date | Schedule Date finish
+  'startDateMin': new Date("2013-10-20T19:20:30+01:00"), // Date | Start date initial
+  'startDateMax': new Date("2013-10-20T19:20:30+01:00"), // Date | Start date finish
+  'endDateMin': new Date("2013-10-20T19:20:30+01:00"), // Date | End Date initial
+  'endDateMax': new Date("2013-10-20T19:20:30+01:00"), // Date | End Date finish
+  'scheduleDateMin': new Date("2013-10-20T19:20:30+01:00"), // Date | Schedule Date initial
+  'scheduleDateMax': new Date("2013-10-20T19:20:30+01:00"), // Date | Schedule Date finish
   'offset': 56, // Number | Element offset (starting at zero for the first element)
   'limit': 10, // Number | Number of items to return
   'order': "'desc'", // String | Type of order
   'orderBy': "'created'" // String | Reference attribute to order campaigns
 };
-var callback = function(error, data, response) {
+apiInstance.getAllCampaigns(opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getAllCampaigns(opts, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -145,6 +149,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 

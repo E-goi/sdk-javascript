@@ -1,12 +1,13 @@
-# egoiSdk.InvalidSegmentTypeErrors
+# egoisdk.InvalidSegmentTypeErrors
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **invalidSegmentType** | **String** | Occurs when the segment type is invalid | [optional] 
 
 
-<a name="InvalidSegmentTypeEnum"></a>
+
 ## Enum: InvalidSegmentTypeEnum
 
 

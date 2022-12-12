@@ -1,6 +1,7 @@
-# egoiSdk.ProductCustomAttributes
+# egoisdk.ProductCustomAttributes
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **alias** | **String** | Custom attribute key (lower case without spaces) | [optional] 

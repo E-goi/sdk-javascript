@@ -1,6 +1,7 @@
-# egoiSdk.CampaignSmartSmsImport
+# egoisdk.CampaignSmartSmsImport
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **type** | **String** |  | 
@@ -8,7 +9,7 @@ Name | Type | Description | Notes
 **pageInternalName** | **String** | Smart SMS page name | [optional] 
 
 
-<a name="TypeEnum"></a>
+
 ## Enum: TypeEnum
 
 

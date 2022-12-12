@@ -1,4 +1,4 @@
-# egoiSdk.OperationsApi
+# egoisdk.OperationsApi
 
 All URIs are relative to *https://api.egoiapp.com*
 
@@ -11,8 +11,9 @@ Method | HTTP request | Description
 [**getAllOperations**](OperationsApi.md#getAllOperations) | **GET** /operations | Get all queued operations
 
 
-<a name="actionApproveOperation"></a>
-# **actionApproveOperation**
+
+## actionApproveOperation
+
 > OperationActionResponse actionApproveOperation(operationActionRequest)
 
 Approve operation
@@ -20,28 +21,29 @@ Approve operation
 Approves an operation
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.OperationsApi();
-var operationActionRequest = new egoiSdk.OperationActionRequest(); // OperationActionRequest | Parameters for the request
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.OperationsApi();
+let operationActionRequest = new egoisdk.OperationActionRequest(); // OperationActionRequest | Parameters for the request
+apiInstance.actionApproveOperation(operationActionRequest, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.actionApproveOperation(operationActionRequest, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -57,11 +59,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="actionCancelOperation"></a>
-# **actionCancelOperation**
+
+## actionCancelOperation
+
 > OperationActionResponse actionCancelOperation(operationActionRequest)
 
 Cancel operation
@@ -69,28 +72,29 @@ Cancel operation
 Cancels an operation
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.OperationsApi();
-var operationActionRequest = new egoiSdk.OperationActionRequest(); // OperationActionRequest | Parameters for the request
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.OperationsApi();
+let operationActionRequest = new egoisdk.OperationActionRequest(); // OperationActionRequest | Parameters for the request
+apiInstance.actionCancelOperation(operationActionRequest, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.actionCancelOperation(operationActionRequest, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -106,11 +110,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="actionPauseOperation"></a>
-# **actionPauseOperation**
+
+## actionPauseOperation
+
 > OperationActionResponse actionPauseOperation(operationActionRequest)
 
 Pause operation
@@ -118,28 +123,29 @@ Pause operation
 Pauses an operation
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.OperationsApi();
-var operationActionRequest = new egoiSdk.OperationActionRequest(); // OperationActionRequest | Parameters for the request
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.OperationsApi();
+let operationActionRequest = new egoisdk.OperationActionRequest(); // OperationActionRequest | Parameters for the request
+apiInstance.actionPauseOperation(operationActionRequest, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.actionPauseOperation(operationActionRequest, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -155,11 +161,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="actionResumeOperation"></a>
-# **actionResumeOperation**
+
+## actionResumeOperation
+
 > OperationActionResponse actionResumeOperation(operationActionRequest)
 
 Resume operation
@@ -167,28 +174,29 @@ Resume operation
 Resumes an operation
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.OperationsApi();
-var operationActionRequest = new egoiSdk.OperationActionRequest(); // OperationActionRequest | Parameters for the request
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.OperationsApi();
+let operationActionRequest = new egoisdk.OperationActionRequest(); // OperationActionRequest | Parameters for the request
+apiInstance.actionResumeOperation(operationActionRequest, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.actionResumeOperation(operationActionRequest, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -204,11 +212,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="getAllOperations"></a>
-# **getAllOperations**
+
+## getAllOperations
+
 > OperationsCollection getAllOperations(opts)
 
 Get all queued operations
@@ -216,17 +225,18 @@ Get all queued operations
 Returns all operations in queue
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.OperationsApi();
-var opts = {
+let apiInstance = new egoisdk.OperationsApi();
+let opts = {
   'type': "type_example", // String | Operation type
   'status': "status_example", // String | Operation state
   'offset': 56, // Number | Element offset (starting at zero for the first element)
@@ -234,17 +244,17 @@ var opts = {
   'order': "'desc'", // String | Type of order
   'orderBy': "orderBy_example" // String | Reference attribute to order operations
 };
-var callback = function(error, data, response) {
+apiInstance.getAllOperations(opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getAllOperations(opts, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -265,6 +275,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 

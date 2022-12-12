@@ -1,6 +1,7 @@
-# egoiSdk.AbstractSendEmail
+# egoisdk.AbstractSendEmail
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **listId** | **Number** |  | 

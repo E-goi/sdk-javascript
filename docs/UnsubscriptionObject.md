@@ -1,6 +1,7 @@
-# egoiSdk.UnsubscriptionObject
+# egoisdk.UnsubscriptionObject
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **unsubscriptionMethod** | **String** | Unsubcription Method | [optional] 
@@ -8,7 +9,7 @@ Name | Type | Description | Notes
 **unsubscriptionObservation** | **String** | Unsubcription Observation | [optional] 
 
 
-<a name="UnsubscriptionMethodEnum"></a>
+
 ## Enum: UnsubscriptionMethodEnum
 
 
@@ -25,7 +26,7 @@ Name | Type | Description | Notes
 
 
 
-<a name="UnsubscriptionReasonEnum"></a>
+
 ## Enum: UnsubscriptionReasonEnum
 
 

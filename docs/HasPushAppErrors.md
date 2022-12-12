@@ -1,12 +1,13 @@
-# egoiSdk.HasPushAppErrors
+# egoisdk.HasPushAppErrors
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **hasPushApp** | **String** | Occurs when a list has push apps | [optional] 
 
 
-<a name="HasPushAppEnum"></a>
+
 ## Enum: HasPushAppEnum
 
 

@@ -1,4 +1,4 @@
-# egoiSdk.EcommerceApi
+# egoisdk.EcommerceApi
 
 All URIs are relative to *https://api.egoiapp.com*
 
@@ -17,8 +17,9 @@ Method | HTTP request | Description
 [**updateProduct**](EcommerceApi.md#updateProduct) | **PATCH** /catalogs/{catalog_id}/products/{product_identifier} | Update product
 
 
-<a name="createCart"></a>
-# **createCart**
+
+## createCart
+
 > AcceptedResponse createCart(domain, cart)
 
 Create cart
@@ -26,29 +27,30 @@ Create cart
 Creates a new cart. If ***contact_id*** is specified, order will be atached to the contact, if the contact propreties are specified, we&#39;ll create the user, if its already in your list it will get the correct contact (**make sure you are sending atleast all configured list&#39;s unique fields**). This same logic is also applied to the **product_identifier**.
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.EcommerceApi();
-var domain = "domain_example"; // String | Domain
-var cart = new egoiSdk.Cart(); // Cart | Parameters for the Carts
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.EcommerceApi();
+let domain = "domain_example"; // String | Domain
+let cart = new egoisdk.Cart(); // Cart | Parameters for the Carts
+apiInstance.createCart(domain, cart, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.createCart(domain, cart, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -65,11 +67,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="createCatalog"></a>
-# **createCatalog**
+
+## createCatalog
+
 > Catalog createCatalog(catalogPostRequest)
 
 Create new catalog
@@ -77,28 +80,29 @@ Create new catalog
 Creates a new catalog
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.EcommerceApi();
-var catalogPostRequest = new egoiSdk.CatalogPostRequest(); // CatalogPostRequest | Parameters for the Catalog
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.EcommerceApi();
+let catalogPostRequest = new egoisdk.CatalogPostRequest(); // CatalogPostRequest | Parameters for the Catalog
+apiInstance.createCatalog(catalogPostRequest, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.createCatalog(catalogPostRequest, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -114,11 +118,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="createOrder"></a>
-# **createOrder**
+
+## createOrder
+
 > AcceptedResponse createOrder(domain, createOrder)
 
 Create order
@@ -126,29 +131,30 @@ Create order
 Creates a new order. If **contact_id** is specified, order will be atached to the contact, if the contact propreties are specified, we&#39;ll create the user, if its already in your list it will get the correct contact (***make sure you are sending atleast all configured list&#39;s unique fields***). This same logic is also applied to the **product_identifier**.
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.EcommerceApi();
-var domain = "domain_example"; // String | Domain
-var createOrder = new egoiSdk.CreateOrder(); // CreateOrder | Parameters for the Orders
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.EcommerceApi();
+let domain = "domain_example"; // String | Domain
+let createOrder = new egoisdk.CreateOrder(); // CreateOrder | Parameters for the Orders
+apiInstance.createOrder(domain, createOrder, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.createOrder(domain, createOrder, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -165,11 +171,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="createProduct"></a>
-# **createProduct**
+
+## createProduct
+
 > Product createProduct(catalogId, productPostRequest)
 
 Create new product
@@ -177,29 +184,30 @@ Create new product
 Creates a new product
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.EcommerceApi();
-var catalogId = 56; // Number | ID of the Catalog
-var productPostRequest = new egoiSdk.ProductPostRequest(); // ProductPostRequest | Parameters for the Product
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.EcommerceApi();
+let catalogId = 56; // Number | ID of the Catalog
+let productPostRequest = new egoisdk.ProductPostRequest(); // ProductPostRequest | Parameters for the Product
+apiInstance.createProduct(catalogId, productPostRequest, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.createProduct(catalogId, productPostRequest, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -216,11 +224,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="deleteCatalog"></a>
-# **deleteCatalog**
+
+## deleteCatalog
+
 > deleteCatalog(catalogId)
 
 Remove catalog
@@ -228,28 +237,29 @@ Remove catalog
 Remove catalog information given its ID
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.EcommerceApi();
-var catalogId = 56; // Number | ID of the Catalog
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.EcommerceApi();
+let catalogId = 56; // Number | ID of the Catalog
+apiInstance.deleteCatalog(catalogId, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully.');
   }
-};
-apiInstance.deleteCatalog(catalogId, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -265,11 +275,12 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="deleteProduct"></a>
-# **deleteProduct**
+
+## deleteProduct
+
 > deleteProduct(catalogId, productIdentifier)
 
 Remove product
@@ -277,29 +288,30 @@ Remove product
 Remove product information given its ID
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.EcommerceApi();
-var catalogId = 56; // Number | ID of the Catalog
-var productIdentifier = "productIdentifier_example"; // String | ID of the Product
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.EcommerceApi();
+let catalogId = 56; // Number | ID of the Catalog
+let productIdentifier = "productIdentifier_example"; // String | ID of the Product
+apiInstance.deleteProduct(catalogId, productIdentifier, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully.');
   }
-};
-apiInstance.deleteProduct(catalogId, productIdentifier, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -316,11 +328,12 @@ null (empty response body)
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getAllCatalogs"></a>
-# **getAllCatalogs**
+
+## getAllCatalogs
+
 > CatalogCollection getAllCatalogs()
 
 Get all catalogs
@@ -328,27 +341,28 @@ Get all catalogs
 Returns all catalogs
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.EcommerceApi();
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.EcommerceApi();
+apiInstance.getAllCatalogs((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getAllCatalogs(callback);
+});
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -361,11 +375,12 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getAllProducts"></a>
-# **getAllProducts**
+
+## getAllProducts
+
 > ProductCollection getAllProducts(catalogId, opts)
 
 Get all products
@@ -373,38 +388,61 @@ Get all products
 Returns all products for the given catalog
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.EcommerceApi();
-var catalogId = 56; // Number | ID of the Catalog
-var opts = {
-  'productIdentifier': "productIdentifier_example", // String | Product ID in your store
+let apiInstance = new egoisdk.EcommerceApi();
+let catalogId = 56; // Number | ID of the Catalog
+let opts = {
+  'productIdentifier': "productIdentifier_example", // String | Filter by product ID in your store
+  'name': "name_example", // String | Filter by name of the product
+  'description': "description_example", // String | Filter by description of the product
+  'sku': "sku_example", // String | Filter by Stock Keeping Unit
+  'upc': "upc_example", // String | Filter by Universal Product Code
+  'ean': "ean_example", // String | Filter by European Article Numbering
+  'gtin': "gtin_example", // String | Filter by Global Trade Item Number
+  'mpn': "mpn_example", // String | Filter by Manufacturer Part Number
+  'price': 3.4, // Number | Filter by price of the product
+  'salePrice': 3.4, // Number | Filter by sale price of the product
+  'brand': "brand_example", // String | Filter by brand of the product
+  'customAttributes': {key: null}, // GetAllProductsCustomAttributesParameter | Filter by custom attributes of products<div><span class='sc-cJSrbW cWGDGi'> Example: </span> <span class='sc-uJMKN cTkJKI'> 'custom_attributes[alias]=value' </span></div>
   'offset': 56, // Number | Element offset (starting at zero for the first element)
   'limit': 10 // Number | Number of items to return
 };
-var callback = function(error, data, response) {
+apiInstance.getAllProducts(catalogId, opts, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getAllProducts(catalogId, opts, callback);
+});
 ```
 
 ### Parameters
 
+
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **catalogId** | **Number**| ID of the Catalog | 
- **productIdentifier** | **String**| Product ID in your store | [optional] 
+ **productIdentifier** | **String**| Filter by product ID in your store | [optional] 
+ **name** | **String**| Filter by name of the product | [optional] 
+ **description** | **String**| Filter by description of the product | [optional] 
+ **sku** | **String**| Filter by Stock Keeping Unit | [optional] 
+ **upc** | **String**| Filter by Universal Product Code | [optional] 
+ **ean** | **String**| Filter by European Article Numbering | [optional] 
+ **gtin** | **String**| Filter by Global Trade Item Number | [optional] 
+ **mpn** | **String**| Filter by Manufacturer Part Number | [optional] 
+ **price** | **Number**| Filter by price of the product | [optional] 
+ **salePrice** | **Number**| Filter by sale price of the product | [optional] 
+ **brand** | **String**| Filter by brand of the product | [optional] 
+ **customAttributes** | [**GetAllProductsCustomAttributesParameter**](.md)| Filter by custom attributes of products&lt;div&gt;&lt;span class&#x3D;&#39;sc-cJSrbW cWGDGi&#39;&gt; Example: &lt;/span&gt; &lt;span class&#x3D;&#39;sc-uJMKN cTkJKI&#39;&gt; &#39;custom_attributes[alias]&#x3D;value&#39; &lt;/span&gt;&lt;/div&gt; | [optional] 
  **offset** | **Number**| Element offset (starting at zero for the first element) | [optional] 
  **limit** | **Number**| Number of items to return | [optional] [default to 10]
 
@@ -418,11 +456,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getProduct"></a>
-# **getProduct**
+
+## getProduct
+
 > Product getProduct(catalogId, productIdentifier)
 
 Get product
@@ -430,29 +469,30 @@ Get product
 Returns product information given its ID
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.EcommerceApi();
-var catalogId = 56; // Number | ID of the Catalog
-var productIdentifier = "productIdentifier_example"; // String | ID of the Product
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.EcommerceApi();
+let catalogId = 56; // Number | ID of the Catalog
+let productIdentifier = "productIdentifier_example"; // String | ID of the Product
+apiInstance.getProduct(catalogId, productIdentifier, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getProduct(catalogId, productIdentifier, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -469,11 +509,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="importProducts"></a>
-# **importProducts**
+
+## importProducts
+
 > AcceptedResponse importProducts(catalogId, productBulkRequest)
 
 Import products
@@ -481,29 +522,30 @@ Import products
 Imports a collection of products&lt;/br&gt;      **DISCLAIMER:** stream limits applied. [view here](#section/Stream-Limits &#39;Stream Limits&#39;)
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.EcommerceApi();
-var catalogId = 56; // Number | ID of the Catalog
-var productBulkRequest = new egoiSdk.ProductBulkRequest(); // ProductBulkRequest | Parameters for the Product
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.EcommerceApi();
+let catalogId = 56; // Number | ID of the Catalog
+let productBulkRequest = new egoisdk.ProductBulkRequest(); // ProductBulkRequest | Parameters for the Product
+apiInstance.importProducts(catalogId, productBulkRequest, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.importProducts(catalogId, productBulkRequest, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -520,11 +562,12 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 
-<a name="updateProduct"></a>
-# **updateProduct**
+
+## updateProduct
+
 > Product updateProduct(catalogId, productIdentifier, productPatchRequest)
 
 Update product
@@ -532,30 +575,31 @@ Update product
 Updates a product
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.EcommerceApi();
-var catalogId = 56; // Number | ID of the Catalog
-var productIdentifier = "productIdentifier_example"; // String | ID of the Product
-var productPatchRequest = new egoiSdk.ProductPatchRequest(); // ProductPatchRequest | Parameters for the product
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.EcommerceApi();
+let catalogId = 56; // Number | ID of the Catalog
+let productIdentifier = "productIdentifier_example"; // String | ID of the Product
+let productPatchRequest = new egoisdk.ProductPatchRequest(); // ProductPatchRequest | Parameters for the product
+apiInstance.updateProduct(catalogId, productIdentifier, productPatchRequest, (error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.updateProduct(catalogId, productIdentifier, productPatchRequest, callback);
+});
 ```
 
 ### Parameters
+
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
@@ -573,6 +617,6 @@ Name | Type | Description  | Notes
 
 ### HTTP request headers
 
- - **Content-Type**: application/json
- - **Accept**: application/json
+- **Content-Type**: application/json
+- **Accept**: application/json
 

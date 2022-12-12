@@ -1,6 +1,7 @@
-# egoiSdk.SingleCartObject
+# egoisdk.SingleCartObject
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **revenue** | **Number** | Ecommerce cart revenue | 

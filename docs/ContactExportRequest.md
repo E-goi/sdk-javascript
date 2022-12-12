@@ -1,6 +1,7 @@
-# egoiSdk.ContactExportRequest
+# egoisdk.ContactExportRequest
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **format** | **String** | File extension to export contacts | 
@@ -9,11 +10,9 @@ Name | Type | Description | Notes
 **fields** | **[String]** | Array of field IDs to be displayed in the exported file | [optional] 
 
 
-<a name="FormatEnum"></a>
+
 ## Enum: FormatEnum
 
-
-* `xls` (value: `"xls"`)
 
 * `csv` (value: `"csv"`)
 

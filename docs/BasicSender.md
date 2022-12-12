@@ -1,13 +1,14 @@
-# egoiSdk.BasicSender
+# egoisdk.BasicSender
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**senderId** | **Number** |  | 
-**status** | **String** | Status of the sender | [optional] 
+**senderId** | **Number** |  | [readonly] 
+**status** | **String** | Status of the sender | [optional] [readonly] 
 
 
-<a name="StatusEnum"></a>
+
 ## Enum: StatusEnum
 
 

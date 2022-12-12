@@ -1,6 +1,7 @@
-# egoiSdk.WebPushStats
+# egoisdk.WebPushStats
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **opens** | **Number** | Total number of opened messages | [optional] 

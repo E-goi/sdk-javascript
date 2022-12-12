@@ -1,6 +1,7 @@
-# egoiSdk.AppStructureList
+# egoisdk.AppStructureList
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **Number** | The ID of the list. | [optional] 

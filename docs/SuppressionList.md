@@ -1,17 +1,18 @@
-# egoiSdk.SuppressionList
+# egoisdk.SuppressionList
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**id** | **Number** |  | [optional] 
+**id** | **Number** |  | [optional] [readonly] 
 **value** | **String** | Suppressed value | [optional] 
 **type** | **String** | Suppression type | [optional] 
 **method** | **String** | Suppression method | [optional] 
-**campaignHash** | **String** |  | [optional] 
-**created** | **Date** |  | [optional] 
+**campaignHash** | **String** |  | [optional] [readonly] 
+**created** | **Date** |  | [optional] [readonly] 
 
 
-<a name="TypeEnum"></a>
+
 ## Enum: TypeEnum
 
 
@@ -28,7 +29,7 @@ Name | Type | Description | Notes
 
 
 
-<a name="MethodEnum"></a>
+
 ## Enum: MethodEnum
 
 

@@ -1,8 +1,11 @@
-# egoiSdk.PhoneReport
+# egoisdk.PhoneReport
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**networks** | **[Object]** | Stats of the campaign for each network | [optional] 
+**campaignHash** | **String** |  | [optional] [readonly] 
+**networks** | [**[PhoneReportAllOfNetworks]**](PhoneReportAllOfNetworks.md) | Stats of the campaign for each network | [optional] 
+**overall** | [**OverallOverall**](OverallOverall.md) |  | [optional] 
 
 

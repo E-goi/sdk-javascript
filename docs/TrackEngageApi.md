@@ -1,4 +1,4 @@
-# egoiSdk.TrackEngageApi
+# egoisdk.TrackEngageApi
 
 All URIs are relative to *https://api.egoiapp.com*
 
@@ -8,8 +8,9 @@ Method | HTTP request | Description
 [**getAllGoals**](TrackEngageApi.md#getAllGoals) | **GET** /trackengage/goals | Get all goals
 
 
-<a name="getAllDomains"></a>
-# **getAllDomains**
+
+## getAllDomains
+
 > DomainCollection getAllDomains()
 
 Get all domains
@@ -17,27 +18,28 @@ Get all domains
 Returns all domains
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.TrackEngageApi();
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.TrackEngageApi();
+apiInstance.getAllDomains((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getAllDomains(callback);
+});
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -50,11 +52,12 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 
-<a name="getAllGoals"></a>
-# **getAllGoals**
+
+## getAllGoals
+
 > GoalCollection getAllGoals()
 
 Get all goals
@@ -62,27 +65,28 @@ Get all goals
 Returns all goals
 
 ### Example
+
 ```javascript
-var egoiSdk = require('egoiSdk');
-var defaultClient = egoiSdk.ApiClient.instance;
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
 // Configure API key authorization: Apikey
-var Apikey = defaultClient.authentications['Apikey'];
+let Apikey = defaultClient.authentications['Apikey'];
 Apikey.apiKey = 'YOUR API KEY';
 // Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
 //Apikey.apiKeyPrefix = 'Token';
 
-var apiInstance = new egoiSdk.TrackEngageApi();
-var callback = function(error, data, response) {
+let apiInstance = new egoisdk.TrackEngageApi();
+apiInstance.getAllGoals((error, data, response) => {
   if (error) {
     console.error(error);
   } else {
     console.log('API called successfully. Returned data: ' + data);
   }
-};
-apiInstance.getAllGoals(callback);
+});
 ```
 
 ### Parameters
+
 This endpoint does not need any parameter.
 
 ### Return type
@@ -95,6 +99,6 @@ This endpoint does not need any parameter.
 
 ### HTTP request headers
 
- - **Content-Type**: Not defined
- - **Accept**: application/json
+- **Content-Type**: Not defined
+- **Accept**: application/json
 

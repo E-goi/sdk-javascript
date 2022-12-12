@@ -1,9 +1,10 @@
-# egoiSdk.ContactBaseWithStatusFieldsSchemaBase
+# egoisdk.ContactBaseWithStatusFieldsSchemaBase
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**contactId** | **String** |  | [optional] 
+**contactId** | **String** |  | [optional] [readonly] 
 **status** | **String** | Status of the contact | [optional] [default to &#39;active&#39;]
 **consent** | **String** | Contact consent | [optional] 
 **firstName** | **String** | First name of the contact | [optional] 
@@ -16,11 +17,11 @@ Name | Type | Description | Notes
 **cellphoneStatus** | **String** | Cellphone channel status | [optional] 
 **phone** | **String** | Phone of the contact | [optional] 
 **phoneStatus** | **String** | Phone channel status | [optional] 
-**pushTokenAndroid** | [**[ContactBaseWithStatusFieldsSchemaBasePushTokenAndroid]**](ContactBaseWithStatusFieldsSchemaBasePushTokenAndroid.md) | Android push token of the contact | [optional] 
-**pushTokenIos** | [**[ContactBaseWithStatusFieldsSchemaBasePushTokenIos]**](ContactBaseWithStatusFieldsSchemaBasePushTokenIos.md) | IOS push token of the contact | [optional] 
+**pushTokenAndroid** | [**[ContactBaseWithStatusNoRemovedFieldsSchemaBasePushTokenAndroidInner]**](ContactBaseWithStatusNoRemovedFieldsSchemaBasePushTokenAndroidInner.md) | Android push token of the contact | [optional] 
+**pushTokenIos** | [**[ContactBaseWithStatusNoRemovedFieldsSchemaBasePushTokenIosInner]**](ContactBaseWithStatusNoRemovedFieldsSchemaBasePushTokenIosInner.md) | IOS push token of the contact | [optional] 
 
 
-<a name="StatusEnum"></a>
+
 ## Enum: StatusEnum
 
 
@@ -35,7 +36,7 @@ Name | Type | Description | Notes
 
 
 
-<a name="ConsentEnum"></a>
+
 ## Enum: ConsentEnum
 
 
@@ -60,7 +61,7 @@ Name | Type | Description | Notes
 
 
 
-<a name="EmailStatusEnum"></a>
+
 ## Enum: EmailStatusEnum
 
 
@@ -71,7 +72,7 @@ Name | Type | Description | Notes
 
 
 
-<a name="CellphoneStatusEnum"></a>
+
 ## Enum: CellphoneStatusEnum
 
 
@@ -82,7 +83,7 @@ Name | Type | Description | Notes
 
 
 
-<a name="PhoneStatusEnum"></a>
+
 ## Enum: PhoneStatusEnum
 
 

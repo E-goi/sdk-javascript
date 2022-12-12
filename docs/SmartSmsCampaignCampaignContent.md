@@ -1,6 +1,7 @@
-# egoiSdk.SmartSmsCampaignCampaignContent
+# egoisdk.SmartSmsCampaignCampaignContent
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **message** | **String** | Smart SMS message | 

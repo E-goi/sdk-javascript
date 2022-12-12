@@ -1,6 +1,7 @@
-# egoiSdk.AdvancedReportEmailBouncesOptions
+# egoisdk.AdvancedReportEmailBouncesOptions
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **includeUnopens** | **Boolean** | True to include info for not opened campaigns, false otherwise | 
@@ -8,7 +9,7 @@ Name | Type | Description | Notes
 **grouping** | **String** | Field to group data | [optional] [default to &#39;by_campaign&#39;]
 
 
-<a name="GroupingEnum"></a>
+
 ## Enum: GroupingEnum
 
 

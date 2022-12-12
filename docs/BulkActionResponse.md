@@ -1,6 +1,7 @@
-# egoiSdk.BulkActionResponse
+# egoisdk.BulkActionResponse
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **success** | **[Number]** | Array of succeeded operations | [optional] 

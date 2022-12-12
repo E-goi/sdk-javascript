@@ -1,18 +1,34 @@
-# egoiSdk.AbstractCellphoneSender
+# egoisdk.AbstractCellphoneSender
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**type** | **String** | Sender code type | [optional] 
+**type** | **String** | Sender code type | 
+**senderId** | **Number** |  | [readonly] 
+**status** | **String** | Status of the sender | [optional] [readonly] 
 
 
-<a name="TypeEnum"></a>
+
 ## Enum: TypeEnum
 
 
 * `alpha_numeric` (value: `"alpha_numeric"`)
 
 * `numeric` (value: `"numeric"`)
+
+
+
+
+
+## Enum: StatusEnum
+
+
+* `active` (value: `"active"`)
+
+* `moderation` (value: `"moderation"`)
+
+* `rejected` (value: `"rejected"`)
 
 
 

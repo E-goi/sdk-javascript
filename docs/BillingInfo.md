@@ -1,8 +1,9 @@
-# egoiSdk.BillingInfo
+# egoisdk.BillingInfo
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**billingInfo** | **Object** | Billing Info | [optional] 
+**billingInfo** | [**BillingInfoAllOfBillingInfo**](BillingInfoAllOfBillingInfo.md) |  | [optional] 
 
 

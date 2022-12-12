@@ -1,6 +1,7 @@
-# egoiSdk.GenerateEmailEventsReport
+# egoisdk.GenerateEmailEventsReport
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **title** | **String** | Advanced report title | 

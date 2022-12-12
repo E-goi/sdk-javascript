@@ -1,6 +1,7 @@
-# egoiSdk.FieldInUseErrorsFieldInUseData
+# egoisdk.FieldInUseErrorsFieldInUseData
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **segments** | **[Number]** | Array of segments where the field is in use | [optional] 

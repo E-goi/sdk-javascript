@@ -1,12 +1,13 @@
-# egoiSdk.HasQueuedOperationsErrors
+# egoisdk.HasQueuedOperationsErrors
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **hasQueuedOperations** | **String** | Occurs when a list has operations in queue | [optional] 
 
 
-<a name="HasQueuedOperationsEnum"></a>
+
 ## Enum: HasQueuedOperationsEnum
 
 

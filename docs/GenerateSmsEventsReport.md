@@ -1,6 +1,7 @@
-# egoiSdk.GenerateSmsEventsReport
+# egoisdk.GenerateSmsEventsReport
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **title** | **String** | Advanced report title | 

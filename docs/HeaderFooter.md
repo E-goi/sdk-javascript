@@ -1,6 +1,7 @@
-# egoiSdk.HeaderFooter
+# egoisdk.HeaderFooter
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **Number** |  | [optional] 

@@ -1,6 +1,7 @@
-# egoiSdk.AbstractCampaignSendRequestSegments
+# egoisdk.AbstractCampaignSendRequestSegments
 
 ## Properties
+
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **normal** | **[Number]** | Array of IDs of normal segments | [optional] 
