@@ -287,7 +287,7 @@ Name | Type | Description  | Notes
 
 ## getAllFields
 
-> FieldCollection getAllFields(listId, opts)
+> [ComplexField] getAllFields(listId, opts)
 
 Get all fields
 
@@ -330,7 +330,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**FieldCollection**](FieldCollection.md)
+[**[ComplexField]**](ComplexField.md)
 
 ### Authorization
 

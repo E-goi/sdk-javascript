@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **contacts** | [**[ContactBulk]**](ContactBulk.md) | Array of contacts to import | 
 **forceEmpty** | **Boolean** | If &#39;true&#39; accepts empty values and erases those fields | [optional] [default to false]
 **notify** | **[Number]** | Array of IDs of the users to notify | [optional] 
-**callbackUrl** | **String** | Url to receive the report | [optional] 
+**callbackUrl** | **String** | Url to receive the report &lt;a href&#x3D;&#39;/usecases/callbacks/#import-collection-of-contacts&#39; target&#x3D;&#39;_blank&#39;&gt;[Go to callback documentation]&lt;/a&gt; | [optional] 
 **file** | [**ImportBulkFileRequestSchemaFile**](ImportBulkFileRequestSchemaFile.md) |  | 
 
 

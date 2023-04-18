@@ -1,9 +1,9 @@
-# egoisdk.FieldCollection
+# egoisdk.ContactTagActivityAllOfActionData
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**[ComplexField]**](ComplexField.md) | Returned fields | [optional] 
+**tagId** | **Number** |  | [optional] [readonly] 
 
 

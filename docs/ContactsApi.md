@@ -633,7 +633,8 @@ let opts = {
   'offset': 56, // Number | Element offset (starting at zero for the first element)
   'limit': 10, // Number | Number of items to return
   'dateMin': new Date("2013-10-20T19:20:30+01:00"), // Date | Start date
-  'dateMax': new Date("2013-10-20T19:20:30+01:00") // Date | End date
+  'dateMax': new Date("2013-10-20T19:20:30+01:00"), // Date | End date
+  'actionName': "actionName_example" // String | Action data to return
 };
 apiInstance.getAllContactActivities(contactId, listId, opts, (error, data, response) => {
   if (error) {
@@ -655,6 +656,7 @@ Name | Type | Description  | Notes
  **limit** | **Number**| Number of items to return | [optional] [default to 10]
  **dateMin** | **Date**| Start date | [optional] 
  **dateMax** | **Date**| End date | [optional] 
+ **actionName** | **String**| Action data to return | [optional] 
 
 ### Return type
 

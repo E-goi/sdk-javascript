@@ -1,6 +1,6 @@
 /**
  * APIv3 (New)
- *  # Introduction This is our new version of API. We invite you to start using it and give us your feedback # Getting Started  E-goi can be integrated with many environments and programming languages via our REST API. We've created a developer focused portal to give your organization a clear and quick overview of how to integrate with E-goi. The developer portal focuses on scenarios for integration and flow of events. We recommend familiarizing yourself with all of the content in the developer portal, before start using our rest API.  The E-goi  APIv3 is served over HTTPS. To ensure data privacy, unencrypted HTTP is not supported.  Request data is passed to the API by POSTing JSON objects to the API endpoints with the appropriate parameters.      BaseURL = api.egoiapp.com  # RESTful Services This API supports 5 HTTP methods:  * <b>GET</b>: The HTTP GET method is used to **read** (or retrieve) a representation of a resource. * <b>POST</b>: The POST verb is most-often utilized to **create** new resources. * <b>PATCH</b>: PATCH is used for **modify** capabilities. The PATCH request only needs to contain the changes to the resource, not the complete resource * <b>PUT</b>: PUT is most-often utilized for **update** capabilities, PUT-ing to a known resource URI with the request body containing the newly-updated representation of the original resource. * <b>DELETE</b>: DELETE is pretty easy to understand. It is used to **delete** a resource identified by a URI.  # Authentication  We use a custom authentication method, you will need a apikey that you can find in your account settings. Below you will see a curl example to get your account information:     #!/bin/bash     curl -X GET 'https://api.egoiapp.com/my-account' \\     -H 'accept: application/json' \\     -H 'Apikey: <YOUR_APY_KEY>'  Here you can see a curl Post example with authentication:     #!/bin/bash     curl -X POST 'http://api.egoiapp.com/tags' \\     -H 'accept: application/json' \\     -H 'Apikey: <YOUR_APY_KEY>' \\     -H 'Content-Type: application/json' \\     -d '{`name`:`Your custom tag`,`color`:`#FFFFFF`}'  # SDK Get started quickly with E-goi with our integration tools. Our SDK is a modern open source library that makes it easy to integrate your application with E-goi services.  * <a href='https://github.com/E-goi/sdk-java'>Java</a>  * <a href='https://github.com/E-goi/sdk-php'>PHP</a>  * <a href='https://github.com/E-goi/sdk-python'>Python</a>  * <a href='https://github.com/E-goi/sdk-ruby'>Ruby</a>  * <a href='https://github.com/E-goi/sdk-javascript'>Javascript</a>  * <a href='https://github.com/E-goi/sdk-csharp'>C#</a>  # Stream Limits Stream limits are security mesures we have to make sure our API have a fair use policy, for this reason, any request that creates or modifies data (**POST**, **PATCH** and **PUT**) is limited to a maximum of **20MB** of content length. If you arrive to this limit in one of your request, you'll receive a HTTP code **413 (Request Entity Too Large)** and the request will be ignored. To avoid this error in importation's requests, it's advised the request's division in batches that have each one less than 20MB.  # Timeouts Timeouts set a maximum waiting time on a request's response. Our API, sets a default timeout for each request and when breached, you'll receive an HTTP **408 (Request Timeout)** error code. You should take into consideration that response times can vary widely based on the complexity of the request, amount of data being analyzed, and the load on the system and workspace at the time of the query. When dealing with such errors, you should first attempt to reduce the complexity and amount of data under analysis, and only then, if problems are still occurring ask for support.  For all these reasons, the default timeout for each request is **10 Seconds** and any request that creates or modifies data (**POST**, **PATCH** and **PUT**) will have a timeout of **60 Seconds**. Specific timeouts may exist for specific requests, these can be found in the request's documentation.  # Callbacks A callback is an asynchronous API request that originates from the API server and is sent to the client in response to a previous request sent by that client.  The API will make a **POST** request to the address defined in the URL with the information regarding the event of interest and share data related to that event.  ***Note:*** Only http or https protocols are supported in the Url parameter.  <security-definitions/>
+ *  # Introduction This is our new version of API. We invite you to start using it and give us your feedback # Getting Started  E-goi can be integrated with many environments and programming languages via our REST API. We've created a developer focused portal to give your organization a clear and quick overview of how to integrate with E-goi. The developer portal focuses on scenarios for integration and flow of events. We recommend familiarizing yourself with all of the content in the developer portal, before start using our rest API.  The E-goi  APIv3 is served over HTTPS. To ensure data privacy, unencrypted HTTP is not supported.  Request data is passed to the API by POSTing JSON objects to the API endpoints with the appropriate parameters.      BaseURL = api.egoiapp.com  # RESTful Services This API supports 5 HTTP methods:  * <b>GET</b>: The HTTP GET method is used to **read** (or retrieve) a representation of a resource. * <b>POST</b>: The POST verb is most-often utilized to **create** new resources. * <b>PATCH</b>: PATCH is used for **modify** capabilities. The PATCH request only needs to contain the changes to the resource, not the complete resource * <b>PUT</b>: PUT is most-often utilized for **update** capabilities, PUT-ing to a known resource URI with the request body containing the newly-updated representation of the original resource. * <b>DELETE</b>: DELETE is pretty easy to understand. It is used to **delete** a resource identified by a URI.  # Authentication  We use a custom authentication method, you will need a apikey that you can find in your account settings. Below you will see a curl example to get your account information:     #!/bin/bash     curl -X GET 'https://api.egoiapp.com/my-account' \\     -H 'accept: application/json' \\     -H 'Apikey: <YOUR_APY_KEY>'  Here you can see a curl Post example with authentication:     #!/bin/bash     curl -X POST 'http://api.egoiapp.com/tags' \\     -H 'accept: application/json' \\     -H 'Apikey: <YOUR_APY_KEY>' \\     -H 'Content-Type: application/json' \\     -d '{`name`:`Your custom tag`,`color`:`#FFFFFF`}'  # SDK Get started quickly with E-goi with our integration tools. Our SDK is a modern open source library that makes it easy to integrate your application with E-goi services.  * <a href='https://github.com/E-goi/sdk-java'>Java</a>  * <a href='https://github.com/E-goi/sdk-php'>PHP</a>  * <a href='https://github.com/E-goi/sdk-python'>Python</a>  * <a href='https://github.com/E-goi/sdk-ruby'>Ruby</a>  * <a href='https://github.com/E-goi/sdk-javascript'>Javascript</a>  * <a href='https://github.com/E-goi/sdk-csharp'>C#</a>  # Stream Limits Stream limits are security mesures we have to make sure our API have a fair use policy, for this reason, any request that creates or modifies data (**POST**, **PATCH** and **PUT**) is limited to a maximum of **20MB** of content length. If you arrive to this limit in one of your request, you'll receive a HTTP code **413 (Request Entity Too Large)** and the request will be ignored. To avoid this error in importation's requests, it's advised the request's division in batches that have each one less than 20MB.  # Timeouts Timeouts set a maximum waiting time on a request's response. Our API, sets a default timeout for each request and when breached, you'll receive an HTTP **408 (Request Timeout)** error code. You should take into consideration that response times can vary widely based on the complexity of the request, amount of data being analyzed, and the load on the system and workspace at the time of the query. When dealing with such errors, you should first attempt to reduce the complexity and amount of data under analysis, and only then, if problems are still occurring ask for support.  For all these reasons, the default timeout for each request is **10 Seconds** and any request that creates or modifies data (**POST**, **PATCH** and **PUT**) will have a timeout of **60 Seconds**. Specific timeouts may exist for specific requests, these can be found in the request's documentation.  # Callbacks A callback is an asynchronous API request that originates from the API server and is sent to the client in response to a previous request sent by that client.  The API will make a **POST** request to the address defined in the URL with the information regarding the event of interest and share data related to that event.  <a href='/usecases/callbacks/' target='_blank'>[Go to callbacks documentation]</a>  ***Note:*** Only http or https protocols are supported in the Url parameter.  <security-definitions/>
  *
  * The version of the OpenAPI document: 3.0.0
  * 
@@ -183,10 +183,16 @@ import Contact from './egoisdk/Contact';
 import Contact1 from './egoisdk/Contact1';
 import Contact2 from './egoisdk/Contact2';
 import ContactActivity from './egoisdk/ContactActivity';
+import ContactActivityAbstractActionsWithAutomations from './egoisdk/ContactActivityAbstractActionsWithAutomations';
+import ContactActivityAbstractActionsWithCampaign from './egoisdk/ContactActivityAbstractActionsWithCampaign';
 import ContactActivityAbstractActionsWithData from './egoisdk/ContactActivityAbstractActionsWithData';
+import ContactActivityAbstractActionsWithTags from './egoisdk/ContactActivityAbstractActionsWithTags';
 import ContactActivityClick from './egoisdk/ContactActivityClick';
 import ContactActivityClickAllOf from './egoisdk/ContactActivityClickAllOf';
 import ContactActivityClickAllOfActionData from './egoisdk/ContactActivityClickAllOfActionData';
+import ContactAutomationsActivity from './egoisdk/ContactAutomationsActivity';
+import ContactAutomationsActivityAllOf from './egoisdk/ContactAutomationsActivityAllOf';
+import ContactAutomationsActivityAllOfActionData from './egoisdk/ContactAutomationsActivityAllOfActionData';
 import ContactBaseExtra from './egoisdk/ContactBaseExtra';
 import ContactBaseExtraBulk from './egoisdk/ContactBaseExtraBulk';
 import ContactBaseExtraFull from './egoisdk/ContactBaseExtraFull';
@@ -217,6 +223,9 @@ import ContactBulkFileAllOf from './egoisdk/ContactBulkFileAllOf';
 import ContactBulkFileAllOf1 from './egoisdk/ContactBulkFileAllOf1';
 import ContactBulkFileAllOf2 from './egoisdk/ContactBulkFileAllOf2';
 import ContactBulkFileAllOf3 from './egoisdk/ContactBulkFileAllOf3';
+import ContactCampaignActivity from './egoisdk/ContactCampaignActivity';
+import ContactCampaignActivityAllOf from './egoisdk/ContactCampaignActivityAllOf';
+import ContactCampaignActivityAllOfActionData from './egoisdk/ContactCampaignActivityAllOfActionData';
 import ContactCollection from './egoisdk/ContactCollection';
 import ContactExportRequest from './egoisdk/ContactExportRequest';
 import ContactExtraFieldCellphone from './egoisdk/ContactExtraFieldCellphone';
@@ -243,6 +252,9 @@ import ContactOtherActivity from './egoisdk/ContactOtherActivity';
 import ContactSearchResponse from './egoisdk/ContactSearchResponse';
 import ContactStatusFieldsBulkSchema from './egoisdk/ContactStatusFieldsBulkSchema';
 import ContactStatusFieldsSchema from './egoisdk/ContactStatusFieldsSchema';
+import ContactTagActivity from './egoisdk/ContactTagActivity';
+import ContactTagActivityAllOf from './egoisdk/ContactTagActivityAllOf';
+import ContactTagActivityAllOfActionData from './egoisdk/ContactTagActivityAllOfActionData';
 import ContactTags from './egoisdk/ContactTags';
 import ContactTagsBulk from './egoisdk/ContactTagsBulk';
 import ContactsActionUpdateContactsSchema from './egoisdk/ContactsActionUpdateContactsSchema';
@@ -325,8 +337,8 @@ import EnableTeRequest from './egoisdk/EnableTeRequest';
 import EnableTransactionalConflict from './egoisdk/EnableTransactionalConflict';
 import EnableTransactionalConflictsErrors from './egoisdk/EnableTransactionalConflictsErrors';
 import ExportContactsWebhookData from './egoisdk/ExportContactsWebhookData';
+import ExportReportWebhookData from './egoisdk/ExportReportWebhookData';
 import Field from './egoisdk/Field';
-import FieldCollection from './egoisdk/FieldCollection';
 import FieldInUse from './egoisdk/FieldInUse';
 import FieldInUseErrors from './egoisdk/FieldInUseErrors';
 import FieldInUseErrorsFieldInUseData from './egoisdk/FieldInUseErrorsFieldInUseData';
@@ -378,6 +390,7 @@ import ImportBulkFileRequest from './egoisdk/ImportBulkFileRequest';
 import ImportBulkFileRequestSchema from './egoisdk/ImportBulkFileRequestSchema';
 import ImportBulkFileRequestSchemaFile from './egoisdk/ImportBulkFileRequestSchemaFile';
 import ImportBulkRequest from './egoisdk/ImportBulkRequest';
+import ImportContactsWebhookData from './egoisdk/ImportContactsWebhookData';
 import ImportOrdersBulkBulkRequest from './egoisdk/ImportOrdersBulkBulkRequest';
 import ImportOrdersBulkBulkRequestItems from './egoisdk/ImportOrdersBulkBulkRequestItems';
 import InternalServerError from './egoisdk/InternalServerError';
@@ -641,7 +654,7 @@ import WebpushApi from './egoiApi/WebpushApi';
 
 
 /**
-*  # Introduction This is our new version of API. We invite you to start using it and give us your feedback # Getting Started  E-goi can be integrated with many environments and programming languages via our REST API. We&#39;ve created a developer focused portal to give your organization a clear and quick overview of how to integrate with E-goi. The developer portal focuses on scenarios for integration and flow of events. We recommend familiarizing yourself with all of the content in the developer portal, before start using our rest API.  The E-goi  APIv3 is served over HTTPS. To ensure data privacy, unencrypted HTTP is not supported.  Request data is passed to the API by POSTing JSON objects to the API endpoints with the appropriate parameters.      BaseURL &#x3D; api.egoiapp.com  # RESTful Services This API supports 5 HTTP methods:  * &lt;b&gt;GET&lt;/b&gt;: The HTTP GET method is used to **read** (or retrieve) a representation of a resource. * &lt;b&gt;POST&lt;/b&gt;: The POST verb is most-often utilized to **create** new resources. * &lt;b&gt;PATCH&lt;/b&gt;: PATCH is used for **modify** capabilities. The PATCH request only needs to contain the changes to the resource, not the complete resource * &lt;b&gt;PUT&lt;/b&gt;: PUT is most-often utilized for **update** capabilities, PUT-ing to a known resource URI with the request body containing the newly-updated representation of the original resource. * &lt;b&gt;DELETE&lt;/b&gt;: DELETE is pretty easy to understand. It is used to **delete** a resource identified by a URI.  # Authentication  We use a custom authentication method, you will need a apikey that you can find in your account settings. Below you will see a curl example to get your account information:     #!/bin/bash     curl -X GET &#39;https://api.egoiapp.com/my-account&#39; \\     -H &#39;accept: application/json&#39; \\     -H &#39;Apikey: &lt;YOUR_APY_KEY&gt;&#39;  Here you can see a curl Post example with authentication:     #!/bin/bash     curl -X POST &#39;http://api.egoiapp.com/tags&#39; \\     -H &#39;accept: application/json&#39; \\     -H &#39;Apikey: &lt;YOUR_APY_KEY&gt;&#39; \\     -H &#39;Content-Type: application/json&#39; \\     -d &#39;{&#x60;name&#x60;:&#x60;Your custom tag&#x60;,&#x60;color&#x60;:&#x60;#FFFFFF&#x60;}&#39;  # SDK Get started quickly with E-goi with our integration tools. Our SDK is a modern open source library that makes it easy to integrate your application with E-goi services.  * &lt;a href&#x3D;&#39;https://github.com/E-goi/sdk-java&#39;&gt;Java&lt;/a&gt;  * &lt;a href&#x3D;&#39;https://github.com/E-goi/sdk-php&#39;&gt;PHP&lt;/a&gt;  * &lt;a href&#x3D;&#39;https://github.com/E-goi/sdk-python&#39;&gt;Python&lt;/a&gt;  * &lt;a href&#x3D;&#39;https://github.com/E-goi/sdk-ruby&#39;&gt;Ruby&lt;/a&gt;  * &lt;a href&#x3D;&#39;https://github.com/E-goi/sdk-javascript&#39;&gt;Javascript&lt;/a&gt;  * &lt;a href&#x3D;&#39;https://github.com/E-goi/sdk-csharp&#39;&gt;C#&lt;/a&gt;  # Stream Limits Stream limits are security mesures we have to make sure our API have a fair use policy, for this reason, any request that creates or modifies data (**POST**, **PATCH** and **PUT**) is limited to a maximum of **20MB** of content length. If you arrive to this limit in one of your request, you&#39;ll receive a HTTP code **413 (Request Entity Too Large)** and the request will be ignored. To avoid this error in importation&#39;s requests, it&#39;s advised the request&#39;s division in batches that have each one less than 20MB.  # Timeouts Timeouts set a maximum waiting time on a request&#39;s response. Our API, sets a default timeout for each request and when breached, you&#39;ll receive an HTTP **408 (Request Timeout)** error code. You should take into consideration that response times can vary widely based on the complexity of the request, amount of data being analyzed, and the load on the system and workspace at the time of the query. When dealing with such errors, you should first attempt to reduce the complexity and amount of data under analysis, and only then, if problems are still occurring ask for support.  For all these reasons, the default timeout for each request is **10 Seconds** and any request that creates or modifies data (**POST**, **PATCH** and **PUT**) will have a timeout of **60 Seconds**. Specific timeouts may exist for specific requests, these can be found in the request&#39;s documentation.  # Callbacks A callback is an asynchronous API request that originates from the API server and is sent to the client in response to a previous request sent by that client.  The API will make a **POST** request to the address defined in the URL with the information regarding the event of interest and share data related to that event.  ***Note:*** Only http or https protocols are supported in the Url parameter.  &lt;security-definitions/&gt;.<br>
+*  # Introduction This is our new version of API. We invite you to start using it and give us your feedback # Getting Started  E-goi can be integrated with many environments and programming languages via our REST API. We&#39;ve created a developer focused portal to give your organization a clear and quick overview of how to integrate with E-goi. The developer portal focuses on scenarios for integration and flow of events. We recommend familiarizing yourself with all of the content in the developer portal, before start using our rest API.  The E-goi  APIv3 is served over HTTPS. To ensure data privacy, unencrypted HTTP is not supported.  Request data is passed to the API by POSTing JSON objects to the API endpoints with the appropriate parameters.      BaseURL &#x3D; api.egoiapp.com  # RESTful Services This API supports 5 HTTP methods:  * &lt;b&gt;GET&lt;/b&gt;: The HTTP GET method is used to **read** (or retrieve) a representation of a resource. * &lt;b&gt;POST&lt;/b&gt;: The POST verb is most-often utilized to **create** new resources. * &lt;b&gt;PATCH&lt;/b&gt;: PATCH is used for **modify** capabilities. The PATCH request only needs to contain the changes to the resource, not the complete resource * &lt;b&gt;PUT&lt;/b&gt;: PUT is most-often utilized for **update** capabilities, PUT-ing to a known resource URI with the request body containing the newly-updated representation of the original resource. * &lt;b&gt;DELETE&lt;/b&gt;: DELETE is pretty easy to understand. It is used to **delete** a resource identified by a URI.  # Authentication  We use a custom authentication method, you will need a apikey that you can find in your account settings. Below you will see a curl example to get your account information:     #!/bin/bash     curl -X GET &#39;https://api.egoiapp.com/my-account&#39; \\     -H &#39;accept: application/json&#39; \\     -H &#39;Apikey: &lt;YOUR_APY_KEY&gt;&#39;  Here you can see a curl Post example with authentication:     #!/bin/bash     curl -X POST &#39;http://api.egoiapp.com/tags&#39; \\     -H &#39;accept: application/json&#39; \\     -H &#39;Apikey: &lt;YOUR_APY_KEY&gt;&#39; \\     -H &#39;Content-Type: application/json&#39; \\     -d &#39;{&#x60;name&#x60;:&#x60;Your custom tag&#x60;,&#x60;color&#x60;:&#x60;#FFFFFF&#x60;}&#39;  # SDK Get started quickly with E-goi with our integration tools. Our SDK is a modern open source library that makes it easy to integrate your application with E-goi services.  * &lt;a href&#x3D;&#39;https://github.com/E-goi/sdk-java&#39;&gt;Java&lt;/a&gt;  * &lt;a href&#x3D;&#39;https://github.com/E-goi/sdk-php&#39;&gt;PHP&lt;/a&gt;  * &lt;a href&#x3D;&#39;https://github.com/E-goi/sdk-python&#39;&gt;Python&lt;/a&gt;  * &lt;a href&#x3D;&#39;https://github.com/E-goi/sdk-ruby&#39;&gt;Ruby&lt;/a&gt;  * &lt;a href&#x3D;&#39;https://github.com/E-goi/sdk-javascript&#39;&gt;Javascript&lt;/a&gt;  * &lt;a href&#x3D;&#39;https://github.com/E-goi/sdk-csharp&#39;&gt;C#&lt;/a&gt;  # Stream Limits Stream limits are security mesures we have to make sure our API have a fair use policy, for this reason, any request that creates or modifies data (**POST**, **PATCH** and **PUT**) is limited to a maximum of **20MB** of content length. If you arrive to this limit in one of your request, you&#39;ll receive a HTTP code **413 (Request Entity Too Large)** and the request will be ignored. To avoid this error in importation&#39;s requests, it&#39;s advised the request&#39;s division in batches that have each one less than 20MB.  # Timeouts Timeouts set a maximum waiting time on a request&#39;s response. Our API, sets a default timeout for each request and when breached, you&#39;ll receive an HTTP **408 (Request Timeout)** error code. You should take into consideration that response times can vary widely based on the complexity of the request, amount of data being analyzed, and the load on the system and workspace at the time of the query. When dealing with such errors, you should first attempt to reduce the complexity and amount of data under analysis, and only then, if problems are still occurring ask for support.  For all these reasons, the default timeout for each request is **10 Seconds** and any request that creates or modifies data (**POST**, **PATCH** and **PUT**) will have a timeout of **60 Seconds**. Specific timeouts may exist for specific requests, these can be found in the request&#39;s documentation.  # Callbacks A callback is an asynchronous API request that originates from the API server and is sent to the client in response to a previous request sent by that client.  The API will make a **POST** request to the address defined in the URL with the information regarding the event of interest and share data related to that event.  &lt;a href&#x3D;&#39;/usecases/callbacks/&#39; target&#x3D;&#39;_blank&#39;&gt;[Go to callbacks documentation]&lt;/a&gt;  ***Note:*** Only http or https protocols are supported in the Url parameter.  &lt;security-definitions/&gt;.<br>
 * The <code>index</code> module provides access to constructors for all the classes which comprise the public API.
 * <p>
 * An AMD (recommended!) or CommonJS application will generally do something equivalent to the following:
@@ -669,7 +682,7 @@ import WebpushApi from './egoiApi/WebpushApi';
 * </pre>
 * </p>
 * @module index
-* @version 1.1.2RC1
+* @version 1.1.3RC1
 */
 export {
     /**
@@ -1699,10 +1712,28 @@ export {
     ContactActivity,
 
     /**
+     * The ContactActivityAbstractActionsWithAutomations model constructor.
+     * @property {module:egoisdk/ContactActivityAbstractActionsWithAutomations}
+     */
+    ContactActivityAbstractActionsWithAutomations,
+
+    /**
+     * The ContactActivityAbstractActionsWithCampaign model constructor.
+     * @property {module:egoisdk/ContactActivityAbstractActionsWithCampaign}
+     */
+    ContactActivityAbstractActionsWithCampaign,
+
+    /**
      * The ContactActivityAbstractActionsWithData model constructor.
      * @property {module:egoisdk/ContactActivityAbstractActionsWithData}
      */
     ContactActivityAbstractActionsWithData,
+
+    /**
+     * The ContactActivityAbstractActionsWithTags model constructor.
+     * @property {module:egoisdk/ContactActivityAbstractActionsWithTags}
+     */
+    ContactActivityAbstractActionsWithTags,
 
     /**
      * The ContactActivityClick model constructor.
@@ -1721,6 +1752,24 @@ export {
      * @property {module:egoisdk/ContactActivityClickAllOfActionData}
      */
     ContactActivityClickAllOfActionData,
+
+    /**
+     * The ContactAutomationsActivity model constructor.
+     * @property {module:egoisdk/ContactAutomationsActivity}
+     */
+    ContactAutomationsActivity,
+
+    /**
+     * The ContactAutomationsActivityAllOf model constructor.
+     * @property {module:egoisdk/ContactAutomationsActivityAllOf}
+     */
+    ContactAutomationsActivityAllOf,
+
+    /**
+     * The ContactAutomationsActivityAllOfActionData model constructor.
+     * @property {module:egoisdk/ContactAutomationsActivityAllOfActionData}
+     */
+    ContactAutomationsActivityAllOfActionData,
 
     /**
      * The ContactBaseExtra model constructor.
@@ -1903,6 +1952,24 @@ export {
     ContactBulkFileAllOf3,
 
     /**
+     * The ContactCampaignActivity model constructor.
+     * @property {module:egoisdk/ContactCampaignActivity}
+     */
+    ContactCampaignActivity,
+
+    /**
+     * The ContactCampaignActivityAllOf model constructor.
+     * @property {module:egoisdk/ContactCampaignActivityAllOf}
+     */
+    ContactCampaignActivityAllOf,
+
+    /**
+     * The ContactCampaignActivityAllOfActionData model constructor.
+     * @property {module:egoisdk/ContactCampaignActivityAllOfActionData}
+     */
+    ContactCampaignActivityAllOfActionData,
+
+    /**
      * The ContactCollection model constructor.
      * @property {module:egoisdk/ContactCollection}
      */
@@ -2057,6 +2124,24 @@ export {
      * @property {module:egoisdk/ContactStatusFieldsSchema}
      */
     ContactStatusFieldsSchema,
+
+    /**
+     * The ContactTagActivity model constructor.
+     * @property {module:egoisdk/ContactTagActivity}
+     */
+    ContactTagActivity,
+
+    /**
+     * The ContactTagActivityAllOf model constructor.
+     * @property {module:egoisdk/ContactTagActivityAllOf}
+     */
+    ContactTagActivityAllOf,
+
+    /**
+     * The ContactTagActivityAllOfActionData model constructor.
+     * @property {module:egoisdk/ContactTagActivityAllOfActionData}
+     */
+    ContactTagActivityAllOfActionData,
 
     /**
      * The ContactTags model constructor.
@@ -2551,16 +2636,16 @@ export {
     ExportContactsWebhookData,
 
     /**
+     * The ExportReportWebhookData model constructor.
+     * @property {module:egoisdk/ExportReportWebhookData}
+     */
+    ExportReportWebhookData,
+
+    /**
      * The Field model constructor.
      * @property {module:egoisdk/Field}
      */
     Field,
-
-    /**
-     * The FieldCollection model constructor.
-     * @property {module:egoisdk/FieldCollection}
-     */
-    FieldCollection,
 
     /**
      * The FieldInUse model constructor.
@@ -2867,6 +2952,12 @@ export {
      * @property {module:egoisdk/ImportBulkRequest}
      */
     ImportBulkRequest,
+
+    /**
+     * The ImportContactsWebhookData model constructor.
+     * @property {module:egoisdk/ImportContactsWebhookData}
+     */
+    ImportContactsWebhookData,
 
     /**
      * The ImportOrdersBulkBulkRequest model constructor.

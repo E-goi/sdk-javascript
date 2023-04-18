@@ -18,6 +18,8 @@ Name | Type | Description | Notes
 
 * `web_push_click` (value: `"web_push_click"`)
 
+* `smart_sms_click` (value: `"smart_sms_click"`)
+
 
 
 

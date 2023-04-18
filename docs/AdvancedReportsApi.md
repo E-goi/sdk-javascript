@@ -8,10 +8,10 @@ Method | HTTP request | Description
 [**generateEmailClicksByContactReport**](AdvancedReportsApi.md#generateEmailClicksByContactReport) | **POST** /reports/advanced/email-clicks-by-contact | Generate email clicks by contact report
 [**generateEmailClicksByUrlReport**](AdvancedReportsApi.md#generateEmailClicksByUrlReport) | **POST** /reports/advanced/email-clicks-by-url | Generate email clicks by URL report
 [**generateEmailEventsReport**](AdvancedReportsApi.md#generateEmailEventsReport) | **POST** /reports/advanced/email-events | Generate email events report
-[**generateEmailSmsReport**](AdvancedReportsApi.md#generateEmailSmsReport) | **POST** /reports/advanced/sms-bounces | Generate SMS bounces report
 [**generateEmailUnsubscriptionsReport**](AdvancedReportsApi.md#generateEmailUnsubscriptionsReport) | **POST** /reports/advanced/email-unsubscriptions | Generate email unsubscriptions report
 [**generateFormAnswersReport**](AdvancedReportsApi.md#generateFormAnswersReport) | **POST** /reports/advanced/form-answers | Generate form answers report
 [**generateSendsReport**](AdvancedReportsApi.md#generateSendsReport) | **POST** /reports/advanced/sends | Generate sends report
+[**generateSmsBouncesReport**](AdvancedReportsApi.md#generateSmsBouncesReport) | **POST** /reports/advanced/sms-bounces | Generate SMS bounces report
 [**generateSmsEventsReport**](AdvancedReportsApi.md#generateSmsEventsReport) | **POST** /reports/advanced/sms-events | Generate SMS events report
 [**generateSubscriptionsReport**](AdvancedReportsApi.md#generateSubscriptionsReport) | **POST** /reports/advanced/subscriptions | Generate subscriptions report
 [**generateUnsubscriptionsReport**](AdvancedReportsApi.md#generateUnsubscriptionsReport) | **POST** /reports/advanced/unsubscriptions | Generate unsubscriptions report
@@ -223,57 +223,6 @@ Name | Type | Description  | Notes
 - **Accept**: application/json
 
 
-## generateEmailSmsReport
-
-> AcceptedResponse generateEmailSmsReport(generateSmsBouncesReport)
-
-Generate SMS bounces report
-
-Generates a new SMS bounces report
-
-### Example
-
-```javascript
-import egoisdk from 'egoisdk';
-let defaultClient = egoisdk.ApiClient.instance;
-// Configure API key authorization: Apikey
-let Apikey = defaultClient.authentications['Apikey'];
-Apikey.apiKey = 'YOUR API KEY';
-// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
-//Apikey.apiKeyPrefix = 'Token';
-
-let apiInstance = new egoisdk.AdvancedReportsApi();
-let generateSmsBouncesReport = new egoisdk.GenerateSmsBouncesReport(); // GenerateSmsBouncesReport | Parameters for the SMS bounces report
-apiInstance.generateEmailSmsReport(generateSmsBouncesReport, (error, data, response) => {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-});
-```
-
-### Parameters
-
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **generateSmsBouncesReport** | [**GenerateSmsBouncesReport**](GenerateSmsBouncesReport.md)| Parameters for the SMS bounces report | 
-
-### Return type
-
-[**AcceptedResponse**](AcceptedResponse.md)
-
-### Authorization
-
-[Apikey](../README.md#Apikey)
-
-### HTTP request headers
-
-- **Content-Type**: application/json
-- **Accept**: application/json
-
-
 ## generateEmailUnsubscriptionsReport
 
 > AcceptedResponse generateEmailUnsubscriptionsReport(generateEmailUnsubscriptionsReport)
@@ -412,6 +361,57 @@ apiInstance.generateSendsReport(generateSendsReport, (error, data, response) => 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **generateSendsReport** | [**GenerateSendsReport**](GenerateSendsReport.md)| Parameters for the sends report | 
+
+### Return type
+
+[**AcceptedResponse**](AcceptedResponse.md)
+
+### Authorization
+
+[Apikey](../README.md#Apikey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## generateSmsBouncesReport
+
+> AcceptedResponse generateSmsBouncesReport(generateSmsBouncesReport)
+
+Generate SMS bounces report
+
+Generates a new SMS bounces report
+
+### Example
+
+```javascript
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
+// Configure API key authorization: Apikey
+let Apikey = defaultClient.authentications['Apikey'];
+Apikey.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//Apikey.apiKeyPrefix = 'Token';
+
+let apiInstance = new egoisdk.AdvancedReportsApi();
+let generateSmsBouncesReport = new egoisdk.GenerateSmsBouncesReport(); // GenerateSmsBouncesReport | Parameters for the SMS bounces report
+apiInstance.generateSmsBouncesReport(generateSmsBouncesReport, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **generateSmsBouncesReport** | [**GenerateSmsBouncesReport**](GenerateSmsBouncesReport.md)| Parameters for the SMS bounces report | 
 
 ### Return type
 

@@ -1,6 +1,6 @@
 /**
  * APIv3 (New)
- *  # Introduction This is our new version of API. We invite you to start using it and give us your feedback # Getting Started  E-goi can be integrated with many environments and programming languages via our REST API. We've created a developer focused portal to give your organization a clear and quick overview of how to integrate with E-goi. The developer portal focuses on scenarios for integration and flow of events. We recommend familiarizing yourself with all of the content in the developer portal, before start using our rest API.  The E-goi  APIv3 is served over HTTPS. To ensure data privacy, unencrypted HTTP is not supported.  Request data is passed to the API by POSTing JSON objects to the API endpoints with the appropriate parameters.      BaseURL = api.egoiapp.com  # RESTful Services This API supports 5 HTTP methods:  * <b>GET</b>: The HTTP GET method is used to **read** (or retrieve) a representation of a resource. * <b>POST</b>: The POST verb is most-often utilized to **create** new resources. * <b>PATCH</b>: PATCH is used for **modify** capabilities. The PATCH request only needs to contain the changes to the resource, not the complete resource * <b>PUT</b>: PUT is most-often utilized for **update** capabilities, PUT-ing to a known resource URI with the request body containing the newly-updated representation of the original resource. * <b>DELETE</b>: DELETE is pretty easy to understand. It is used to **delete** a resource identified by a URI.  # Authentication  We use a custom authentication method, you will need a apikey that you can find in your account settings. Below you will see a curl example to get your account information:     #!/bin/bash     curl -X GET 'https://api.egoiapp.com/my-account' \\     -H 'accept: application/json' \\     -H 'Apikey: <YOUR_APY_KEY>'  Here you can see a curl Post example with authentication:     #!/bin/bash     curl -X POST 'http://api.egoiapp.com/tags' \\     -H 'accept: application/json' \\     -H 'Apikey: <YOUR_APY_KEY>' \\     -H 'Content-Type: application/json' \\     -d '{`name`:`Your custom tag`,`color`:`#FFFFFF`}'  # SDK Get started quickly with E-goi with our integration tools. Our SDK is a modern open source library that makes it easy to integrate your application with E-goi services.  * <a href='https://github.com/E-goi/sdk-java'>Java</a>  * <a href='https://github.com/E-goi/sdk-php'>PHP</a>  * <a href='https://github.com/E-goi/sdk-python'>Python</a>  * <a href='https://github.com/E-goi/sdk-ruby'>Ruby</a>  * <a href='https://github.com/E-goi/sdk-javascript'>Javascript</a>  * <a href='https://github.com/E-goi/sdk-csharp'>C#</a>  # Stream Limits Stream limits are security mesures we have to make sure our API have a fair use policy, for this reason, any request that creates or modifies data (**POST**, **PATCH** and **PUT**) is limited to a maximum of **20MB** of content length. If you arrive to this limit in one of your request, you'll receive a HTTP code **413 (Request Entity Too Large)** and the request will be ignored. To avoid this error in importation's requests, it's advised the request's division in batches that have each one less than 20MB.  # Timeouts Timeouts set a maximum waiting time on a request's response. Our API, sets a default timeout for each request and when breached, you'll receive an HTTP **408 (Request Timeout)** error code. You should take into consideration that response times can vary widely based on the complexity of the request, amount of data being analyzed, and the load on the system and workspace at the time of the query. When dealing with such errors, you should first attempt to reduce the complexity and amount of data under analysis, and only then, if problems are still occurring ask for support.  For all these reasons, the default timeout for each request is **10 Seconds** and any request that creates or modifies data (**POST**, **PATCH** and **PUT**) will have a timeout of **60 Seconds**. Specific timeouts may exist for specific requests, these can be found in the request's documentation.  # Callbacks A callback is an asynchronous API request that originates from the API server and is sent to the client in response to a previous request sent by that client.  The API will make a **POST** request to the address defined in the URL with the information regarding the event of interest and share data related to that event.  ***Note:*** Only http or https protocols are supported in the Url parameter.  <security-definitions/>
+ *  # Introduction This is our new version of API. We invite you to start using it and give us your feedback # Getting Started  E-goi can be integrated with many environments and programming languages via our REST API. We've created a developer focused portal to give your organization a clear and quick overview of how to integrate with E-goi. The developer portal focuses on scenarios for integration and flow of events. We recommend familiarizing yourself with all of the content in the developer portal, before start using our rest API.  The E-goi  APIv3 is served over HTTPS. To ensure data privacy, unencrypted HTTP is not supported.  Request data is passed to the API by POSTing JSON objects to the API endpoints with the appropriate parameters.      BaseURL = api.egoiapp.com  # RESTful Services This API supports 5 HTTP methods:  * <b>GET</b>: The HTTP GET method is used to **read** (or retrieve) a representation of a resource. * <b>POST</b>: The POST verb is most-often utilized to **create** new resources. * <b>PATCH</b>: PATCH is used for **modify** capabilities. The PATCH request only needs to contain the changes to the resource, not the complete resource * <b>PUT</b>: PUT is most-often utilized for **update** capabilities, PUT-ing to a known resource URI with the request body containing the newly-updated representation of the original resource. * <b>DELETE</b>: DELETE is pretty easy to understand. It is used to **delete** a resource identified by a URI.  # Authentication  We use a custom authentication method, you will need a apikey that you can find in your account settings. Below you will see a curl example to get your account information:     #!/bin/bash     curl -X GET 'https://api.egoiapp.com/my-account' \\     -H 'accept: application/json' \\     -H 'Apikey: <YOUR_APY_KEY>'  Here you can see a curl Post example with authentication:     #!/bin/bash     curl -X POST 'http://api.egoiapp.com/tags' \\     -H 'accept: application/json' \\     -H 'Apikey: <YOUR_APY_KEY>' \\     -H 'Content-Type: application/json' \\     -d '{`name`:`Your custom tag`,`color`:`#FFFFFF`}'  # SDK Get started quickly with E-goi with our integration tools. Our SDK is a modern open source library that makes it easy to integrate your application with E-goi services.  * <a href='https://github.com/E-goi/sdk-java'>Java</a>  * <a href='https://github.com/E-goi/sdk-php'>PHP</a>  * <a href='https://github.com/E-goi/sdk-python'>Python</a>  * <a href='https://github.com/E-goi/sdk-ruby'>Ruby</a>  * <a href='https://github.com/E-goi/sdk-javascript'>Javascript</a>  * <a href='https://github.com/E-goi/sdk-csharp'>C#</a>  # Stream Limits Stream limits are security mesures we have to make sure our API have a fair use policy, for this reason, any request that creates or modifies data (**POST**, **PATCH** and **PUT**) is limited to a maximum of **20MB** of content length. If you arrive to this limit in one of your request, you'll receive a HTTP code **413 (Request Entity Too Large)** and the request will be ignored. To avoid this error in importation's requests, it's advised the request's division in batches that have each one less than 20MB.  # Timeouts Timeouts set a maximum waiting time on a request's response. Our API, sets a default timeout for each request and when breached, you'll receive an HTTP **408 (Request Timeout)** error code. You should take into consideration that response times can vary widely based on the complexity of the request, amount of data being analyzed, and the load on the system and workspace at the time of the query. When dealing with such errors, you should first attempt to reduce the complexity and amount of data under analysis, and only then, if problems are still occurring ask for support.  For all these reasons, the default timeout for each request is **10 Seconds** and any request that creates or modifies data (**POST**, **PATCH** and **PUT**) will have a timeout of **60 Seconds**. Specific timeouts may exist for specific requests, these can be found in the request's documentation.  # Callbacks A callback is an asynchronous API request that originates from the API server and is sent to the client in response to a previous request sent by that client.  The API will make a **POST** request to the address defined in the URL with the information regarding the event of interest and share data related to that event.  <a href='/usecases/callbacks/' target='_blank'>[Go to callbacks documentation]</a>  ***Note:*** Only http or https protocols are supported in the Url parameter.  <security-definitions/>
  *
  * The version of the OpenAPI document: 3.0.0
  * 
@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The ContactOtherActivity model module.
  * @module egoisdk/ContactOtherActivity
- * @version 1.1.2RC1
+ * @version 1.1.3RC1
  */
 class ContactOtherActivity {
     /**
@@ -131,76 +131,10 @@ ContactOtherActivity.prototype['action_name'] = undefined;
 ContactOtherActivity['ActionNameEnum'] = {
 
     /**
-     * value: "email_open"
+     * value: "subscription"
      * @const
      */
-    "email_open": "email_open",
-
-    /**
-     * value: "forward"
-     * @const
-     */
-    "forward": "forward",
-
-    /**
-     * value: "conversion"
-     * @const
-     */
-    "conversion": "conversion",
-
-    /**
-     * value: "email_send"
-     * @const
-     */
-    "email_send": "email_send",
-
-    /**
-     * value: "sms_send"
-     * @const
-     */
-    "sms_send": "sms_send",
-
-    /**
-     * value: "voice_send"
-     * @const
-     */
-    "voice_send": "voice_send",
-
-    /**
-     * value: "mms_send"
-     * @const
-     */
-    "mms_send": "mms_send",
-
-    /**
-     * value: "sms_report"
-     * @const
-     */
-    "sms_report": "sms_report",
-
-    /**
-     * value: "voice_report"
-     * @const
-     */
-    "voice_report": "voice_report",
-
-    /**
-     * value: "invitation_send"
-     * @const
-     */
-    "invitation_send": "invitation_send",
-
-    /**
-     * value: "invitation_open"
-     * @const
-     */
-    "invitation_open": "invitation_open",
-
-    /**
-     * value: "mms_open"
-     * @const
-     */
-    "mms_open": "mms_open",
+    "subscription": "subscription",
 
     /**
      * value: "unsubscribe"
@@ -209,22 +143,28 @@ ContactOtherActivity['ActionNameEnum'] = {
     "unsubscribe": "unsubscribe",
 
     /**
-     * value: "email_soft_bounce"
+     * value: "unsubscribe_api"
      * @const
      */
-    "email_soft_bounce": "email_soft_bounce",
+    "unsubscribe_api": "unsubscribe_api",
 
     /**
-     * value: "email_hard_bounce"
+     * value: "unsubscribe_manual"
      * @const
      */
-    "email_hard_bounce": "email_hard_bounce",
+    "unsubscribe_manual": "unsubscribe_manual",
 
     /**
-     * value: "subscription"
+     * value: "unsubscribe_reason"
      * @const
      */
-    "subscription": "subscription",
+    "unsubscribe_reason": "unsubscribe_reason",
+
+    /**
+     * value: "edit_subscription"
+     * @const
+     */
+    "edit_subscription": "edit_subscription",
 
     /**
      * value: "resubscription"
@@ -233,10 +173,10 @@ ContactOtherActivity['ActionNameEnum'] = {
     "resubscription": "resubscription",
 
     /**
-     * value: "unsubscribe_reason"
+     * value: "conversion"
      * @const
      */
-    "unsubscribe_reason": "unsubscribe_reason",
+    "conversion": "conversion",
 
     /**
      * value: "facebook_like"
@@ -251,28 +191,10 @@ ContactOtherActivity['ActionNameEnum'] = {
     "social_share": "social_share",
 
     /**
-     * value: "unsubscribe_manual"
+     * value: "cellphone_field_disable"
      * @const
      */
-    "unsubscribe_manual": "unsubscribe_manual",
-
-    /**
-     * value: "double_optin"
-     * @const
-     */
-    "double_optin": "double_optin",
-
-    /**
-     * value: "double_optin_resend"
-     * @const
-     */
-    "double_optin_resend": "double_optin_resend",
-
-    /**
-     * value: "email_spam_complaint"
-     * @const
-     */
-    "email_spam_complaint": "email_spam_complaint",
+    "cellphone_field_disable": "cellphone_field_disable",
 
     /**
      * value: "email_field_disable"
@@ -281,22 +203,10 @@ ContactOtherActivity['ActionNameEnum'] = {
     "email_field_disable": "email_field_disable",
 
     /**
-     * value: "cellphone_field_disable"
-     * @const
-     */
-    "cellphone_field_disable": "cellphone_field_disable",
-
-    /**
      * value: "phone_field_disable"
      * @const
      */
     "phone_field_disable": "phone_field_disable",
-
-    /**
-     * value: "unsubscribe_api"
-     * @const
-     */
-    "unsubscribe_api": "unsubscribe_api",
 
     /**
      * value: "email_field_enable"
@@ -315,84 +225,6 @@ ContactOtherActivity['ActionNameEnum'] = {
      * @const
      */
     "phone_field_enable": "phone_field_enable",
-
-    /**
-     * value: "edit_subscription"
-     * @const
-     */
-    "edit_subscription": "edit_subscription",
-
-    /**
-     * value: "double_optedit"
-     * @const
-     */
-    "double_optedit": "double_optedit",
-
-    /**
-     * value: "automation_event"
-     * @const
-     */
-    "automation_event": "automation_event",
-
-    /**
-     * value: "push_send"
-     * @const
-     */
-    "push_send": "push_send",
-
-    /**
-     * value: "push_open"
-     * @const
-     */
-    "push_open": "push_open",
-
-    /**
-     * value: "push_received"
-     * @const
-     */
-    "push_received": "push_received",
-
-    /**
-     * value: "push_error"
-     * @const
-     */
-    "push_error": "push_error",
-
-    /**
-     * value: "push_canceled"
-     * @const
-     */
-    "push_canceled": "push_canceled",
-
-    /**
-     * value: "reply_to_email"
-     * @const
-     */
-    "reply_to_email": "reply_to_email",
-
-    /**
-     * value: "web_push_send"
-     * @const
-     */
-    "web_push_send": "web_push_send",
-
-    /**
-     * value: "web_push_delivered"
-     * @const
-     */
-    "web_push_delivered": "web_push_delivered",
-
-    /**
-     * value: "web_push_open"
-     * @const
-     */
-    "web_push_open": "web_push_open",
-
-    /**
-     * value: "web_push_bounce"
-     * @const
-     */
-    "web_push_bounce": "web_push_bounce",
 
     /**
      * value: "web_push_subscription"

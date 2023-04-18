@@ -16,7 +16,7 @@ Method | HTTP request | Description
 
 Create new webhook
 
-Create a new webhook
+Create a new webhook &lt;a href&#x3D;&#39;/usecases/webhooks/&#39; target&#x3D;&#39;_blank&#39;&gt;[Go to webhooks documentation]&lt;/a&gt;
 
 ### Example
 
@@ -118,7 +118,7 @@ null (empty response body)
 
 Get all webhooks
 
-Returns all webhooks
+Returns all webhooks &lt;a href&#x3D;&#39;/usecases/webhooks/&#39; target&#x3D;&#39;_blank&#39;&gt;[Go to webhooks documentation]&lt;/a&gt;
 
 ### Example
 
