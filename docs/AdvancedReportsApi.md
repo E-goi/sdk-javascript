@@ -4,6 +4,8 @@ All URIs are relative to *https://api.egoiapp.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**generateByModelReport**](AdvancedReportsApi.md#generateByModelReport) | **POST** /reports/advanced/model | Generate report by model
+[**generateContactActivityReport**](AdvancedReportsApi.md#generateContactActivityReport) | **POST** /reports/advanced/contact-activity | Generate contact activity report
 [**generateEmailBouncesReport**](AdvancedReportsApi.md#generateEmailBouncesReport) | **POST** /reports/advanced/email-bounces | Generate email bounces report
 [**generateEmailClicksByContactReport**](AdvancedReportsApi.md#generateEmailClicksByContactReport) | **POST** /reports/advanced/email-clicks-by-contact | Generate email clicks by contact report
 [**generateEmailClicksByUrlReport**](AdvancedReportsApi.md#generateEmailClicksByUrlReport) | **POST** /reports/advanced/email-clicks-by-url | Generate email clicks by URL report
@@ -16,7 +18,110 @@ Method | HTTP request | Description
 [**generateSubscriptionsReport**](AdvancedReportsApi.md#generateSubscriptionsReport) | **POST** /reports/advanced/subscriptions | Generate subscriptions report
 [**generateUnsubscriptionsReport**](AdvancedReportsApi.md#generateUnsubscriptionsReport) | **POST** /reports/advanced/unsubscriptions | Generate unsubscriptions report
 [**getAllAdvancedReports**](AdvancedReportsApi.md#getAllAdvancedReports) | **GET** /reports/advanced | Get all advanced reports
+[**getAllAdvancedReportsModels**](AdvancedReportsApi.md#getAllAdvancedReportsModels) | **GET** /reports/advanced/models | Get all advanced reports models
 
+
+
+## generateByModelReport
+
+> AcceptedResponse generateByModelReport(generateByModelReport)
+
+Generate report by model
+
+Generates a new report by model Id
+
+### Example
+
+```javascript
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
+// Configure API key authorization: Apikey
+let Apikey = defaultClient.authentications['Apikey'];
+Apikey.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//Apikey.apiKeyPrefix = 'Token';
+
+let apiInstance = new egoisdk.AdvancedReportsApi();
+let generateByModelReport = new egoisdk.GenerateByModelReport(); // GenerateByModelReport | Parameters for the report by model Id
+apiInstance.generateByModelReport(generateByModelReport, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **generateByModelReport** | [**GenerateByModelReport**](GenerateByModelReport.md)| Parameters for the report by model Id | 
+
+### Return type
+
+[**AcceptedResponse**](AcceptedResponse.md)
+
+### Authorization
+
+[Apikey](../README.md#Apikey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+## generateContactActivityReport
+
+> AcceptedResponse generateContactActivityReport(generateContactActivityReport)
+
+Generate contact activity report
+
+Generates a new contact activity report
+
+### Example
+
+```javascript
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
+// Configure API key authorization: Apikey
+let Apikey = defaultClient.authentications['Apikey'];
+Apikey.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//Apikey.apiKeyPrefix = 'Token';
+
+let apiInstance = new egoisdk.AdvancedReportsApi();
+let generateContactActivityReport = new egoisdk.GenerateContactActivityReport(); // GenerateContactActivityReport | Parameters for the contact activity report
+apiInstance.generateContactActivityReport(generateContactActivityReport, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **generateContactActivityReport** | [**GenerateContactActivityReport**](GenerateContactActivityReport.md)| Parameters for the contact activity report | 
+
+### Return type
+
+[**AcceptedResponse**](AcceptedResponse.md)
+
+### Authorization
+
+[Apikey](../README.md#Apikey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
 
 
 ## generateEmailBouncesReport
@@ -636,6 +741,67 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**AdvancedReportsCollection**](AdvancedReportsCollection.md)
+
+### Authorization
+
+[Apikey](../README.md#Apikey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## getAllAdvancedReportsModels
+
+> AdvancedReportsModelsCollection getAllAdvancedReportsModels(opts)
+
+Get all advanced reports models
+
+Returns all advanced reports
+
+### Example
+
+```javascript
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
+// Configure API key authorization: Apikey
+let Apikey = defaultClient.authentications['Apikey'];
+Apikey.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//Apikey.apiKeyPrefix = 'Token';
+
+let apiInstance = new egoisdk.AdvancedReportsApi();
+let opts = {
+  'title': "title_example", // String | Advanced report model title
+  'offset': 56, // Number | Element offset (starting at zero for the first element)
+  'limit': 10, // Number | Number of items to return
+  'order': "'desc'", // String | Type of order
+  'orderBy': "'model_id'" // String | Reference attribute to order the advanced reports
+};
+apiInstance.getAllAdvancedReportsModels(opts, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **title** | **String**| Advanced report model title | [optional] 
+ **offset** | **Number**| Element offset (starting at zero for the first element) | [optional] 
+ **limit** | **Number**| Number of items to return | [optional] [default to 10]
+ **order** | **String**| Type of order | [optional] [default to &#39;desc&#39;]
+ **orderBy** | **String**| Reference attribute to order the advanced reports | [optional] [default to &#39;model_id&#39;]
+
+### Return type
+
+[**AdvancedReportsModelsCollection**](AdvancedReportsModelsCollection.md)
 
 ### Authorization
 

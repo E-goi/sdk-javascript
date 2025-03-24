@@ -34,7 +34,7 @@ Apikey.apiKey = 'YOUR API KEY';
 //Apikey.apiKeyPrefix = 'Token';
 
 let apiInstance = new egoisdk.PushApi();
-let campaignHash = "campaignHash_example"; // String | ID of the Campaign
+let campaignHash = "campaignHash_example"; // String | Hash of the Campaign
 let campaignPushSendRequest = new egoisdk.CampaignPushSendRequest(); // CampaignPushSendRequest | Parameters for the 'send push' action
 apiInstance.actionSendPush(campaignHash, campaignPushSendRequest, (error, data, response) => {
   if (error) {
@@ -50,7 +50,7 @@ apiInstance.actionSendPush(campaignHash, campaignPushSendRequest, (error, data, 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaignHash** | **String**| ID of the Campaign | 
+ **campaignHash** | **String**| Hash of the Campaign | 
  **campaignPushSendRequest** | [**CampaignPushSendRequest**](CampaignPushSendRequest.md)| Parameters for the &#39;send push&#39; action | 
 
 ### Return type
@@ -242,7 +242,7 @@ Apikey.apiKey = 'YOUR API KEY';
 //Apikey.apiKeyPrefix = 'Token';
 
 let apiInstance = new egoisdk.PushApi();
-let campaignHash = "campaignHash_example"; // String | ID of the Campaign
+let campaignHash = "campaignHash_example"; // String | Hash of the Campaign
 let pushCampaignPatchRequest = new egoisdk.PushCampaignPatchRequest(); // PushCampaignPatchRequest | Parameters for the push campaign
 apiInstance.patchPushCampaign(campaignHash, pushCampaignPatchRequest, (error, data, response) => {
   if (error) {
@@ -258,7 +258,7 @@ apiInstance.patchPushCampaign(campaignHash, pushCampaignPatchRequest, (error, da
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaignHash** | **String**| ID of the Campaign | 
+ **campaignHash** | **String**| Hash of the Campaign | 
  **pushCampaignPatchRequest** | [**PushCampaignPatchRequest**](PushCampaignPatchRequest.md)| Parameters for the push campaign | 
 
 ### Return type

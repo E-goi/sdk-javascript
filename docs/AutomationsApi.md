@@ -5,6 +5,7 @@ All URIs are relative to *https://api.egoiapp.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**deleteAutomation**](AutomationsApi.md#deleteAutomation) | **DELETE** /automations/{automation_id} | Remove automation
+[**getAllActions**](AutomationsApi.md#getAllActions) | **GET** /automations/{automation_id}/actions | Get all actions from given automation
 [**getAllAutomations**](AutomationsApi.md#getAllAutomations) | **GET** /automations | Get all automations
 
 
@@ -49,6 +50,63 @@ Name | Type | Description  | Notes
 ### Return type
 
 null (empty response body)
+
+### Authorization
+
+[Apikey](../README.md#Apikey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## getAllActions
+
+> AutomationActionsCollection getAllActions(opts)
+
+Get all actions from given automation
+
+Returns all actions
+
+### Example
+
+```javascript
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
+// Configure API key authorization: Apikey
+let Apikey = defaultClient.authentications['Apikey'];
+Apikey.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//Apikey.apiKeyPrefix = 'Token';
+
+let apiInstance = new egoisdk.AutomationsApi();
+let opts = {
+  'automationId': 56, // Number | Reference attribute to automation id
+  'offset': 56, // Number | Element offset (starting at zero for the first element)
+  'limit': 10 // Number | Number of items to return
+};
+apiInstance.getAllActions(opts, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **automationId** | **Number**| Reference attribute to automation id | [optional] 
+ **offset** | **Number**| Element offset (starting at zero for the first element) | [optional] 
+ **limit** | **Number**| Number of items to return | [optional] [default to 10]
+
+### Return type
+
+[**AutomationActionsCollection**](AutomationActionsCollection.md)
 
 ### Authorization
 

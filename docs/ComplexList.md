@@ -4,7 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**language** | [**Language**](Language.md) |  | 
+**defaultLanguage** | [**Language**](Language.md) |  | [optional] 
+**availableLanguages** | **[String]** | Array of available languages | [optional] 
 **stats** | [**ComplexListAllOfStats**](ComplexListAllOfStats.md) |  | [optional] 
 **listId** | **Number** |  | [optional] [readonly] 
 **internalName** | **String** | Internal name of the list | [optional] 

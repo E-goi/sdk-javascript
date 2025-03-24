@@ -34,7 +34,7 @@ Apikey.apiKey = 'YOUR API KEY';
 //Apikey.apiKeyPrefix = 'Token';
 
 let apiInstance = new egoisdk.WebpushApi();
-let campaignHash = "campaignHash_example"; // String | ID of the Campaign
+let campaignHash = "campaignHash_example"; // String | Hash of the Campaign
 apiInstance.actionEnableWebPushRss(campaignHash, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -49,7 +49,7 @@ apiInstance.actionEnableWebPushRss(campaignHash, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaignHash** | **String**| ID of the Campaign | 
+ **campaignHash** | **String**| Hash of the Campaign | 
 
 ### Return type
 
@@ -85,7 +85,7 @@ Apikey.apiKey = 'YOUR API KEY';
 //Apikey.apiKeyPrefix = 'Token';
 
 let apiInstance = new egoisdk.WebpushApi();
-let campaignHash = "campaignHash_example"; // String | ID of the Campaign
+let campaignHash = "campaignHash_example"; // String | Hash of the Campaign
 let campaignWebPushSendRequest = new egoisdk.CampaignWebPushSendRequest(); // CampaignWebPushSendRequest | Parameters for the 'send web-push' action
 apiInstance.actionSendWebPush(campaignHash, campaignWebPushSendRequest, (error, data, response) => {
   if (error) {
@@ -101,7 +101,7 @@ apiInstance.actionSendWebPush(campaignHash, campaignWebPushSendRequest, (error, 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaignHash** | **String**| ID of the Campaign | 
+ **campaignHash** | **String**| Hash of the Campaign | 
  **campaignWebPushSendRequest** | [**CampaignWebPushSendRequest**](CampaignWebPushSendRequest.md)| Parameters for the &#39;send web-push&#39; action | 
 
 ### Return type
@@ -352,7 +352,7 @@ Apikey.apiKey = 'YOUR API KEY';
 //Apikey.apiKeyPrefix = 'Token';
 
 let apiInstance = new egoisdk.WebpushApi();
-let campaignHash = "campaignHash_example"; // String | ID of the Campaign
+let campaignHash = "campaignHash_example"; // String | Hash of the Campaign
 let webPushPatchCampaign = new egoisdk.WebPushPatchCampaign(); // WebPushPatchCampaign | Parameters for the Webpush Campaign
 apiInstance.patchWebPushCampaign(campaignHash, webPushPatchCampaign, (error, data, response) => {
   if (error) {
@@ -368,7 +368,7 @@ apiInstance.patchWebPushCampaign(campaignHash, webPushPatchCampaign, (error, dat
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaignHash** | **String**| ID of the Campaign | 
+ **campaignHash** | **String**| Hash of the Campaign | 
  **webPushPatchCampaign** | [**WebPushPatchCampaign**](WebPushPatchCampaign.md)| Parameters for the Webpush Campaign | 
 
 ### Return type

@@ -30,7 +30,7 @@ Apikey.apiKey = 'YOUR API KEY';
 //Apikey.apiKeyPrefix = 'Token';
 
 let apiInstance = new egoisdk.VoiceApi();
-let campaignHash = "campaignHash_example"; // String | ID of the Campaign
+let campaignHash = "campaignHash_example"; // String | Hash of the Campaign
 let campaignVoiceSendRequest = {"schedule_date":"2019-04-01 12:30:23","list_id":1,"segments":{"type":"none"},"notify":[0],"destination_field":"cellphone","unique_contacts_only":true,"limit_contacts":{"type":"percent","value":10},"limit_hour":{"hour_start":"01:00","hour_end":"04:00"},"limit_speed":1}; // CampaignVoiceSendRequest | Parameters for the 'send voice' action
 apiInstance.actionSendVoice(campaignHash, campaignVoiceSendRequest, (error, data, response) => {
   if (error) {
@@ -46,7 +46,7 @@ apiInstance.actionSendVoice(campaignHash, campaignVoiceSendRequest, (error, data
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaignHash** | **String**| ID of the Campaign | 
+ **campaignHash** | **String**| Hash of the Campaign | 
  **campaignVoiceSendRequest** | [**CampaignVoiceSendRequest**](CampaignVoiceSendRequest.md)| Parameters for the &#39;send voice&#39; action | 
 
 ### Return type
@@ -134,7 +134,7 @@ Apikey.apiKey = 'YOUR API KEY';
 //Apikey.apiKeyPrefix = 'Token';
 
 let apiInstance = new egoisdk.VoiceApi();
-let campaignHash = "campaignHash_example"; // String | ID of the Campaign
+let campaignHash = "campaignHash_example"; // String | Hash of the Campaign
 let voicePatchCampaign = new egoisdk.VoicePatchCampaign(); // VoicePatchCampaign | Parameters for the Voice Campaign
 apiInstance.patchVoiceCampaign(campaignHash, voicePatchCampaign, (error, data, response) => {
   if (error) {
@@ -150,7 +150,7 @@ apiInstance.patchVoiceCampaign(campaignHash, voicePatchCampaign, (error, data, r
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaignHash** | **String**| ID of the Campaign | 
+ **campaignHash** | **String**| Hash of the Campaign | 
  **voicePatchCampaign** | [**VoicePatchCampaign**](VoicePatchCampaign.md)| Parameters for the Voice Campaign | 
 
 ### Return type

@@ -8,5 +8,6 @@ Name | Type | Description | Notes
 **updated** | **Number** |  | [optional] 
 **ignored** | **Number** |  | [optional] 
 **invalid** | **Number** |  | [optional] 
+**file** | **String** |  | [optional] 
 
 

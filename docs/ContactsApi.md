@@ -21,6 +21,7 @@ Method | HTTP request | Description
 [**getContact**](ContactsApi.md#getContact) | **GET** /lists/{list_id}/contacts/{contact_id} | Get contact
 [**patchContact**](ContactsApi.md#patchContact) | **PATCH** /lists/{list_id}/contacts/{contact_id} | Update a specific contact
 [**searchContacts**](ContactsApi.md#searchContacts) | **GET** /contacts/search | Search contact
+[**updateContactByField**](ContactsApi.md#updateContactByField) | **POST** /lists/{list_id}/contacts/by-field | Updates a contact by field
 
 
 
@@ -972,5 +973,58 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## updateContactByField
+
+> CreateContactResponse updateContactByField(listId, contactFieldIdBaseExtraPost)
+
+Updates a contact by field
+
+Updates a contact by field, wich must be unique in list
+
+### Example
+
+```javascript
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
+// Configure API key authorization: Apikey
+let Apikey = defaultClient.authentications['Apikey'];
+Apikey.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//Apikey.apiKeyPrefix = 'Token';
+
+let apiInstance = new egoisdk.ContactsApi();
+let listId = 56; // Number | ID of the list where the contact belongs
+let contactFieldIdBaseExtraPost = new egoisdk.ContactFieldIdBaseExtraPost(); // ContactFieldIdBaseExtraPost | Parameters for the Contact Update by Field Id
+apiInstance.updateContactByField(listId, contactFieldIdBaseExtraPost, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **listId** | **Number**| ID of the list where the contact belongs | 
+ **contactFieldIdBaseExtraPost** | [**ContactFieldIdBaseExtraPost**](ContactFieldIdBaseExtraPost.md)| Parameters for the Contact Update by Field Id | 
+
+### Return type
+
+[**CreateContactResponse**](CreateContactResponse.md)
+
+### Authorization
+
+[Apikey](../README.md#Apikey)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
 - **Accept**: application/json
 

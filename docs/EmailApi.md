@@ -32,7 +32,7 @@ Apikey.apiKey = 'YOUR API KEY';
 //Apikey.apiKeyPrefix = 'Token';
 
 let apiInstance = new egoisdk.EmailApi();
-let campaignHash = "campaignHash_example"; // String | ID of the Campaign
+let campaignHash = "campaignHash_example"; // String | Hash of the Campaign
 apiInstance.actionEnableEmailRss(campaignHash, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -47,7 +47,7 @@ apiInstance.actionEnableEmailRss(campaignHash, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaignHash** | **String**| ID of the Campaign | 
+ **campaignHash** | **String**| Hash of the Campaign | 
 
 ### Return type
 
@@ -83,7 +83,7 @@ Apikey.apiKey = 'YOUR API KEY';
 //Apikey.apiKeyPrefix = 'Token';
 
 let apiInstance = new egoisdk.EmailApi();
-let campaignHash = "campaignHash_example"; // String | ID of the Campaign
+let campaignHash = "campaignHash_example"; // String | Hash of the Campaign
 let campaignEmailSendRequest = new egoisdk.CampaignEmailSendRequest(); // CampaignEmailSendRequest | Parameters for the 'send email' action
 apiInstance.actionSendEmail(campaignHash, campaignEmailSendRequest, (error, data, response) => {
   if (error) {
@@ -99,7 +99,7 @@ apiInstance.actionSendEmail(campaignHash, campaignEmailSendRequest, (error, data
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaignHash** | **String**| ID of the Campaign | 
+ **campaignHash** | **String**| Hash of the Campaign | 
  **campaignEmailSendRequest** | [**CampaignEmailSendRequest**](CampaignEmailSendRequest.md)| Parameters for the &#39;send email&#39; action | 
 
 ### Return type
@@ -238,7 +238,7 @@ Apikey.apiKey = 'YOUR API KEY';
 //Apikey.apiKeyPrefix = 'Token';
 
 let apiInstance = new egoisdk.EmailApi();
-let campaignHash = "campaignHash_example"; // String | ID of the Campaign
+let campaignHash = "campaignHash_example"; // String | Hash of the Campaign
 let emailCampaignPatch = new egoisdk.EmailCampaignPatch(); // EmailCampaignPatch | Parameters for the Email Campaign
 apiInstance.patchEmailCampaign(campaignHash, emailCampaignPatch, (error, data, response) => {
   if (error) {
@@ -254,7 +254,7 @@ apiInstance.patchEmailCampaign(campaignHash, emailCampaignPatch, (error, data, r
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaignHash** | **String**| ID of the Campaign | 
+ **campaignHash** | **String**| Hash of the Campaign | 
  **emailCampaignPatch** | [**EmailCampaignPatch**](EmailCampaignPatch.md)| Parameters for the Email Campaign | 
 
 ### Return type

@@ -1,8 +1,8 @@
 /**
- * APIv3 (New)
- *  # Introduction This is our new version of API. We invite you to start using it and give us your feedback # Getting Started  E-goi can be integrated with many environments and programming languages via our REST API. We've created a developer focused portal to give your organization a clear and quick overview of how to integrate with E-goi. The developer portal focuses on scenarios for integration and flow of events. We recommend familiarizing yourself with all of the content in the developer portal, before start using our rest API.  The E-goi  APIv3 is served over HTTPS. To ensure data privacy, unencrypted HTTP is not supported.  Request data is passed to the API by POSTing JSON objects to the API endpoints with the appropriate parameters.      BaseURL = api.egoiapp.com  # RESTful Services This API supports 5 HTTP methods:  * <b>GET</b>: The HTTP GET method is used to **read** (or retrieve) a representation of a resource. * <b>POST</b>: The POST verb is most-often utilized to **create** new resources. * <b>PATCH</b>: PATCH is used for **modify** capabilities. The PATCH request only needs to contain the changes to the resource, not the complete resource * <b>PUT</b>: PUT is most-often utilized for **update** capabilities, PUT-ing to a known resource URI with the request body containing the newly-updated representation of the original resource. * <b>DELETE</b>: DELETE is pretty easy to understand. It is used to **delete** a resource identified by a URI.  # Authentication  We use a custom authentication method, you will need a apikey that you can find in your account settings. Below you will see a curl example to get your account information:     #!/bin/bash     curl -X GET 'https://api.egoiapp.com/my-account' \\     -H 'accept: application/json' \\     -H 'Apikey: <YOUR_APY_KEY>'  Here you can see a curl Post example with authentication:     #!/bin/bash     curl -X POST 'http://api.egoiapp.com/tags' \\     -H 'accept: application/json' \\     -H 'Apikey: <YOUR_APY_KEY>' \\     -H 'Content-Type: application/json' \\     -d '{`name`:`Your custom tag`,`color`:`#FFFFFF`}'  # SDK Get started quickly with E-goi with our integration tools. Our SDK is a modern open source library that makes it easy to integrate your application with E-goi services.  * <a href='https://github.com/E-goi/sdk-java'>Java</a>  * <a href='https://github.com/E-goi/sdk-php'>PHP</a>  * <a href='https://github.com/E-goi/sdk-python'>Python</a>  * <a href='https://github.com/E-goi/sdk-ruby'>Ruby</a>  * <a href='https://github.com/E-goi/sdk-javascript'>Javascript</a>  * <a href='https://github.com/E-goi/sdk-csharp'>C#</a>  # Stream Limits Stream limits are security mesures we have to make sure our API have a fair use policy, for this reason, any request that creates or modifies data (**POST**, **PATCH** and **PUT**) is limited to a maximum of **20MB** of content length. If you arrive to this limit in one of your request, you'll receive a HTTP code **413 (Request Entity Too Large)** and the request will be ignored. To avoid this error in importation's requests, it's advised the request's division in batches that have each one less than 20MB.  # Timeouts Timeouts set a maximum waiting time on a request's response. Our API, sets a default timeout for each request and when breached, you'll receive an HTTP **408 (Request Timeout)** error code. You should take into consideration that response times can vary widely based on the complexity of the request, amount of data being analyzed, and the load on the system and workspace at the time of the query. When dealing with such errors, you should first attempt to reduce the complexity and amount of data under analysis, and only then, if problems are still occurring ask for support.  For all these reasons, the default timeout for each request is **10 Seconds** and any request that creates or modifies data (**POST**, **PATCH** and **PUT**) will have a timeout of **60 Seconds**. Specific timeouts may exist for specific requests, these can be found in the request's documentation.  # Callbacks A callback is an asynchronous API request that originates from the API server and is sent to the client in response to a previous request sent by that client.  The API will make a **POST** request to the address defined in the URL with the information regarding the event of interest and share data related to that event.  <a href='/usecases/callbacks/' target='_blank'>[Go to callbacks documentation]</a>  ***Note:*** Only http or https protocols are supported in the Url parameter.  <security-definitions/>
+ * Marketing API
+ *  # Introduction Welcome to the E-goi Marketing API! <br><br>This API enables you to integrate, automate, and manage all the marketing functionalities offered by E-goi. With it, you can interact with contact lists, send email campaigns, SMS, push notifications, and much more. <br><br>Our API is designed to simplify integration in a straightforward, efficient, and secure way, meeting the needs of developers and businesses looking to optimize their digital marketing operations. <br><br>Explore the documentation to discover all the possibilities and start creating integrations that drive your marketing results. # Getting Started  E-goi can be integrated with many environments and programming languages via our REST API. We've created a developer focused portal to give your organization a clear and quick overview of how to integrate with E-goi. The developer portal focuses on scenarios for integration and flow of events. We recommend familiarizing yourself with all of the content in the developer portal, before start using our rest API.  The E-goi  APIv3 is served over HTTPS. To ensure data privacy, unencrypted HTTP is not supported.  Request data is passed to the API by POSTing JSON objects to the API endpoints with the appropriate parameters.      BaseURL = api.egoiapp.com  # RESTful Services This API supports 5 HTTP methods:  * <b>GET</b>: The HTTP GET method is used to **read** (or retrieve) a representation of a resource. * <b>POST</b>: The POST verb is most-often utilized to **create** new resources. * <b>PATCH</b>: PATCH is used for **modify** capabilities. The PATCH request only needs to contain the changes to the resource, not the complete resource * <b>PUT</b>: PUT is most-often utilized for **update** capabilities, PUT-ing to a known resource URI with the request body containing the newly-updated representation of the original resource. * <b>DELETE</b>: DELETE is pretty easy to understand. It is used to **delete** a resource identified by a URI.  # Transport Layer Security (TLS) Transport Layer Security (TLS) is a widely used authentication and encryption protocol that establishes a secure communications channel for data-in-transit while ensuring that the client and server can validate one another.<br> Our API requires TLS 1.2 or TLS 1.3. We recommend <b>TLS 1.3</b>.<br><br> <b>TLS 1.3 ciphers</b> * TLS_AES_256_GCM_SHA384 (0x1302) ECDH x25519 (eq. 3072 bits RSA) FS * TLS_CHACHA20_POLY1305_SHA256 (0x1303) ECDH x25519 (eq. 3072 bits RSA) FS * TLS_AES_128_GCM_SHA256 (0x1301) ECDH x25519 (eq. 3072 bits RSA) FS  <b>TLS 1.2 ciphers</b> * TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (0xc030) ECDH x25519 (eq. 3072 bits RSA) FS * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (0xc02f) ECDH x25519 (eq. 3072 bits RSA) FS * TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 (0x9f) DH 4096 bits FS * TLS_DHE_RSA_WITH_AES_128_GCM_SHA256 (0x9e) DH 4096 bits FS  # Rate Limits Rate limits are used to control the amount of traffic that is allowed to flow between the client and the server.<br> This is done to prevent abuse and ensure that the API is available to all users.<br> The rate limits are applied to ensure the stability and security of our API and are based on the number of requests made in a given time period.<br> If the rate limit is exceeded, the API will return a 429 status code and the request will be rejected.<br> Each API response includes headers providing real-time rate limit information: * **X-RateLimit-Limit**: The maximum number of requests that the consumer is permitted to make in a given time period. * **X-RateLimit-Remaining**: The number of requests remaining in the current rate limit window. * **X-RateLimit-Reset**: The remaining time in seconds until the rate limit window resets.  # Account Limit The account limit is a rate limit that is applied to the account as a whole.<br> This limit is applied to all requests made by the account, regardless of the client making the request.<br> The account limit is applied to ensure that the account does not exceed the maximum number of requests allowed in a given time period. Each account has an overall usage limit per hour. If the account limit is exceeded, the API will return a 429 status code and the request will be rejected.<br> Each API response includes headers providing real-time rate limit information: * **X-Account-Limit**: The maximum number of requests that the account is permitted to make in a given time period. * **X-Account-Remaining**: The number of requests remaining in the current rate limit window. * **X-Account-Reset**: The remaining time in seconds until the rate limit window resets.   # Authentication  We use a custom authentication method, you will need a apikey that you can find in your account settings. Below you will see a curl example to get your account information:     #!/bin/bash     curl -X GET 'https://api.egoiapp.com/my-account' \\     -H 'accept: application/json' \\     -H 'Apikey: <YOUR_APY_KEY>'  Here you can see a curl Post example with authentication:     #!/bin/bash     curl -X POST 'http://api.egoiapp.com/tags' \\     -H 'accept: application/json' \\     -H 'Apikey: <YOUR_APY_KEY>' \\     -H 'Content-Type: application/json' \\     -d '{`name`:`Your custom tag`,`color`:`#FFFFFF`}'  # SDK Get started quickly with E-goi with our integration tools. Our SDK is a modern open source library that makes it easy to integrate your application with E-goi services.  * <a href='https://github.com/E-goi/sdk-java'>Java</a>  * <a href='https://github.com/E-goi/sdk-php'>PHP</a>  * <a href='https://github.com/E-goi/sdk-python'>Python</a>  * <a href='https://github.com/E-goi/sdk-ruby'>Ruby</a>  * <a href='https://github.com/E-goi/sdk-javascript'>Javascript</a>  * <a href='https://github.com/E-goi/sdk-csharp'>C#</a>  # Stream Limits Stream limits are security mesures we have to make sure our API have a fair use policy, for this reason, any request that creates or modifies data (**POST**, **PATCH** and **PUT**) is limited to a maximum of **20MB** of content length. If you arrive to this limit in one of your request, you'll receive a HTTP code **413 (Request Entity Too Large)** and the request will be ignored. To avoid this error in importation's requests, it's advised the request's division in batches that have each one less than 20MB.  # Timeouts Timeouts set a maximum waiting time on a request's response. Our API, sets a default timeout for each request and when breached, you'll receive an HTTP **408 (Request Timeout)** error code. You should take into consideration that response times can vary widely based on the complexity of the request, amount of data being analyzed, and the load on the system and workspace at the time of the query. When dealing with such errors, you should first attempt to reduce the complexity and amount of data under analysis, and only then, if problems are still occurring ask for support.  For all these reasons, the default timeout for each request is **10 Seconds** and any request that creates or modifies data (**POST**, **PATCH** and **PUT**) will have a timeout of **60 Seconds**. Specific timeouts may exist for specific requests, these can be found in the request's documentation.  # Callbacks A callback is an asynchronous API request that originates from the API server and is sent to the client in response to a previous request sent by that client.  The API will make a **POST** request to the address defined in the URL with the information regarding the event of interest and share data related to that event.  <a href='/usecases/callbacks/' target='_blank'>[Go to callbacks documentation]</a>  ***Note:*** Only http or https protocols are supported in the Url parameter.  <security-definitions/>
  *
- * The version of the OpenAPI document: 3.0.0
+ * The version of the OpenAPI document: V3
  * 
  *
  * NOTE: This class is auto generated by OpenAPI Generator (https://openapi-generator.tech).
@@ -31,6 +31,8 @@ import ActivateContactsRequest from './egoisdk/ActivateContactsRequest';
 import ActivityCollection from './egoisdk/ActivityCollection';
 import AdvancedReport from './egoisdk/AdvancedReport';
 import AdvancedReportCampaignsObject from './egoisdk/AdvancedReportCampaignsObject';
+import AdvancedReportContactActivityColumns from './egoisdk/AdvancedReportContactActivityColumns';
+import AdvancedReportContactActivityOptions from './egoisdk/AdvancedReportContactActivityOptions';
 import AdvancedReportEmailBouncesColumns from './egoisdk/AdvancedReportEmailBouncesColumns';
 import AdvancedReportEmailBouncesOptions from './egoisdk/AdvancedReportEmailBouncesOptions';
 import AdvancedReportEmailClicksByContactColumns from './egoisdk/AdvancedReportEmailClicksByContactColumns';
@@ -43,6 +45,7 @@ import AdvancedReportEmailUnsubscriptionsColumns from './egoisdk/AdvancedReportE
 import AdvancedReportEmailUnsubscriptionsOptions from './egoisdk/AdvancedReportEmailUnsubscriptionsOptions';
 import AdvancedReportFormsInner from './egoisdk/AdvancedReportFormsInner';
 import AdvancedReportListExtraFieldsInner from './egoisdk/AdvancedReportListExtraFieldsInner';
+import AdvancedReportModels from './egoisdk/AdvancedReportModels';
 import AdvancedReportRange from './egoisdk/AdvancedReportRange';
 import AdvancedReportSendsColumns from './egoisdk/AdvancedReportSendsColumns';
 import AdvancedReportSendsOptions from './egoisdk/AdvancedReportSendsOptions';
@@ -55,18 +58,23 @@ import AdvancedReportSubscriptionsOptions from './egoisdk/AdvancedReportSubscrip
 import AdvancedReportUnsubscriptionsColumns from './egoisdk/AdvancedReportUnsubscriptionsColumns';
 import AdvancedReportUnsubscriptionsOptions from './egoisdk/AdvancedReportUnsubscriptionsOptions';
 import AdvancedReportsCollection from './egoisdk/AdvancedReportsCollection';
+import AdvancedReportsModelsCollection from './egoisdk/AdvancedReportsModelsCollection';
 import AlphanumericCellphoneSender from './egoisdk/AlphanumericCellphoneSender';
 import AlphanumericCellphoneSenderPost from './egoisdk/AlphanumericCellphoneSenderPost';
 import AlphanumericCellphoneSenderPostAllOf from './egoisdk/AlphanumericCellphoneSenderPostAllOf';
 import AppStructure from './egoisdk/AppStructure';
 import AppStructureList from './egoisdk/AppStructureList';
 import AttachByContacts from './egoisdk/AttachByContacts';
+import AttachByFieldId from './egoisdk/AttachByFieldId';
 import AttachBySegment from './egoisdk/AttachBySegment';
 import AttachTagRequest from './egoisdk/AttachTagRequest';
 import AttachTagResponse from './egoisdk/AttachTagResponse';
 import AutomaticSegment from './egoisdk/AutomaticSegment';
 import AutomaticSegmentAllOf from './egoisdk/AutomaticSegmentAllOf';
 import Automation from './egoisdk/Automation';
+import AutomationActions from './egoisdk/AutomationActions';
+import AutomationActionsAllOf from './egoisdk/AutomationActionsAllOf';
+import AutomationActionsCollection from './egoisdk/AutomationActionsCollection';
 import AutomationAllOf from './egoisdk/AutomationAllOf';
 import AutomationCollection from './egoisdk/AutomationCollection';
 import AutomationPost from './egoisdk/AutomationPost';
@@ -153,12 +161,6 @@ import ClientIsBeingEnabledErrors from './egoisdk/ClientIsBeingEnabledErrors';
 import CnameExists from './egoisdk/CnameExists';
 import CnameExistsErrors from './egoisdk/CnameExistsErrors';
 import ComplexContact from './egoisdk/ComplexContact';
-import ComplexContactAllOf from './egoisdk/ComplexContactAllOf';
-import ComplexContactAllOfEmailStats from './egoisdk/ComplexContactAllOfEmailStats';
-import ComplexContactAllOfPushStats from './egoisdk/ComplexContactAllOfPushStats';
-import ComplexContactAllOfSmsStats from './egoisdk/ComplexContactAllOfSmsStats';
-import ComplexContactAllOfVoiceStats from './egoisdk/ComplexContactAllOfVoiceStats';
-import ComplexContactAllOfWebpushStats from './egoisdk/ComplexContactAllOfWebpushStats';
 import ComplexField from './egoisdk/ComplexField';
 import ComplexFieldAllOf from './egoisdk/ComplexFieldAllOf';
 import ComplexList from './egoisdk/ComplexList';
@@ -187,9 +189,13 @@ import ContactActivityAbstractActionsWithAutomations from './egoisdk/ContactActi
 import ContactActivityAbstractActionsWithCampaign from './egoisdk/ContactActivityAbstractActionsWithCampaign';
 import ContactActivityAbstractActionsWithData from './egoisdk/ContactActivityAbstractActionsWithData';
 import ContactActivityAbstractActionsWithTags from './egoisdk/ContactActivityAbstractActionsWithTags';
+import ContactActivityActivitiesFields from './egoisdk/ContactActivityActivitiesFields';
 import ContactActivityClick from './egoisdk/ContactActivityClick';
 import ContactActivityClickAllOf from './egoisdk/ContactActivityClickAllOf';
 import ContactActivityClickAllOfActionData from './egoisdk/ContactActivityClickAllOfActionData';
+import ContactAdvertisingPost from './egoisdk/ContactAdvertisingPost';
+import ContactAdvertisingPostSchema from './egoisdk/ContactAdvertisingPostSchema';
+import ContactAdvertisingPostSchemaAdvertising from './egoisdk/ContactAdvertisingPostSchemaAdvertising';
 import ContactAutomationsActivity from './egoisdk/ContactAutomationsActivity';
 import ContactAutomationsActivityAllOf from './egoisdk/ContactAutomationsActivityAllOf';
 import ContactAutomationsActivityAllOfActionData from './egoisdk/ContactAutomationsActivityAllOfActionData';
@@ -209,6 +215,7 @@ import ContactBaseStatusExtra from './egoisdk/ContactBaseStatusExtra';
 import ContactBaseStatusExtraBulk from './egoisdk/ContactBaseStatusExtraBulk';
 import ContactBaseStatusExtraNoRemoved from './egoisdk/ContactBaseStatusExtraNoRemoved';
 import ContactBaseWithStatusFieldsBulkSchema from './egoisdk/ContactBaseWithStatusFieldsBulkSchema';
+import ContactBaseWithStatusFieldsBulkSchemaBase from './egoisdk/ContactBaseWithStatusFieldsBulkSchemaBase';
 import ContactBaseWithStatusFieldsNoTokensSchema from './egoisdk/ContactBaseWithStatusFieldsNoTokensSchema';
 import ContactBaseWithStatusFieldsNoTokensSchemaBase from './egoisdk/ContactBaseWithStatusFieldsNoTokensSchemaBase';
 import ContactBaseWithStatusFieldsSchema from './egoisdk/ContactBaseWithStatusFieldsSchema';
@@ -223,10 +230,13 @@ import ContactBulkFileAllOf from './egoisdk/ContactBulkFileAllOf';
 import ContactBulkFileAllOf1 from './egoisdk/ContactBulkFileAllOf1';
 import ContactBulkFileAllOf2 from './egoisdk/ContactBulkFileAllOf2';
 import ContactBulkFileAllOf3 from './egoisdk/ContactBulkFileAllOf3';
+import ContactByFieldFieldsPostSchema from './egoisdk/ContactByFieldFieldsPostSchema';
+import ContactByFieldFieldsPostSchemaCompareField from './egoisdk/ContactByFieldFieldsPostSchemaCompareField';
 import ContactCampaignActivity from './egoisdk/ContactCampaignActivity';
 import ContactCampaignActivityAllOf from './egoisdk/ContactCampaignActivityAllOf';
 import ContactCampaignActivityAllOfActionData from './egoisdk/ContactCampaignActivityAllOfActionData';
 import ContactCollection from './egoisdk/ContactCollection';
+import ContactCompareFieldPost from './egoisdk/ContactCompareFieldPost';
 import ContactExportRequest from './egoisdk/ContactExportRequest';
 import ContactExtraFieldCellphone from './egoisdk/ContactExtraFieldCellphone';
 import ContactExtraFieldCellphoneBulk from './egoisdk/ContactExtraFieldCellphoneBulk';
@@ -242,6 +252,7 @@ import ContactExtraFields from './egoisdk/ContactExtraFields';
 import ContactExtraFieldsBulk from './egoisdk/ContactExtraFieldsBulk';
 import ContactExtraFieldsBulkSchema from './egoisdk/ContactExtraFieldsBulkSchema';
 import ContactExtraFieldsSchema from './egoisdk/ContactExtraFieldsSchema';
+import ContactFieldIdBaseExtraPost from './egoisdk/ContactFieldIdBaseExtraPost';
 import ContactFieldMappingFileBulkSchema from './egoisdk/ContactFieldMappingFileBulkSchema';
 import ContactForgetRequest from './egoisdk/ContactForgetRequest';
 import ContactInsideBase from './egoisdk/ContactInsideBase';
@@ -249,7 +260,20 @@ import ContactInsideBaseBulk from './egoisdk/ContactInsideBaseBulk';
 import ContactInsideBasePost from './egoisdk/ContactInsideBasePost';
 import ContactInsideBaseWithId from './egoisdk/ContactInsideBaseWithId';
 import ContactOtherActivity from './egoisdk/ContactOtherActivity';
+import ContactReferrerPost from './egoisdk/ContactReferrerPost';
+import ContactReferrerPostSchema from './egoisdk/ContactReferrerPostSchema';
+import ContactReferrerPostSchemaReferrer from './egoisdk/ContactReferrerPostSchemaReferrer';
 import ContactSearchResponse from './egoisdk/ContactSearchResponse';
+import ContactStats from './egoisdk/ContactStats';
+import ContactStatsEmailStats from './egoisdk/ContactStatsEmailStats';
+import ContactStatsPushStats from './egoisdk/ContactStatsPushStats';
+import ContactStatsSmsStats from './egoisdk/ContactStatsSmsStats';
+import ContactStatsTrafficStats from './egoisdk/ContactStatsTrafficStats';
+import ContactStatsTrafficStatsAdvertising from './egoisdk/ContactStatsTrafficStatsAdvertising';
+import ContactStatsTrafficStatsReferrer from './egoisdk/ContactStatsTrafficStatsReferrer';
+import ContactStatsTrafficStatsUtm from './egoisdk/ContactStatsTrafficStatsUtm';
+import ContactStatsVoiceStats from './egoisdk/ContactStatsVoiceStats';
+import ContactStatsWebpushStats from './egoisdk/ContactStatsWebpushStats';
 import ContactStatusFieldsBulkSchema from './egoisdk/ContactStatusFieldsBulkSchema';
 import ContactStatusFieldsSchema from './egoisdk/ContactStatusFieldsSchema';
 import ContactTagActivity from './egoisdk/ContactTagActivity';
@@ -257,6 +281,10 @@ import ContactTagActivityAllOf from './egoisdk/ContactTagActivityAllOf';
 import ContactTagActivityAllOfActionData from './egoisdk/ContactTagActivityAllOfActionData';
 import ContactTags from './egoisdk/ContactTags';
 import ContactTagsBulk from './egoisdk/ContactTagsBulk';
+import ContactUtmPost from './egoisdk/ContactUtmPost';
+import ContactUtmPostSchema from './egoisdk/ContactUtmPostSchema';
+import ContactUtmPostSchemaUtm from './egoisdk/ContactUtmPostSchemaUtm';
+import ContactUtmReferrerAdvertisingPost from './egoisdk/ContactUtmReferrerAdvertisingPost';
 import ContactsActionUpdateContactsSchema from './egoisdk/ContactsActionUpdateContactsSchema';
 import ContentVoice from './egoisdk/ContentVoice';
 import ContentVoiceAudio from './egoisdk/ContentVoiceAudio';
@@ -280,6 +308,7 @@ import DeleteSegmentsConflict from './egoisdk/DeleteSegmentsConflict';
 import DeleteSegmentsConflictsErrors from './egoisdk/DeleteSegmentsConflictsErrors';
 import DeleteSuppressionListConflictsErrors from './egoisdk/DeleteSuppressionListConflictsErrors';
 import DetachByContacts from './egoisdk/DetachByContacts';
+import DetachByFieldId from './egoisdk/DetachByFieldId';
 import DetachBySegment from './egoisdk/DetachBySegment';
 import DetachTagRequest from './egoisdk/DetachTagRequest';
 import Domain from './egoisdk/Domain';
@@ -350,6 +379,8 @@ import Form from './egoisdk/Form';
 import GeneralInfo from './egoisdk/GeneralInfo';
 import GeneralInfoAllOf from './egoisdk/GeneralInfoAllOf';
 import GeneralInfoAllOfGeneralInfo from './egoisdk/GeneralInfoAllOfGeneralInfo';
+import GenerateByModelReport from './egoisdk/GenerateByModelReport';
+import GenerateContactActivityReport from './egoisdk/GenerateContactActivityReport';
 import GenerateEmailBouncesReport from './egoisdk/GenerateEmailBouncesReport';
 import GenerateEmailClicksByContactReport from './egoisdk/GenerateEmailClicksByContactReport';
 import GenerateEmailClicksByUrlReport from './egoisdk/GenerateEmailClicksByUrlReport';
@@ -467,7 +498,6 @@ import ProductBulkRequest from './egoisdk/ProductBulkRequest';
 import ProductCollection from './egoisdk/ProductCollection';
 import ProductCustomAttributes from './egoisdk/ProductCustomAttributes';
 import ProductPatchRequest from './egoisdk/ProductPatchRequest';
-import ProductPatchRequestRelatedProducts from './egoisdk/ProductPatchRequestRelatedProducts';
 import ProductPostRequest from './egoisdk/ProductPostRequest';
 import PushCampaignPatchRequest from './egoisdk/PushCampaignPatchRequest';
 import PushCampaignPatchRequestContent from './egoisdk/PushCampaignPatchRequestContent';
@@ -482,12 +512,12 @@ import PushNotificationSoundSchemaDefault from './egoisdk/PushNotificationSoundS
 import PushNotificationSoundSchemaNone from './egoisdk/PushNotificationSoundSchemaNone';
 import PushNotificationSoundSchemaUrl from './egoisdk/PushNotificationSoundSchemaUrl';
 import PushReport from './egoisdk/PushReport';
-import PushReportAllOf from './egoisdk/PushReportAllOf';
+import PushReportOperatingSystemsInner from './egoisdk/PushReportOperatingSystemsInner';
+import PushReportOperatingSystemsInnerAllOf from './egoisdk/PushReportOperatingSystemsInnerAllOf';
 import PushResponse from './egoisdk/PushResponse';
+import PushStats from './egoisdk/PushStats';
 import PushToken from './egoisdk/PushToken';
 import PushTokenTwoStepsData from './egoisdk/PushTokenTwoStepsData';
-import PushVersions from './egoisdk/PushVersions';
-import PushVersionsVersionsInner from './egoisdk/PushVersionsVersionsInner';
 import RemoveRequest from './egoisdk/RemoveRequest';
 import RemoveResponse from './egoisdk/RemoveResponse';
 import RemoveResponseErrors from './egoisdk/RemoveResponseErrors';
@@ -630,7 +660,6 @@ import CampaignsApi from './egoiApi/CampaignsApi';
 import ConnectedSitesApi from './egoiApi/ConnectedSitesApi';
 import ContactsApi from './egoiApi/ContactsApi';
 import EcommerceApi from './egoiApi/EcommerceApi';
-import EcommerceActivityApi from './egoiApi/EcommerceActivityApi';
 import EmailApi from './egoiApi/EmailApi';
 import FieldsApi from './egoiApi/FieldsApi';
 import ListsApi from './egoiApi/ListsApi';
@@ -654,7 +683,7 @@ import WebpushApi from './egoiApi/WebpushApi';
 
 
 /**
-*  # Introduction This is our new version of API. We invite you to start using it and give us your feedback # Getting Started  E-goi can be integrated with many environments and programming languages via our REST API. We&#39;ve created a developer focused portal to give your organization a clear and quick overview of how to integrate with E-goi. The developer portal focuses on scenarios for integration and flow of events. We recommend familiarizing yourself with all of the content in the developer portal, before start using our rest API.  The E-goi  APIv3 is served over HTTPS. To ensure data privacy, unencrypted HTTP is not supported.  Request data is passed to the API by POSTing JSON objects to the API endpoints with the appropriate parameters.      BaseURL &#x3D; api.egoiapp.com  # RESTful Services This API supports 5 HTTP methods:  * &lt;b&gt;GET&lt;/b&gt;: The HTTP GET method is used to **read** (or retrieve) a representation of a resource. * &lt;b&gt;POST&lt;/b&gt;: The POST verb is most-often utilized to **create** new resources. * &lt;b&gt;PATCH&lt;/b&gt;: PATCH is used for **modify** capabilities. The PATCH request only needs to contain the changes to the resource, not the complete resource * &lt;b&gt;PUT&lt;/b&gt;: PUT is most-often utilized for **update** capabilities, PUT-ing to a known resource URI with the request body containing the newly-updated representation of the original resource. * &lt;b&gt;DELETE&lt;/b&gt;: DELETE is pretty easy to understand. It is used to **delete** a resource identified by a URI.  # Authentication  We use a custom authentication method, you will need a apikey that you can find in your account settings. Below you will see a curl example to get your account information:     #!/bin/bash     curl -X GET &#39;https://api.egoiapp.com/my-account&#39; \\     -H &#39;accept: application/json&#39; \\     -H &#39;Apikey: &lt;YOUR_APY_KEY&gt;&#39;  Here you can see a curl Post example with authentication:     #!/bin/bash     curl -X POST &#39;http://api.egoiapp.com/tags&#39; \\     -H &#39;accept: application/json&#39; \\     -H &#39;Apikey: &lt;YOUR_APY_KEY&gt;&#39; \\     -H &#39;Content-Type: application/json&#39; \\     -d &#39;{&#x60;name&#x60;:&#x60;Your custom tag&#x60;,&#x60;color&#x60;:&#x60;#FFFFFF&#x60;}&#39;  # SDK Get started quickly with E-goi with our integration tools. Our SDK is a modern open source library that makes it easy to integrate your application with E-goi services.  * &lt;a href&#x3D;&#39;https://github.com/E-goi/sdk-java&#39;&gt;Java&lt;/a&gt;  * &lt;a href&#x3D;&#39;https://github.com/E-goi/sdk-php&#39;&gt;PHP&lt;/a&gt;  * &lt;a href&#x3D;&#39;https://github.com/E-goi/sdk-python&#39;&gt;Python&lt;/a&gt;  * &lt;a href&#x3D;&#39;https://github.com/E-goi/sdk-ruby&#39;&gt;Ruby&lt;/a&gt;  * &lt;a href&#x3D;&#39;https://github.com/E-goi/sdk-javascript&#39;&gt;Javascript&lt;/a&gt;  * &lt;a href&#x3D;&#39;https://github.com/E-goi/sdk-csharp&#39;&gt;C#&lt;/a&gt;  # Stream Limits Stream limits are security mesures we have to make sure our API have a fair use policy, for this reason, any request that creates or modifies data (**POST**, **PATCH** and **PUT**) is limited to a maximum of **20MB** of content length. If you arrive to this limit in one of your request, you&#39;ll receive a HTTP code **413 (Request Entity Too Large)** and the request will be ignored. To avoid this error in importation&#39;s requests, it&#39;s advised the request&#39;s division in batches that have each one less than 20MB.  # Timeouts Timeouts set a maximum waiting time on a request&#39;s response. Our API, sets a default timeout for each request and when breached, you&#39;ll receive an HTTP **408 (Request Timeout)** error code. You should take into consideration that response times can vary widely based on the complexity of the request, amount of data being analyzed, and the load on the system and workspace at the time of the query. When dealing with such errors, you should first attempt to reduce the complexity and amount of data under analysis, and only then, if problems are still occurring ask for support.  For all these reasons, the default timeout for each request is **10 Seconds** and any request that creates or modifies data (**POST**, **PATCH** and **PUT**) will have a timeout of **60 Seconds**. Specific timeouts may exist for specific requests, these can be found in the request&#39;s documentation.  # Callbacks A callback is an asynchronous API request that originates from the API server and is sent to the client in response to a previous request sent by that client.  The API will make a **POST** request to the address defined in the URL with the information regarding the event of interest and share data related to that event.  &lt;a href&#x3D;&#39;/usecases/callbacks/&#39; target&#x3D;&#39;_blank&#39;&gt;[Go to callbacks documentation]&lt;/a&gt;  ***Note:*** Only http or https protocols are supported in the Url parameter.  &lt;security-definitions/&gt;.<br>
+*  # Introduction Welcome to the E-goi Marketing API! &lt;br&gt;&lt;br&gt;This API enables you to integrate, automate, and manage all the marketing functionalities offered by E-goi. With it, you can interact with contact lists, send email campaigns, SMS, push notifications, and much more. &lt;br&gt;&lt;br&gt;Our API is designed to simplify integration in a straightforward, efficient, and secure way, meeting the needs of developers and businesses looking to optimize their digital marketing operations. &lt;br&gt;&lt;br&gt;Explore the documentation to discover all the possibilities and start creating integrations that drive your marketing results. # Getting Started  E-goi can be integrated with many environments and programming languages via our REST API. We&#39;ve created a developer focused portal to give your organization a clear and quick overview of how to integrate with E-goi. The developer portal focuses on scenarios for integration and flow of events. We recommend familiarizing yourself with all of the content in the developer portal, before start using our rest API.  The E-goi  APIv3 is served over HTTPS. To ensure data privacy, unencrypted HTTP is not supported.  Request data is passed to the API by POSTing JSON objects to the API endpoints with the appropriate parameters.      BaseURL &#x3D; api.egoiapp.com  # RESTful Services This API supports 5 HTTP methods:  * &lt;b&gt;GET&lt;/b&gt;: The HTTP GET method is used to **read** (or retrieve) a representation of a resource. * &lt;b&gt;POST&lt;/b&gt;: The POST verb is most-often utilized to **create** new resources. * &lt;b&gt;PATCH&lt;/b&gt;: PATCH is used for **modify** capabilities. The PATCH request only needs to contain the changes to the resource, not the complete resource * &lt;b&gt;PUT&lt;/b&gt;: PUT is most-often utilized for **update** capabilities, PUT-ing to a known resource URI with the request body containing the newly-updated representation of the original resource. * &lt;b&gt;DELETE&lt;/b&gt;: DELETE is pretty easy to understand. It is used to **delete** a resource identified by a URI.  # Transport Layer Security (TLS) Transport Layer Security (TLS) is a widely used authentication and encryption protocol that establishes a secure communications channel for data-in-transit while ensuring that the client and server can validate one another.&lt;br&gt; Our API requires TLS 1.2 or TLS 1.3. We recommend &lt;b&gt;TLS 1.3&lt;/b&gt;.&lt;br&gt;&lt;br&gt; &lt;b&gt;TLS 1.3 ciphers&lt;/b&gt; * TLS_AES_256_GCM_SHA384 (0x1302) ECDH x25519 (eq. 3072 bits RSA) FS * TLS_CHACHA20_POLY1305_SHA256 (0x1303) ECDH x25519 (eq. 3072 bits RSA) FS * TLS_AES_128_GCM_SHA256 (0x1301) ECDH x25519 (eq. 3072 bits RSA) FS  &lt;b&gt;TLS 1.2 ciphers&lt;/b&gt; * TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384 (0xc030) ECDH x25519 (eq. 3072 bits RSA) FS * TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (0xc02f) ECDH x25519 (eq. 3072 bits RSA) FS * TLS_DHE_RSA_WITH_AES_256_GCM_SHA384 (0x9f) DH 4096 bits FS * TLS_DHE_RSA_WITH_AES_128_GCM_SHA256 (0x9e) DH 4096 bits FS  # Rate Limits Rate limits are used to control the amount of traffic that is allowed to flow between the client and the server.&lt;br&gt; This is done to prevent abuse and ensure that the API is available to all users.&lt;br&gt; The rate limits are applied to ensure the stability and security of our API and are based on the number of requests made in a given time period.&lt;br&gt; If the rate limit is exceeded, the API will return a 429 status code and the request will be rejected.&lt;br&gt; Each API response includes headers providing real-time rate limit information: * **X-RateLimit-Limit**: The maximum number of requests that the consumer is permitted to make in a given time period. * **X-RateLimit-Remaining**: The number of requests remaining in the current rate limit window. * **X-RateLimit-Reset**: The remaining time in seconds until the rate limit window resets.  # Account Limit The account limit is a rate limit that is applied to the account as a whole.&lt;br&gt; This limit is applied to all requests made by the account, regardless of the client making the request.&lt;br&gt; The account limit is applied to ensure that the account does not exceed the maximum number of requests allowed in a given time period. Each account has an overall usage limit per hour. If the account limit is exceeded, the API will return a 429 status code and the request will be rejected.&lt;br&gt; Each API response includes headers providing real-time rate limit information: * **X-Account-Limit**: The maximum number of requests that the account is permitted to make in a given time period. * **X-Account-Remaining**: The number of requests remaining in the current rate limit window. * **X-Account-Reset**: The remaining time in seconds until the rate limit window resets.   # Authentication  We use a custom authentication method, you will need a apikey that you can find in your account settings. Below you will see a curl example to get your account information:     #!/bin/bash     curl -X GET &#39;https://api.egoiapp.com/my-account&#39; \\     -H &#39;accept: application/json&#39; \\     -H &#39;Apikey: &lt;YOUR_APY_KEY&gt;&#39;  Here you can see a curl Post example with authentication:     #!/bin/bash     curl -X POST &#39;http://api.egoiapp.com/tags&#39; \\     -H &#39;accept: application/json&#39; \\     -H &#39;Apikey: &lt;YOUR_APY_KEY&gt;&#39; \\     -H &#39;Content-Type: application/json&#39; \\     -d &#39;{&#x60;name&#x60;:&#x60;Your custom tag&#x60;,&#x60;color&#x60;:&#x60;#FFFFFF&#x60;}&#39;  # SDK Get started quickly with E-goi with our integration tools. Our SDK is a modern open source library that makes it easy to integrate your application with E-goi services.  * &lt;a href&#x3D;&#39;https://github.com/E-goi/sdk-java&#39;&gt;Java&lt;/a&gt;  * &lt;a href&#x3D;&#39;https://github.com/E-goi/sdk-php&#39;&gt;PHP&lt;/a&gt;  * &lt;a href&#x3D;&#39;https://github.com/E-goi/sdk-python&#39;&gt;Python&lt;/a&gt;  * &lt;a href&#x3D;&#39;https://github.com/E-goi/sdk-ruby&#39;&gt;Ruby&lt;/a&gt;  * &lt;a href&#x3D;&#39;https://github.com/E-goi/sdk-javascript&#39;&gt;Javascript&lt;/a&gt;  * &lt;a href&#x3D;&#39;https://github.com/E-goi/sdk-csharp&#39;&gt;C#&lt;/a&gt;  # Stream Limits Stream limits are security mesures we have to make sure our API have a fair use policy, for this reason, any request that creates or modifies data (**POST**, **PATCH** and **PUT**) is limited to a maximum of **20MB** of content length. If you arrive to this limit in one of your request, you&#39;ll receive a HTTP code **413 (Request Entity Too Large)** and the request will be ignored. To avoid this error in importation&#39;s requests, it&#39;s advised the request&#39;s division in batches that have each one less than 20MB.  # Timeouts Timeouts set a maximum waiting time on a request&#39;s response. Our API, sets a default timeout for each request and when breached, you&#39;ll receive an HTTP **408 (Request Timeout)** error code. You should take into consideration that response times can vary widely based on the complexity of the request, amount of data being analyzed, and the load on the system and workspace at the time of the query. When dealing with such errors, you should first attempt to reduce the complexity and amount of data under analysis, and only then, if problems are still occurring ask for support.  For all these reasons, the default timeout for each request is **10 Seconds** and any request that creates or modifies data (**POST**, **PATCH** and **PUT**) will have a timeout of **60 Seconds**. Specific timeouts may exist for specific requests, these can be found in the request&#39;s documentation.  # Callbacks A callback is an asynchronous API request that originates from the API server and is sent to the client in response to a previous request sent by that client.  The API will make a **POST** request to the address defined in the URL with the information regarding the event of interest and share data related to that event.  &lt;a href&#x3D;&#39;/usecases/callbacks/&#39; target&#x3D;&#39;_blank&#39;&gt;[Go to callbacks documentation]&lt;/a&gt;  ***Note:*** Only http or https protocols are supported in the Url parameter.  &lt;security-definitions/&gt;.<br>
 * The <code>index</code> module provides access to constructors for all the classes which comprise the public API.
 * <p>
 * An AMD (recommended!) or CommonJS application will generally do something equivalent to the following:
@@ -682,7 +711,7 @@ import WebpushApi from './egoiApi/WebpushApi';
 * </pre>
 * </p>
 * @module index
-* @version 1.1.3RC1
+* @version 1.1.6RC1
 */
 export {
     /**
@@ -800,6 +829,18 @@ export {
     AdvancedReportCampaignsObject,
 
     /**
+     * The AdvancedReportContactActivityColumns model constructor.
+     * @property {module:egoisdk/AdvancedReportContactActivityColumns}
+     */
+    AdvancedReportContactActivityColumns,
+
+    /**
+     * The AdvancedReportContactActivityOptions model constructor.
+     * @property {module:egoisdk/AdvancedReportContactActivityOptions}
+     */
+    AdvancedReportContactActivityOptions,
+
+    /**
      * The AdvancedReportEmailBouncesColumns model constructor.
      * @property {module:egoisdk/AdvancedReportEmailBouncesColumns}
      */
@@ -870,6 +911,12 @@ export {
      * @property {module:egoisdk/AdvancedReportListExtraFieldsInner}
      */
     AdvancedReportListExtraFieldsInner,
+
+    /**
+     * The AdvancedReportModels model constructor.
+     * @property {module:egoisdk/AdvancedReportModels}
+     */
+    AdvancedReportModels,
 
     /**
      * The AdvancedReportRange model constructor.
@@ -944,6 +991,12 @@ export {
     AdvancedReportsCollection,
 
     /**
+     * The AdvancedReportsModelsCollection model constructor.
+     * @property {module:egoisdk/AdvancedReportsModelsCollection}
+     */
+    AdvancedReportsModelsCollection,
+
+    /**
      * The AlphanumericCellphoneSender model constructor.
      * @property {module:egoisdk/AlphanumericCellphoneSender}
      */
@@ -980,6 +1033,12 @@ export {
     AttachByContacts,
 
     /**
+     * The AttachByFieldId model constructor.
+     * @property {module:egoisdk/AttachByFieldId}
+     */
+    AttachByFieldId,
+
+    /**
      * The AttachBySegment model constructor.
      * @property {module:egoisdk/AttachBySegment}
      */
@@ -1014,6 +1073,24 @@ export {
      * @property {module:egoisdk/Automation}
      */
     Automation,
+
+    /**
+     * The AutomationActions model constructor.
+     * @property {module:egoisdk/AutomationActions}
+     */
+    AutomationActions,
+
+    /**
+     * The AutomationActionsAllOf model constructor.
+     * @property {module:egoisdk/AutomationActionsAllOf}
+     */
+    AutomationActionsAllOf,
+
+    /**
+     * The AutomationActionsCollection model constructor.
+     * @property {module:egoisdk/AutomationActionsCollection}
+     */
+    AutomationActionsCollection,
 
     /**
      * The AutomationAllOf model constructor.
@@ -1532,42 +1609,6 @@ export {
     ComplexContact,
 
     /**
-     * The ComplexContactAllOf model constructor.
-     * @property {module:egoisdk/ComplexContactAllOf}
-     */
-    ComplexContactAllOf,
-
-    /**
-     * The ComplexContactAllOfEmailStats model constructor.
-     * @property {module:egoisdk/ComplexContactAllOfEmailStats}
-     */
-    ComplexContactAllOfEmailStats,
-
-    /**
-     * The ComplexContactAllOfPushStats model constructor.
-     * @property {module:egoisdk/ComplexContactAllOfPushStats}
-     */
-    ComplexContactAllOfPushStats,
-
-    /**
-     * The ComplexContactAllOfSmsStats model constructor.
-     * @property {module:egoisdk/ComplexContactAllOfSmsStats}
-     */
-    ComplexContactAllOfSmsStats,
-
-    /**
-     * The ComplexContactAllOfVoiceStats model constructor.
-     * @property {module:egoisdk/ComplexContactAllOfVoiceStats}
-     */
-    ComplexContactAllOfVoiceStats,
-
-    /**
-     * The ComplexContactAllOfWebpushStats model constructor.
-     * @property {module:egoisdk/ComplexContactAllOfWebpushStats}
-     */
-    ComplexContactAllOfWebpushStats,
-
-    /**
      * The ComplexField model constructor.
      * @property {module:egoisdk/ComplexField}
      */
@@ -1736,6 +1777,12 @@ export {
     ContactActivityAbstractActionsWithTags,
 
     /**
+     * The ContactActivityActivitiesFields model constructor.
+     * @property {module:egoisdk/ContactActivityActivitiesFields}
+     */
+    ContactActivityActivitiesFields,
+
+    /**
      * The ContactActivityClick model constructor.
      * @property {module:egoisdk/ContactActivityClick}
      */
@@ -1752,6 +1799,24 @@ export {
      * @property {module:egoisdk/ContactActivityClickAllOfActionData}
      */
     ContactActivityClickAllOfActionData,
+
+    /**
+     * The ContactAdvertisingPost model constructor.
+     * @property {module:egoisdk/ContactAdvertisingPost}
+     */
+    ContactAdvertisingPost,
+
+    /**
+     * The ContactAdvertisingPostSchema model constructor.
+     * @property {module:egoisdk/ContactAdvertisingPostSchema}
+     */
+    ContactAdvertisingPostSchema,
+
+    /**
+     * The ContactAdvertisingPostSchemaAdvertising model constructor.
+     * @property {module:egoisdk/ContactAdvertisingPostSchemaAdvertising}
+     */
+    ContactAdvertisingPostSchemaAdvertising,
 
     /**
      * The ContactAutomationsActivity model constructor.
@@ -1868,6 +1933,12 @@ export {
     ContactBaseWithStatusFieldsBulkSchema,
 
     /**
+     * The ContactBaseWithStatusFieldsBulkSchemaBase model constructor.
+     * @property {module:egoisdk/ContactBaseWithStatusFieldsBulkSchemaBase}
+     */
+    ContactBaseWithStatusFieldsBulkSchemaBase,
+
+    /**
      * The ContactBaseWithStatusFieldsNoTokensSchema model constructor.
      * @property {module:egoisdk/ContactBaseWithStatusFieldsNoTokensSchema}
      */
@@ -1952,6 +2023,18 @@ export {
     ContactBulkFileAllOf3,
 
     /**
+     * The ContactByFieldFieldsPostSchema model constructor.
+     * @property {module:egoisdk/ContactByFieldFieldsPostSchema}
+     */
+    ContactByFieldFieldsPostSchema,
+
+    /**
+     * The ContactByFieldFieldsPostSchemaCompareField model constructor.
+     * @property {module:egoisdk/ContactByFieldFieldsPostSchemaCompareField}
+     */
+    ContactByFieldFieldsPostSchemaCompareField,
+
+    /**
      * The ContactCampaignActivity model constructor.
      * @property {module:egoisdk/ContactCampaignActivity}
      */
@@ -1974,6 +2057,12 @@ export {
      * @property {module:egoisdk/ContactCollection}
      */
     ContactCollection,
+
+    /**
+     * The ContactCompareFieldPost model constructor.
+     * @property {module:egoisdk/ContactCompareFieldPost}
+     */
+    ContactCompareFieldPost,
 
     /**
      * The ContactExportRequest model constructor.
@@ -2066,6 +2155,12 @@ export {
     ContactExtraFieldsSchema,
 
     /**
+     * The ContactFieldIdBaseExtraPost model constructor.
+     * @property {module:egoisdk/ContactFieldIdBaseExtraPost}
+     */
+    ContactFieldIdBaseExtraPost,
+
+    /**
      * The ContactFieldMappingFileBulkSchema model constructor.
      * @property {module:egoisdk/ContactFieldMappingFileBulkSchema}
      */
@@ -2108,10 +2203,88 @@ export {
     ContactOtherActivity,
 
     /**
+     * The ContactReferrerPost model constructor.
+     * @property {module:egoisdk/ContactReferrerPost}
+     */
+    ContactReferrerPost,
+
+    /**
+     * The ContactReferrerPostSchema model constructor.
+     * @property {module:egoisdk/ContactReferrerPostSchema}
+     */
+    ContactReferrerPostSchema,
+
+    /**
+     * The ContactReferrerPostSchemaReferrer model constructor.
+     * @property {module:egoisdk/ContactReferrerPostSchemaReferrer}
+     */
+    ContactReferrerPostSchemaReferrer,
+
+    /**
      * The ContactSearchResponse model constructor.
      * @property {module:egoisdk/ContactSearchResponse}
      */
     ContactSearchResponse,
+
+    /**
+     * The ContactStats model constructor.
+     * @property {module:egoisdk/ContactStats}
+     */
+    ContactStats,
+
+    /**
+     * The ContactStatsEmailStats model constructor.
+     * @property {module:egoisdk/ContactStatsEmailStats}
+     */
+    ContactStatsEmailStats,
+
+    /**
+     * The ContactStatsPushStats model constructor.
+     * @property {module:egoisdk/ContactStatsPushStats}
+     */
+    ContactStatsPushStats,
+
+    /**
+     * The ContactStatsSmsStats model constructor.
+     * @property {module:egoisdk/ContactStatsSmsStats}
+     */
+    ContactStatsSmsStats,
+
+    /**
+     * The ContactStatsTrafficStats model constructor.
+     * @property {module:egoisdk/ContactStatsTrafficStats}
+     */
+    ContactStatsTrafficStats,
+
+    /**
+     * The ContactStatsTrafficStatsAdvertising model constructor.
+     * @property {module:egoisdk/ContactStatsTrafficStatsAdvertising}
+     */
+    ContactStatsTrafficStatsAdvertising,
+
+    /**
+     * The ContactStatsTrafficStatsReferrer model constructor.
+     * @property {module:egoisdk/ContactStatsTrafficStatsReferrer}
+     */
+    ContactStatsTrafficStatsReferrer,
+
+    /**
+     * The ContactStatsTrafficStatsUtm model constructor.
+     * @property {module:egoisdk/ContactStatsTrafficStatsUtm}
+     */
+    ContactStatsTrafficStatsUtm,
+
+    /**
+     * The ContactStatsVoiceStats model constructor.
+     * @property {module:egoisdk/ContactStatsVoiceStats}
+     */
+    ContactStatsVoiceStats,
+
+    /**
+     * The ContactStatsWebpushStats model constructor.
+     * @property {module:egoisdk/ContactStatsWebpushStats}
+     */
+    ContactStatsWebpushStats,
 
     /**
      * The ContactStatusFieldsBulkSchema model constructor.
@@ -2154,6 +2327,30 @@ export {
      * @property {module:egoisdk/ContactTagsBulk}
      */
     ContactTagsBulk,
+
+    /**
+     * The ContactUtmPost model constructor.
+     * @property {module:egoisdk/ContactUtmPost}
+     */
+    ContactUtmPost,
+
+    /**
+     * The ContactUtmPostSchema model constructor.
+     * @property {module:egoisdk/ContactUtmPostSchema}
+     */
+    ContactUtmPostSchema,
+
+    /**
+     * The ContactUtmPostSchemaUtm model constructor.
+     * @property {module:egoisdk/ContactUtmPostSchemaUtm}
+     */
+    ContactUtmPostSchemaUtm,
+
+    /**
+     * The ContactUtmReferrerAdvertisingPost model constructor.
+     * @property {module:egoisdk/ContactUtmReferrerAdvertisingPost}
+     */
+    ContactUtmReferrerAdvertisingPost,
 
     /**
      * The ContactsActionUpdateContactsSchema model constructor.
@@ -2292,6 +2489,12 @@ export {
      * @property {module:egoisdk/DetachByContacts}
      */
     DetachByContacts,
+
+    /**
+     * The DetachByFieldId model constructor.
+     * @property {module:egoisdk/DetachByFieldId}
+     */
+    DetachByFieldId,
 
     /**
      * The DetachBySegment model constructor.
@@ -2712,6 +2915,18 @@ export {
      * @property {module:egoisdk/GeneralInfoAllOfGeneralInfo}
      */
     GeneralInfoAllOfGeneralInfo,
+
+    /**
+     * The GenerateByModelReport model constructor.
+     * @property {module:egoisdk/GenerateByModelReport}
+     */
+    GenerateByModelReport,
+
+    /**
+     * The GenerateContactActivityReport model constructor.
+     * @property {module:egoisdk/GenerateContactActivityReport}
+     */
+    GenerateContactActivityReport,
 
     /**
      * The GenerateEmailBouncesReport model constructor.
@@ -3416,12 +3631,6 @@ export {
     ProductPatchRequest,
 
     /**
-     * The ProductPatchRequestRelatedProducts model constructor.
-     * @property {module:egoisdk/ProductPatchRequestRelatedProducts}
-     */
-    ProductPatchRequestRelatedProducts,
-
-    /**
      * The ProductPostRequest model constructor.
      * @property {module:egoisdk/ProductPostRequest}
      */
@@ -3506,16 +3715,28 @@ export {
     PushReport,
 
     /**
-     * The PushReportAllOf model constructor.
-     * @property {module:egoisdk/PushReportAllOf}
+     * The PushReportOperatingSystemsInner model constructor.
+     * @property {module:egoisdk/PushReportOperatingSystemsInner}
      */
-    PushReportAllOf,
+    PushReportOperatingSystemsInner,
+
+    /**
+     * The PushReportOperatingSystemsInnerAllOf model constructor.
+     * @property {module:egoisdk/PushReportOperatingSystemsInnerAllOf}
+     */
+    PushReportOperatingSystemsInnerAllOf,
 
     /**
      * The PushResponse model constructor.
      * @property {module:egoisdk/PushResponse}
      */
     PushResponse,
+
+    /**
+     * The PushStats model constructor.
+     * @property {module:egoisdk/PushStats}
+     */
+    PushStats,
 
     /**
      * The PushToken model constructor.
@@ -3528,18 +3749,6 @@ export {
      * @property {module:egoisdk/PushTokenTwoStepsData}
      */
     PushTokenTwoStepsData,
-
-    /**
-     * The PushVersions model constructor.
-     * @property {module:egoisdk/PushVersions}
-     */
-    PushVersions,
-
-    /**
-     * The PushVersionsVersionsInner model constructor.
-     * @property {module:egoisdk/PushVersionsVersionsInner}
-     */
-    PushVersionsVersionsInner,
 
     /**
      * The RemoveRequest model constructor.
@@ -4392,12 +4601,6 @@ export {
     * @property {module:egoiApi/EcommerceApi}
     */
     EcommerceApi,
-
-    /**
-    * The EcommerceActivityApi service constructor.
-    * @property {module:egoiApi/EcommerceActivityApi}
-    */
-    EcommerceActivityApi,
 
     /**
     * The EmailApi service constructor.

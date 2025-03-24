@@ -8,7 +8,7 @@ The API describes each available method. Learn about parameters, errors, and how
 If you find a bug or something worth fixing, create an issue.
 
 ### Changelog
-#### 1.1.3RC1
+#### 1.1.6RC1
 ## Installation
 
 ### For [Node.js](https://nodejs.org/)
@@ -109,7 +109,7 @@ Apikey.apiKey = "YOUR API KEY"
 //Apikey.apiKeyPrefix['Apikey'] = "Token"
 
 var api = new egoisdk.AdvancedReportsApi()
-var generateEmailBouncesReport = new egoisdk.GenerateEmailBouncesReport(); // {GenerateEmailBouncesReport} Parameters for the email bounces report
+var generateByModelReport = new egoisdk.GenerateByModelReport(); // {GenerateByModelReport} Parameters for the report by model Id
 var callback = function(error, data, response) {
   if (error) {
     console.error(error);
@@ -117,7 +117,7 @@ var callback = function(error, data, response) {
     console.log('API called successfully. Returned data: ' + data);
   }
 };
-api.generateEmailBouncesReport(generateEmailBouncesReport, callback);
+api.generateByModelReport(generateByModelReport, callback);
 
 ```
 
@@ -127,6 +127,8 @@ All URIs are relative to *https://api.egoiapp.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*egoisdk.AdvancedReportsApi* | [**generateByModelReport**](docs/AdvancedReportsApi.md#generateByModelReport) | **POST** /reports/advanced/model | Generate report by model
+*egoisdk.AdvancedReportsApi* | [**generateContactActivityReport**](docs/AdvancedReportsApi.md#generateContactActivityReport) | **POST** /reports/advanced/contact-activity | Generate contact activity report
 *egoisdk.AdvancedReportsApi* | [**generateEmailBouncesReport**](docs/AdvancedReportsApi.md#generateEmailBouncesReport) | **POST** /reports/advanced/email-bounces | Generate email bounces report
 *egoisdk.AdvancedReportsApi* | [**generateEmailClicksByContactReport**](docs/AdvancedReportsApi.md#generateEmailClicksByContactReport) | **POST** /reports/advanced/email-clicks-by-contact | Generate email clicks by contact report
 *egoisdk.AdvancedReportsApi* | [**generateEmailClicksByUrlReport**](docs/AdvancedReportsApi.md#generateEmailClicksByUrlReport) | **POST** /reports/advanced/email-clicks-by-url | Generate email clicks by URL report
@@ -139,7 +141,9 @@ Class | Method | HTTP request | Description
 *egoisdk.AdvancedReportsApi* | [**generateSubscriptionsReport**](docs/AdvancedReportsApi.md#generateSubscriptionsReport) | **POST** /reports/advanced/subscriptions | Generate subscriptions report
 *egoisdk.AdvancedReportsApi* | [**generateUnsubscriptionsReport**](docs/AdvancedReportsApi.md#generateUnsubscriptionsReport) | **POST** /reports/advanced/unsubscriptions | Generate unsubscriptions report
 *egoisdk.AdvancedReportsApi* | [**getAllAdvancedReports**](docs/AdvancedReportsApi.md#getAllAdvancedReports) | **GET** /reports/advanced | Get all advanced reports
+*egoisdk.AdvancedReportsApi* | [**getAllAdvancedReportsModels**](docs/AdvancedReportsApi.md#getAllAdvancedReportsModels) | **GET** /reports/advanced/models | Get all advanced reports models
 *egoisdk.AutomationsApi* | [**deleteAutomation**](docs/AutomationsApi.md#deleteAutomation) | **DELETE** /automations/{automation_id} | Remove automation
+*egoisdk.AutomationsApi* | [**getAllActions**](docs/AutomationsApi.md#getAllActions) | **GET** /automations/{automation_id}/actions | Get all actions from given automation
 *egoisdk.AutomationsApi* | [**getAllAutomations**](docs/AutomationsApi.md#getAllAutomations) | **GET** /automations | Get all automations
 *egoisdk.CNamesApi* | [**createCName**](docs/CNamesApi.md#createCName) | **POST** /cnames | Create cname
 *egoisdk.CNamesApi* | [**getAllCNames**](docs/CNamesApi.md#getAllCNames) | **GET** /cnames | Get All CNames
@@ -170,6 +174,7 @@ Class | Method | HTTP request | Description
 *egoisdk.ContactsApi* | [**getContact**](docs/ContactsApi.md#getContact) | **GET** /lists/{list_id}/contacts/{contact_id} | Get contact
 *egoisdk.ContactsApi* | [**patchContact**](docs/ContactsApi.md#patchContact) | **PATCH** /lists/{list_id}/contacts/{contact_id} | Update a specific contact
 *egoisdk.ContactsApi* | [**searchContacts**](docs/ContactsApi.md#searchContacts) | **GET** /contacts/search | Search contact
+*egoisdk.ContactsApi* | [**updateContactByField**](docs/ContactsApi.md#updateContactByField) | **POST** /lists/{list_id}/contacts/by-field | Updates a contact by field
 *egoisdk.EcommerceApi* | [**createCart**](docs/EcommerceApi.md#createCart) | **POST** /{domain}/carts | Create cart
 *egoisdk.EcommerceApi* | [**createCatalog**](docs/EcommerceApi.md#createCatalog) | **POST** /catalogs | Create new catalog
 *egoisdk.EcommerceApi* | [**createOrder**](docs/EcommerceApi.md#createOrder) | **POST** /{domain}/orders | Create order
@@ -179,9 +184,9 @@ Class | Method | HTTP request | Description
 *egoisdk.EcommerceApi* | [**getAllCatalogs**](docs/EcommerceApi.md#getAllCatalogs) | **GET** /catalogs | Get all catalogs
 *egoisdk.EcommerceApi* | [**getAllProducts**](docs/EcommerceApi.md#getAllProducts) | **GET** /catalogs/{catalog_id}/products | Get all products
 *egoisdk.EcommerceApi* | [**getProduct**](docs/EcommerceApi.md#getProduct) | **GET** /catalogs/{catalog_id}/products/{product_identifier} | Get product
+*egoisdk.EcommerceApi* | [**importOrdersBulk**](docs/EcommerceApi.md#importOrdersBulk) | **POST** /lists/{list_id}/orders | Orders import bulk request
 *egoisdk.EcommerceApi* | [**importProducts**](docs/EcommerceApi.md#importProducts) | **POST** /catalogs/{catalog_id}/products/actions/import | Import products
 *egoisdk.EcommerceApi* | [**updateProduct**](docs/EcommerceApi.md#updateProduct) | **PATCH** /catalogs/{catalog_id}/products/{product_identifier} | Update product
-*egoisdk.EcommerceActivityApi* | [**importOrdersBulk**](docs/EcommerceActivityApi.md#importOrdersBulk) | **POST** /lists/{list_id}/orders | Orders import bulk request
 *egoisdk.EmailApi* | [**actionEnableEmailRss**](docs/EmailApi.md#actionEnableEmailRss) | **POST** /campaigns/email/rss/{campaign_hash}/actions/enable | Enables a rss email campaign
 *egoisdk.EmailApi* | [**actionSendEmail**](docs/EmailApi.md#actionSendEmail) | **POST** /campaigns/email/{campaign_hash}/actions/send | Send email message
 *egoisdk.EmailApi* | [**createEmailCampaign**](docs/EmailApi.md#createEmailCampaign) | **POST** /campaigns/email | Create new email campaign
@@ -199,6 +204,7 @@ Class | Method | HTTP request | Description
 *egoisdk.ListsApi* | [**createList**](docs/ListsApi.md#createList) | **POST** /lists | Create new list
 *egoisdk.ListsApi* | [**deleteList**](docs/ListsApi.md#deleteList) | **DELETE** /lists/{list_id} | Remove list
 *egoisdk.ListsApi* | [**getAllLists**](docs/ListsApi.md#getAllLists) | **GET** /lists | Get all lists
+*egoisdk.ListsApi* | [**getList**](docs/ListsApi.md#getList) | **GET** /lists/{list_id} | Get list
 *egoisdk.ListsApi* | [**updateList**](docs/ListsApi.md#updateList) | **PATCH** /lists/{list_id} | Update a specific list
 *egoisdk.MyAccountApi* | [**enableTe**](docs/MyAccountApi.md#enableTe) | **POST** /my-account/actions/enable-te | Enable Track&amp;Engage
 *egoisdk.MyAccountApi* | [**enableTransactional**](docs/MyAccountApi.md#enableTransactional) | **POST** /my-account/actions/enable-transactional | Enable Transactional
@@ -217,6 +223,7 @@ Class | Method | HTTP request | Description
 *egoisdk.PushApi* | [**registerPushEvent**](docs/PushApi.md#registerPushEvent) | **POST** /push/apps/{app_id}/event | Registers an event from the push notification.
 *egoisdk.PushApi* | [**registerPushToken**](docs/PushApi.md#registerPushToken) | **POST** /push/apps/{app_id}/token | Registers a Firebase token
 *egoisdk.ReportsApi* | [**getEmailReport**](docs/ReportsApi.md#getEmailReport) | **GET** /reports/email/{campaign_hash} | Get email report
+*egoisdk.ReportsApi* | [**getPushReport**](docs/ReportsApi.md#getPushReport) | **GET** /reports/push/{campaign_hash} | Get push report
 *egoisdk.ReportsApi* | [**getSMSReport**](docs/ReportsApi.md#getSMSReport) | **GET** /reports/sms/{campaign_hash} | Get sms report
 *egoisdk.ReportsApi* | [**getVoiceReport**](docs/ReportsApi.md#getVoiceReport) | **GET** /reports/voice/{campaign_hash} | Get voice report
 *egoisdk.ReportsApi* | [**getWebPushReport**](docs/ReportsApi.md#getWebPushReport) | **GET** /reports/web-push/{campaign_hash} | Get webpush report
@@ -285,6 +292,8 @@ Class | Method | HTTP request | Description
  - [egoisdk.ActivityCollection](docs/ActivityCollection.md)
  - [egoisdk.AdvancedReport](docs/AdvancedReport.md)
  - [egoisdk.AdvancedReportCampaignsObject](docs/AdvancedReportCampaignsObject.md)
+ - [egoisdk.AdvancedReportContactActivityColumns](docs/AdvancedReportContactActivityColumns.md)
+ - [egoisdk.AdvancedReportContactActivityOptions](docs/AdvancedReportContactActivityOptions.md)
  - [egoisdk.AdvancedReportEmailBouncesColumns](docs/AdvancedReportEmailBouncesColumns.md)
  - [egoisdk.AdvancedReportEmailBouncesOptions](docs/AdvancedReportEmailBouncesOptions.md)
  - [egoisdk.AdvancedReportEmailClicksByContactColumns](docs/AdvancedReportEmailClicksByContactColumns.md)
@@ -297,6 +306,7 @@ Class | Method | HTTP request | Description
  - [egoisdk.AdvancedReportEmailUnsubscriptionsOptions](docs/AdvancedReportEmailUnsubscriptionsOptions.md)
  - [egoisdk.AdvancedReportFormsInner](docs/AdvancedReportFormsInner.md)
  - [egoisdk.AdvancedReportListExtraFieldsInner](docs/AdvancedReportListExtraFieldsInner.md)
+ - [egoisdk.AdvancedReportModels](docs/AdvancedReportModels.md)
  - [egoisdk.AdvancedReportRange](docs/AdvancedReportRange.md)
  - [egoisdk.AdvancedReportSendsColumns](docs/AdvancedReportSendsColumns.md)
  - [egoisdk.AdvancedReportSendsOptions](docs/AdvancedReportSendsOptions.md)
@@ -309,18 +319,23 @@ Class | Method | HTTP request | Description
  - [egoisdk.AdvancedReportUnsubscriptionsColumns](docs/AdvancedReportUnsubscriptionsColumns.md)
  - [egoisdk.AdvancedReportUnsubscriptionsOptions](docs/AdvancedReportUnsubscriptionsOptions.md)
  - [egoisdk.AdvancedReportsCollection](docs/AdvancedReportsCollection.md)
+ - [egoisdk.AdvancedReportsModelsCollection](docs/AdvancedReportsModelsCollection.md)
  - [egoisdk.AlphanumericCellphoneSender](docs/AlphanumericCellphoneSender.md)
  - [egoisdk.AlphanumericCellphoneSenderPost](docs/AlphanumericCellphoneSenderPost.md)
  - [egoisdk.AlphanumericCellphoneSenderPostAllOf](docs/AlphanumericCellphoneSenderPostAllOf.md)
  - [egoisdk.AppStructure](docs/AppStructure.md)
  - [egoisdk.AppStructureList](docs/AppStructureList.md)
  - [egoisdk.AttachByContacts](docs/AttachByContacts.md)
+ - [egoisdk.AttachByFieldId](docs/AttachByFieldId.md)
  - [egoisdk.AttachBySegment](docs/AttachBySegment.md)
  - [egoisdk.AttachTagRequest](docs/AttachTagRequest.md)
  - [egoisdk.AttachTagResponse](docs/AttachTagResponse.md)
  - [egoisdk.AutomaticSegment](docs/AutomaticSegment.md)
  - [egoisdk.AutomaticSegmentAllOf](docs/AutomaticSegmentAllOf.md)
  - [egoisdk.Automation](docs/Automation.md)
+ - [egoisdk.AutomationActions](docs/AutomationActions.md)
+ - [egoisdk.AutomationActionsAllOf](docs/AutomationActionsAllOf.md)
+ - [egoisdk.AutomationActionsCollection](docs/AutomationActionsCollection.md)
  - [egoisdk.AutomationAllOf](docs/AutomationAllOf.md)
  - [egoisdk.AutomationCollection](docs/AutomationCollection.md)
  - [egoisdk.AutomationPost](docs/AutomationPost.md)
@@ -407,12 +422,6 @@ Class | Method | HTTP request | Description
  - [egoisdk.CnameExists](docs/CnameExists.md)
  - [egoisdk.CnameExistsErrors](docs/CnameExistsErrors.md)
  - [egoisdk.ComplexContact](docs/ComplexContact.md)
- - [egoisdk.ComplexContactAllOf](docs/ComplexContactAllOf.md)
- - [egoisdk.ComplexContactAllOfEmailStats](docs/ComplexContactAllOfEmailStats.md)
- - [egoisdk.ComplexContactAllOfPushStats](docs/ComplexContactAllOfPushStats.md)
- - [egoisdk.ComplexContactAllOfSmsStats](docs/ComplexContactAllOfSmsStats.md)
- - [egoisdk.ComplexContactAllOfVoiceStats](docs/ComplexContactAllOfVoiceStats.md)
- - [egoisdk.ComplexContactAllOfWebpushStats](docs/ComplexContactAllOfWebpushStats.md)
  - [egoisdk.ComplexField](docs/ComplexField.md)
  - [egoisdk.ComplexFieldAllOf](docs/ComplexFieldAllOf.md)
  - [egoisdk.ComplexList](docs/ComplexList.md)
@@ -441,9 +450,13 @@ Class | Method | HTTP request | Description
  - [egoisdk.ContactActivityAbstractActionsWithCampaign](docs/ContactActivityAbstractActionsWithCampaign.md)
  - [egoisdk.ContactActivityAbstractActionsWithData](docs/ContactActivityAbstractActionsWithData.md)
  - [egoisdk.ContactActivityAbstractActionsWithTags](docs/ContactActivityAbstractActionsWithTags.md)
+ - [egoisdk.ContactActivityActivitiesFields](docs/ContactActivityActivitiesFields.md)
  - [egoisdk.ContactActivityClick](docs/ContactActivityClick.md)
  - [egoisdk.ContactActivityClickAllOf](docs/ContactActivityClickAllOf.md)
  - [egoisdk.ContactActivityClickAllOfActionData](docs/ContactActivityClickAllOfActionData.md)
+ - [egoisdk.ContactAdvertisingPost](docs/ContactAdvertisingPost.md)
+ - [egoisdk.ContactAdvertisingPostSchema](docs/ContactAdvertisingPostSchema.md)
+ - [egoisdk.ContactAdvertisingPostSchemaAdvertising](docs/ContactAdvertisingPostSchemaAdvertising.md)
  - [egoisdk.ContactAutomationsActivity](docs/ContactAutomationsActivity.md)
  - [egoisdk.ContactAutomationsActivityAllOf](docs/ContactAutomationsActivityAllOf.md)
  - [egoisdk.ContactAutomationsActivityAllOfActionData](docs/ContactAutomationsActivityAllOfActionData.md)
@@ -463,6 +476,7 @@ Class | Method | HTTP request | Description
  - [egoisdk.ContactBaseStatusExtraBulk](docs/ContactBaseStatusExtraBulk.md)
  - [egoisdk.ContactBaseStatusExtraNoRemoved](docs/ContactBaseStatusExtraNoRemoved.md)
  - [egoisdk.ContactBaseWithStatusFieldsBulkSchema](docs/ContactBaseWithStatusFieldsBulkSchema.md)
+ - [egoisdk.ContactBaseWithStatusFieldsBulkSchemaBase](docs/ContactBaseWithStatusFieldsBulkSchemaBase.md)
  - [egoisdk.ContactBaseWithStatusFieldsNoTokensSchema](docs/ContactBaseWithStatusFieldsNoTokensSchema.md)
  - [egoisdk.ContactBaseWithStatusFieldsNoTokensSchemaBase](docs/ContactBaseWithStatusFieldsNoTokensSchemaBase.md)
  - [egoisdk.ContactBaseWithStatusFieldsSchema](docs/ContactBaseWithStatusFieldsSchema.md)
@@ -477,10 +491,13 @@ Class | Method | HTTP request | Description
  - [egoisdk.ContactBulkFileAllOf1](docs/ContactBulkFileAllOf1.md)
  - [egoisdk.ContactBulkFileAllOf2](docs/ContactBulkFileAllOf2.md)
  - [egoisdk.ContactBulkFileAllOf3](docs/ContactBulkFileAllOf3.md)
+ - [egoisdk.ContactByFieldFieldsPostSchema](docs/ContactByFieldFieldsPostSchema.md)
+ - [egoisdk.ContactByFieldFieldsPostSchemaCompareField](docs/ContactByFieldFieldsPostSchemaCompareField.md)
  - [egoisdk.ContactCampaignActivity](docs/ContactCampaignActivity.md)
  - [egoisdk.ContactCampaignActivityAllOf](docs/ContactCampaignActivityAllOf.md)
  - [egoisdk.ContactCampaignActivityAllOfActionData](docs/ContactCampaignActivityAllOfActionData.md)
  - [egoisdk.ContactCollection](docs/ContactCollection.md)
+ - [egoisdk.ContactCompareFieldPost](docs/ContactCompareFieldPost.md)
  - [egoisdk.ContactExportRequest](docs/ContactExportRequest.md)
  - [egoisdk.ContactExtraFieldCellphone](docs/ContactExtraFieldCellphone.md)
  - [egoisdk.ContactExtraFieldCellphoneBulk](docs/ContactExtraFieldCellphoneBulk.md)
@@ -496,6 +513,7 @@ Class | Method | HTTP request | Description
  - [egoisdk.ContactExtraFieldsBulk](docs/ContactExtraFieldsBulk.md)
  - [egoisdk.ContactExtraFieldsBulkSchema](docs/ContactExtraFieldsBulkSchema.md)
  - [egoisdk.ContactExtraFieldsSchema](docs/ContactExtraFieldsSchema.md)
+ - [egoisdk.ContactFieldIdBaseExtraPost](docs/ContactFieldIdBaseExtraPost.md)
  - [egoisdk.ContactFieldMappingFileBulkSchema](docs/ContactFieldMappingFileBulkSchema.md)
  - [egoisdk.ContactForgetRequest](docs/ContactForgetRequest.md)
  - [egoisdk.ContactInsideBase](docs/ContactInsideBase.md)
@@ -503,7 +521,20 @@ Class | Method | HTTP request | Description
  - [egoisdk.ContactInsideBasePost](docs/ContactInsideBasePost.md)
  - [egoisdk.ContactInsideBaseWithId](docs/ContactInsideBaseWithId.md)
  - [egoisdk.ContactOtherActivity](docs/ContactOtherActivity.md)
+ - [egoisdk.ContactReferrerPost](docs/ContactReferrerPost.md)
+ - [egoisdk.ContactReferrerPostSchema](docs/ContactReferrerPostSchema.md)
+ - [egoisdk.ContactReferrerPostSchemaReferrer](docs/ContactReferrerPostSchemaReferrer.md)
  - [egoisdk.ContactSearchResponse](docs/ContactSearchResponse.md)
+ - [egoisdk.ContactStats](docs/ContactStats.md)
+ - [egoisdk.ContactStatsEmailStats](docs/ContactStatsEmailStats.md)
+ - [egoisdk.ContactStatsPushStats](docs/ContactStatsPushStats.md)
+ - [egoisdk.ContactStatsSmsStats](docs/ContactStatsSmsStats.md)
+ - [egoisdk.ContactStatsTrafficStats](docs/ContactStatsTrafficStats.md)
+ - [egoisdk.ContactStatsTrafficStatsAdvertising](docs/ContactStatsTrafficStatsAdvertising.md)
+ - [egoisdk.ContactStatsTrafficStatsReferrer](docs/ContactStatsTrafficStatsReferrer.md)
+ - [egoisdk.ContactStatsTrafficStatsUtm](docs/ContactStatsTrafficStatsUtm.md)
+ - [egoisdk.ContactStatsVoiceStats](docs/ContactStatsVoiceStats.md)
+ - [egoisdk.ContactStatsWebpushStats](docs/ContactStatsWebpushStats.md)
  - [egoisdk.ContactStatusFieldsBulkSchema](docs/ContactStatusFieldsBulkSchema.md)
  - [egoisdk.ContactStatusFieldsSchema](docs/ContactStatusFieldsSchema.md)
  - [egoisdk.ContactTagActivity](docs/ContactTagActivity.md)
@@ -511,6 +542,10 @@ Class | Method | HTTP request | Description
  - [egoisdk.ContactTagActivityAllOfActionData](docs/ContactTagActivityAllOfActionData.md)
  - [egoisdk.ContactTags](docs/ContactTags.md)
  - [egoisdk.ContactTagsBulk](docs/ContactTagsBulk.md)
+ - [egoisdk.ContactUtmPost](docs/ContactUtmPost.md)
+ - [egoisdk.ContactUtmPostSchema](docs/ContactUtmPostSchema.md)
+ - [egoisdk.ContactUtmPostSchemaUtm](docs/ContactUtmPostSchemaUtm.md)
+ - [egoisdk.ContactUtmReferrerAdvertisingPost](docs/ContactUtmReferrerAdvertisingPost.md)
  - [egoisdk.ContactsActionUpdateContactsSchema](docs/ContactsActionUpdateContactsSchema.md)
  - [egoisdk.ContentVoice](docs/ContentVoice.md)
  - [egoisdk.ContentVoiceAudio](docs/ContentVoiceAudio.md)
@@ -534,6 +569,7 @@ Class | Method | HTTP request | Description
  - [egoisdk.DeleteSegmentsConflictsErrors](docs/DeleteSegmentsConflictsErrors.md)
  - [egoisdk.DeleteSuppressionListConflictsErrors](docs/DeleteSuppressionListConflictsErrors.md)
  - [egoisdk.DetachByContacts](docs/DetachByContacts.md)
+ - [egoisdk.DetachByFieldId](docs/DetachByFieldId.md)
  - [egoisdk.DetachBySegment](docs/DetachBySegment.md)
  - [egoisdk.DetachTagRequest](docs/DetachTagRequest.md)
  - [egoisdk.Domain](docs/Domain.md)
@@ -604,6 +640,8 @@ Class | Method | HTTP request | Description
  - [egoisdk.GeneralInfo](docs/GeneralInfo.md)
  - [egoisdk.GeneralInfoAllOf](docs/GeneralInfoAllOf.md)
  - [egoisdk.GeneralInfoAllOfGeneralInfo](docs/GeneralInfoAllOfGeneralInfo.md)
+ - [egoisdk.GenerateByModelReport](docs/GenerateByModelReport.md)
+ - [egoisdk.GenerateContactActivityReport](docs/GenerateContactActivityReport.md)
  - [egoisdk.GenerateEmailBouncesReport](docs/GenerateEmailBouncesReport.md)
  - [egoisdk.GenerateEmailClicksByContactReport](docs/GenerateEmailClicksByContactReport.md)
  - [egoisdk.GenerateEmailClicksByUrlReport](docs/GenerateEmailClicksByUrlReport.md)
@@ -721,7 +759,6 @@ Class | Method | HTTP request | Description
  - [egoisdk.ProductCollection](docs/ProductCollection.md)
  - [egoisdk.ProductCustomAttributes](docs/ProductCustomAttributes.md)
  - [egoisdk.ProductPatchRequest](docs/ProductPatchRequest.md)
- - [egoisdk.ProductPatchRequestRelatedProducts](docs/ProductPatchRequestRelatedProducts.md)
  - [egoisdk.ProductPostRequest](docs/ProductPostRequest.md)
  - [egoisdk.PushCampaignPatchRequest](docs/PushCampaignPatchRequest.md)
  - [egoisdk.PushCampaignPatchRequestContent](docs/PushCampaignPatchRequestContent.md)
@@ -736,12 +773,12 @@ Class | Method | HTTP request | Description
  - [egoisdk.PushNotificationSoundSchemaNone](docs/PushNotificationSoundSchemaNone.md)
  - [egoisdk.PushNotificationSoundSchemaUrl](docs/PushNotificationSoundSchemaUrl.md)
  - [egoisdk.PushReport](docs/PushReport.md)
- - [egoisdk.PushReportAllOf](docs/PushReportAllOf.md)
+ - [egoisdk.PushReportOperatingSystemsInner](docs/PushReportOperatingSystemsInner.md)
+ - [egoisdk.PushReportOperatingSystemsInnerAllOf](docs/PushReportOperatingSystemsInnerAllOf.md)
  - [egoisdk.PushResponse](docs/PushResponse.md)
+ - [egoisdk.PushStats](docs/PushStats.md)
  - [egoisdk.PushToken](docs/PushToken.md)
  - [egoisdk.PushTokenTwoStepsData](docs/PushTokenTwoStepsData.md)
- - [egoisdk.PushVersions](docs/PushVersions.md)
- - [egoisdk.PushVersionsVersionsInner](docs/PushVersionsVersionsInner.md)
  - [egoisdk.RemoveRequest](docs/RemoveRequest.md)
  - [egoisdk.RemoveResponse](docs/RemoveResponse.md)
  - [egoisdk.RemoveResponseErrors](docs/RemoveResponseErrors.md)

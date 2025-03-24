@@ -14,6 +14,8 @@ Name | Type | Description | Notes
 
 * `gsm` (value: `"gsm"`)
 
+* `gsm_extended` (value: `"gsm_extended"`)
+
 * `unicode` (value: `"unicode"`)
 
 

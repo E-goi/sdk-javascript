@@ -4,13 +4,14 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**emailStats** | [**ComplexContactAllOfEmailStats**](ComplexContactAllOfEmailStats.md) |  | [optional] 
-**smsStats** | [**ComplexContactAllOfSmsStats**](ComplexContactAllOfSmsStats.md) |  | [optional] 
-**pushStats** | [**ComplexContactAllOfPushStats**](ComplexContactAllOfPushStats.md) |  | [optional] 
-**webpushStats** | [**ComplexContactAllOfWebpushStats**](ComplexContactAllOfWebpushStats.md) |  | [optional] 
-**voiceStats** | [**ComplexContactAllOfVoiceStats**](ComplexContactAllOfVoiceStats.md) |  | [optional] 
 **base** | [**ContactBaseFieldsSchemaBase**](ContactBaseFieldsSchemaBase.md) |  | [optional] 
 **extra** | [**[ContactExtraFields]**](ContactExtraFields.md) | Array of the contact&#39;s extra fields | [optional] 
 **tags** | **[Number]** | Array of tags for this contact | [optional] [readonly] 
+**emailStats** | [**ContactStatsEmailStats**](ContactStatsEmailStats.md) |  | [optional] 
+**smsStats** | [**ContactStatsSmsStats**](ContactStatsSmsStats.md) |  | [optional] 
+**pushStats** | [**ContactStatsPushStats**](ContactStatsPushStats.md) |  | [optional] 
+**webpushStats** | [**ContactStatsWebpushStats**](ContactStatsWebpushStats.md) |  | [optional] 
+**voiceStats** | [**ContactStatsVoiceStats**](ContactStatsVoiceStats.md) |  | [optional] 
+**trafficStats** | [**ContactStatsTrafficStats**](ContactStatsTrafficStats.md) |  | [optional] 
 
 

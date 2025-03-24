@@ -5,7 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **tagId** | **Number** |  | 
-**contacts** | **[String]** | Array of contact IDs to dettach the tag | 
+**contacts** | **[String]** | Array of contacts to detach the tag | 
 **segmentId** | **String** |  | 
+**fieldId** | **String** |  | 
 
 

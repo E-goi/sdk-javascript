@@ -30,7 +30,7 @@ Apikey.apiKey = 'YOUR API KEY';
 //Apikey.apiKeyPrefix = 'Token';
 
 let apiInstance = new egoisdk.SmartSmsApi();
-let campaignHash = "campaignHash_example"; // String | ID of the Campaign
+let campaignHash = "campaignHash_example"; // String | Hash of the Campaign
 let campaignSmsSendRequest = new egoisdk.CampaignSmsSendRequest(); // CampaignSmsSendRequest | Parameters for the 'send sms' action
 apiInstance.actionSendSmartSms(campaignHash, campaignSmsSendRequest, (error, data, response) => {
   if (error) {
@@ -46,7 +46,7 @@ apiInstance.actionSendSmartSms(campaignHash, campaignSmsSendRequest, (error, dat
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaignHash** | **String**| ID of the Campaign | 
+ **campaignHash** | **String**| Hash of the Campaign | 
  **campaignSmsSendRequest** | [**CampaignSmsSendRequest**](CampaignSmsSendRequest.md)| Parameters for the &#39;send sms&#39; action | 
 
 ### Return type
@@ -134,7 +134,7 @@ Apikey.apiKey = 'YOUR API KEY';
 //Apikey.apiKeyPrefix = 'Token';
 
 let apiInstance = new egoisdk.SmartSmsApi();
-let campaignHash = "campaignHash_example"; // String | ID of the Campaign
+let campaignHash = "campaignHash_example"; // String | Hash of the Campaign
 let smartSmsCampaignPatchRequest = new egoisdk.SmartSmsCampaignPatchRequest(); // SmartSmsCampaignPatchRequest | Parameters for the Smart Sms Campaign
 apiInstance.patchSmartSmsCampaign(campaignHash, smartSmsCampaignPatchRequest, (error, data, response) => {
   if (error) {
@@ -150,7 +150,7 @@ apiInstance.patchSmartSmsCampaign(campaignHash, smartSmsCampaignPatchRequest, (e
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaignHash** | **String**| ID of the Campaign | 
+ **campaignHash** | **String**| Hash of the Campaign | 
  **smartSmsCampaignPatchRequest** | [**SmartSmsCampaignPatchRequest**](SmartSmsCampaignPatchRequest.md)| Parameters for the Smart Sms Campaign | 
 
 ### Return type

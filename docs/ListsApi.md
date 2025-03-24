@@ -7,6 +7,7 @@ Method | HTTP request | Description
 [**createList**](ListsApi.md#createList) | **POST** /lists | Create new list
 [**deleteList**](ListsApi.md#deleteList) | **DELETE** /lists/{list_id} | Remove list
 [**getAllLists**](ListsApi.md#getAllLists) | **GET** /lists | Get all lists
+[**getList**](ListsApi.md#getList) | **GET** /lists/{list_id} | Get list
 [**updateList**](ListsApi.md#updateList) | **PATCH** /lists/{list_id} | Update a specific list
 
 
@@ -173,6 +174,57 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**ListCollection**](ListCollection.md)
+
+### Authorization
+
+[Apikey](../README.md#Apikey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## getList
+
+> ComplexList getList(listId)
+
+Get list
+
+Returns list information given its ID
+
+### Example
+
+```javascript
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
+// Configure API key authorization: Apikey
+let Apikey = defaultClient.authentications['Apikey'];
+Apikey.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//Apikey.apiKeyPrefix = 'Token';
+
+let apiInstance = new egoisdk.ListsApi();
+let listId = 56; // Number | ID of the List
+apiInstance.getList(listId, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **listId** | **Number**| ID of the List | 
+
+### Return type
+
+[**ComplexList**](ComplexList.md)
 
 ### Authorization
 

@@ -5,7 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **tagId** | **Number** |  | 
-**contacts** | **[String]** | Array of contact IDs to attach the tag | 
+**contacts** | **[String]** | Array of contacts to attach the tag | 
 **segmentId** | **String** |  | 
+**fieldId** | **String** |  | 
 
 

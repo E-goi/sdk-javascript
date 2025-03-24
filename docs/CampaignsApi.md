@@ -29,7 +29,7 @@ Apikey.apiKey = 'YOUR API KEY';
 //Apikey.apiKeyPrefix = 'Token';
 
 let apiInstance = new egoisdk.CampaignsApi();
-let campaignHash = "campaignHash_example"; // String | ID of the Campaign
+let campaignHash = "campaignHash_example"; // String | Hash of the Campaign
 apiInstance.deleteCampaigns(campaignHash, (error, data, response) => {
   if (error) {
     console.error(error);
@@ -44,7 +44,7 @@ apiInstance.deleteCampaigns(campaignHash, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaignHash** | **String**| ID of the Campaign | 
+ **campaignHash** | **String**| Hash of the Campaign | 
 
 ### Return type
 
@@ -99,7 +99,7 @@ let opts = {
   'scheduleDateMin': new Date("2013-10-20T19:20:30+01:00"), // Date | Schedule Date initial
   'scheduleDateMax': new Date("2013-10-20T19:20:30+01:00"), // Date | Schedule Date finish
   'offset': 56, // Number | Element offset (starting at zero for the first element)
-  'limit': 10, // Number | Number of items to return
+  'limit': 100, // Number | Number of items to return
   'order': "'desc'", // String | Type of order
   'orderBy': "'created'" // String | Reference attribute to order campaigns
 };
@@ -135,7 +135,7 @@ Name | Type | Description  | Notes
  **scheduleDateMin** | **Date**| Schedule Date initial | [optional] 
  **scheduleDateMax** | **Date**| Schedule Date finish | [optional] 
  **offset** | **Number**| Element offset (starting at zero for the first element) | [optional] 
- **limit** | **Number**| Number of items to return | [optional] [default to 10]
+ **limit** | **Number**| Number of items to return | [optional] [default to 100]
  **order** | **String**| Type of order | [optional] [default to &#39;desc&#39;]
  **orderBy** | **String**| Reference attribute to order campaigns | [optional] [default to &#39;created&#39;]
 

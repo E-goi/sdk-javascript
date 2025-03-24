@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**id** | **Number** |  | [optional] [readonly] 
 **campaignHash** | **String** |  | [optional] [readonly] 
 **status** | **String** | Status of the campaign | [optional] 
 **thumbnail** | **String** | Thumbnail of the campaign | [optional] 
@@ -18,6 +19,8 @@ Name | Type | Description | Notes
 **startDate** | **Date** |  | [optional] 
 **endDate** | **Date** |  | [optional] 
 **scheduleDate** | [**CampaignScheduleDate**](CampaignScheduleDate.md) |  | [optional] 
+**processedMessages** | **Number** | Total number of processed messages | [optional] 
+**automationId** | **Number** | The automation id of the campaign | [optional] 
 
 
 

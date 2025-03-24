@@ -5,6 +5,7 @@ All URIs are relative to *https://api.egoiapp.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getEmailReport**](ReportsApi.md#getEmailReport) | **GET** /reports/email/{campaign_hash} | Get email report
+[**getPushReport**](ReportsApi.md#getPushReport) | **GET** /reports/push/{campaign_hash} | Get push report
 [**getSMSReport**](ReportsApi.md#getSMSReport) | **GET** /reports/sms/{campaign_hash} | Get sms report
 [**getVoiceReport**](ReportsApi.md#getVoiceReport) | **GET** /reports/voice/{campaign_hash} | Get voice report
 [**getWebPushReport**](ReportsApi.md#getWebPushReport) | **GET** /reports/web-push/{campaign_hash} | Get webpush report
@@ -31,7 +32,7 @@ Apikey.apiKey = 'YOUR API KEY';
 //Apikey.apiKeyPrefix = 'Token';
 
 let apiInstance = new egoisdk.ReportsApi();
-let campaignHash = "campaignHash_example"; // String | ID of the Campaign
+let campaignHash = "campaignHash_example"; // String | Hash of the Campaign
 let opts = {
   'date': true, // Boolean | True to show date stats
   'weekday': true, // Boolean | True to show weekday stats
@@ -55,7 +56,7 @@ apiInstance.getEmailReport(campaignHash, opts, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaignHash** | **String**| ID of the Campaign | 
+ **campaignHash** | **String**| Hash of the Campaign | 
  **date** | **Boolean**| True to show date stats | [optional] [default to true]
  **weekday** | **Boolean**| True to show weekday stats | [optional] [default to true]
  **hour** | **Boolean**| True to show hour stats | [optional] [default to true]
@@ -67,6 +68,61 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**EmailReport**](EmailReport.md)
+
+### Authorization
+
+[Apikey](../README.md#Apikey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+## getPushReport
+
+> PushReport getPushReport(campaignHash, opts)
+
+Get push report
+
+Returns a push report given the campaign hash
+
+### Example
+
+```javascript
+import egoisdk from 'egoisdk';
+let defaultClient = egoisdk.ApiClient.instance;
+// Configure API key authorization: Apikey
+let Apikey = defaultClient.authentications['Apikey'];
+Apikey.apiKey = 'YOUR API KEY';
+// Uncomment the following line to set a prefix for the API key, e.g. "Token" (defaults to null)
+//Apikey.apiKeyPrefix = 'Token';
+
+let apiInstance = new egoisdk.ReportsApi();
+let campaignHash = "campaignHash_example"; // String | Hash of the Campaign
+let opts = {
+  'operatingSystems': true // Boolean | True to show operating system stats
+};
+apiInstance.getPushReport(campaignHash, opts, (error, data, response) => {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+});
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **campaignHash** | **String**| Hash of the Campaign | 
+ **operatingSystems** | **Boolean**| True to show operating system stats | [optional] [default to true]
+
+### Return type
+
+[**PushReport**](PushReport.md)
 
 ### Authorization
 
@@ -98,7 +154,7 @@ Apikey.apiKey = 'YOUR API KEY';
 //Apikey.apiKeyPrefix = 'Token';
 
 let apiInstance = new egoisdk.ReportsApi();
-let campaignHash = "campaignHash_example"; // String | ID of the Campaign
+let campaignHash = "campaignHash_example"; // String | Hash of the Campaign
 let opts = {
   'networks': true // Boolean | True to show network stats
 };
@@ -116,7 +172,7 @@ apiInstance.getSMSReport(campaignHash, opts, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaignHash** | **String**| ID of the Campaign | 
+ **campaignHash** | **String**| Hash of the Campaign | 
  **networks** | **Boolean**| True to show network stats | [optional] [default to true]
 
 ### Return type
@@ -153,7 +209,7 @@ Apikey.apiKey = 'YOUR API KEY';
 //Apikey.apiKeyPrefix = 'Token';
 
 let apiInstance = new egoisdk.ReportsApi();
-let campaignHash = "campaignHash_example"; // String | ID of the Campaign
+let campaignHash = "campaignHash_example"; // String | Hash of the Campaign
 let opts = {
   'networks': true // Boolean | True to show network stats
 };
@@ -171,7 +227,7 @@ apiInstance.getVoiceReport(campaignHash, opts, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaignHash** | **String**| ID of the Campaign | 
+ **campaignHash** | **String**| Hash of the Campaign | 
  **networks** | **Boolean**| True to show network stats | [optional] [default to true]
 
 ### Return type
@@ -208,7 +264,7 @@ Apikey.apiKey = 'YOUR API KEY';
 //Apikey.apiKeyPrefix = 'Token';
 
 let apiInstance = new egoisdk.ReportsApi();
-let campaignHash = "campaignHash_example"; // String | ID of the Campaign
+let campaignHash = "campaignHash_example"; // String | Hash of the Campaign
 let opts = {
   'devices': true, // Boolean | True to show device stats
   'operatingSystems': true, // Boolean | True to show operating systems stats
@@ -229,7 +285,7 @@ apiInstance.getWebPushReport(campaignHash, opts, (error, data, response) => {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **campaignHash** | **String**| ID of the Campaign | 
+ **campaignHash** | **String**| Hash of the Campaign | 
  **devices** | **Boolean**| True to show device stats | [optional] [default to true]
  **operatingSystems** | **Boolean**| True to show operating systems stats | [optional] [default to true]
  **browsers** | **Boolean**| True to show browser stats | [optional] [default to true]
