@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The AdvancedReportContactActivityOptions model module.
  * @module egoisdk/AdvancedReportContactActivityOptions
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class AdvancedReportContactActivityOptions {
     /**

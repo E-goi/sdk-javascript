@@ -17,7 +17,7 @@ import ImportBulkFileRequestSchemaFile from './ImportBulkFileRequestSchemaFile';
 /**
  * The ImportBulkFileRequestSchema model module.
  * @module egoisdk/ImportBulkFileRequestSchema
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ImportBulkFileRequestSchema {
     /**

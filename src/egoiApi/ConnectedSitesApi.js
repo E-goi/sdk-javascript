@@ -28,7 +28,7 @@ import UnprocessableEntity from '../egoisdk/UnprocessableEntity';
 /**
 * ConnectedSites service.
 * @module egoiApi/ConnectedSitesApi
-* @version 1.1.6RC1
+* @version 1.1.7RC1
 */
 export default class ConnectedSitesApi {
 

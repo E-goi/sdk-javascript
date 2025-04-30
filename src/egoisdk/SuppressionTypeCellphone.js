@@ -18,7 +18,7 @@ import SuppressionTypeCellphoneAllOf1 from './SuppressionTypeCellphoneAllOf1';
 /**
  * The SuppressionTypeCellphone model module.
  * @module egoisdk/SuppressionTypeCellphone
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class SuppressionTypeCellphone {
     /**

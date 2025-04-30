@@ -20,7 +20,7 @@ import ServiceUnavailable from '../egoisdk/ServiceUnavailable';
 /**
 * Ping service.
 * @module egoiApi/PingApi
-* @version 1.1.6RC1
+* @version 1.1.7RC1
 */
 export default class PingApi {
 

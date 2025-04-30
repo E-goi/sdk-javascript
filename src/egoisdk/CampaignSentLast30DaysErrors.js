@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The CampaignSentLast30DaysErrors model module.
  * @module egoisdk/CampaignSentLast30DaysErrors
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class CampaignSentLast30DaysErrors {
     /**

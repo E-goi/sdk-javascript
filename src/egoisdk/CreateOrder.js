@@ -13,12 +13,12 @@
 
 import ApiClient from '../ApiClient';
 import Contact1 from './Contact1';
-import Product from './Product';
+import OrderProduct from './OrderProduct';
 
 /**
  * The CreateOrder model module.
  * @module egoisdk/CreateOrder
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class CreateOrder {
     /**
@@ -61,11 +61,17 @@ class CreateOrder {
             if (data.hasOwnProperty('cart_id')) {
                 obj['cart_id'] = ApiClient.convertToType(data['cart_id'], 'String');
             }
+            if (data.hasOwnProperty('order_date')) {
+                obj['order_date'] = ApiClient.convertToType(data['order_date'], 'Date');
+            }
+            if (data.hasOwnProperty('order_status')) {
+                obj['order_status'] = ApiClient.convertToType(data['order_status'], 'String');
+            }
             if (data.hasOwnProperty('contact')) {
                 obj['contact'] = Contact1.constructFromObject(data['contact']);
             }
             if (data.hasOwnProperty('products')) {
-                obj['products'] = ApiClient.convertToType(data['products'], [Product]);
+                obj['products'] = ApiClient.convertToType(data['products'], [OrderProduct]);
             }
         }
         return obj;
@@ -91,6 +97,10 @@ class CreateOrder {
         if (data['cart_id'] && !(typeof data['cart_id'] === 'string' || data['cart_id'] instanceof String)) {
             throw new Error("Expected the field `cart_id` to be a primitive type in the JSON string but got " + data['cart_id']);
         }
+        // ensure the json data is a string
+        if (data['order_status'] && !(typeof data['order_status'] === 'string' || data['order_status'] instanceof String)) {
+            throw new Error("Expected the field `order_status` to be a primitive type in the JSON string but got " + data['order_status']);
+        }
         // validate the optional field `contact`
         if (data['contact']) { // data not null
           Contact1.validateJSON(data['contact']);
@@ -102,7 +112,7 @@ class CreateOrder {
             }
             // validate the optional field `products` (array)
             for (const item of data['products']) {
-                Product.validateJsonObject(item);
+                OrderProduct.validateJsonObject(item);
             };
         }
 
@@ -155,6 +165,36 @@ class CreateOrder {
         this['cart_id'] = cartId;
     }
 /**
+     * Returns Date and hour of the order
+     * @return {Date}
+     */
+    getOrderDate() {
+        return this.order_date;
+    }
+
+    /**
+     * Sets Date and hour of the order
+     * @param {Date} orderDate Date and hour of the order
+     */
+    setOrderDate(orderDate) {
+        this['order_date'] = orderDate;
+    }
+/**
+     * Returns Status of the order
+     * @return {module:egoisdk/CreateOrder.OrderStatusEnum}
+     */
+    getOrderStatus() {
+        return this.order_status;
+    }
+
+    /**
+     * Sets Status of the order
+     * @param {module:egoisdk/CreateOrder.OrderStatusEnum} orderStatus Status of the order
+     */
+    setOrderStatus(orderStatus) {
+        this['order_status'] = orderStatus;
+    }
+/**
      * @return {module:egoisdk/Contact1}
      */
     getContact() {
@@ -169,7 +209,7 @@ class CreateOrder {
     }
 /**
      * Returns List of products
-     * @return {Array.<module:egoisdk/Product>}
+     * @return {Array.<module:egoisdk/OrderProduct>}
      */
     getProducts() {
         return this.products;
@@ -177,7 +217,7 @@ class CreateOrder {
 
     /**
      * Sets List of products
-     * @param {Array.<module:egoisdk/Product>} products List of products
+     * @param {Array.<module:egoisdk/OrderProduct>} products List of products
      */
     setProducts(products) {
         this['products'] = products;
@@ -206,18 +246,70 @@ CreateOrder.prototype['order_id'] = undefined;
 CreateOrder.prototype['cart_id'] = undefined;
 
 /**
+ * Date and hour of the order
+ * @member {Date} order_date
+ */
+CreateOrder.prototype['order_date'] = undefined;
+
+/**
+ * Status of the order
+ * @member {module:egoisdk/CreateOrder.OrderStatusEnum} order_status
+ * @default 'unknown'
+ */
+CreateOrder.prototype['order_status'] = 'unknown';
+
+/**
  * @member {module:egoisdk/Contact1} contact
  */
 CreateOrder.prototype['contact'] = undefined;
 
 /**
  * List of products
- * @member {Array.<module:egoisdk/Product>} products
+ * @member {Array.<module:egoisdk/OrderProduct>} products
  */
 CreateOrder.prototype['products'] = undefined;
 
 
 
+
+
+/**
+ * Allowed values for the <code>order_status</code> property.
+ * @enum {String}
+ * @readonly
+ */
+CreateOrder['OrderStatusEnum'] = {
+
+    /**
+     * value: "created"
+     * @const
+     */
+    "created": "created",
+
+    /**
+     * value: "pending"
+     * @const
+     */
+    "pending": "pending",
+
+    /**
+     * value: "canceled"
+     * @const
+     */
+    "canceled": "canceled",
+
+    /**
+     * value: "completed"
+     * @const
+     */
+    "completed": "completed",
+
+    /**
+     * value: "unknown"
+     * @const
+     */
+    "unknown": "unknown"
+};
 
 
 

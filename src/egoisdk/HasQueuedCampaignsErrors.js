@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The HasQueuedCampaignsErrors model module.
  * @module egoisdk/HasQueuedCampaignsErrors
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class HasQueuedCampaignsErrors {
     /**

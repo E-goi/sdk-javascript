@@ -27,7 +27,7 @@ import UserCollection from '../egoisdk/UserCollection';
 /**
 * Users service.
 * @module egoiApi/UsersApi
-* @version 1.1.6RC1
+* @version 1.1.7RC1
 */
 export default class UsersApi {
 

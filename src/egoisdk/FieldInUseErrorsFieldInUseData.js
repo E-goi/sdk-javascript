@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The FieldInUseErrorsFieldInUseData model module.
  * @module egoisdk/FieldInUseErrorsFieldInUseData
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class FieldInUseErrorsFieldInUseData {
     /**

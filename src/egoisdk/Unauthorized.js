@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The Unauthorized model module.
  * @module egoisdk/Unauthorized
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class Unauthorized {
     /**

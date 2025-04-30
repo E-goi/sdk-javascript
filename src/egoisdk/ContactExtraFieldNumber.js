@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The ContactExtraFieldNumber model module.
  * @module egoisdk/ContactExtraFieldNumber
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ContactExtraFieldNumber {
     /**

@@ -17,7 +17,7 @@ import ContactAdvertisingPostSchemaAdvertising from './ContactAdvertisingPostSch
 /**
  * The ContactAdvertisingPostSchema model module.
  * @module egoisdk/ContactAdvertisingPostSchema
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ContactAdvertisingPostSchema {
     /**

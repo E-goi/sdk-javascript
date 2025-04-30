@@ -18,7 +18,7 @@ import DeactivateContactsMany from './DeactivateContactsMany';
 /**
  * The DeactivateContactsRequest model module.
  * @module egoisdk/DeactivateContactsRequest
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class DeactivateContactsRequest {
     /**

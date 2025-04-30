@@ -18,7 +18,7 @@ import Product from './Product';
 /**
  * The Order model module.
  * @module egoisdk/Order
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class Order {
     /**

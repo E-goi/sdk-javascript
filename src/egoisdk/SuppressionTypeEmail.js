@@ -18,7 +18,7 @@ import SuppressionTypeEmailAllOf1 from './SuppressionTypeEmailAllOf1';
 /**
  * The SuppressionTypeEmail model module.
  * @module egoisdk/SuppressionTypeEmail
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class SuppressionTypeEmail {
     /**

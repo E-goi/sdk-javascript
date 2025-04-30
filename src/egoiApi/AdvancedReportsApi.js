@@ -41,7 +41,7 @@ import UnprocessableEntity from '../egoisdk/UnprocessableEntity';
 /**
 * AdvancedReports service.
 * @module egoiApi/AdvancedReportsApi
-* @version 1.1.6RC1
+* @version 1.1.7RC1
 */
 export default class AdvancedReportsApi {
 

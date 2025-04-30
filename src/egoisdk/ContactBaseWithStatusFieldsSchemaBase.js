@@ -19,7 +19,7 @@ import Language from './Language';
 /**
  * The ContactBaseWithStatusFieldsSchemaBase model module.
  * @module egoisdk/ContactBaseWithStatusFieldsSchemaBase
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ContactBaseWithStatusFieldsSchemaBase {
     /**

@@ -17,7 +17,7 @@ import SavedSegmentAllOf1SegmentFilterSegmentFilterArray from './SavedSegmentAll
 /**
  * The SavedSegmentAllOf1SegmentFilter model module.
  * @module egoisdk/SavedSegmentAllOf1SegmentFilter
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class SavedSegmentAllOf1SegmentFilter {
     /**

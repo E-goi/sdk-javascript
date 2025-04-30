@@ -19,7 +19,7 @@ import AdvancedReportSubscriptionsOptions from './AdvancedReportSubscriptionsOpt
 /**
  * The GenerateSubscriptionsReport model module.
  * @module egoisdk/GenerateSubscriptionsReport
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class GenerateSubscriptionsReport {
     /**

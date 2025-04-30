@@ -18,7 +18,7 @@ import WebPushStats from './WebPushStats';
 /**
  * The WebPushReportBrowsersInnerVersionsInner model module.
  * @module egoisdk/WebPushReportBrowsersInnerVersionsInner
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class WebPushReportBrowsersInnerVersionsInner {
     /**

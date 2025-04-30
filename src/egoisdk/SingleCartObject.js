@@ -17,7 +17,7 @@ import ImportOrdersBulkBulkRequestItems from './ImportOrdersBulkBulkRequestItems
 /**
  * The SingleCartObject model module.
  * @module egoisdk/SingleCartObject
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class SingleCartObject {
     /**

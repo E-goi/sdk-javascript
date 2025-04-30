@@ -17,7 +17,7 @@ import FieldOption from './FieldOption';
 /**
  * The FieldOptionsCollection model module.
  * @module egoisdk/FieldOptionsCollection
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class FieldOptionsCollection {
     /**

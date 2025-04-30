@@ -17,7 +17,7 @@ import ContactSearchResponse from './ContactSearchResponse';
 /**
  * The SearchContacts200Response model module.
  * @module egoisdk/SearchContacts200Response
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class SearchContacts200Response {
     /**

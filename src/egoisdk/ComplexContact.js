@@ -26,7 +26,7 @@ import ContactStatsWebpushStats from './ContactStatsWebpushStats';
 /**
  * The ComplexContact model module.
  * @module egoisdk/ComplexContact
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ComplexContact {
     /**

@@ -20,7 +20,7 @@ import CampaignEmailContentWebPage from './CampaignEmailContentWebPage';
 /**
  * The CampaignEmailContent model module.
  * @module egoisdk/CampaignEmailContent
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class CampaignEmailContent {
     /**

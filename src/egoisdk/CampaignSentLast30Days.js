@@ -17,7 +17,7 @@ import CampaignSentLast30DaysErrors from './CampaignSentLast30DaysErrors';
 /**
  * The CampaignSentLast30Days model module.
  * @module egoisdk/CampaignSentLast30Days
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class CampaignSentLast30Days {
     /**

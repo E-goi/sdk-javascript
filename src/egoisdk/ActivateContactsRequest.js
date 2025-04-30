@@ -18,7 +18,7 @@ import ActivateContactsMany from './ActivateContactsMany';
 /**
  * The ActivateContactsRequest model module.
  * @module egoisdk/ActivateContactsRequest
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ActivateContactsRequest {
     /**

@@ -19,7 +19,7 @@ import ContactCampaignActivityAllOfActionData from './ContactCampaignActivityAll
 /**
  * The ContactCampaignActivity model module.
  * @module egoisdk/ContactCampaignActivity
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ContactCampaignActivity {
     /**

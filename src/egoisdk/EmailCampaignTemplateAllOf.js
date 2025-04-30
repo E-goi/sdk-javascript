@@ -18,7 +18,7 @@ import EmailCampaignTemplateAllOfSenderData from './EmailCampaignTemplateAllOfSe
 /**
  * The EmailCampaignTemplateAllOf model module.
  * @module egoisdk/EmailCampaignTemplateAllOf
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class EmailCampaignTemplateAllOf {
     /**

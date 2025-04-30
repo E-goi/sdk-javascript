@@ -18,7 +18,7 @@ import HeaderFooter from './HeaderFooter';
 /**
  * The EmailRssCampaignCreate model module.
  * @module egoisdk/EmailRssCampaignCreate
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class EmailRssCampaignCreate {
     /**

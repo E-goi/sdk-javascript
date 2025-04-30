@@ -19,7 +19,7 @@ import Language from './Language';
 /**
  * The ContactInsideBaseWithId model module.
  * @module egoisdk/ContactInsideBaseWithId
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ContactInsideBaseWithId {
     /**

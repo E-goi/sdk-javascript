@@ -20,7 +20,7 @@ import SavedSegmentAllOf1SegmentFilter from './SavedSegmentAllOf1SegmentFilter';
 /**
  * The SavedSegment model module.
  * @module egoisdk/SavedSegment
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class SavedSegment {
     /**

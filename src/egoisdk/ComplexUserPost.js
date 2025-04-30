@@ -19,7 +19,7 @@ import UserPost from './UserPost';
 /**
  * The ComplexUserPost model module.
  * @module egoisdk/ComplexUserPost
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ComplexUserPost {
     /**

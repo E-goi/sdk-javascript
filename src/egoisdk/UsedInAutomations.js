@@ -17,7 +17,7 @@ import UsedInAutomationsErrors from './UsedInAutomationsErrors';
 /**
  * The UsedInAutomations model module.
  * @module egoisdk/UsedInAutomations
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class UsedInAutomations {
     /**

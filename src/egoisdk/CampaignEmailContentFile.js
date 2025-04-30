@@ -18,7 +18,7 @@ import CampaignEmailContentFileAllOf from './CampaignEmailContentFileAllOf';
 /**
  * The CampaignEmailContentFile model module.
  * @module egoisdk/CampaignEmailContentFile
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class CampaignEmailContentFile {
     /**

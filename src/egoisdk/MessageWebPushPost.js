@@ -17,7 +17,7 @@ import MessageWebPush from './MessageWebPush';
 /**
  * The MessageWebPushPost model module.
  * @module egoisdk/MessageWebPushPost
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class MessageWebPushPost {
     /**

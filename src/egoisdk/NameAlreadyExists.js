@@ -17,7 +17,7 @@ import NameAlreadyExistsErrors from './NameAlreadyExistsErrors';
 /**
  * The NameAlreadyExists model module.
  * @module egoisdk/NameAlreadyExists
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class NameAlreadyExists {
     /**

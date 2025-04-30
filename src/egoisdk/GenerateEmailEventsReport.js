@@ -20,7 +20,7 @@ import AdvancedReportRange from './AdvancedReportRange';
 /**
  * The GenerateEmailEventsReport model module.
  * @module egoisdk/GenerateEmailEventsReport
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class GenerateEmailEventsReport {
     /**

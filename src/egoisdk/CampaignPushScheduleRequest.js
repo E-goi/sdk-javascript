@@ -19,7 +19,7 @@ import SendPush from './SendPush';
 /**
  * The CampaignPushScheduleRequest model module.
  * @module egoisdk/CampaignPushScheduleRequest
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class CampaignPushScheduleRequest {
     /**

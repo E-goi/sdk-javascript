@@ -17,7 +17,7 @@ import ConnectedSitesGeneralProductAppDetail from './ConnectedSitesGeneralProduc
 /**
  * The ConnectedSitesGeneralProductAppDetailGlobal model module.
  * @module egoisdk/ConnectedSitesGeneralProductAppDetailGlobal
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ConnectedSitesGeneralProductAppDetailGlobal {
     /**

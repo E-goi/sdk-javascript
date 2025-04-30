@@ -30,7 +30,7 @@ import UnprocessableEntity from '../egoisdk/UnprocessableEntity';
 /**
 * Tags service.
 * @module egoiApi/TagsApi
-* @version 1.1.6RC1
+* @version 1.1.7RC1
 */
 export default class TagsApi {
 

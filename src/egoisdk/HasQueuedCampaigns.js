@@ -17,7 +17,7 @@ import HasQueuedCampaignsErrors from './HasQueuedCampaignsErrors';
 /**
  * The HasQueuedCampaigns model module.
  * @module egoisdk/HasQueuedCampaigns
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class HasQueuedCampaigns {
     /**

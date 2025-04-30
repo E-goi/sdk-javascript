@@ -19,7 +19,7 @@ import SmsSegmentsActionSend from './SmsSegmentsActionSend';
 /**
  * The CampaignSmsScheduleRequest model module.
  * @module egoisdk/CampaignSmsScheduleRequest
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class CampaignSmsScheduleRequest {
     /**

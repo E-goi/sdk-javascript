@@ -17,7 +17,7 @@ import EmailReportByEcommerceEcommerce from './EmailReportByEcommerceEcommerce';
 /**
  * The EmailReportByEcommerce model module.
  * @module egoisdk/EmailReportByEcommerce
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class EmailReportByEcommerce {
     /**

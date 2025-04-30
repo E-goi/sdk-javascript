@@ -18,7 +18,7 @@ import UnsubscriptionObject from './UnsubscriptionObject';
 /**
  * The RequestItemsUnsubscribe model module.
  * @module egoisdk/RequestItemsUnsubscribe
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class RequestItemsUnsubscribe {
     /**

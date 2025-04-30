@@ -19,7 +19,7 @@ import SmartSmsCampaignPatchRequestPageContent from './SmartSmsCampaignPatchRequ
 /**
  * The SmartSmsCampaignPatchRequest model module.
  * @module egoisdk/SmartSmsCampaignPatchRequest
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class SmartSmsCampaignPatchRequest {
     /**

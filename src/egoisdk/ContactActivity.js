@@ -22,7 +22,7 @@ import ContactTagActivity from './ContactTagActivity';
 /**
  * The ContactActivity model module.
  * @module egoisdk/ContactActivity
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ContactActivity {
     /**

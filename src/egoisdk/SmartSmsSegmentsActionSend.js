@@ -19,7 +19,7 @@ import SendSegment from './SendSegment';
 /**
  * The SmartSmsSegmentsActionSend model module.
  * @module egoisdk/SmartSmsSegmentsActionSend
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class SmartSmsSegmentsActionSend {
     /**

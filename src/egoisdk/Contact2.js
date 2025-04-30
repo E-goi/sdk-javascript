@@ -19,7 +19,7 @@ import ContactExtraFields from './ContactExtraFields';
 /**
  * The Contact2 model module.
  * @module egoisdk/Contact2
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class Contact2 {
     /**

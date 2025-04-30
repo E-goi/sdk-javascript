@@ -17,7 +17,7 @@ import DomainListRequiredErrors from './DomainListRequiredErrors';
 /**
  * The DomainListRequired model module.
  * @module egoisdk/DomainListRequired
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class DomainListRequired {
     /**

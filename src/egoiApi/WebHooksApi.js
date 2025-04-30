@@ -29,7 +29,7 @@ import Webhook from '../egoisdk/Webhook';
 /**
 * WebHooks service.
 * @module egoiApi/WebHooksApi
-* @version 1.1.6RC1
+* @version 1.1.7RC1
 */
 export default class WebHooksApi {
 

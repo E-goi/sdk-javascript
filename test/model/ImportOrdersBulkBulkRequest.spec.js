@@ -60,6 +60,12 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property orderStatus (base name: "order_status")', function() {
+      // uncomment below and update the code to test the property orderStatus
+      //var instance = new egoisdk.ImportOrdersBulkBulkRequest();
+      //expect(instance).to.be();
+    });
+
     it('should have the property contactId (base name: "contact_id")', function() {
       // uncomment below and update the code to test the property contactId
       //var instance = new egoisdk.ImportOrdersBulkBulkRequest();

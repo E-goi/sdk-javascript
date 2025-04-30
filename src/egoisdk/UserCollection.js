@@ -17,7 +17,7 @@ import User from './User';
 /**
  * The UserCollection model module.
  * @module egoisdk/UserCollection
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class UserCollection {
     /**

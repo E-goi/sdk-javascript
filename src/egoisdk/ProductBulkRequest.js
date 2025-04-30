@@ -17,7 +17,7 @@ import Product from './Product';
 /**
  * The ProductBulkRequest model module.
  * @module egoisdk/ProductBulkRequest
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ProductBulkRequest {
     /**

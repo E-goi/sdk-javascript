@@ -17,7 +17,7 @@ import FieldInUseErrorsFieldInUseData from './FieldInUseErrorsFieldInUseData';
 /**
  * The FieldInUseErrors model module.
  * @module egoisdk/FieldInUseErrors
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class FieldInUseErrors {
     /**

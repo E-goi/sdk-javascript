@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The ContactCompareFieldPost model module.
  * @module egoisdk/ContactCompareFieldPost
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ContactCompareFieldPost {
     /**

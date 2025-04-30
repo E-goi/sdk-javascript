@@ -19,7 +19,7 @@ import UserPostRequestAllOf from './UserPostRequestAllOf';
 /**
  * The UserPostRequest model module.
  * @module egoisdk/UserPostRequest
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class UserPostRequest {
     /**

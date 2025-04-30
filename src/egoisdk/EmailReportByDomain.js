@@ -17,7 +17,7 @@ import EmailReportByDomainDomainInner from './EmailReportByDomainDomainInner';
 /**
  * The EmailReportByDomain model module.
  * @module egoisdk/EmailReportByDomain
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class EmailReportByDomain {
     /**

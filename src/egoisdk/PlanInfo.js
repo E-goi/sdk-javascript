@@ -17,7 +17,7 @@ import PlanInfoPlanInfo from './PlanInfoPlanInfo';
 /**
  * The PlanInfo model module.
  * @module egoisdk/PlanInfo
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class PlanInfo {
     /**

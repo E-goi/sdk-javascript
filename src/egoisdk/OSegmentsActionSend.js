@@ -19,7 +19,7 @@ import SendSegment from './SendSegment';
 /**
  * The OSegmentsActionSend model module.
  * @module egoisdk/OSegmentsActionSend
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class OSegmentsActionSend {
     /**

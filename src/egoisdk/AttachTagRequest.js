@@ -19,7 +19,7 @@ import AttachBySegment from './AttachBySegment';
 /**
  * The AttachTagRequest model module.
  * @module egoisdk/AttachTagRequest
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class AttachTagRequest {
     /**

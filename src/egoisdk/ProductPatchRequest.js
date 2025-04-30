@@ -17,7 +17,7 @@ import ProductCustomAttributes from './ProductCustomAttributes';
 /**
  * The ProductPatchRequest model module.
  * @module egoisdk/ProductPatchRequest
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ProductPatchRequest {
     /**

@@ -17,7 +17,7 @@ import UserPostAllOf from './UserPostAllOf';
 /**
  * The UserPost model module.
  * @module egoisdk/UserPost
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class UserPost {
     /**

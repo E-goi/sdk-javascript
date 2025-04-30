@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The SendSmartSmsAllOf1 model module.
  * @module egoisdk/SendSmartSmsAllOf1
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class SendSmartSmsAllOf1 {
     /**

@@ -17,7 +17,7 @@ import EmailReportByUrlUrlInner from './EmailReportByUrlUrlInner';
 /**
  * The EmailReportByUrl model module.
  * @module egoisdk/EmailReportByUrl
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class EmailReportByUrl {
     /**

@@ -19,7 +19,7 @@ import SendSegment from './SendSegment';
 /**
  * The EmailSendSegment model module.
  * @module egoisdk/EmailSendSegment
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class EmailSendSegment {
     /**

@@ -19,7 +19,7 @@ import ProductCustomAttributes from './ProductCustomAttributes';
 /**
  * The Product model module.
  * @module egoisdk/Product
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class Product {
     /**

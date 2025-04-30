@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The Country model module.
  * @module egoisdk/Country
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class Country {
     /**

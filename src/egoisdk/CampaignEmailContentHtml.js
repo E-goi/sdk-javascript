@@ -18,7 +18,7 @@ import CampaignEmailContentHtmlAllOf from './CampaignEmailContentHtmlAllOf';
 /**
  * The CampaignEmailContentHtml model module.
  * @module egoisdk/CampaignEmailContentHtml
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class CampaignEmailContentHtml {
     /**

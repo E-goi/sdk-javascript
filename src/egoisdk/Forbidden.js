@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The Forbidden model module.
  * @module egoisdk/Forbidden
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class Forbidden {
     /**

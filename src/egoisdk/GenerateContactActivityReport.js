@@ -19,7 +19,7 @@ import AdvancedReportRange from './AdvancedReportRange';
 /**
  * The GenerateContactActivityReport model module.
  * @module egoisdk/GenerateContactActivityReport
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class GenerateContactActivityReport {
     /**

@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The WebPushStats model module.
  * @module egoisdk/WebPushStats
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class WebPushStats {
     /**

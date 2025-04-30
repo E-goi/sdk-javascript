@@ -17,7 +17,7 @@ import AdvancedReportModels from './AdvancedReportModels';
 /**
  * The AdvancedReportsModelsCollection model module.
  * @module egoisdk/AdvancedReportsModelsCollection
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class AdvancedReportsModelsCollection {
     /**

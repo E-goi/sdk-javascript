@@ -17,7 +17,7 @@ import ContentVoice from './ContentVoice';
 /**
  * The VoiceCampaignAllOf model module.
  * @module egoisdk/VoiceCampaignAllOf
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class VoiceCampaignAllOf {
     /**

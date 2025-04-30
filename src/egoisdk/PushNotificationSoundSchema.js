@@ -19,7 +19,7 @@ import PushNotificationSoundSchemaUrl from './PushNotificationSoundSchemaUrl';
 /**
  * The PushNotificationSoundSchema model module.
  * @module egoisdk/PushNotificationSoundSchema
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class PushNotificationSoundSchema {
     /**

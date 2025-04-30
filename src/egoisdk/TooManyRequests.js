@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The TooManyRequests model module.
  * @module egoisdk/TooManyRequests
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class TooManyRequests {
     /**

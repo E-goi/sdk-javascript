@@ -17,7 +17,7 @@ import ContactExtraFieldsBulk from './ContactExtraFieldsBulk';
 /**
  * The ContactExtraFieldsBulkSchema model module.
  * @module egoisdk/ContactExtraFieldsBulkSchema
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ContactExtraFieldsBulkSchema {
     /**

@@ -19,7 +19,7 @@ import EmailSendSegment from './EmailSendSegment';
 /**
  * The CampaignEmailScheduleRequest model module.
  * @module egoisdk/CampaignEmailScheduleRequest
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class CampaignEmailScheduleRequest {
     /**

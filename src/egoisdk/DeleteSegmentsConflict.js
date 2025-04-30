@@ -17,7 +17,7 @@ import BaseConflict from './BaseConflict';
 /**
  * The DeleteSegmentsConflict model module.
  * @module egoisdk/DeleteSegmentsConflict
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class DeleteSegmentsConflict {
     /**

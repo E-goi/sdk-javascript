@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The EmailReportOverallOverall model module.
  * @module egoisdk/EmailReportOverallOverall
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class EmailReportOverallOverall {
     /**

@@ -18,7 +18,7 @@ import AlphanumericCellphoneSenderPostAllOf from './AlphanumericCellphoneSenderP
 /**
  * The AlphanumericCellphoneSenderPost model module.
  * @module egoisdk/AlphanumericCellphoneSenderPost
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class AlphanumericCellphoneSenderPost {
     /**

@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The EmailReportByDateDateInner model module.
  * @module egoisdk/EmailReportByDateDateInner
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class EmailReportByDateDateInner {
     /**

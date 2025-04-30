@@ -23,7 +23,7 @@ import SmartSmsSegmentsActionSend from './SmartSmsSegmentsActionSend';
 /**
  * The SendSmartSms model module.
  * @module egoisdk/SendSmartSms
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class SendSmartSms {
     /**

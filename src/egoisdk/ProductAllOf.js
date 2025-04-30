@@ -17,7 +17,7 @@ import ProductCustomAttributes from './ProductCustomAttributes';
 /**
  * The ProductAllOf model module.
  * @module egoisdk/ProductAllOf
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ProductAllOf {
     /**

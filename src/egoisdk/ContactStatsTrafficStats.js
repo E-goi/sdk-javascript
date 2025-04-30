@@ -19,7 +19,7 @@ import ContactStatsTrafficStatsUtm from './ContactStatsTrafficStatsUtm';
 /**
  * The ContactStatsTrafficStats model module.
  * @module egoisdk/ContactStatsTrafficStats
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ContactStatsTrafficStats {
     /**

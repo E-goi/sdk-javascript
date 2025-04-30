@@ -19,7 +19,7 @@ import EmailBouncesListStatsFields from './EmailBouncesListStatsFields';
 /**
  * The AdvancedReportEmailBouncesColumns model module.
  * @module egoisdk/AdvancedReportEmailBouncesColumns
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class AdvancedReportEmailBouncesColumns {
     /**

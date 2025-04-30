@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The GetAllContactsExtraFieldIdParameter model module.
  * @module egoisdk/GetAllContactsExtraFieldIdParameter
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class GetAllContactsExtraFieldIdParameter {
     /**

@@ -19,7 +19,7 @@ import CampaignSentLast30DaysErrors from './CampaignSentLast30DaysErrors';
 /**
  * The DeleteCampaignsConflict model module.
  * @module egoisdk/DeleteCampaignsConflict
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class DeleteCampaignsConflict {
     /**

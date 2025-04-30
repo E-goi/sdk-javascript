@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The SuppressionTypeUserEmailAllOf1 model module.
  * @module egoisdk/SuppressionTypeUserEmailAllOf1
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class SuppressionTypeUserEmailAllOf1 {
     /**

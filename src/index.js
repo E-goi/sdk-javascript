@@ -465,6 +465,7 @@ import OperationOperationData from './egoisdk/OperationOperationData';
 import OperationsCollection from './egoisdk/OperationsCollection';
 import Order from './egoisdk/Order';
 import OrderPatchRequest from './egoisdk/OrderPatchRequest';
+import OrderProduct from './egoisdk/OrderProduct';
 import Overall from './egoisdk/Overall';
 import OverallOverall from './egoisdk/OverallOverall';
 import PatchRequestBaseField from './egoisdk/PatchRequestBaseField';
@@ -711,7 +712,7 @@ import WebpushApi from './egoiApi/WebpushApi';
 * </pre>
 * </p>
 * @module index
-* @version 1.1.6RC1
+* @version 1.1.7RC1
 */
 export {
     /**
@@ -3431,6 +3432,12 @@ export {
      * @property {module:egoisdk/OrderPatchRequest}
      */
     OrderPatchRequest,
+
+    /**
+     * The OrderProduct model constructor.
+     * @property {module:egoisdk/OrderProduct}
+     */
+    OrderProduct,
 
     /**
      * The Overall model constructor.

@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The AbstractSendVoiceAllOf1 model module.
  * @module egoisdk/AbstractSendVoiceAllOf1
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class AbstractSendVoiceAllOf1 {
     /**

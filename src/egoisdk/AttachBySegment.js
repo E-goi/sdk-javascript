@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The AttachBySegment model module.
  * @module egoisdk/AttachBySegment
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class AttachBySegment {
     /**

@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The PatchVoiceCampaign200Response model module.
  * @module egoisdk/PatchVoiceCampaign200Response
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class PatchVoiceCampaign200Response {
     /**

@@ -17,7 +17,7 @@ import CellphoneSender from './CellphoneSender';
 /**
  * The CellphoneSenderCollection model module.
  * @module egoisdk/CellphoneSenderCollection
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class CellphoneSenderCollection {
     /**

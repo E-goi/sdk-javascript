@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The VoiceCampaignTemplateAllOf model module.
  * @module egoisdk/VoiceCampaignTemplateAllOf
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class VoiceCampaignTemplateAllOf {
     /**

@@ -18,7 +18,7 @@ import SubscriptionsListStatsFields from './SubscriptionsListStatsFields';
 /**
  * The AdvancedReportSubscriptionsColumns model module.
  * @module egoisdk/AdvancedReportSubscriptionsColumns
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class AdvancedReportSubscriptionsColumns {
     /**

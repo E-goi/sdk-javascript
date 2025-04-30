@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The EmailReportByEcommerceEcommerce model module.
  * @module egoisdk/EmailReportByEcommerceEcommerce
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class EmailReportByEcommerceEcommerce {
     /**

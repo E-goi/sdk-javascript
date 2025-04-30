@@ -17,7 +17,7 @@ import CampaignGroupAllOf from './CampaignGroupAllOf';
 /**
  * The CampaignGroup model module.
  * @module egoisdk/CampaignGroup
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class CampaignGroup {
     /**

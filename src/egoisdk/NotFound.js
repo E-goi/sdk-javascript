@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The NotFound model module.
  * @module egoisdk/NotFound
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class NotFound {
     /**

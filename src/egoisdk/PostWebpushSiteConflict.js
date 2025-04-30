@@ -19,7 +19,7 @@ import NameAlreadyExistsErrors from './NameAlreadyExistsErrors';
 /**
  * The PostWebpushSiteConflict model module.
  * @module egoisdk/PostWebpushSiteConflict
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class PostWebpushSiteConflict {
     /**

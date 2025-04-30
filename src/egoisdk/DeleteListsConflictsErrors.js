@@ -22,7 +22,7 @@ import HasWebPushSite from './HasWebPushSite';
 /**
  * The DeleteListsConflictsErrors model module.
  * @module egoisdk/DeleteListsConflictsErrors
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class DeleteListsConflictsErrors {
     /**

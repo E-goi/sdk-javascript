@@ -72,6 +72,18 @@
       //expect(instance).to.be();
     });
 
+    it('should have the property orderDate (base name: "order_date")', function() {
+      // uncomment below and update the code to test the property orderDate
+      //var instance = new egoisdk.CreateOrder();
+      //expect(instance).to.be();
+    });
+
+    it('should have the property orderStatus (base name: "order_status")', function() {
+      // uncomment below and update the code to test the property orderStatus
+      //var instance = new egoisdk.CreateOrder();
+      //expect(instance).to.be();
+    });
+
     it('should have the property contact (base name: "contact")', function() {
       // uncomment below and update the code to test the property contact
       //var instance = new egoisdk.CreateOrder();

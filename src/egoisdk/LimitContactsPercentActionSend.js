@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The LimitContactsPercentActionSend model module.
  * @module egoisdk/LimitContactsPercentActionSend
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class LimitContactsPercentActionSend {
     /**

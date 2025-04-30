@@ -17,7 +17,7 @@ import BaseConflict from './BaseConflict';
 /**
  * The DeleteListsConflict model module.
  * @module egoisdk/DeleteListsConflict
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class DeleteListsConflict {
     /**

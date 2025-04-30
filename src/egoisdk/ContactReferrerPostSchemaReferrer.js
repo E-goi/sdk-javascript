@@ -17,7 +17,7 @@ import ContactReferrerPost from './ContactReferrerPost';
 /**
  * The ContactReferrerPostSchemaReferrer model module.
  * @module egoisdk/ContactReferrerPostSchemaReferrer
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ContactReferrerPostSchemaReferrer {
     /**

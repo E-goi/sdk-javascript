@@ -20,7 +20,7 @@ import PushCampaignPostRequestNotificationOptions from './PushCampaignPostReques
 /**
  * The PushCampaignPatchRequest model module.
  * @module egoisdk/PushCampaignPatchRequest
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class PushCampaignPatchRequest {
     /**

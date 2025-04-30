@@ -20,7 +20,7 @@ import LimitHourActionSendLimitHour from './LimitHourActionSendLimitHour';
 /**
  * The CampaignEmailSendRequest model module.
  * @module egoisdk/CampaignEmailSendRequest
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class CampaignEmailSendRequest {
     /**

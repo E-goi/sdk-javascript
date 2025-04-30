@@ -17,7 +17,7 @@ import ConnectedSitesProductEmbedFormDetail from './ConnectedSitesProductEmbedFo
 /**
  * The ConnectedSitesEmbedForm model module.
  * @module egoisdk/ConnectedSitesEmbedForm
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ConnectedSitesEmbedForm {
     /**

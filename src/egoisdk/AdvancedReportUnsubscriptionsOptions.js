@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The AdvancedReportUnsubscriptionsOptions model module.
  * @module egoisdk/AdvancedReportUnsubscriptionsOptions
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class AdvancedReportUnsubscriptionsOptions {
     /**

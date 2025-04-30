@@ -17,7 +17,7 @@ import ContactCompareFieldPost from './ContactCompareFieldPost';
 /**
  * The ContactByFieldFieldsPostSchemaCompareField model module.
  * @module egoisdk/ContactByFieldFieldsPostSchemaCompareField
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ContactByFieldFieldsPostSchemaCompareField {
     /**

@@ -18,7 +18,7 @@ import PushStats from './PushStats';
 /**
  * The PushReportOperatingSystemsInner model module.
  * @module egoisdk/PushReportOperatingSystemsInner
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class PushReportOperatingSystemsInner {
     /**

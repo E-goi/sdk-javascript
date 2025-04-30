@@ -17,7 +17,7 @@ import ContactBaseFieldsPostSchemaBase from './ContactBaseFieldsPostSchemaBase';
 /**
  * The ContactBaseFieldsPostSchema model module.
  * @module egoisdk/ContactBaseFieldsPostSchema
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ContactBaseFieldsPostSchema {
     /**

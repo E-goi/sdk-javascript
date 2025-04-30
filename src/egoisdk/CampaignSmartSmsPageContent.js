@@ -19,7 +19,7 @@ import CampaignSmartSmsRedirect from './CampaignSmartSmsRedirect';
 /**
  * The CampaignSmartSmsPageContent model module.
  * @module egoisdk/CampaignSmartSmsPageContent
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class CampaignSmartSmsPageContent {
     /**

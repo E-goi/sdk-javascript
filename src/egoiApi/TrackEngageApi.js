@@ -25,7 +25,7 @@ import UnprocessableEntity from '../egoisdk/UnprocessableEntity';
 /**
 * TrackEngage service.
 * @module egoiApi/TrackEngageApi
-* @version 1.1.6RC1
+* @version 1.1.7RC1
 */
 export default class TrackEngageApi {
 

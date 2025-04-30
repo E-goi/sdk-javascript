@@ -17,7 +17,7 @@ import ContactExtraFields from './ContactExtraFields';
 /**
  * The ContactExtraFieldsSchema model module.
  * @module egoisdk/ContactExtraFieldsSchema
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ContactExtraFieldsSchema {
     /**

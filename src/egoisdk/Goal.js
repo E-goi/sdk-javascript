@@ -17,7 +17,7 @@ import GoalInfo from './GoalInfo';
 /**
  * The Goal model module.
  * @module egoisdk/Goal
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class Goal {
     /**

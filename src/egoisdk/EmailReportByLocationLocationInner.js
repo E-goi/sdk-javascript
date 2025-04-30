@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The EmailReportByLocationLocationInner model module.
  * @module egoisdk/EmailReportByLocationLocationInner
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class EmailReportByLocationLocationInner {
     /**

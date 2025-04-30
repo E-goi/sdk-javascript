@@ -18,7 +18,7 @@ import AdvancedReportRange from './AdvancedReportRange';
 /**
  * The GenerateFormAnswersReport model module.
  * @module egoisdk/GenerateFormAnswersReport
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class GenerateFormAnswersReport {
     /**

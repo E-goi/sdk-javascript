@@ -17,7 +17,7 @@ import ContactActivityClickAllOfActionData from './ContactActivityClickAllOfActi
 /**
  * The ContactActivityClickAllOf model module.
  * @module egoisdk/ContactActivityClickAllOf
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ContactActivityClickAllOf {
     /**

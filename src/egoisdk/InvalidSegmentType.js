@@ -17,7 +17,7 @@ import InvalidSegmentTypeErrors from './InvalidSegmentTypeErrors';
 /**
  * The InvalidSegmentType model module.
  * @module egoisdk/InvalidSegmentType
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class InvalidSegmentType {
     /**

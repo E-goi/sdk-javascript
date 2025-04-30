@@ -21,7 +21,7 @@ import ContactsActionUpdateContactsSchema from './ContactsActionUpdateContactsSc
 /**
  * The UpdateContactsRequest model module.
  * @module egoisdk/UpdateContactsRequest
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class UpdateContactsRequest {
     /**

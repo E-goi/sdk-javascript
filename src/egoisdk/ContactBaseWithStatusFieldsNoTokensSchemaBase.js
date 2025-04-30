@@ -17,7 +17,7 @@ import Language from './Language';
 /**
  * The ContactBaseWithStatusFieldsNoTokensSchemaBase model module.
  * @module egoisdk/ContactBaseWithStatusFieldsNoTokensSchemaBase
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ContactBaseWithStatusFieldsNoTokensSchemaBase {
     /**

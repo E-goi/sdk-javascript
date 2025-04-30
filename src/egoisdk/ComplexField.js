@@ -19,7 +19,7 @@ import FieldOption from './FieldOption';
 /**
  * The ComplexField model module.
  * @module egoisdk/ComplexField
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ComplexField {
     /**

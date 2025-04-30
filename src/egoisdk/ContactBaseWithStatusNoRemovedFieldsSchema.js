@@ -17,7 +17,7 @@ import ContactBaseWithStatusNoRemovedFieldsSchemaBase from './ContactBaseWithSta
 /**
  * The ContactBaseWithStatusNoRemovedFieldsSchema model module.
  * @module egoisdk/ContactBaseWithStatusNoRemovedFieldsSchema
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ContactBaseWithStatusNoRemovedFieldsSchema {
     /**

@@ -22,7 +22,7 @@ import ContactExtraFieldsSchema from './ContactExtraFieldsSchema';
 /**
  * The ContactFieldIdBaseExtraPost model module.
  * @module egoisdk/ContactFieldIdBaseExtraPost
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ContactFieldIdBaseExtraPost {
     /**

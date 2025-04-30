@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The UpdateForAll model module.
  * @module egoisdk/UpdateForAll
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class UpdateForAll {
     /**

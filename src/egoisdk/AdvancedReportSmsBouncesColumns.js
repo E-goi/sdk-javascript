@@ -19,7 +19,7 @@ import SmsBouncesListStatsFields from './SmsBouncesListStatsFields';
 /**
  * The AdvancedReportSmsBouncesColumns model module.
  * @module egoisdk/AdvancedReportSmsBouncesColumns
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class AdvancedReportSmsBouncesColumns {
     /**

@@ -18,7 +18,7 @@ import ProductCustomAttributes from './ProductCustomAttributes';
 /**
  * The ProductPostRequest model module.
  * @module egoisdk/ProductPostRequest
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ProductPostRequest {
     /**

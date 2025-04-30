@@ -17,7 +17,7 @@ import LimitHourActionSendLimitHour from './LimitHourActionSendLimitHour';
 /**
  * The LimitHourActionSend model module.
  * @module egoisdk/LimitHourActionSend
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class LimitHourActionSend {
     /**

@@ -18,7 +18,7 @@ import ContentVoiceTemplate from './ContentVoiceTemplate';
 /**
  * The ContentVoice model module.
  * @module egoisdk/ContentVoice
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ContentVoice {
     /**

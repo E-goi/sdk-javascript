@@ -19,7 +19,7 @@ import ContactTagActivityAllOfActionData from './ContactTagActivityAllOfActionDa
 /**
  * The ContactTagActivity model module.
  * @module egoisdk/ContactTagActivity
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ContactTagActivity {
     /**

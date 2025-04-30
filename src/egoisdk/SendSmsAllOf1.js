@@ -17,7 +17,7 @@ import SmsSegmentsActionSend from './SmsSegmentsActionSend';
 /**
  * The SendSmsAllOf1 model module.
  * @module egoisdk/SendSmsAllOf1
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class SendSmsAllOf1 {
     /**

@@ -18,7 +18,7 @@ import GeneralInfoAllOfGeneralInfo from './GeneralInfoAllOfGeneralInfo';
 /**
  * The GeneralInfo model module.
  * @module egoisdk/GeneralInfo
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class GeneralInfo {
     /**

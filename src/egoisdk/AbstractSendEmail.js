@@ -17,7 +17,7 @@ import EmailSendSegment from './EmailSendSegment';
 /**
  * The AbstractSendEmail model module.
  * @module egoisdk/AbstractSendEmail
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class AbstractSendEmail {
     /**

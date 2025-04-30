@@ -18,7 +18,7 @@ import WebpushActionsInner from './WebpushActionsInner';
 /**
  * The WebPushPatchCampaign model module.
  * @module egoisdk/WebPushPatchCampaign
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class WebPushPatchCampaign {
     /**

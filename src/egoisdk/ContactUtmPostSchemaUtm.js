@@ -17,7 +17,7 @@ import ContactUtmPost from './ContactUtmPost';
 /**
  * The ContactUtmPostSchemaUtm model module.
  * @module egoisdk/ContactUtmPostSchemaUtm
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ContactUtmPostSchemaUtm {
     /**

@@ -17,7 +17,7 @@ import AutomationActionsAllOf from './AutomationActionsAllOf';
 /**
  * The AutomationActions model module.
  * @module egoisdk/AutomationActions
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class AutomationActions {
     /**

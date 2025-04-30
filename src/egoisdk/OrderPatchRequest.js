@@ -18,7 +18,7 @@ import Product from './Product';
 /**
  * The OrderPatchRequest model module.
  * @module egoisdk/OrderPatchRequest
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class OrderPatchRequest {
     /**

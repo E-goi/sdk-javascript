@@ -33,7 +33,7 @@ import EmailReportOverallOverall from './EmailReportOverallOverall';
 /**
  * The EmailReport model module.
  * @module egoisdk/EmailReport
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class EmailReport {
     /**

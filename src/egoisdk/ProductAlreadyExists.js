@@ -17,7 +17,7 @@ import ProductAlreadyExistsErrors from './ProductAlreadyExistsErrors';
 /**
  * The ProductAlreadyExists model module.
  * @module egoisdk/ProductAlreadyExists
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ProductAlreadyExists {
     /**

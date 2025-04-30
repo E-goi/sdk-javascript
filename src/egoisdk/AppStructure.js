@@ -17,7 +17,7 @@ import AppStructureList from './AppStructureList';
 /**
  * The AppStructure model module.
  * @module egoisdk/AppStructure
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class AppStructure {
     /**

@@ -18,7 +18,7 @@ import NumericCellphoneSenderPost from './NumericCellphoneSenderPost';
 /**
  * The CellphoneSenderPost model module.
  * @module egoisdk/CellphoneSenderPost
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class CellphoneSenderPost {
     /**

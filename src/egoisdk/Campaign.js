@@ -17,7 +17,7 @@ import CampaignScheduleDate from './CampaignScheduleDate';
 /**
  * The Campaign model module.
  * @module egoisdk/Campaign
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class Campaign {
     /**

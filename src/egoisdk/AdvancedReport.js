@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The AdvancedReport model module.
  * @module egoisdk/AdvancedReport
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class AdvancedReport {
     /**

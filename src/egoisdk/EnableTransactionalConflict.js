@@ -19,7 +19,7 @@ import EnableTransactionalConflictsErrors from './EnableTransactionalConflictsEr
 /**
  * The EnableTransactionalConflict model module.
  * @module egoisdk/EnableTransactionalConflict
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class EnableTransactionalConflict {
     /**

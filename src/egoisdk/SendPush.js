@@ -20,7 +20,7 @@ import SendPushAllOf from './SendPushAllOf';
 /**
  * The SendPush model module.
  * @module egoisdk/SendPush
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class SendPush {
     /**

@@ -18,7 +18,7 @@ import BillingInfoAllOfBillingInfo from './BillingInfoAllOfBillingInfo';
 /**
  * The BillingInfo model module.
  * @module egoisdk/BillingInfo
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class BillingInfo {
     /**

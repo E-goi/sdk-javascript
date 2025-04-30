@@ -17,7 +17,7 @@ import Segment from './Segment';
 /**
  * The SegmentCollection model module.
  * @module egoisdk/SegmentCollection
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class SegmentCollection {
     /**

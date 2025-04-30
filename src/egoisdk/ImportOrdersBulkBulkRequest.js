@@ -17,7 +17,7 @@ import ImportOrdersBulkBulkRequestItems from './ImportOrdersBulkBulkRequestItems
 /**
  * The ImportOrdersBulkBulkRequest model module.
  * @module egoisdk/ImportOrdersBulkBulkRequest
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ImportOrdersBulkBulkRequest {
     /**
@@ -25,14 +25,15 @@ class ImportOrdersBulkBulkRequest {
      * Order data
      * @alias module:egoisdk/ImportOrdersBulkBulkRequest
      * @param orderId {String} Ecommerce order id
-     * @param revenue {Number} Ecommerce order revenue
+     * @param contactId {String} Contact ID is any non-empty unique string identifying the user (such as an email address or e-goi uid)
+     * @param revenue {Number} Ecommerce order revenue. Must be greater than 0.
      * @param storeUrl {String} Ecommerce store url
      * @param date {Date} Ecommerce order date (For technical reasons, all orders synchronized will have the date of synchronization.)
      * @param items {Array.<module:egoisdk/ImportOrdersBulkBulkRequestItems>} Array of ordered products
      */
-    constructor(orderId, revenue, storeUrl, date, items) { 
+    constructor(orderId, contactId, revenue, storeUrl, date, items) { 
         
-        ImportOrdersBulkBulkRequest.initialize(this, orderId, revenue, storeUrl, date, items);
+        ImportOrdersBulkBulkRequest.initialize(this, orderId, contactId, revenue, storeUrl, date, items);
     }
 
     /**
@@ -40,8 +41,9 @@ class ImportOrdersBulkBulkRequest {
      * This method is used by the constructors of any subclasses, in order to implement multiple inheritance (mix-ins).
      * Only for internal use.
      */
-    static initialize(obj, orderId, revenue, storeUrl, date, items) { 
+    static initialize(obj, orderId, contactId, revenue, storeUrl, date, items) { 
         obj['order_id'] = orderId;
+        obj['contact_id'] = contactId;
         obj['revenue'] = revenue;
         obj['store_url'] = storeUrl;
         obj['date'] = date;
@@ -61,6 +63,9 @@ class ImportOrdersBulkBulkRequest {
 
             if (data.hasOwnProperty('order_id')) {
                 obj['order_id'] = ApiClient.convertToType(data['order_id'], 'String');
+            }
+            if (data.hasOwnProperty('order_status')) {
+                obj['order_status'] = ApiClient.convertToType(data['order_status'], 'String');
             }
             if (data.hasOwnProperty('contact_id')) {
                 obj['contact_id'] = ApiClient.convertToType(data['contact_id'], 'String');
@@ -96,6 +101,10 @@ class ImportOrdersBulkBulkRequest {
         // ensure the json data is a string
         if (data['order_id'] && !(typeof data['order_id'] === 'string' || data['order_id'] instanceof String)) {
             throw new Error("Expected the field `order_id` to be a primitive type in the JSON string but got " + data['order_id']);
+        }
+        // ensure the json data is a string
+        if (data['order_status'] && !(typeof data['order_status'] === 'string' || data['order_status'] instanceof String)) {
+            throw new Error("Expected the field `order_status` to be a primitive type in the JSON string but got " + data['order_status']);
         }
         // ensure the json data is a string
         if (data['contact_id'] && !(typeof data['contact_id'] === 'string' || data['contact_id'] instanceof String)) {
@@ -139,6 +148,21 @@ class ImportOrdersBulkBulkRequest {
         this['order_id'] = orderId;
     }
 /**
+     * Returns Status of the order
+     * @return {module:egoisdk/ImportOrdersBulkBulkRequest.OrderStatusEnum}
+     */
+    getOrderStatus() {
+        return this.order_status;
+    }
+
+    /**
+     * Sets Status of the order
+     * @param {module:egoisdk/ImportOrdersBulkBulkRequest.OrderStatusEnum} orderStatus Status of the order
+     */
+    setOrderStatus(orderStatus) {
+        this['order_status'] = orderStatus;
+    }
+/**
      * Returns Contact ID is any non-empty unique string identifying the user (such as an email address or e-goi uid)
      * @return {String}
      */
@@ -154,7 +178,7 @@ class ImportOrdersBulkBulkRequest {
         this['contact_id'] = contactId;
     }
 /**
-     * Returns Ecommerce order revenue
+     * Returns Ecommerce order revenue. Must be greater than 0.
      * minimum: 0
      * @return {Number}
      */
@@ -163,8 +187,8 @@ class ImportOrdersBulkBulkRequest {
     }
 
     /**
-     * Sets Ecommerce order revenue
-     * @param {Number} revenue Ecommerce order revenue
+     * Sets Ecommerce order revenue. Must be greater than 0.
+     * @param {Number} revenue Ecommerce order revenue. Must be greater than 0.
      */
     setRevenue(revenue) {
         this['revenue'] = revenue;
@@ -217,7 +241,7 @@ class ImportOrdersBulkBulkRequest {
 
 }
 
-ImportOrdersBulkBulkRequest.RequiredProperties = ["order_id", "revenue", "store_url", "date", "items"];
+ImportOrdersBulkBulkRequest.RequiredProperties = ["order_id", "contact_id", "revenue", "store_url", "date", "items"];
 
 /**
  * Ecommerce order id
@@ -226,13 +250,20 @@ ImportOrdersBulkBulkRequest.RequiredProperties = ["order_id", "revenue", "store_
 ImportOrdersBulkBulkRequest.prototype['order_id'] = undefined;
 
 /**
+ * Status of the order
+ * @member {module:egoisdk/ImportOrdersBulkBulkRequest.OrderStatusEnum} order_status
+ * @default 'unknown'
+ */
+ImportOrdersBulkBulkRequest.prototype['order_status'] = 'unknown';
+
+/**
  * Contact ID is any non-empty unique string identifying the user (such as an email address or e-goi uid)
  * @member {String} contact_id
  */
 ImportOrdersBulkBulkRequest.prototype['contact_id'] = undefined;
 
 /**
- * Ecommerce order revenue
+ * Ecommerce order revenue. Must be greater than 0.
  * @member {Number} revenue
  */
 ImportOrdersBulkBulkRequest.prototype['revenue'] = undefined;
@@ -257,6 +288,45 @@ ImportOrdersBulkBulkRequest.prototype['items'] = undefined;
 
 
 
+
+
+/**
+ * Allowed values for the <code>order_status</code> property.
+ * @enum {String}
+ * @readonly
+ */
+ImportOrdersBulkBulkRequest['OrderStatusEnum'] = {
+
+    /**
+     * value: "created"
+     * @const
+     */
+    "created": "created",
+
+    /**
+     * value: "pending"
+     * @const
+     */
+    "pending": "pending",
+
+    /**
+     * value: "canceled"
+     * @const
+     */
+    "canceled": "canceled",
+
+    /**
+     * value: "completed"
+     * @const
+     */
+    "completed": "completed",
+
+    /**
+     * value: "unknown"
+     * @const
+     */
+    "unknown": "unknown"
+};
 
 
 

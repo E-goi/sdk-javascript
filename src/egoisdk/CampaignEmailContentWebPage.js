@@ -18,7 +18,7 @@ import CampaignEmailContentWebPageAllOf from './CampaignEmailContentWebPageAllOf
 /**
  * The CampaignEmailContentWebPage model module.
  * @module egoisdk/CampaignEmailContentWebPage
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class CampaignEmailContentWebPage {
     /**

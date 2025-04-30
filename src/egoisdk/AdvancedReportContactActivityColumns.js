@@ -18,7 +18,7 @@ import ContactActivityActivitiesFields from './ContactActivityActivitiesFields';
 /**
  * The AdvancedReportContactActivityColumns model module.
  * @module egoisdk/AdvancedReportContactActivityColumns
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class AdvancedReportContactActivityColumns {
     /**

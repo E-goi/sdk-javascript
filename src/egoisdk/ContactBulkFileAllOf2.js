@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The ContactBulkFileAllOf2 model module.
  * @module egoisdk/ContactBulkFileAllOf2
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ContactBulkFileAllOf2 {
     /**

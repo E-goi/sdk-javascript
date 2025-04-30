@@ -24,7 +24,7 @@ import ContactUtmReferrerAdvertisingPost from './ContactUtmReferrerAdvertisingPo
 /**
  * The ContactBaseExtraPost model module.
  * @module egoisdk/ContactBaseExtraPost
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ContactBaseExtraPost {
     /**

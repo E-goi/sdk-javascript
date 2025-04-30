@@ -20,7 +20,7 @@ import ContactExtraFieldsBulkSchema from './ContactExtraFieldsBulkSchema';
 /**
  * The ContactBaseStatusExtraBulk model module.
  * @module egoisdk/ContactBaseStatusExtraBulk
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ContactBaseStatusExtraBulk {
     /**

@@ -17,7 +17,7 @@ import ContactBaseFieldsBulkSchemaBase from './ContactBaseFieldsBulkSchemaBase';
 /**
  * The ContactBaseFieldsBulkSchema model module.
  * @module egoisdk/ContactBaseFieldsBulkSchema
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ContactBaseFieldsBulkSchema {
     /**

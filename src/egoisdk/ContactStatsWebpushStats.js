@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The ContactStatsWebpushStats model module.
  * @module egoisdk/ContactStatsWebpushStats
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ContactStatsWebpushStats {
     /**

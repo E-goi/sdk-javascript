@@ -23,7 +23,7 @@ import ContactExtraFieldText from './ContactExtraFieldText';
 /**
  * The ContactExtraFieldsBulk model module.
  * @module egoisdk/ContactExtraFieldsBulk
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ContactExtraFieldsBulk {
     /**

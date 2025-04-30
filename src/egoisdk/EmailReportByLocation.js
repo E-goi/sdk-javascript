@@ -17,7 +17,7 @@ import EmailReportByLocationLocationInner from './EmailReportByLocationLocationI
 /**
  * The EmailReportByLocation model module.
  * @module egoisdk/EmailReportByLocation
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class EmailReportByLocation {
     /**

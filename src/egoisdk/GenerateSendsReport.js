@@ -19,7 +19,7 @@ import AdvancedReportSendsOptions from './AdvancedReportSendsOptions';
 /**
  * The GenerateSendsReport model module.
  * @module egoisdk/GenerateSendsReport
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class GenerateSendsReport {
     /**

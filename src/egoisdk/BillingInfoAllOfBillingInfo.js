@@ -17,7 +17,7 @@ import BillingInfoAllOfBillingInfoCountry from './BillingInfoAllOfBillingInfoCou
 /**
  * The BillingInfoAllOfBillingInfo model module.
  * @module egoisdk/BillingInfoAllOfBillingInfo
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class BillingInfoAllOfBillingInfo {
     /**

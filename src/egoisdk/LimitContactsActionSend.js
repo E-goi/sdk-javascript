@@ -17,7 +17,7 @@ import OLimitContactsActionSend from './OLimitContactsActionSend';
 /**
  * The LimitContactsActionSend model module.
  * @module egoisdk/LimitContactsActionSend
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class LimitContactsActionSend {
     /**

@@ -18,7 +18,7 @@ import SmsCampaignPatchRequestContent from './SmsCampaignPatchRequestContent';
 /**
  * The SmsCampaignPatchRequest model module.
  * @module egoisdk/SmsCampaignPatchRequest
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class SmsCampaignPatchRequest {
     /**

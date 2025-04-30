@@ -20,7 +20,7 @@ import ConnectedSitesGeneralProductTEDetailGlobal from './ConnectedSitesGeneralP
 /**
  * The ConnectedSitesProducts model module.
  * @module egoisdk/ConnectedSitesProducts
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ConnectedSitesProducts {
     /**

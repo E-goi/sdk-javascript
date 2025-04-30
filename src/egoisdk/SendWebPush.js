@@ -20,7 +20,7 @@ import SendWebPushAllOf from './SendWebPushAllOf';
 /**
  * The SendWebPush model module.
  * @module egoisdk/SendWebPush
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class SendWebPush {
     /**

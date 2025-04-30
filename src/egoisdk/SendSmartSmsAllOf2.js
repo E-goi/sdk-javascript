@@ -17,7 +17,7 @@ import SmartSmsSegmentsActionSend from './SmartSmsSegmentsActionSend';
 /**
  * The SendSmartSmsAllOf2 model module.
  * @module egoisdk/SendSmartSmsAllOf2
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class SendSmartSmsAllOf2 {
     /**

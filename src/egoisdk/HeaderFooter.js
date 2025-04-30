@@ -18,7 +18,7 @@ import HeaderFooterHeaderLinks from './HeaderFooterHeaderLinks';
 /**
  * The HeaderFooter model module.
  * @module egoisdk/HeaderFooter
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class HeaderFooter {
     /**

@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The ContactActivityAbstractActionsWithData model module.
  * @module egoisdk/ContactActivityAbstractActionsWithData
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ContactActivityAbstractActionsWithData {
     /**

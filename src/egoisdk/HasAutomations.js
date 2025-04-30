@@ -17,7 +17,7 @@ import HasAutomationsErrors from './HasAutomationsErrors';
 /**
  * The HasAutomations model module.
  * @module egoisdk/HasAutomations
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class HasAutomations {
     /**

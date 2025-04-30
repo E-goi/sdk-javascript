@@ -20,7 +20,7 @@ import List from './List';
 /**
  * The ComplexList model module.
  * @module egoisdk/ComplexList
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ComplexList {
     /**

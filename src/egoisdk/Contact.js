@@ -20,7 +20,7 @@ import ContactTags from './ContactTags';
 /**
  * The Contact model module.
  * @module egoisdk/Contact
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class Contact {
     /**

@@ -34,7 +34,7 @@ import UnprocessableEntity from '../egoisdk/UnprocessableEntity';
 /**
 * Fields service.
 * @module egoiApi/FieldsApi
-* @version 1.1.6RC1
+* @version 1.1.7RC1
 */
 export default class FieldsApi {
 

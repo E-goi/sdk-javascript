@@ -17,7 +17,7 @@ import Country from './Country';
 /**
  * The CountryCollection model module.
  * @module egoisdk/CountryCollection
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class CountryCollection {
     /**

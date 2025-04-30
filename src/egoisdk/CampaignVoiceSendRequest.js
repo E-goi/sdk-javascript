@@ -21,7 +21,7 @@ import OSegmentsActionSend from './OSegmentsActionSend';
 /**
  * The CampaignVoiceSendRequest model module.
  * @module egoisdk/CampaignVoiceSendRequest
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class CampaignVoiceSendRequest {
     /**

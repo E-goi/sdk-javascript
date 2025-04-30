@@ -17,7 +17,7 @@ import ContactBulk from './ContactBulk';
 /**
  * The ImportBulkRequest model module.
  * @module egoisdk/ImportBulkRequest
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ImportBulkRequest {
     /**

@@ -17,7 +17,7 @@ import UniqueFieldInUseErrors from './UniqueFieldInUseErrors';
 /**
  * The UniqueFieldInUse model module.
  * @module egoisdk/UniqueFieldInUse
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class UniqueFieldInUse {
     /**

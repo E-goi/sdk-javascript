@@ -18,7 +18,7 @@ import SendSegment from './SendSegment';
 /**
  * The OSegmentsWithoutContactActionSend model module.
  * @module egoisdk/OSegmentsWithoutContactActionSend
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class OSegmentsWithoutContactActionSend {
     /**

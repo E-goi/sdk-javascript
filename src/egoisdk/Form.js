@@ -17,7 +17,7 @@ import Language from './Language';
 /**
  * The Form model module.
  * @module egoisdk/Form
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class Form {
     /**

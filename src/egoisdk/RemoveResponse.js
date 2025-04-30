@@ -17,7 +17,7 @@ import RemoveResponseErrors from './RemoveResponseErrors';
 /**
  * The RemoveResponse model module.
  * @module egoisdk/RemoveResponse
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class RemoveResponse {
     /**

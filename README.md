@@ -1,14 +1,18 @@
 ![E-goi](https://www.e-goi.com/wp-content/themes/egoi2019/imgs/svg/logo-egoi.svg)
 
+Get started quickly with E-goi with our integration tools. Our SDK is a modern open source library that makes it easy to integrate your application with E-goi services.
+
 Almost anything you can do in E-goi, you can do with our API.
 
 The API describes each available method. Learn about parameters, errors, and how to format your requests. That means you can easily call on E-goi actions for your integration.
 **API** Full documentation at https://developers.e-goi.com/api/v3/
 
-If you find a bug or something worth fixing, create an issue.
+**Note:** This repository is currently in **Release Candidate** stage. Use with caution in production environments.
+
+Feel free to **fork this repository** and adapt it to your needs. Contributions and improvements are always welcome!
 
 ### Changelog
-#### 1.1.6RC1
+#### 1.1.7RC1
 ## Installation
 
 ### For [Node.js](https://nodejs.org/)
@@ -726,6 +730,7 @@ Class | Method | HTTP request | Description
  - [egoisdk.OperationsCollection](docs/OperationsCollection.md)
  - [egoisdk.Order](docs/Order.md)
  - [egoisdk.OrderPatchRequest](docs/OrderPatchRequest.md)
+ - [egoisdk.OrderProduct](docs/OrderProduct.md)
  - [egoisdk.Overall](docs/Overall.md)
  - [egoisdk.OverallOverall](docs/OverallOverall.md)
  - [egoisdk.PatchRequestBaseField](docs/PatchRequestBaseField.md)

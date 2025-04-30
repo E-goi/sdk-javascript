@@ -18,7 +18,7 @@ import WebPushStats from './WebPushStats';
 /**
  * The WebPushReportDevicesInner model module.
  * @module egoisdk/WebPushReportDevicesInner
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class WebPushReportDevicesInner {
     /**

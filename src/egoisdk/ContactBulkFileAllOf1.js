@@ -17,7 +17,7 @@ import ContactFieldMappingFileBulkSchema from './ContactFieldMappingFileBulkSche
 /**
  * The ContactBulkFileAllOf1 model module.
  * @module egoisdk/ContactBulkFileAllOf1
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ContactBulkFileAllOf1 {
     /**

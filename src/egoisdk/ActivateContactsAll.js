@@ -16,7 +16,7 @@ import ApiClient from '../ApiClient';
 /**
  * The ActivateContactsAll model module.
  * @module egoisdk/ActivateContactsAll
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ActivateContactsAll {
     /**

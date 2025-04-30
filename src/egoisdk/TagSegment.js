@@ -18,7 +18,7 @@ import TagSegmentAllOf from './TagSegmentAllOf';
 /**
  * The TagSegment model module.
  * @module egoisdk/TagSegment
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class TagSegment {
     /**

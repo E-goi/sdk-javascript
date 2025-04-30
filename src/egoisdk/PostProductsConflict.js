@@ -19,7 +19,7 @@ import ProductAlreadyExistsErrors from './ProductAlreadyExistsErrors';
 /**
  * The PostProductsConflict model module.
  * @module egoisdk/PostProductsConflict
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class PostProductsConflict {
     /**

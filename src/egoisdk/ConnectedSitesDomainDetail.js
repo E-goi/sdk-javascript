@@ -17,7 +17,7 @@ import ConnectedSitesProducts from './ConnectedSitesProducts';
 /**
  * The ConnectedSitesDomainDetail model module.
  * @module egoisdk/ConnectedSitesDomainDetail
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ConnectedSitesDomainDetail {
     /**

@@ -20,7 +20,7 @@ import ContactExtraFieldsSchema from './ContactExtraFieldsSchema';
 /**
  * The ContactBaseExtraFull model module.
  * @module egoisdk/ContactBaseExtraFull
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ContactBaseExtraFull {
     /**

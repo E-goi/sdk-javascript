@@ -17,7 +17,7 @@ import ListLimitReachedErrors from './ListLimitReachedErrors';
 /**
  * The ListLimitReached model module.
  * @module egoisdk/ListLimitReached
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ListLimitReached {
     /**

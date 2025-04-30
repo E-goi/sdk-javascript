@@ -17,7 +17,7 @@ import Domain from './Domain';
 /**
  * The DomainCollection model module.
  * @module egoisdk/DomainCollection
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class DomainCollection {
     /**

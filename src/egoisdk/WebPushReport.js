@@ -21,7 +21,7 @@ import WebPushStats from './WebPushStats';
 /**
  * The WebPushReport model module.
  * @module egoisdk/WebPushReport
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class WebPushReport {
     /**

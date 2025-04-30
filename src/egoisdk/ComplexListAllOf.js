@@ -18,7 +18,7 @@ import Language from './Language';
 /**
  * The ComplexListAllOf model module.
  * @module egoisdk/ComplexListAllOf
- * @version 1.1.6RC1
+ * @version 1.1.7RC1
  */
 class ComplexListAllOf {
     /**
